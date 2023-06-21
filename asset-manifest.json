@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.28f5bfe0.css",
-    "main.js": "/react-homework-template/static/js/main.4f595416.js",
-    "index.html": "/react-homework-template/index.html",
-    "main.28f5bfe0.css.map": "/react-homework-template/static/css/main.28f5bfe0.css.map",
-    "main.4f595416.js.map": "/react-homework-template/static/js/main.4f595416.js.map"
+    "main.css": "/GooseTrack_frontend/static/css/main.28f5bfe0.css",
+    "main.js": "/GooseTrack_frontend/static/js/main.0e26bdb9.js",
+    "index.html": "/GooseTrack_frontend/index.html",
+    "main.28f5bfe0.css.map": "/GooseTrack_frontend/static/css/main.28f5bfe0.css.map",
+    "main.0e26bdb9.js.map": "/GooseTrack_frontend/static/js/main.0e26bdb9.js.map"
   },
   "entrypoints": [
     "static/css/main.28f5bfe0.css",
-    "static/js/main.4f595416.js"
+    "static/js/main.0e26bdb9.js"
   ]
 }
