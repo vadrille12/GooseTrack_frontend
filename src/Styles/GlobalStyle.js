@@ -1,6 +1,30 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
+export const variablesColors = {
+  colors: {
+    primary: '#3E85F3',
+    secondary: '#2B78EF',
+    lightBlue: '#E3F3FF',
+    darkBlue: '#CAE8FF',
+    bgBlue: '#DCEBF7',
+    background: '#FFFFFF',
+    white: '#FFFFFF',
+    blackTitle: '#171820',
+    black: '#111111',
+    text: '#343434',
+    mainYellow: '#F3B249',
+    lightYellow: '#FCF0D4',
+    redError: '#DA1414',
+    redErrorLight: '#E74A3B',
+    mainRed: '#EA3D65',
+    lightRed: '#FFD2DD',
+    greenValid: '#3CBC81',
+    muted: '#F7F6F9',
+    closeButton: '#111111',
+  },
+};
+
 export const GlobalStyle = createGlobalStyle`
 body{
 margin: 0;

@@ -3,8 +3,8 @@
 // import { Route, Routes } from 'react-router-dom';
 
 import { Container } from 'Styles/Container';
-import { GlobalStyle } from 'Styles/GlobalStyle';
 import { ChoosedDay } from './ChoosedDay/ChoosedDay';
+import { GlobalStyle } from 'Styles/GlobalStyle';
 
 // import { PublicRoute } from 'components/PublicRoute';
 // import { PrivateRoute } from 'components/PrivateRoute';
