@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { variables } from '../../../Styles/GlobalStyle';
 
 export const TaskItem = styled.div`
   display: block;
@@ -16,6 +17,13 @@ export const TaskItem = styled.div`
   border-radius: 8px;
 
   position: relative;
+
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  :focus {
+    box-shadow: ${variables.shadow.shadow};
+  }
 
   @media screen and (min-width: 768px) {
     min-width: 340px;

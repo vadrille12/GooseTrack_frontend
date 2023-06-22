@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { variables } from '../../../Styles/GlobalStyle';
 
 export const DayCalendarHeadStyledMobile = styled.ul`
   min-width: 335px;
@@ -29,6 +30,15 @@ export const DayBtn = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+
+  border-radius: 8px;
+
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  :focus {
+    box-shadow: ${variables.shadow.shadow};
+  }
 `;
 
 export const DayNameMobile = styled.span`
@@ -95,6 +105,13 @@ export const DayCalendarHeadStyledDesktop = styled.ul`
     background: #ffffff;
     border: 1px solid rgba(220, 227, 229, 0.8);
     border-radius: 8px;
+  }
+
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  :focus {
+    box-shadow: ${variables.shadow.shadow};
   }
 
   @media screen and (min-width: 1280px) {

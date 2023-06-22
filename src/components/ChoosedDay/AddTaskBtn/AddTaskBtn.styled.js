@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { variables } from '../../../Styles/GlobalStyle';
 
 export const AddTaskBtnStyled = styled.button`
   display: flex;
@@ -20,7 +21,18 @@ export const AddTaskBtnStyled = styled.button`
   font-size: 14px;
   line-height: 18px;
 
+  cursor: pointer;
+
   color: #111111;
+
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  :focus {
+    color: ${variables.colors.secondary};
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
+  }
 
   @media screen and (min-width: 768px) {
     margin-top: 32px;

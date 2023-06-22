@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { variables } from '../../../Styles/GlobalStyle';
 
 export const ColumnTasksListStyled = styled.div`
   display: block;
@@ -15,6 +16,13 @@ export const ColumnTasksListStyled = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  :focus {
+    box-shadow: ${variables.shadow.shadow};
+  }
 
   @media screen and (min-width: 768px) {
     height: 112px;
@@ -50,6 +58,7 @@ export const TaskContainer = styled.div`
   display: flex;
   /* flex-wrap: wrap; */
   justify-content: space-between;
+
   @media screen and (min-width: 768px) {
   }
 

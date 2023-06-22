@@ -25,8 +25,10 @@ export const variables = {
   },
 
   transitions: {
-    standart: 'stroke 250ms linear',
+    standart: '300ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
+
+  shadow: { shadow: 'rgba(0, 0, 0, 0.15) 0px 15px 25px' },
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -45,17 +47,9 @@ code {
 }
 
 #root {
+  transition: color ${variables.transitions.standart}, background-color ${variables.transitions.standart},
+    box-shadow ${variables.transitions.standart}, transform ${variables.transitions.standart};
   background: #f7f6f9;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-img {
-    display: block;
 }
 
 p {
@@ -65,5 +59,35 @@ p {
 
 h1, h2, h3 {
   margin: 0px;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 `;
