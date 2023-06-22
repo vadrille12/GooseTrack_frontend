@@ -3,9 +3,9 @@ import { Outlet } from 'react-router';
 export const MainLayout = () => {
   return (
     <>
-      <header>
+      {/* <header>
         Header
-      </header>
+      </header> */}
       <Outlet />
     </>
   );
