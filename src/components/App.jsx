@@ -15,10 +15,10 @@ import { MainLayout } from 'components/MainLayout/MainLayout';
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const AccountPage = lazy(() => import('pages/AccountPage/AccountPage'));
 const CalendarPage = lazy(() => import('pages/CalendarPage/CalendarPage'));
-// const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
+const StatisticsPage = lazy(() => import('pages/StatisticsPage/StatisticsPage.jsx'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
-// const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage.jsx'));
 
 export function App() {
   // const dispatch = useDispatch();
@@ -46,10 +46,10 @@ export function App() {
             <Route path="day" element={null} />
             <Route path="day/:date" element={null} /> */}
           </Route>
-          {/* <Route path="statistics" element={<StatisticsPage />} /> */}
+          <Route path="statistics" element={<StatisticsPage />} />
           {/* </Route> */}
 
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
       <GlobalStyle />
