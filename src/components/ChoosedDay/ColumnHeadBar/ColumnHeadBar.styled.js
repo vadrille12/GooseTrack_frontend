@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { variables } from '../../../Styles/GlobalStyle';
+import { ReactComponent as Plus } from '../../../images/tasksSvg/plus.svg';
 
 export const ColumnHeadBarStyled = styled.div`
   display: flex;
@@ -25,4 +27,18 @@ export const TaskTitle = styled.h3`
   text-align: center;
 
   color: #111111;
+`;
+
+export const TaskHeaderBtn = styled(Plus)`
+  width: 22px;
+  height: 22px;
+
+  cursor: pointer;
+
+  stroke: ${variables.colors.black};
+  transition: ${variables.transitions.standart};
+
+  &:hover {
+    stroke: ${variables.colors.primary};
+  }
 `;

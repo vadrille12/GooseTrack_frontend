@@ -1,10 +1,14 @@
-import { ColumnHeadBarStyled, TaskTitle } from './ColumnHeadBar.styled';
+import {
+  ColumnHeadBarStyled,
+  TaskTitle,
+  TaskHeaderBtn,
+} from './ColumnHeadBar.styled';
 
 export const ColumnHeadBar = ({ taskName }) => {
   return (
     <ColumnHeadBarStyled>
       <TaskTitle>{taskName}</TaskTitle>
-      <button>+</button>
+      <TaskHeaderBtn></TaskHeaderBtn>
     </ColumnHeadBarStyled>
   );
 };
