@@ -5,7 +5,7 @@ import {
 // import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
-import { Container } from 'Styles/Container';
+// import { Container } from 'Styles/Container';
 import { GlobalStyle } from 'Styles/GlobalStyle';
 
 // import { PublicRoute } from 'components/PublicRoute';
@@ -28,7 +28,7 @@ export function App() {
   // }, [dispatch]);
 
   return (
-    <Container>
+    <>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<MainPage />} />
@@ -53,6 +53,6 @@ export function App() {
         </Route>
       </Routes>
       <GlobalStyle />
-    </Container>
+    </>
   );
 }
