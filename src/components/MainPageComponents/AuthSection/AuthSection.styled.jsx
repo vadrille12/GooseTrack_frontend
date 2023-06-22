@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-export const Header = styled.header`
+export const ContainerHero = styled.header`
   height: 770px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3E85F3;
+  background-color: #3e85f3;
 `;
 
 export const ContentWrapper = styled.div`
@@ -15,11 +15,6 @@ export const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    ${({ height }) =>
-      css`
-        row-gap: calc(${height}px * 25.61 / 100);
-      `}
 
     @media screen and (min-width: 768px) {
       margin-top: 40px;
@@ -36,6 +31,10 @@ export const ContentWrapper = styled.div`
       align-items: center;
       column-gap: 24px;
     }
+
+    ${({ height }) => css`
+      row-gap: calc(${height}px * 25.61 / 100);
+    `}
   }
 
   h1 {
@@ -78,23 +77,22 @@ export const ImageWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  @media screen and (min-width: 768px) {
-    width: 150px;
-  }
-
   img {
     display: block;
     max-width: 100%;
     height: auto;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+  }
 `;
 
-export const LoginLink = styled(Link)`
+export const LinkLogin = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 8.25px;
-
   width: 131px;
   padding-top: 14px;
   padding-bottom: 14px;
@@ -107,7 +105,6 @@ export const LoginLink = styled(Link)`
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-
   opacity: 1;
   cursor: pointer;
 
@@ -115,13 +112,9 @@ export const LoginLink = styled(Link)`
   &:focus {
     opacity: 0.8;
   }
-
-  & svg {
-    stroke: #3e85f3;
-  }
 `;
 
-export const RegisterLink = styled(Link)`
+export const LinkRegister = styled(Link)`
   font-family: Inter;
   font-size: 12px;
   line-height: 1.16;
@@ -142,17 +135,16 @@ export const ScrollDownWrapper = styled.div`
   height: 40px;
   width: 40px;
 
-  @media screen and (min-width: 768px) {
-    bottom: 20px;
-    right: 10px;
-
-    height: 70px;
-    width: 70px;
-  }
-
   img {
     display: block;
     max-width: 100%;
     height: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    bottom: 20px;
+    right: 10px;
+    height: 70px;
+    width: 70px;
   }
 `;
