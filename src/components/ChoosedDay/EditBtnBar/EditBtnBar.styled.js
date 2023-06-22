@@ -1,0 +1,179 @@
+import styled from 'styled-components';
+import { variables } from '../../../Styles/GlobalStyle';
+import { ReactComponent as Move } from '../../../images/tasksSvg/move-right.svg';
+import { ReactComponent as Edit } from '../../../images/tasksSvg/edit.svg';
+import { ReactComponent as Delete } from '../../../images/tasksSvg/del.svg';
+
+export const EditBntContainer = styled.div`
+  display: flex;
+  gap: 13px;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1280px) {
+  }
+
+  button {
+    width: 14px;
+    height: 14px;
+
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const MoveBtn = styled(Move)`
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  stroke: ${variables.colors.black};
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  :focus {
+    stroke: ${variables.colors.secondary};
+  }
+`;
+
+export const EditBtn = styled(Edit)`
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  stroke: ${variables.colors.black};
+  transition: ${variables.transitions.standart};
+  &:hover,
+  :focus {
+    stroke: ${variables.colors.secondary};
+    ${MoveBtn} {
+      stroke: ${variables.colors.secondary};
+    }
+  }
+`;
+
+export const DeleteBtn = styled(Delete)`
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  stroke: ${variables.colors.black};
+  transition: stroke 250ms linear;
+  &:hover,
+  :focus {
+    stroke: ${variables.colors.secondary};
+  }
+`;
+
+export const ChangeCategoryContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 115px;
+  height: 70px;
+  border-radius: 8px;
+  background-color: ${variables.colors.background};
+  position: absolute;
+  gap: 12px;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  box-shadow: ${variables.shadow.shadow};
+
+  padding: 14px 18px;
+  top: 63%;
+  left: 60%;
+
+  @media screen and (min-width: 768px) {
+    width: 147px;
+    height: 90px;
+    top: 60%;
+    left: 50%;
+
+    padding: 16px 16px;
+  }
+
+  @media screen and (min-width: 1280px) {
+  }
+`;
+
+export const MoveToInProgress = styled.div`
+  button {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+
+    display: flex;
+    width: 120px;
+    height: 26px;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    transition: ${variables.transitions.standart};
+
+    &:hover,
+    :focus {
+      color: ${variables.colors.secondary};
+
+      ${MoveBtn} {
+        stroke: ${variables.colors.secondary};
+      }
+    }
+
+    ${MoveBtn} {
+      width: 16px;
+      height: 16px;
+      stroke: ${variables.colors.black};
+      transition: ${variables.transitions.standart};
+    }
+  }
+`;
+
+export const MoveToDone = styled.div`
+  button {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+
+    display: flex;
+    width: 120px;
+    height: 26px;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    transition: ${variables.transitions.standart};
+
+    &:hover,
+    :focus {
+      color: ${variables.colors.secondary};
+
+      ${MoveBtn} {
+        stroke: ${variables.colors.secondary};
+      }
+    }
+
+    ${MoveBtn} {
+      width: 16px;
+      height: 16px;
+      stroke: ${variables.colors.black};
+      transition: ${variables.transitions.standart};
+    }
+  }
+`;

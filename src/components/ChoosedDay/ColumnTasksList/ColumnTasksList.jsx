@@ -1,3 +1,4 @@
+import { EditBtnBar } from '../EditBtnBar/EditBtnBar';
 import {
   ColumnTasksListStyled,
   TaskText,
@@ -5,10 +6,6 @@ import {
   Avatar,
   Status,
   AvatarGroupContainer,
-  EditBntContainer,
-  MoveBtn,
-  EditBtn,
-  DeleteBtn,
 } from './ColumnTasksList.styled';
 
 export const ColumnTasksList = () => {
@@ -22,11 +19,7 @@ export const ColumnTasksList = () => {
           <Avatar>ava</Avatar>
           <Status>Low</Status>
         </AvatarGroupContainer>
-        <EditBntContainer>
-          <MoveBtn>mu</MoveBtn>
-          <EditBtn>ed</EditBtn>
-          <DeleteBtn>del</DeleteBtn>
-        </EditBntContainer>
+        <EditBtnBar />
       </TaskContainer>
     </ColumnTasksListStyled>
   );
