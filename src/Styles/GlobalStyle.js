@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
-export const variablesColors = {
+export const variables = {
   colors: {
     primary: '#3E85F3',
     secondary: '#2B78EF',
@@ -22,6 +22,10 @@ export const variablesColors = {
     greenValid: '#3CBC81',
     muted: '#F7F6F9',
     closeButton: '#111111',
+  },
+
+  transitions: {
+    standart: 'stroke 250ms linear',
   },
 };
 

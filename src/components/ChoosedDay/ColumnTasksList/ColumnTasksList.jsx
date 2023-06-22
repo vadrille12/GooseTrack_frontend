@@ -6,6 +6,9 @@ import {
   Status,
   AvatarGroupContainer,
   EditBntContainer,
+  MoveBtn,
+  EditBtn,
+  DeleteBtn,
 } from './ColumnTasksList.styled';
 
 export const ColumnTasksList = () => {
@@ -20,9 +23,9 @@ export const ColumnTasksList = () => {
           <Status>Low</Status>
         </AvatarGroupContainer>
         <EditBntContainer>
-          <button>mu</button>
-          <button>ed</button>
-          <button>del</button>
+          <MoveBtn>mu</MoveBtn>
+          <EditBtn>ed</EditBtn>
+          <DeleteBtn>del</DeleteBtn>
         </EditBntContainer>
       </TaskContainer>
     </ColumnTasksListStyled>
