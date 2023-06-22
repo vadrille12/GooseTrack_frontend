@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkGooseTrack_frontend=self.webpackChunkGooseTrack_frontend||[]).push([[794],{794:function(n,e,t){t.r(e),t.d(e,{default:function(){return c}});var r=t(184);function c(){return(0,r.jsx)("main",{children:(0,r.jsx)("b",{style:{textAlign:"center"},children:"404. Page not found"})})}}}]);
-//# sourceMappingURL=794.77d88425.chunk.js.map
