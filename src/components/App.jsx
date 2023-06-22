@@ -2,6 +2,9 @@ import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
+import { Container } from 'Styles/Container';
+import { GlobalStyle } from 'Styles/GlobalStyle';
+
 // import { PublicRoute } from 'components/PublicRoute';
 // import { PrivateRoute } from 'components/PrivateRoute';
 import { MainLayout } from 'components/MainLayout/MainLayout';
@@ -22,28 +25,31 @@ export function App() {
   // }, [dispatch]);
 
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<MainPage />} />
+    <Container>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<MainPage />} />
 
-        {/* <Route element={<PublicRoute />}> */}
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        {/* </Route> */}
+          {/* <Route element={<PublicRoute />}> */}
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          {/* </Route> */}
 
-        {/* <Route element={<PrivateRoute />}> */}
-        {/* <Route path="account" element={<AccountPage />} /> */}
-        <Route path="calendar" element={<CalendarPage />}>
-          {/* <Route path="month" element={null} />
+          {/* <Route element={<PrivateRoute />}> */}
+          {/* <Route path="account" element={<AccountPage />} /> */}
+          <Route path="calendar" element={<CalendarPage />}>
+            {/* <Route path="month" element={null} />
             <Route path="month/:month" element={null} />
             <Route path="day" element={null} />
             <Route path="day/:date" element={null} /> */}
-        </Route>
-        {/* <Route path="statistics" element={<StatisticsPage />} /> */}
-        {/* </Route> */}
+          </Route>
+          {/* <Route path="statistics" element={<StatisticsPage />} /> */}
+          {/* </Route> */}
 
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
-      </Route>
-    </Routes>
+          {/* <Route path="*" element={<NotFoundPage />} /> */}
+        </Route>
+      </Routes>
+      <GlobalStyle />
+    </Container>
   );
 }
