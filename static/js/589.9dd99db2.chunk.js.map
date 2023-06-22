@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/589.9dd99db2.chunk.js","mappings":"yLAAe,SAASA,IACtB,OACE,0BACE,wBAAI,mBAGT,C","sources":["pages/RegisterPage/RegisterPage.jsx"],"sourcesContent":["export default function RegisterPage() {\n  return (\n    <div>\n      <h1>Register Page</h1>\n    </div>\n  );\n}\n"],"names":["RegisterPage"],"sourceRoot":""}
