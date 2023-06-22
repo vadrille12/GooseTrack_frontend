@@ -1,5 +1,5 @@
-import { lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { lazy } from 'react';
+// import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
 import { Container } from 'Styles/Container';
