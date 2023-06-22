@@ -1,4 +1,7 @@
-import { lazy } from 'react';
+import {
+  lazy,
+  // useEffect
+} from 'react';
 // import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
@@ -10,7 +13,7 @@ import { GlobalStyle } from 'Styles/GlobalStyle';
 import { MainLayout } from 'components/MainLayout/MainLayout';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
-// const AccountPage = lazy(() => import('pages/AccountPage'));
+const AccountPage = lazy(() => import('pages/AccountPage/AccountPage'));
 const CalendarPage = lazy(() => import('pages/CalendarPage/CalendarPage'));
 // const StatisticsPage = lazy(() => import('pages/StatisticsPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -36,7 +39,7 @@ export function App() {
           {/* </Route> */}
 
           {/* <Route element={<PrivateRoute />}> */}
-          {/* <Route path="account" element={<AccountPage />} /> */}
+          <Route path="account" element={<AccountPage />} />
           <Route path="calendar" element={<CalendarPage />}>
             {/* <Route path="month" element={null} />
             <Route path="month/:month" element={null} />

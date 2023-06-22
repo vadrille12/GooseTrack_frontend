@@ -60,3 +60,7 @@ export const DeleteBtn = styled(Delete)`
     stroke: ${variables.colors.secondary};
   }
 `;
+
+export const changeCategoryContainer = styled.div`
+  width: 16px;
+`;

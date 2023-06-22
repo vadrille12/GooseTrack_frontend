@@ -14,12 +14,13 @@ export const EditBtnBar = () => {
   };
 
   const handleCloseMoveBar = () => {
-    setIsActiv(true);
+    setIsActiv(false);
   };
 
   return (
     <EditBntContainer onMouseLeave={handleCloseMoveBar}>
       <MoveBtn onClick={handleOpenMoveBar}>mu</MoveBtn>
+      {/* {isActiv && <changeCategoryContainer></changeCategoryContainer>} */}
       <EditBtn>ed</EditBtn>
       <DeleteBtn>del</DeleteBtn>
     </EditBntContainer>
