@@ -12,102 +12,177 @@ import {
   Input,
   FormBtnWrap,
   FormBtn,
+  FormInputBox,
+  InputWrap,
+  Img,
+  AddIcon,
 } from './UserForm.styled';
 
+import goose from '../../images/mainPage/mobile/mobile_goose_mainPage.png';
 
+import * as Yup from 'yup';
+import { useState } from 'react';
+import { useEffect } from 'react';
+
+const UserFormikSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(10, 'Too Short!')
+    .max(16, 'Too Long, max => 16!')
+    .required('Required'),
+  phone: Yup.string().max(18, 'Phone must be at most 18 characters'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  skype: Yup.string().max(16, 'Skype must be at most 20 characters'),
+});
 
 export const UserForm = () => {
+  const [avatarURL, setAvatarURL] = useState(null);
+  const [formData, setFormData] = useState({
+    name: 'User Name, max 16',
+    email: 'email@mail.com',
+    phone: '+38 097 111 11 11',
+    skype: 'Add a skype number, max 16',
+    birthday: 'YYYY-MM-DD',
+    avatarUrl: null,
+  });
+
+
+  const initialValues = {
+    name: '',
+    email: '',
+    skype: '',
+    phone: '',
+    birthday: '',
+    avatarUrl: '',
+  };
+
+  useEffect(() => {}, []);
+
+  const { name, email, skype, phone, birthday} = formData;
+
+  const handleClick = event => {
+    event.currentTarget.disabled = true;
+    console.log('button clicked');
+  };
+
   return (
     <Wrap>
-      <AvatarWrap>
-        <div>
-          <AvatarBox>
-            <label htmlFor="avatar">
-              <AvatarSvg>+</AvatarSvg>
-            </label>
-          </AvatarBox>
-          <input
-            type="file"
-            id="avatar"
-            name="avatar"
-            //   onChange={}
-            style={{ display: 'none' }}
-          />
-          <UserWrapInfo>
-            <UserName>User nickname</UserName>
-            <User>User</User>
-          </UserWrapInfo>
-        </div>
-      </AvatarWrap>
-      <div>
+     
         <Formik
-          initialValues={{
-            userName: '',
-            birthday: '',
-            email: '',
-            phone: '',
-            skype: '',
-          }}
+          initialValues={initialValues}
+          validate={UserFormikSchema}
           onSubmit={async values => {
-            await new Promise(r => setTimeout(r, 500));
+            setFormData(values);
             alert(JSON.stringify(values, null, 2));
           }}
         >
-          {({ errors, touched }) => (
+          {({ isSubmitting, errors, touched }) => (
             <Form>
+              <AvatarWrap>
+                {!avatarURL ? (
+                  <AvatarBox>
+                    <Img
+                      src={goose}
+                      alt="Goose welcome you"
+                      title="Goose welcome you"
+                    />
+                    <label htmlFor="avatar">
+                      <AvatarSvg>
+                        <AddIcon />
+                      </AvatarSvg>
+                    </label>
+                  </AvatarBox>
+                ) : (
+                  <label htmlFor="avatar">
+                    <Img src={URL.createObjectURL(avatarURL)} alt="avatar" />
+                  </label>
+                )}
+
+                <input
+                  type="file"
+                  id="avatar"
+                  name="avatar"
+                  accept="image/*,.png,.jpg,.gif,.web"
+                  onChange={e => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      setFormData({
+                        ...formData,
+                        avatarUrl: URL.createObjectURL(file),
+                      });
+                      setAvatarURL(file);
+                    }
+                  }}
+                  style={{ display: 'none' }}
+                />
+
+                <UserWrapInfo>
+                  <UserName>User nickname</UserName>
+                  <User>User</User>
+                </UserWrapInfo>
+              </AvatarWrap>
+
               <FormInputWrap>
-                <div style={{ width: '354px' }}>
-                 
-                    <Label htmlFor="firstName">User Name</Label>
-                    <div style={{ position: 'relative' }}>
-                      <Input
-                        id="userName"
-                        name="userName"
-                        placeholder="Text Your Name"
-                      />
-                    
-                  </div>
+                <FormInputBox>
+                  <Label htmlFor="name">User Name</Label>
+                  <InputWrap>
+                    <Input id="name" name="name" placeholder={name} />
+                  </InputWrap>
 
                   <Label htmlFor="birthday">Birthday</Label>
-                  <div style={{ position: 'relative' }}>
+                  <InputWrap>
                     <Input
                       id="birthday"
                       name="birthday"
-                      placeholder="Text Your Birthday"
+                      placeholder={birthday}
                     />
-                  </div>
+                  </InputWrap>
                   <Label htmlFor="email">Email</Label>
-                  <div style={{ position: 'relative' }}>
+                  <InputWrap>
                     <Input
                       id="email"
                       name="email"
-                      placeholder="example: jane@acme.com"
+                      placeholder={email}
                       type="email"
+                      iserror={errors.email && touched.email}
                     />
-                  </div>
-                </div>
-                <div>
+                  </InputWrap>
+                </FormInputBox>
+                <FormInputBox>
                   <Label htmlFor="phone">Phone</Label>
-                  <div style={{ position: 'relative' }}>
-                    <Input id="phone" name="phone" placeholder="7732897309" />
-                  </div>
-                  <Label htmlFor="skype">Skype</Label>
-                  <div style={{ position: 'relative' }}>
+                  <InputWrap>
                     <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder={phone}
+                    />
+                  </InputWrap>
+                  <Label htmlFor="skype">Skype</Label>
+                  <InputWrap>
+                    <Input
+                      disabled={true}
                       id="skype"
                       name="skype"
-                      placeholder="Do You have Skype?"
+                      placeholder={skype}
+                      value={skype}
                     />
-                  </div>
-                </div>
+                  </InputWrap>
+                </FormInputBox>
               </FormInputWrap>
+
               <FormBtnWrap>
-                <FormBtn type="submit">Save changes</FormBtn>
+                <FormBtn
+                  type="submit"
+                  disabled={isSubmitting}
+                  onClick={handleClick}
+                >
+                  Save changes
+                </FormBtn>
               </FormBtnWrap>
             </Form>
           )}
         </Formik>
-      </div>
+   
     </Wrap>
   );
 };
