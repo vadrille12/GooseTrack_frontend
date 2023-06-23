@@ -10,7 +10,7 @@ export const Form = styled(FormikForm)`
   flex-direction: column;
   padding: 40px 24px;
 
-  background-color: FFFFFF;
+  background-color: #ffffff;
   border-radius: 8px;
 
   @media screen and (max-width: 345px) {
@@ -28,11 +28,11 @@ export const Title = styled.p`
   margin-bottom: 32px;
 
   font-family: Inter;
-  font-weight:  600;
+  font-weight: 600;
   font-size: 18px;
   line-height: 1.33;
 
-  color: #3E85F3;
+  color: #3e85f3;
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
@@ -45,8 +45,8 @@ export const Title = styled.p`
 
 export const Label = styled.label`
   font-family: Inter;
-  font-weight:  600;
-  font-size:12px;
+  font-weight: 600;
+  font-size: 12px;
   line-height: 1.25;
 
   color: #111111;
@@ -73,11 +73,11 @@ export const Label = styled.label`
   }
 
   &.is-valid {
-    color: #3CBC81;
+    color: #3cbc81;
   }
 
   &.is-invalid {
-    color: #E74A3B;
+    color: #e74a3b;
   }
 
   & p {
@@ -134,11 +134,11 @@ export const Field = styled(FormikField)`
   }
 
   &.is-valid {
-    border: 1px solid 3CBC81;
+    border: 1px solid #3cbc81;
   }
 
   &.is-invalid {
-    border: 1px solid #E74A3B;
+    border: 1px solid #e74a3b;
   }
 `;
 
@@ -152,29 +152,6 @@ export const Input = styled.div`
   margin-top: 8px;
 `;
 
-export const VisibilityBtn = styled.button`
-  position: absolute;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-
-  padding: 0;
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  & svg.is-valid {
-    stroke: #3CBC81;
-    fill: #3CBC81;
-  }
-
-  & svg.is-invalid {
-    stroke: #E74A3B;
-    fill: #E74A3B;
-  }
-`;
-
 export const Button = styled.button`
   display: flex;
   align-items: center;
@@ -184,7 +161,7 @@ export const Button = styled.button`
   padding-bottom: 14px;
 
   font-family: Inter;
-  font-weight:600;
+  font-weight: 600;
   font-size: 14px;
   line-height: 1.28px;
   letter-spacing: -0.02em;
@@ -193,8 +170,8 @@ export const Button = styled.button`
   border-radius: 16px;
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
 
-  color: #FFFFFF;
-  background-color: #3E85F3;
+  color: #ffffff;
+  background-color: #3e85f3;
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
@@ -206,23 +183,12 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    background-color: #2B78EF;
-  }
-`;
-
-export const Svg = styled.svg`
-  stroke: #FFFFFF;
-  height: 18px;
-  width: 18px;
-
-  @media screen and (min-width: 768px) {
-    height: 20px;
-    width: 20px;
+    background-color: #2b78ef;
   }
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`
   margin-left: 18px;
   margin-top: 8px;
-  color: #DA1414;
+  color: #da1414;
 `;
