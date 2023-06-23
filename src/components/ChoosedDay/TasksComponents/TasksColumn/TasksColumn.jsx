@@ -15,6 +15,21 @@ export const TasksColumn = () => {
           <AddTaskBtn></AddTaskBtn>
         </TaskItem>
       ))}
+      {/* <TaskItem>
+        <ColumnHeadBar>{tasksNames[0]}</ColumnHeadBar>
+        <ColumnTasksList />
+        <AddTaskBtn></AddTaskBtn>
+      </TaskItem>
+      <TaskItem>
+        <ColumnHeadBar>{tasksNames[1]}</ColumnHeadBar>
+        <ColumnTasksList />
+        <AddTaskBtn></AddTaskBtn>
+      </TaskItem>
+      <TaskItem>
+        <ColumnHeadBar>{tasksNames[2]}</ColumnHeadBar>
+        <ColumnTasksList />
+        <AddTaskBtn></AddTaskBtn>
+      </TaskItem> */}
     </TasksColumnStyled>
   );
 };

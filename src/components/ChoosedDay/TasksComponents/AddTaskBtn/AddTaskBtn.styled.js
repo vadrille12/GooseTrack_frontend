@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { variables } from '../../../Styles/GlobalStyle';
+import { variables } from '../../../../Styles/GlobalStyle';
 
 export const AddTaskBtnStyled = styled.button`
   display: flex;

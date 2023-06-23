@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { variables } from '../../../Styles/GlobalStyle';
+import { variables } from '../../../../Styles/GlobalStyle';
 
-export const ColumnTasksListStyled = styled.div`
+export const TaskCardStyled = styled.div`
   display: block;
   justify-content: center;
   width: 299px;

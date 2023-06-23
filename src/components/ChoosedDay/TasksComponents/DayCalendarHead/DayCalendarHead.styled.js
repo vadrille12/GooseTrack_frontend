@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { variables } from '../../../Styles/GlobalStyle';
+import { variables } from '../../../../Styles/GlobalStyle';
 
 export const DayCalendarHeadStyledMobile = styled.ul`
   min-width: 335px;

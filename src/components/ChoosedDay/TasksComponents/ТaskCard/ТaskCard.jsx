@@ -1,16 +1,16 @@
 import { EditBtnBar } from '../EditBtnBar/EditBtnBar';
 import {
-  ColumnTasksListStyled,
-  TaskText,
-  TaskContainer,
   Avatar,
-  Status,
   AvatarGroupContainer,
-} from './ColumnTasksList.styled';
+  Status,
+  TaskCardStyled,
+  TaskContainer,
+  TaskText,
+} from './ТaskCard.styled';
 
-export const ColumnTasksList = () => {
+export const TaskCard = () => {
   return (
-    <ColumnTasksListStyled>
+    <TaskCardStyled>
       <TaskText>
         textwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
       </TaskText>
@@ -21,6 +21,6 @@ export const ColumnTasksList = () => {
         </AvatarGroupContainer>
         <EditBtnBar />
       </TaskContainer>
-    </ColumnTasksListStyled>
+    </TaskCardStyled>
   );
 };

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { variables } from '../../../Styles/GlobalStyle';
+import { variables } from '../../../../Styles/GlobalStyle';
 
 export const TaskItem = styled.div`
   display: block;
@@ -70,6 +70,7 @@ export const TasksColumnStyled = styled.li`
 
   @media screen and (min-width: 1280px) {
     gap: 27px;
+    margin-left: 0;
   }
 
   ${TaskItem} {

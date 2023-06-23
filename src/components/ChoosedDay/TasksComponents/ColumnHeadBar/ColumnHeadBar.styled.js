@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { variables } from '../../../Styles/GlobalStyle';
-import { ReactComponent as Plus } from '../../../images/tasksSvg/plus.svg';
+import { variables } from '../../../../Styles/GlobalStyle';
+import { ReactComponent as Plus } from '../../../../images/tasksSvg/plus.svg';
 
 export const ColumnHeadBarStyled = styled.div`
   display: flex;

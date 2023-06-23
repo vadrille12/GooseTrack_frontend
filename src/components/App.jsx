@@ -11,6 +11,7 @@ import { GlobalStyle } from 'Styles/GlobalStyle';
 // import { PublicRoute } from 'components/PublicRoute';
 // import { PrivateRoute } from 'components/PrivateRoute';
 import { MainLayout } from 'components/MainLayout/MainLayout';
+import { Container } from 'Styles/Container';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const AccountPage = lazy(() => import('pages/AccountPage/AccountPage'));
@@ -30,7 +31,7 @@ export function App() {
   // }, [dispatch]);
 
   return (
-    <>
+    <Container>
       <Routes>
         {/* <Route element={<PublicRoute />}> */}
         <Route path="/" element={<MainPage />} />
@@ -54,6 +55,6 @@ export function App() {
         {/* </Route> */}
       </Routes>
       <GlobalStyle />
-    </>
+    </Container>
   );
 }
