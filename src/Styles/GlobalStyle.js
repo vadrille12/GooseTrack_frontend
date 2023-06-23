@@ -29,6 +29,12 @@ export const variables = {
   },
 
   shadow: { shadow: 'rgba(0, 0, 0, 0.15) 0px 15px 25px' },
+
+  breakpoint: {
+    mobile: '375px',
+    tablet: '768px',
+    desktop: '1440px',
+  },
 };
 
 export const GlobalStyle = createGlobalStyle`
