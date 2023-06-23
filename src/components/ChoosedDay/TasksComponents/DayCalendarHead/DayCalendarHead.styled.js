@@ -2,24 +2,20 @@ import styled from 'styled-components';
 import { variables } from '../../../../Styles/GlobalStyle';
 
 export const DayCalendarHeadStyledMobile = styled.ul`
-  min-width: 335px;
-  height: 74px;
+  min-width: 100%;
+  height: 100%;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 2px;
   padding: 14px 22px;
   margin: auto;
 
   background: #ffffff;
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
-
-  @media screen and (max-width: 480px) {
-    gap: 2px;
-  }
 
   @media screen and (min-width: 768px) {
     display: none;
@@ -114,7 +110,7 @@ export const DayCalendarHeadStyledDesktop = styled.ul`
     box-shadow: ${variables.shadow.shadow};
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     width: 1087px;
     height: 68px;
 

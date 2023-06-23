@@ -1,8 +1,35 @@
 import styled from 'styled-components';
 
 export const DateBarStyled = styled.div`
+  display: block;
   width: 335px;
   height: 30px;
+  gap: 2px;
+
+  @media screen and (min-width: 480px) {
+    display: flex;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 34px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1087px;
+  }
+`;
+
+export const DateContainer = styled.div`
+  @media screen and (min-width: 480px) {
+    display: flex;
+  }
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
 `;
 
 export const CurrentDate = styled.div`
