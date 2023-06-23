@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { ReactComponent as IconButton } from 'images/logIn.svg';
+import { ReactComponent as IconButton } from 'images/Icon.svg';
 
 import {
   Form,
@@ -11,7 +11,6 @@ import {
   Input,
   PasswordInput,
   Button,
-  // Svg,
 } from './RegisterForm.styled';
 
 const userSchema = Yup.object().shape({
@@ -39,7 +38,7 @@ export const RegisterForm = () => {
   return (
     <Formik
       initialValues={{ name: '', email: '', password: '' }}
-      userSchema={userSchema}
+      validationSchema={userSchema}
     >
       {({ isSubmitting, values, errors, touched }) => {
         const isValid = field =>
@@ -60,19 +59,7 @@ export const RegisterForm = () => {
                   type="text"
                   name="name"
                   placeholder="Enter your name"
-                  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                  value={values.name}
                 />
-                {isValid('name') === 'is-valid' && (
-                  <svg height="20" width="20" className="error-success">
-                    <use href="../../images/log-in-01.svg"></use>
-                  </svg>
-                )}
-                {isValid('name') === 'is-invalid' && (
-                  <svg height="20" width="20" className="error-success">
-                    <use href="../../images/log-in-01.svg"></use>
-                  </svg>
-                )}
               </Input>
               {isValid('name') === 'is-valid' && <p>This is a CORRECT name</p>}
               <ErrorMessage name="name" component="div" />
@@ -88,16 +75,6 @@ export const RegisterForm = () => {
                   title="Email must be in the format username@domain.com"
                   value={values.email}
                 />
-                {isValid('email') === 'is-valid' && (
-                  <svg height="20" width="20" className="error-success">
-                    <use href="../../images/log-in-01.svg"></use>
-                  </svg>
-                )}
-                {isValid('email') === 'is-invalid' && (
-                  <svg height="20" width="20" className="error-success">
-                    <use href="../../images/log-in-01.svg"></use>
-                  </svg>
-                )}
               </Input>
               {isValid('email') === 'is-valid' && (
                 <p>This is a CORRECT email</p>
@@ -111,7 +88,6 @@ export const RegisterForm = () => {
                   className={isValid('password')}
                   name="password"
                   placeholder="Enter password"
-                  title="Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long."
                   value={values.password}
                 />
               </PasswordInput>
@@ -123,8 +99,8 @@ export const RegisterForm = () => {
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Submitting' : 'Sign Up'}
               <IconButton
-          style={{ width: '18px', height: '18px'}}
-        />
+                style={{ width: '18px', height: '18px', color: '#000000' }}
+              />
             </Button>
           </Form>
         );
