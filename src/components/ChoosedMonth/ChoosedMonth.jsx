@@ -1,5 +1,12 @@
-import { ChoosedMonthStyled } from './Choosed.month.styled';
+import { MonthCalendarHead } from './MonthCalendarHead/MonthCalendarHead';
+import { CalendarTable } from './CalendarTable/CalendarTable';
 
 export const ChoosedMonth = () => {
-  return <ChoosedMonthStyled>There will be month calendar</ChoosedMonthStyled>;
+  return (
+    <>
+      <MonthCalendarHead />
+      <CalendarTable />
+      <></>
+    </>
+  );
 };
