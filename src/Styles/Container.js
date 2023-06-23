@@ -2,13 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 24px 20px;
-  text-align: center;
-  margin: 0 auto;
-  width: 375px;
+  width: 100%;
 
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto;
 
   @media screen and (min-width: 480px) {
     width: 480px;

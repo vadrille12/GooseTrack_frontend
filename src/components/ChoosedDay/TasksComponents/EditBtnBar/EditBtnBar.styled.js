@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { variables } from '../../../Styles/GlobalStyle';
-import { ReactComponent as Move } from '../../../images/tasksSvg/move-right.svg';
-import { ReactComponent as Edit } from '../../../images/tasksSvg/edit.svg';
-import { ReactComponent as Delete } from '../../../images/tasksSvg/del.svg';
+import { variables } from '../../../../Styles/GlobalStyle';
+import { ReactComponent as Move } from '../../../../images/tasksSvg/move-right.svg';
+import { ReactComponent as Edit } from '../../../../images/tasksSvg/edit.svg';
+import { ReactComponent as Delete } from '../../../../images/tasksSvg/del.svg';
 
 export const EditBntContainer = styled.div`
   display: flex;
