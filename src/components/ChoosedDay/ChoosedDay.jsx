@@ -1,4 +1,4 @@
-import { CalendarToolBar } from 'components/CalendarToolBar/CalendarToolBar';
+import { CalendarToolBar } from 'components/CalendarToolBar/CalendarToolbar';
 import { ChoosedDayStyled } from '../ChoosedDay/ChoosedDay.styled';
 import { DayCalendarHead } from './TasksComponents/DayCalendarHead/DayCalendarHead';
 import { TasksColumnsList } from './TasksComponents/TasksColumnsList/TasksColumnsList';
