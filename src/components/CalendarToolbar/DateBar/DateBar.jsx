@@ -1,13 +1,27 @@
-import { DateBarStyled, CurrentDate } from './DateBar.styled';
+import {
+  DateBarStyled,
+  CurrentDate,
+  DateContainer,
+  ArrowLeftStyled,
+  ArrowRightStyled,
+  ArrowLeftBtn,
+  ArrowRightBtn,
+} from './DateBar.styled';
 
 export const DateBar = () => {
   return (
     <DateBarStyled>
-      <CurrentDate>Date</CurrentDate>
-      <div>
-        <button></button>
-        <button></button>
-      </div>
+      <DateContainer>
+        <CurrentDate>Date</CurrentDate>
+        <div>
+          <ArrowLeftBtn>
+            <ArrowLeftStyled />
+          </ArrowLeftBtn>
+          <ArrowRightBtn>
+            <ArrowRightStyled />
+          </ArrowRightBtn>
+        </div>
+      </DateContainer>
     </DateBarStyled>
   );
 };

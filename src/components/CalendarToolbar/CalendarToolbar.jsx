@@ -1,12 +1,12 @@
-import { CalendarToolbarStyled } from './CalendarToolbar.styled';
+import { CalendarToolBarStyled } from './CalendarToolbar.styled';
 import { ChangeTypeDate } from './ChangeTypeDate/ChangeTypeDate';
 import { DateBar } from './DateBar/DateBar';
 
-export const CalendarToolbar = () => {
+export const CalendarToolBar = () => {
   return (
-    <CalendarToolbarStyled>
+    <CalendarToolBarStyled>
       <DateBar />
       <ChangeTypeDate />
-    </CalendarToolbarStyled>
+    </CalendarToolBarStyled>
   );
 };

@@ -1,5 +1,14 @@
-import { ChangeTypeDateStyled } from './ChangeTypeDate.styled';
+import {
+  ChangeTypeDateStyled,
+  MonthBnt,
+  DayBnt,
+} from './ChangeTypeDate.styled';
 
 export const ChangeTypeDate = () => {
-  return <ChangeTypeDateStyled />;
+  return (
+    <ChangeTypeDateStyled>
+      <MonthBnt>Month</MonthBnt>
+      <DayBnt>Day</DayBnt>
+    </ChangeTypeDateStyled>
+  );
 };
