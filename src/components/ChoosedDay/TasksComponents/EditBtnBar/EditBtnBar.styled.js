@@ -75,7 +75,13 @@ export const ChangeCategoryContainer = styled.div`
   border-radius: 8px;
   background-color: ${variables.colors.background};
   position: absolute;
-  gap: 12px;
+  gap: 2px;
+
+  color: #343434;
+  font-size: 12px;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: 14px;
 
   align-items: center;
   justify-content: center;
@@ -83,7 +89,7 @@ export const ChangeCategoryContainer = styled.div`
 
   box-shadow: ${variables.shadow.shadow};
 
-  padding: 14px 18px;
+  padding: 8px 10px;
   top: 63%;
   left: 60%;
 
@@ -92,6 +98,16 @@ export const ChangeCategoryContainer = styled.div`
     height: 90px;
     top: 60%;
     left: 50%;
+
+    color: #343434;
+    font-size: 14px;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: 18px;
+
+    padding: 14px 18px;
+
+    gap: 12px;
 
     padding: 16px 16px;
   }
@@ -107,6 +123,8 @@ export const MoveToInProgress = styled.div`
     font-weight: 500;
     line-height: 18px;
 
+    cursor: pointer;
+
     display: flex;
     width: 120px;
     height: 26px;
@@ -120,6 +138,10 @@ export const MoveToInProgress = styled.div`
     justify-content: space-between;
     text-align: center;
     transition: ${variables.transitions.standart};
+
+    @media screen and (max-width: 768px) {
+      padding: 0 12px;
+    }
 
     &:hover,
     :focus {
@@ -146,6 +168,8 @@ export const MoveToDone = styled.div`
     font-weight: 500;
     line-height: 18px;
 
+    cursor: pointer;
+
     display: flex;
     width: 120px;
     height: 26px;
@@ -159,6 +183,10 @@ export const MoveToDone = styled.div`
     justify-content: space-between;
     text-align: center;
     transition: ${variables.transitions.standart};
+
+    @media screen and (max-width: 768px) {
+      padding: 0 12px;
+    }
 
     &:hover,
     :focus {

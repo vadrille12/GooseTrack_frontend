@@ -1,4 +1,4 @@
-import { CalendarToolbar } from 'components/CalendarToolbar/CalendarToolbar';
+import { CalendarToolBar } from 'components/CalendarToolBar/CalendarToolBar';
 import { ChoosedDayStyled } from '../ChoosedDay/ChoosedDay.styled';
 import { DayCalendarHead } from './TasksComponents/DayCalendarHead/DayCalendarHead';
 import { TasksColumnsList } from './TasksComponents/TasksColumnsList/TasksColumnsList';
@@ -8,7 +8,7 @@ export const ChoosedDay = () => {
   // const { currentDay: targetDate } = useParams();
   return (
     <ChoosedDayStyled>
-      <CalendarToolbar />
+      <CalendarToolBar />
       <DayCalendarHead />
       <TasksColumnsList />
     </ChoosedDayStyled>
