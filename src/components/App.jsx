@@ -1,5 +1,6 @@
 import {
   lazy,
+  Suspense,
   // useEffect
 } from 'react';
 // import { useDispatch } from 'react-redux';
@@ -32,28 +33,30 @@ export function App() {
 
   return (
     <Container>
-      <Routes>
-        {/* <Route element={<PublicRoute />}> */}
-        <Route path="/" element={<MainPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        {/* </Route> */}
+      <Suspense fallback={<p>Loading...</p>}>
+        <Routes>
+          {/* <Route element={<PublicRoute />}> */}
+          <Route path="/" element={<MainPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          {/* </Route> */}
 
-        {/* <Route element={<PrivateRoute />}> */}
-        <Route path="/" element={<MainLayout />}>
-          <Route path="account" element={<AccountPage />} />
-          <Route path="calendar" element={<CalendarPage />}>
-            {/* <Route path="month" element={null} />
+          {/* <Route element={<PrivateRoute />}> */}
+          <Route path="/" element={<MainLayout />}>
+            <Route path="account" element={<AccountPage />} />
+            <Route path="calendar" element={<CalendarPage />}>
+              {/* <Route path="month" element={null} />
             <Route path="month/:month" element={null} />
             <Route path="day" element={null} />
             <Route path="day/:date" element={null} /> */}
-          </Route>
-          <Route path="statistics" element={<StatisticsPage />} />
+            </Route>
+            <Route path="statistics" element={<StatisticsPage />} />
 
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-        {/* </Route> */}
-      </Routes>
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+          {/* </Route> */}
+        </Routes>
+      </Suspense>
       <GlobalStyle />
     </Container>
   );
