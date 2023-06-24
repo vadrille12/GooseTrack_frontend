@@ -1,8 +1,8 @@
 import { AddTaskBtnStyled } from './AddTaskBtn.styled';
 
-export const AddTaskBtn = () => {
+export const AddTaskBtn = ({ onOpen }) => {
   return (
-    <AddTaskBtnStyled>
+    <AddTaskBtnStyled onClick={onOpen}>
       <span>+</span>Add task
     </AddTaskBtnStyled>
   );
