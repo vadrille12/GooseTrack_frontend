@@ -1,4 +1,4 @@
-import { CalendarToolBarStyled } from './CalendarToolbar.styled';
+import { CalendarToolBarStyled } from './CalendarToolBar.styled';
 import { ChangeTypeDate } from './ChangeTypeDate/ChangeTypeDate';
 import { DateBar } from './DateBar/DateBar';
 
