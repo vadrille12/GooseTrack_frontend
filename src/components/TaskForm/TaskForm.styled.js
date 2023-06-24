@@ -57,6 +57,10 @@ export const InputTime = styled(Field)`
   background: #f6f6f6;
   border: none;
 
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
   &::placeholder {
     color: #343434;
     font-size: 14px;
