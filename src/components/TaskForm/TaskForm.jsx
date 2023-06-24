@@ -28,7 +28,7 @@ const TaskSchema = Yup.object().shape({
     .required('Priority is required'),
 });
 
-export const TaskForm = () => {
+export const TaskForm = ({ onClose }) => {
   const handleSubmit = (values, actions) => {
     console.log(values);
     actions.resetForm();
@@ -82,10 +82,12 @@ export const TaskForm = () => {
 
         <ButtonWrapper>
           <ButtonAddorEdit type="submit">Add</ButtonAddorEdit>
-          <ButtonCancel type="button">Cancel</ButtonCancel>
+          <ButtonCancel type="button" onClick={onClose}>
+            Cancel
+          </ButtonCancel>
         </ButtonWrapper>
 
-        <ButtonClose type="button" aria-label="close button">
+        <ButtonClose type="button" aria-label="close button" onClick={onClose}>
           X
         </ButtonClose>
       </Form>
