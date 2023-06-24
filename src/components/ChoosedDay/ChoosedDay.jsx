@@ -1,6 +1,6 @@
 import { DayCalendarHead } from './TasksComponents/DayCalendarHead/DayCalendarHead';
 import { TasksColumnsList } from './TasksComponents/TasksColumnsList/TasksColumnsList';
-import { CalendarToolBar } from '../CalendarToolBar/CalendarTool';
+import { CalendarTool } from '../CalendarToolBar/CalendarTool';
 import { ChoosedDayStyled } from './ChoosedDay.styled';
 // import { useParams } from 'react-router-dom';
 // просто коммент
@@ -9,7 +9,7 @@ export const ChoosedDay = () => {
   // const { currentDay: targetDate } = useParams();
   return (
     <ChoosedDayStyled>
-      <CalendarToolBar />
+      <CalendarTool />
       <DayCalendarHead />
       <TasksColumnsList />
     </ChoosedDayStyled>
