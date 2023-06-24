@@ -1,18 +1,23 @@
 import styled from 'styled-components';
-import { Field} from 'formik';
-import { ReactComponent as Icon } from 'images/user/cross.svg';
+import {
+  Field as FormikField,
+  ErrorMessage as FormikErrorMessage,
+} from 'formik';
 
+import { ReactComponent as Icon } from 'images/user/cross.svg';
+import { ReactComponent as IconErrors  } from 'images/user/error.svg';
+import { ReactComponent as IconSuccess } from 'images/user/done.svg';
 export const Wrap = styled.div`
   position: relative;
   display: inline-block;
   margin: 151px 32 32 32;
   border-radius: 16px;
-  max-width: 100%;
+
   padding: 18px;
-  @media (max-width: 767px) {
-    padding-top: 0px;
-  }
   background-color: #ffffff;
+  padding-top: 0px;
+  @media (max-width: 767px) {
+  }
 
   @media (min-width: 768px) {
     margin: 132px 32 32 32;
@@ -20,39 +25,26 @@ export const Wrap = styled.div`
   }
 
   @media (min-width: 1440px) {
-    max-width: 1087px;
     min-height: 752px;
     margin: 116px 32 32 32;
     padding: 60px 165px;
   }
 `;
 
-export const Img = styled.img`
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #3e85f3;
 
-  @media (min-width: 768px) {
-    width: 124px;
-    height: 124px;
-  }
-`;
-   
 export const AvatarWrap = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   @media (max-width: 373px) {
-    position:relative;
+    position: relative;
   }
 `;
 
 export const AvatarBox = styled.div`
-  position: relative;
+  /* position: relative; */
   width: 124px;
   height: 124px;
   box-sizing: border-box;
@@ -67,30 +59,44 @@ export const AvatarBox = styled.div`
     width: 72px;
     height: 72px;
     margin-bottom: 0px;
-    position: absolute;
+    /* position: absolute; */
     top: -33px;
   }
 `;
 
+export const Img = styled.img`
+  border-radius: 50%;
+  object-fit: cover;
+  width: 72px;
+  height: 68px;
+  align-items: center;
+  @media (min-width: 767px) {
+    width: 124px;
+    height: 120px;
+  
+  }
+`;
+
 export const AvatarSvg = styled.div`
-  position: absolute;
+  /* position: absolute; */
   top: 100px;
   right: 24px;
   align-content: center;
-  cursor:pointer;
+  cursor: pointer;
   @media (max-width: 767px) {
     top: 58px;
     right: 7px;
   }
 `;
 export const AddIcon = styled(Icon)`
-  width: 100%;
-  height: 100%;
+  /* position: absolute; */
+  width: 24;
+  height: 24;
   @media (max-width: 767px) {
-    width: 14px;
-    height: 14px;
-    top: 58px;
-    right: 7px;
+    width: 18px;
+    height: 18px;
+    /* top: 58px;
+    right: 7px; */
   }
   &:hover,
   &:focus {
@@ -101,7 +107,7 @@ export const AddIcon = styled(Icon)`
 
 export const UserWrapInfo = styled.div`
   margin-bottom: 44px;
-  margin-top:60px;
+  margin-top: 60px;
   align-items: center;
 `;
 
@@ -141,46 +147,104 @@ export const FormInputWrap = styled.div`
 
 export const FormInputBox = styled.div`
   width: 100%;
- 
-  &:hover,
-  &:focus {
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
+  &:not(:last-child) {
+    margin-bottom: 18px;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 24px;
+    }
+  }
+  @media (min-width: 768px) {
+    row-gap: 24px;
+    font-size: 14px;
+    line-height: calc((18 / 14) * 100%);
   }
 `;
-
 export const Label = styled.label`
-  display: flex;
+  position: relative;
+  font-family: Inter;
   font-weight: 400;
   font-size: 12px;
   line-height: calc((14 / 12) * 100%);
- 
+  color: #111111;
+
   @media (min-width: 768px) {
     font-size: 14px;
     line-height: calc((18 / 14) * 100%);
   }
 
-  @media (min-width: 1440px) {
+  &.is-valid {
+    color: #3cbc81;
   }
-`;
-export const InputWrap = styled.div`
-  position: relative;
-  margin-bottom: 18px;
-  @media (min-width: 768px) {
-      margin-bottom: 24px;
+
+  &.is-invalid {
+    color: #e74a3b;
   }
+
+  & p {
+    margin: 0;
+    padding: 0;
+    margin-top: 8px;
+    margin-left: 18px;
+    color: 3CBC81;
+  }
+
+  &.error-success {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  } 
 `;
 
-export const Input = styled(Field)`
-  margin-top: 8px;
+export const IconDone= styled(IconSuccess)`
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  align-content: center;
+  top: 30%;
+  right: 18px;
+  @media (min-width: 767px) {
+    /* top: 33%;
+    right: 18px; */
+    top: 11px;
+    width: 24px;
+    height: 24px;
+  }
+`;
+export const IconError = styled(IconErrors)`
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  align-content: center;
+  top: 12px;
+  right: 18px;
+  @media (min-width: 767px) {
+    /* top: 33%;
+    right: 18px; */
+    top: 11px;
+    width: 24px;
+    height: 24px;
+  }`;
+
+export const Field = styled(FormikField)`
+   /* margin-top: 8px; */
   width: 100%;
   height: 42px;
   border: 1px solid rgba(17, 17, 17, 0.15);
   border-radius: 8px;
-  padding: 14px 0 14px 14px;
+  padding: 14px;
+
   font-weight: 600;
   font-size: 14px;
   line-height: calc((18 / 14) * 100%);
+  color: #111111;
+  outline: none;
   cursor: pointer;
-  
+
   @media (min-width: 768px) {
     width: 354px;
     height: 46px;
@@ -188,15 +252,50 @@ export const Input = styled(Field)`
     font-size: 16px;
     line-height: calc((18 / 16) * 100%);
   }
-
   @media (min-width: 1440px) {
     margin-bottom: 0px;
   }
+  &::placeholder {
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 1.29;
+    color: rgba(17, 17, 17, 0.15);
+
+    @media (min-width: 768px) {
+      font-size: 16px;
+      line-height: calc((18 / 16) * 100%);
+    }
+  }
+
   &:hover,
   &:focus {
-    border-color: #343434;
-    transform: scale(1.1);
-    transition: all 0.5s;
+    border: 1px solid #111111;
+  }
+
+  &.is-valid {
+    border: 1px solid #3cbc81;
+  }
+
+  &.is-invalid {
+    border: 1px solid #e74a3b;
+  }
+`;
+
+export const Input = styled.div`
+  width: 100%;
+  position: relative;
+  margin-top: 8px;
+  /* margin-bottom: 8px; */
+`;
+
+export const ErrorMessage = styled(FormikErrorMessage)`
+  margin-left: 18px;
+  margin-top: 8px;
+  max-width: 100%;
+  color: #da1414;
+  max-width: 240px;
+  @media (min-width: 768px) {
+    max-width: 330px;
   }
 `;
 
@@ -207,15 +306,19 @@ export const FormBtnWrap = styled.div`
 `;
 
 export const FormBtn = styled.button`
-  color: #ffffff;
-  background-color: #3e85f3;
-  text-transform: none;
   width: 262px;
   height: 48px;
+
+  font-family: Inter;
   font-weight: 600;
   font-size: 14px;
+  line-height: calc((18 / 16) * 100%);
+  text-align: center;
+  text-transform: none;
   border: none;
   border-radius: 16px;
+  color: #ffffff;
+  background-color: #3e85f3;
   cursor: pointer;
 
   :disabled {
@@ -223,8 +326,6 @@ export const FormBtn = styled.button`
   }
   &:hover,
   &:focus {
+    background-color: #2b78ef;
   }
 `;
-
-
-
