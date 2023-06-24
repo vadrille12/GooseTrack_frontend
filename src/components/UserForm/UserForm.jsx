@@ -27,7 +27,6 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-
 const regex = {
   name: /^[a-z]*$/,
   email:
@@ -77,7 +76,6 @@ const userSchema = Yup.object().shape({
     ),
 });
 
-
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [formData, setFormData] = useState({
@@ -101,12 +99,12 @@ export const UserForm = () => {
 
   useEffect(() => {}, []);
 
-  const { name, email, skype, phone} = formData;
+  const { name, email, skype, phone } = formData;
 
-  const handleClick = event => {
-    event.currentTarget.disabled = true;
-    console.log('button clicked');
-  };
+  // const handleClick = event => {
+  //   event.currentTarget.disabled = true;
+  //   console.log('button clicked');
+  // };
 
   return (
     <Wrap>
@@ -196,7 +194,7 @@ export const UserForm = () => {
                         <ErrorMessage name="name" component="div" />
                       </Input>
                     </Label>
-                  
+
                     <Label htmlFor="birthday" className={isValid('birthday')}>
                       Birthday
                       <Input>
@@ -274,10 +272,7 @@ export const UserForm = () => {
                   </FormInputBox>
                 </FormInputWrap>
                 <FormBtnWrap>
-                  <FormBtn
-                    type="submit"
-                    disabled={isSubmitting}
-                  >
+                  <FormBtn type="submit" disabled={isSubmitting}>
                     Save changes
                   </FormBtn>
                 </FormBtnWrap>
