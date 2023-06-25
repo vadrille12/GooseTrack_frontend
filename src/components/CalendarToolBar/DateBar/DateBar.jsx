@@ -8,16 +8,25 @@ import {
   ArrowRightBtn,
 } from './DateBar.styled';
 
-export const DateBar = () => {
+export const DateBar = ({
+  today,
+  typeSelect,
+  prevDayHandler,
+  nextDayHandler,
+}) => {
   return (
     <DateBarStyled>
       <DateContainer>
-        <CurrentDate>Date</CurrentDate>
+        <CurrentDate>
+          {typeSelect === 'month'
+            ? today.format('MMMM YYYY')
+            : today.format('D MMM YYYY ')}
+        </CurrentDate>
         <div>
-          <ArrowLeftBtn>
+          <ArrowLeftBtn onClick={prevDayHandler}>
             <ArrowLeftStyled />
           </ArrowLeftBtn>
-          <ArrowRightBtn>
+          <ArrowRightBtn onClick={nextDayHandler}>
             <ArrowRightStyled />
           </ArrowRightBtn>
         </div>
