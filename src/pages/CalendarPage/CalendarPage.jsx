@@ -1,10 +1,9 @@
-import { ChoosedDay } from 'components/ChoosedDay/ChoosedDay';
+import { CalendarToolBar } from 'components/CalendarToolBar/CalendarToolBar';
 
 export default function CalendarPage() {
   return (
     <div>
-      <h1>Calendar Page</h1>
-      <ChoosedDay />
+      <CalendarToolBar />
     </div>
   );
 }
