@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { variables } from '../../Styles/GlobalStyle';
+// import { variables } from '../../Styles/GlobalStyle';
 
 export const Container = styled.div`
   display: flex;
@@ -23,10 +23,11 @@ export const ButtonFeedback = styled.button`
 `;
 
 export const UserAccount = styled.div`
-display:flex;
-justify-content: center;
-align-items: center;
-gap: 8px;`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
 
 export const Sidebar = styled.div`
   position: fixed;
