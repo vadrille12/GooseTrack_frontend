@@ -13,7 +13,7 @@ export const ColumnHeadBarStyled = styled.div`
     margin-bottom: 35px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 `;
 
