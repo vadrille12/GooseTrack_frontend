@@ -1,12 +1,15 @@
 import { Suspense } from 'react';
-import { CalendarToolBarStyled } from './CalendarToolBar.styled';
+import {
+  CalendarToolBarStyled,
+  CalendarToolBarContainer,
+} from './CalendarToolBar.styled';
 import { ChangeTypeDate } from './ChangeTypeDate/ChangeTypeDate';
 import { DateBar } from './DateBar/DateBar';
 import { Outlet } from 'react-router-dom';
 
 export const CalendarToolBar = () => {
   return (
-    <div>
+    <CalendarToolBarContainer>
       <CalendarToolBarStyled>
         <DateBar />
         <ChangeTypeDate />
@@ -14,6 +17,6 @@ export const CalendarToolBar = () => {
       <Suspense>
         <Outlet />
       </Suspense>
-    </div>
+    </CalendarToolBarContainer>
   );
 };
