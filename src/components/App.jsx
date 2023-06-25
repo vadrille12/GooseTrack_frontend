@@ -14,7 +14,7 @@ import { GlobalStyle } from 'Styles/GlobalStyle';
 import { MainLayout } from 'components/MainLayout/MainLayout';
 import { Container } from 'Styles/Container';
 import CalendarPage from 'pages/CalendarPage/CalendarPage';
-import { ChoosedMonth } from './ChoosedMonth/ChoosedMonth';
+// import { ChoosedMonth } from './ChoosedMonth/ChoosedMonth';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const AccountPage = lazy(() => import('pages/AccountPage/AccountPage'));
