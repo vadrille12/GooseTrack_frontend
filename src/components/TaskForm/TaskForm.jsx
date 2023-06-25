@@ -1,10 +1,13 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
+import { ReactComponent as IconClose } from 'images/close.svg';
+import { ReactComponent as IconAdd } from 'images/addIcon.svg';
+
 import {
   ButtonAddorEdit,
   ButtonCancel,
-  ButtonClose,
+  ButtonCloseWrap,
   ButtonWrapper,
   Form,
   InputTime,
@@ -81,15 +84,22 @@ export const TaskForm = ({ onClose }) => {
         </RadioWrapper>
 
         <ButtonWrapper>
-          <ButtonAddorEdit type="submit">Add</ButtonAddorEdit>
+          <ButtonAddorEdit type="submit">
+            <IconAdd />
+            Add
+          </ButtonAddorEdit>
           <ButtonCancel type="button" onClick={onClose}>
             Cancel
           </ButtonCancel>
         </ButtonWrapper>
 
-        <ButtonClose type="button" aria-label="close button" onClick={onClose}>
-          X
-        </ButtonClose>
+        <ButtonCloseWrap
+          type="button"
+          aria-label="close button"
+          onClick={onClose}
+        >
+          <IconClose style={{ width: 24, height: 24 }} />
+        </ButtonCloseWrap>
       </Form>
     </Formik>
   );
