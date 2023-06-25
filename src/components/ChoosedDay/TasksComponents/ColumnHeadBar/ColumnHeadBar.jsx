@@ -4,11 +4,16 @@ import {
   TaskHeaderBtn,
 } from './ColumnHeadBar.styled';
 
-export const ColumnHeadBar = ({ taskName, onOpen }) => {
+export const ColumnHeadBar = ({ taskName, onOpen, setAction }) => {
   return (
     <ColumnHeadBarStyled>
       <TaskTitle>{taskName}</TaskTitle>
-      <TaskHeaderBtn onClick={onOpen}></TaskHeaderBtn>
+      <TaskHeaderBtn
+        onClick={() => {
+          onOpen();
+          setAction();
+        }}
+      ></TaskHeaderBtn>
     </ColumnHeadBarStyled>
   );
 };

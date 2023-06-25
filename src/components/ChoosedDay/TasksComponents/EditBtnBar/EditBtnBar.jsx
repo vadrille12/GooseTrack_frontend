@@ -9,7 +9,7 @@ import {
   MoveToDone,
 } from './EditBtnBar.styled';
 
-export const EditBtnBar = () => {
+export const EditBtnBar = ({ onOpen, setAction }) => {
   const [isActiv, setIsActiv] = useState(true);
 
   const handleOpenMoveBar = () => {
@@ -38,7 +38,14 @@ export const EditBtnBar = () => {
           </MoveToDone>
         </ChangeCategoryContainer>
       )}
-      <EditBtn>ed</EditBtn>
+      <EditBtn
+        onClick={() => {
+          onOpen();
+          setAction();
+        }}
+      >
+        ed
+      </EditBtn>
       <DeleteBtn>del</DeleteBtn>
     </EditBntContainer>
   );
