@@ -1,19 +1,20 @@
 import styled from 'styled-components';
-import { variables } from '../../Styles/GlobalStyle';
+import { variables } from '../../../Styles/GlobalStyle';
 
 import { Field} from 'formik';
 
 export const Wrap = styled.div`
-text-align: left;
-    padding: 28px 20px;
-    border-radius: 16px;
-    width: 335px;
-    background: ${variables.colors.background};
+  position: relative;
+  text-align: left;
+  padding: 28px 20px;
+  border-radius: 16px;
+  width: 335px;
+  background: ${variables.colors.background};
 
-    @media (min-width: 768px) {
-        width: 468px;
-        padding: 32px;
-    }
+  @media (min-width: 768px) {
+    width: 468px;
+    padding: 32px;
+  }
 `;
 
 export const Label = styled.label`
@@ -115,12 +116,12 @@ export const EditBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #E3F3FF;
+  background-color: ${props => { return props.isActive ? '#3E85F3' : '#E3F3FF'}} ;
   border: none;
   width: 30px;
   height: 30px;
   border-radius: 50%; 
-  stroke: #3E85F3;
+  stroke:  ${props => { return props.isActive ? '#E3F3FF' : '#3E85F3'}} ;
   cursor: pointer;
 
   &:hover, 
@@ -147,5 +148,17 @@ export const DeleteBtn = styled.button`
     stroke: #ffffff;
     background-color: #EA3D65;
   }
+`;
 
-`
+export const BtnCloseWrap = styled.button`
+  position: absolute;
+  top: 14px;
+  right: 18px;
+
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;

@@ -41,6 +41,7 @@ export const InputTitle = styled(Field)`
   line-height: 18px;
 
   &::placeholder {
+    opacity: 1;
     color: #343434;
     font-size: 14px;
     font-family: Inter;
@@ -157,7 +158,7 @@ export const ButtonWrapper = styled.div`
   margin-top: 32px;
 `;
 
-export const ButtonAddorEdit = styled.button`
+export const ButtonAction = styled.button`
   display: flex;
   width: 182px;
   height: 48px;
