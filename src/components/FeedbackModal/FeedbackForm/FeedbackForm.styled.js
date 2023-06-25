@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { variables } from '../../../Styles/GlobalStyle';
 
-import { Field} from 'formik';
+import { Field, ErrorMessage as FormikErrorMessage} from 'formik';
 
 export const Wrap = styled.div`
   position: relative;
@@ -48,6 +48,7 @@ export const Input = styled(Field)`
     }
     &:hover,
     &:focus {
+      border: 1px solid #111111;
     }
 
     ::placeholder {
@@ -55,6 +56,17 @@ export const Input = styled(Field)`
       font-weight: 600;
       font-size: 14px;
 }
+`;
+
+export const ErrorMessage = styled(FormikErrorMessage)`
+  margin-bottom: 14px;
+  margin-left: 18px;
+  max-width: 100%;
+  color: #da1414;
+  max-width: 240px;
+  @media (min-width: 768px) {
+    max-width: 330px;
+  }
 `;
 
 export const FormBtnWrap = styled.div`
