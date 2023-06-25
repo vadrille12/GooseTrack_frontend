@@ -22,6 +22,7 @@ export const variables = {
     greenValid: '#3CBC81',
     muted: '#F7F6F9',
     closeButton: '#111111',
+    lightBlueBackground: '#CEEEFD',
   },
 
   transitions: {
@@ -30,7 +31,7 @@ export const variables = {
 
   shadow: { shadow: 'rgba(0, 0, 0, 0.15) 0px 15px 25px' },
 
-  breakpoint: {
+  breakpoints: {
     mobile: '375px',
     tablet: '768px',
     desktop: '1440px',

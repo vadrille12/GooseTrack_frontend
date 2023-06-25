@@ -23,7 +23,7 @@ const StatisticsPage = lazy(() =>
 );
 
 const ChoosedDay = lazy(() => import('./ChoosedDay/ChoosedDay'));
-// const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
+const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -50,7 +50,7 @@ export function App() {
           <Route path="/" element={<MainLayout />}>
             <Route path="account" element={<AccountPage />} />
             <Route path="calendar" element={<CalendarPage />}>
-              {/* <Route path="month/:currentDate" element={<ChoosedMonth />} /> */}
+              <Route path="month/:currentDate" element={<ChoosedMonth />} />
               <Route path="day" element={<ChoosedDay />} />
               {/* <Route path="month" element={<ChoosedMonth />} /> */}
               {/* <Route path="month/:month" element={null} /> */}
