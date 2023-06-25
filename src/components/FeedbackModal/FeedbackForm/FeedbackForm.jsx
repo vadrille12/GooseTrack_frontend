@@ -1,10 +1,22 @@
 import ReactStars from "react-rating-stars-component";
 import * as Yup from "yup";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import { ReactComponent as IconEdit } from "images/reviews/editPen.svg";
 import { ReactComponent as IconTrash } from "images/reviews/trash.svg";
 import { ReactComponent as IconClose } from 'images/close.svg';
-import { Input, Label, FormBtn, Wrap, FormBtnWrap, FormBtnCancel, EditBtn, DeleteBtn, WrapForEdit, WrapForReview, BtnCloseWrap } from "./FeedbackForm.styled";
+import { 
+    Input, 
+    Label, 
+    FormBtn, 
+    Wrap, 
+    FormBtnWrap, 
+    FormBtnCancel, 
+    EditBtn, 
+    DeleteBtn, 
+    WrapForEdit, 
+    WrapForReview, 
+    BtnCloseWrap, 
+    ErrorMessage } from "./FeedbackForm.styled";
 import { useState } from "react";
 
 
@@ -17,7 +29,7 @@ const FeedbackSchema = Yup.object().shape({
 export const FeedbackForm = ({ onClose }) => {
     const [ratingValue, setRatingValue] = useState(0);
     const [isEditActive, setIsEditActive] = useState(false);
-    const [isFeedback, setIsFeedback] = useState(true);
+    const [isFeedback, setIsFeedback] = useState(false);
 
     const ratingChanged = (newRating) => {
         setRatingValue(newRating);
