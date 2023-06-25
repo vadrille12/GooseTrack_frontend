@@ -32,7 +32,7 @@ export const TaskItem = styled.div`
     margin-top: 16px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     min-width: 344px;
   }
 `;
@@ -68,7 +68,7 @@ export const TasksColumnStyled = styled.li`
     gap: 22px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
     gap: 27px;
     margin-left: 0;
   }

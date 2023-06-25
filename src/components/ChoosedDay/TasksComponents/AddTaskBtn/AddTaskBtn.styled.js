@@ -38,7 +38,7 @@ export const AddTaskBtnStyled = styled.button`
     margin-top: 32px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 
   span {

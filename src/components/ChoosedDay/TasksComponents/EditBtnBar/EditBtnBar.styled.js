@@ -15,7 +15,7 @@ export const EditBntContainer = styled.div`
   @media screen and (min-width: 768px) {
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 
   button {
@@ -112,7 +112,7 @@ export const ChangeCategoryContainer = styled.div`
     padding: 16px 16px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 `;
 

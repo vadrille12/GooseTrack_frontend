@@ -133,9 +133,13 @@ export const DayName = styled.span`
   text-transform: uppercase;
 
   color: #343434;
+
+  &.weekend {
+    color: ${variables.colors.primary};
+  }
 `;
 
-export const Date = styled.div`
+export const DateDesktop = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

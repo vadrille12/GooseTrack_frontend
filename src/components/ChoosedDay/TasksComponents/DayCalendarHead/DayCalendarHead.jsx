@@ -1,111 +1,92 @@
-// import { useState, useEffect } from 'react';
-// import { useNavigate, useParams } from 'react-router';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router';
+import {
+  format,
+  formatISO,
+  startOfWeek,
+  parseISO,
+  lastDayOfWeek,
+  eachDayOfInterval,
+  isWeekend,
+} from 'date-fns';
 import {
   DayCalendarHeadStyledMobile,
   DayCalendarHeadStyledDesktop,
   DayNameMobile,
   DateMobile,
   DayName,
-  Date,
+  DateDesktop,
   DayBtn,
 } from './DayCalendarHead.styled';
 
 export const DayCalendarHead = () => {
-  // const { currentDay: choosedDate } = useParams();
-  // const navigate = useNavigate();
+  const { currentDay: chosenDate } = useParams();
+  const [time, setTime] = useState(new Date());
+  const navigate = useNavigate();
 
-  const isActive = true;
+  useEffect(() => {
+    const calendarDate = parseISO(chosenDate);
+    setTime(calendarDate);
+  }, [chosenDate]);
+
+  const startDate = startOfWeek(time, { weekStartsOn: 1 });
+  const endDate = lastDayOfWeek(time, { weekStartsOn: 1 });
+
+  const getTotalDate = () => {
+    return eachDayOfInterval({
+      start: startDate,
+      end: endDate,
+    });
+  };
+
+  const totalDate = getTotalDate();
+
+  const isActive = date => {
+    const currentDate = format(time, 'yyyy-MM-dd');
+    return currentDate === format(date, 'yyyy-MM-dd');
+  };
+
+  const isWeekendDay = date => {
+    return isWeekend(date);
+  };
+
+  const handleDayClick = date => {
+    const formattedDate = formatISO(date, { representation: 'date' });
+    navigate(`/calendar/day/${formattedDate}`);
+  };
 
   return (
     <>
-      {' '}
       <DayCalendarHeadStyledMobile>
-        <li>
-          <DayBtn>
-            <DayNameMobile>M</DayNameMobile>
-            <DateMobile className={isActive ? 'active' : ''}>11</DateMobile>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayNameMobile>T</DayNameMobile>
-            <DateMobile className={isActive ? 'active' : ''}>11</DateMobile>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayNameMobile>W</DayNameMobile>
-            <DateMobile className={isActive ? 'active' : ''}>11</DateMobile>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayNameMobile>T</DayNameMobile>
-            <DateMobile className={isActive ? 'active' : ''}>11</DateMobile>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayNameMobile>F</DayNameMobile>
-            <DateMobile className={isActive ? 'active' : ''}>11</DateMobile>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayNameMobile>S</DayNameMobile>
-            <DateMobile className={isActive ? 'active' : ''}>11</DateMobile>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayNameMobile>S</DayNameMobile>
-            <DateMobile>11</DateMobile>
-          </DayBtn>
-        </li>
+        {totalDate.map((date, index) => (
+          <li key={index}>
+            <DayBtn onClick={() => handleDayClick(date)}>
+              <DayNameMobile className={isWeekendDay(date) ? 'weekend' : ''}>
+                {format(date, 'E')[0]}
+              </DayNameMobile>
+              <DateMobile
+                className={`${isActive(date) ? 'active' : ''}
+                }`}
+              >
+                {format(date, 'd')}
+              </DateMobile>
+            </DayBtn>
+          </li>
+        ))}
       </DayCalendarHeadStyledMobile>
       <DayCalendarHeadStyledDesktop>
-        <li>
-          <DayBtn>
-            <DayName>Mon</DayName>
-            <Date className={isActive ? 'active' : ''}>6</Date>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayName>Tue</DayName>
-            <Date className={isActive ? 'active' : ''}>7</Date>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayName>Wed</DayName>
-            <Date className={isActive ? 'active' : ''}>8</Date>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayName>Thu</DayName>
-            <Date className={isActive ? 'active' : ''}>9</Date>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayName>Fri</DayName>
-            <Date>1</Date>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayName>Sat</DayName>
-            <Date>11</Date>
-          </DayBtn>
-        </li>
-        <li>
-          <DayBtn>
-            <DayName>Sun</DayName>
-            <Date>12</Date>
-          </DayBtn>
-        </li>
+        {totalDate.map((date, index) => (
+          <li key={index}>
+            <DayBtn onClick={() => handleDayClick(date)}>
+              <DayName className={isWeekendDay(date) ? 'weekend' : ''}>
+                {format(date, 'EEE')}
+              </DayName>
+              <DateDesktop className={isActive(date) ? 'active' : ''}>
+                {format(date, 'd')}
+              </DateDesktop>
+            </DayBtn>
+          </li>
+        ))}
       </DayCalendarHeadStyledDesktop>
     </>
   );

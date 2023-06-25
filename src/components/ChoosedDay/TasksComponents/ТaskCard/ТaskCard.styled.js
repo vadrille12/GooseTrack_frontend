@@ -28,7 +28,7 @@ export const TaskCardStyled = styled.div`
     height: 112px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -62,7 +62,7 @@ export const TaskContainer = styled.div`
   @media screen and (min-width: 768px) {
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -77,7 +77,7 @@ export const Avatar = styled.div`
   @media screen and (min-width: 768px) {
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -104,7 +104,7 @@ export const Status = styled.div`
   @media screen and (min-width: 768px) {
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -115,6 +115,6 @@ export const AvatarGroupContainer = styled.div`
   @media screen and (min-width: 768px) {
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1440px) {
   }
 `;
