@@ -8,7 +8,7 @@ import {
   TaskText,
 } from './ТaskCard.styled';
 
-export const TaskCard = () => {
+export const TaskCard = ({ onOpen, setAction }) => {
   return (
     <TaskCardStyled>
       <TaskText>
@@ -19,7 +19,7 @@ export const TaskCard = () => {
           <Avatar>ava</Avatar>
           <Status>Low</Status>
         </AvatarGroupContainer>
-        <EditBtnBar />
+        <EditBtnBar onOpen={onOpen} setAction={setAction} />
       </TaskContainer>
     </TaskCardStyled>
   );
