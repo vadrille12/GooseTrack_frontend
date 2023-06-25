@@ -34,6 +34,12 @@ export const InputTitle = styled(Field)`
   background: #f6f6f6;
   border: none;
 
+  color: #343434;
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 18px;
+
   &::placeholder {
     color: #343434;
     font-size: 14px;
@@ -61,13 +67,11 @@ export const InputTime = styled(Field)`
     display: none;
   }
 
-  &::placeholder {
-    color: #343434;
-    font-size: 14px;
-    font-family: Inter;
-    font-weight: 600;
-    line-height: 18px;
-  }
+  color: #343434;
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 18px;
 `;
 
 export const RadioWrapper = styled.div`
@@ -191,15 +195,15 @@ export const ButtonCancel = styled.button`
   line-height: 18px;
 `;
 
-export const ButtonClose = styled.button`
+export const ButtonCloseWrap = styled.button`
   position: absolute;
+  top: 14px;
+  right: 18px;
+
   width: 24px;
   height: 24px;
   border-radius: 50%;
   border: none;
   background-color: transparent;
-  top: 14px;
-  right: 14px;
-
   cursor: pointer;
 `;
