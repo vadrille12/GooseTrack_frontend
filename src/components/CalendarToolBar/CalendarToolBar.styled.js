@@ -35,5 +35,3 @@ export const CalendarToolBarStyled = styled.div`
     margin-bottom: 32px;
   }
 `;
-
-export const CalendarToolBarContainer = styled.div``;

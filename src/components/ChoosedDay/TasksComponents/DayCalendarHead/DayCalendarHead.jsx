@@ -1,3 +1,5 @@
+// import { useState, useEffect } from 'react';
+// import { useNavigate, useParams } from 'react-router';
 import {
   DayCalendarHeadStyledMobile,
   DayCalendarHeadStyledDesktop,
@@ -9,6 +11,9 @@ import {
 } from './DayCalendarHead.styled';
 
 export const DayCalendarHead = () => {
+  // const { currentDay: choosedDate } = useParams();
+  // const navigate = useNavigate();
+
   const isActive = true;
 
   return (
