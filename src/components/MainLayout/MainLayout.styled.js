@@ -8,6 +8,8 @@ export const Container = styled.div`
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
+
+  align-items: flex-start;
   max-width: 100%;
   height: 32px;
   margin-bottom: 64px;
@@ -18,8 +20,35 @@ export const HeaderBox = styled.div`
   gap: 16px;
 `;
 
+export const BurgerButton = styled.button`
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
 export const ButtonFeedback = styled.button`
-  margin-right: 0;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: calc((18 / 16) * 100%);
+  text-align: center;
+  text-transform: none;
+  color: #ffffff;
+  background-color: #3e85f3;
+  width: 97px;
+  height: 32px;
+  border: none;
+  border-radius: 12px;
+  padding: 8px, 20px, 8px, 20px;
+
+
+  &:hover,
+  &:focus {
+    background-color: #2b78ef;
+  }
 `;
 
 export const UserAccount = styled.div`
@@ -39,8 +68,8 @@ export const Sidebar = styled.div`
   overflow: scroll;
   background-color: #fff;
   opacity: 1;
-  visibility: hidden;
-  pointer-events: none;
+  visibility: visible;
+  pointer-events: auto;
   transition: opacity var(---transition), visibility var(---transition);
 `;
 

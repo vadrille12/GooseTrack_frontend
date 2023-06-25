@@ -1,11 +1,29 @@
 import { FeedbackModal } from 'components/FeedbackModal/FeedbackModal';
-import { Sidebar, Container, Header, ButtonFeedback, HeaderBox, UserAccount } from './MainLayout.styled';
+import {
+  Sidebar,
+  Container,
+  Header,
+  ButtonFeedback,
+  HeaderBox,
+  UserAccount,
+  BurgerButton,
+} from './MainLayout.styled';
+import { ReactComponent as IconMenuBurger } from '../../images/icon-menu-burger.svg';
 
 import { Outlet } from 'react-router';
 import { useState } from 'react';
 
 export const MainLayout = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const openSidebar = () => {
+    setShowSidebar(true);
+  }
+
+  const closeSidebar = () => {
+    setShowSidebar(false)
+  }
 
   const openModal = () => {
     setShowModal(true);
@@ -18,9 +36,11 @@ export const MainLayout = () => {
   return (
     <div>
       <Header>
-        <button>Burg</button>
+        <BurgerButton onClick={openSidebar}>
+          <IconMenuBurger />
+        </BurgerButton>
         <HeaderBox>
-          <ButtonFeedback onClick={openModal}>Btn Feedback</ButtonFeedback>
+          <ButtonFeedback onClick={openModal}>Feedback</ButtonFeedback>
           <UserAccount>
             <p>Icon</p>
             <p>name</p>
@@ -30,9 +50,8 @@ export const MainLayout = () => {
       </Header>
       {showModal && <FeedbackModal onClose={closeModal} />}
       <Container>
-        <Sidebar>
-          <p>Sidebar</p>
-        </Sidebar>
+        {showSidebar &&  <Sidebar><p>Sidebar</p></Sidebar>}
+
         <main>
           <Outlet />
         </main>
