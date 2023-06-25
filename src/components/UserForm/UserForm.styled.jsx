@@ -4,15 +4,69 @@ import {
   ErrorMessage as FormikErrorMessage,
 } from 'formik';
 
+
+
 import { ReactComponent as Icon } from 'images/user/cross.svg';
 import { ReactComponent as IconErrors  } from 'images/user/error.svg';
 import { ReactComponent as IconSuccess } from 'images/user/done.svg';
+
+
+import DatePicker  from 'react-datepicker';
+ import 'react-datepicker/dist/react-datepicker.css';
+
+
+export const DatePick = styled(DatePicker)`
+  display: flex;
+
+  width: 100%;
+  height: 42px;
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  border-radius: 8px;
+  padding: 14px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: calc((18 / 14) * 100%);
+  color: #111111;
+  outline: none;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    width: 354px;
+    height: 46px;
+    padding: 14px 0 14px 18px;
+    font-size: 16px;
+    line-height: calc((18 / 16) * 100%);
+  }
+  @media (min-width: 1440px) {
+    margin-bottom: 0px;
+  }
+  &::placeholder {
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 1.29;
+    color: rgba(17, 17, 17, 0.15);
+
+    @media (min-width: 768px) {
+      font-size: 16px;
+      line-height: calc((18 / 16) * 100%);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid #111111;
+  }
+
+`;
+
+
 export const Wrap = styled.div`
   position: relative;
   display: inline-block;
   margin: 151px 32 32 32;
   border-radius: 16px;
-
+width:100%;
   padding: 18px;
   background-color: #ffffff;
   padding-top: 0px;
@@ -44,7 +98,7 @@ export const AvatarWrap = styled.div`
 `;
 
 export const AvatarBox = styled.div`
-  /* position: relative; */
+  position: relative;
   width: 124px;
   height: 124px;
   box-sizing: border-box;
@@ -59,7 +113,7 @@ export const AvatarBox = styled.div`
     width: 72px;
     height: 72px;
     margin-bottom: 0px;
-    /* position: absolute; */
+    position: absolute;
     top: -33px;
   }
 `;
@@ -78,25 +132,23 @@ export const Img = styled.img`
 `;
 
 export const AvatarSvg = styled.div`
-  /* position: absolute; */
-  top: 100px;
-  right: 24px;
+  position: absolute;
+  top: -16px;
+  right: -34px;
   align-content: center;
   cursor: pointer;
   @media (max-width: 767px) {
-    top: 58px;
-    right: 7px;
+    top: -9px;
+    right: -20px;
   }
 `;
 export const AddIcon = styled(Icon)`
-  /* position: absolute; */
   width: 24;
   height: 24;
   @media (max-width: 767px) {
-    width: 18px;
-    height: 18px;
-    /* top: 58px;
-    right: 7px; */
+    width: 14px;
+    height: 14px;
+  
   }
   &:hover,
   &:focus {
@@ -158,6 +210,7 @@ export const FormInputBox = styled.div`
     }
   }
   @media (min-width: 768px) {
+    max-width:354px;
     row-gap: 24px;
     font-size: 14px;
     line-height: calc((18 / 14) * 100%);
@@ -168,6 +221,7 @@ export const Label = styled.label`
   font-family: Inter;
   font-weight: 400;
   font-size: 12px;
+  
   line-height: calc((14 / 12) * 100%);
   color: #111111;
 
@@ -189,7 +243,7 @@ export const Label = styled.label`
     padding: 0;
     margin-top: 8px;
     margin-left: 18px;
-    color: 3CBC81;
+    color: #3cbc81;
   }
 
   &.error-success {
@@ -197,7 +251,7 @@ export const Label = styled.label`
     right: 16px;
     top: 50%;
     transform: translateY(-50%);
-  } 
+  }
 `;
 
 export const IconDone= styled(IconSuccess)`

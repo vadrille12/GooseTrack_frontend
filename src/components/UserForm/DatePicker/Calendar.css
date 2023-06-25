@@ -1,0 +1,49 @@
+
+.my-calendar {
+   display: flex;
+    justify-content: center;
+    background: #3e85f3;
+    color: transparent;
+    border-radius: 16px;
+    border: none;
+    overflow: hidden;
+
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    font-family: Inter;
+     line-height: calc((18 / 14) * 100%);
+  
+    max-width: 296px;
+    height : 336px;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+    padding: 50px; 
+
+    @media (min-width: 767.5px) {
+       width: 336px;
+    height: 336px;
+    color: #FFFFFF;
+     padding: 40px; 
+
+text-align: center;
+font-size: 18px;
+font-family: Inter;
+ line-height: calc((24/ 18) * 100%);
+  }
+}
+
+.my-calendar:hover{background: #488cf1;}
+
+.react-calendar__month-view__days {
+  padding-bottom: 56px;
+}
+
+.react-calendar__tile--active abbr {
+  color: #488cf1;
+  background: #ffffff;
+  border-radius: 50%;
+
+  transition: all 250ms ease 0s;
+}
