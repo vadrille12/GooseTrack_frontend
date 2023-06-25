@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const ChangeTypeDateStyled = styled.div`
   display: flex;
 `;
 
-export const MonthBnt = styled.button`
+export const MonthBnt = styled(NavLink)`
   width: 76px;
   height: 34px;
   padding: 8px 16px 8px 16px;
@@ -24,12 +25,12 @@ export const MonthBnt = styled.button`
   font-weight: 500;
   line-height: 18px;
 
-  :active {
+  &.active {
     background: #cae8ff;
   }
 `;
 
-export const DayBnt = styled.button`
+export const DayBnt = styled(NavLink)`
   width: 76px;
   height: 34px;
   padding: 8px 25px 8px 25px;
@@ -52,7 +53,7 @@ export const DayBnt = styled.button`
     width: 82px;
   }
 
-  :active {
+  &.active {
     background: #cae8ff;
   }
 `;

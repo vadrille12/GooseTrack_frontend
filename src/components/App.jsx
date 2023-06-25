@@ -13,13 +13,18 @@ import { GlobalStyle } from 'Styles/GlobalStyle';
 // import { PrivateRoute } from 'components/PrivateRoute';
 import { MainLayout } from 'components/MainLayout/MainLayout';
 import { Container } from 'Styles/Container';
+import CalendarPage from 'pages/CalendarPage/CalendarPage';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const AccountPage = lazy(() => import('pages/AccountPage/AccountPage'));
-const CalendarPage = lazy(() => import('pages/CalendarPage/CalendarPage'));
+// const CalendarPage = lazy(() => import('pages/CalendarPage/CalendarPage'));
 const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage.jsx')
 );
+
+const ChoosedDay = lazy(() => import('./ChoosedDay/ChoosedDay'));
+// const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
+
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage.jsx'));
@@ -45,10 +50,12 @@ export function App() {
           <Route path="/" element={<MainLayout />}>
             <Route path="account" element={<AccountPage />} />
             <Route path="calendar" element={<CalendarPage />}>
-              {/* <Route path="month" element={null} />
-            <Route path="month/:month" element={null} />
-            <Route path="day" element={null} />
-            <Route path="day/:date" element={null} /> */}
+              {/* <Route path="month/:currentDate" element={<ChoosedMonth />} /> */}
+              <Route path="day" element={<ChoosedDay />} />
+              {/* <Route path="month" element={<ChoosedMonth />} /> */}
+              {/* <Route path="month/:month" element={null} /> */}
+              {/* <Route path="day" element={<ChoosedDay />} /> */}
+              {/* <Route path="day/:date" element={null} /> */}
             </Route>
             <Route path="statistics" element={<StatisticsPage />} />
 

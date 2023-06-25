@@ -34,10 +34,10 @@ export const DateContainer = styled.div`
   }
   @media screen and (min-width: 480px) {
     gap: 8px;
-    justify-content: start;
   }
 
   @media screen and (min-width: 768px) {
+    justify-content: start;
   }
 
   @media screen and (min-width: 1440px) {
