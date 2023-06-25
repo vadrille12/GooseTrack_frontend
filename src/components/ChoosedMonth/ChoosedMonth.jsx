@@ -1,7 +1,7 @@
 import { MonthCalendarHead } from './MonthCalendarHead/MonthCalendarHead';
 import { CalendarTable } from './CalendarTable/CalendarTable';
 
-export const ChoosedMonth = () => {
+const ChoosedMonth = () => {
   return (
     <>
       <MonthCalendarHead />
@@ -10,3 +10,5 @@ export const ChoosedMonth = () => {
     </>
   );
 };
+
+export default ChoosedMonth;

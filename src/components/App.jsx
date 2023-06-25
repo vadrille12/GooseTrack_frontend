@@ -14,7 +14,7 @@ import { GlobalStyle } from 'Styles/GlobalStyle';
 import { MainLayout } from 'components/MainLayout/MainLayout';
 import { Container } from 'Styles/Container';
 import CalendarPage from 'pages/CalendarPage/CalendarPage';
-import { ChoosedMonth } from './ChoosedMonth/ChoosedMonth';
+// import { ChoosedMonth } from './ChoosedMonth/ChoosedMonth';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const AccountPage = lazy(() => import('pages/AccountPage/AccountPage'));
@@ -24,7 +24,7 @@ const StatisticsPage = lazy(() =>
 );
 
 const ChoosedDay = lazy(() => import('./ChoosedDay/ChoosedDay'));
-// const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
+const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));

@@ -18,14 +18,14 @@ export const MobileDaysList = styled.ul`
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
 
-  @media screen and (min-width: ${variables.breakpoint.tablet}) {
+  @media screen and (min-width: ${variables.breakpoints.tablet}) {
     display: none;
   }
 `;
 
 export const DesktopDayList = styled.ul`
   display: none;
-  @media screen and (min-width: calc(${variables.breakpoint.tablet} - 0.1px)) {
+  @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +42,7 @@ export const DesktopDayList = styled.ul`
     border: 1px solid rgba(220, 227, 229, 0.5);
     border-radius: 8px;
 
-    @media screen and (min-width: calc(${variables.breakpoint
+    @media screen and (min-width: calc(${variables.breakpoints
         .desktop} - 0.1px)) {
       width: 1087px;
       height: 46px;
