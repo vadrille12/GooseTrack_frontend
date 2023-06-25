@@ -14,6 +14,7 @@ import { GlobalStyle } from 'Styles/GlobalStyle';
 import { MainLayout } from 'components/MainLayout/MainLayout';
 import { Container } from 'Styles/Container';
 import CalendarPage from 'pages/CalendarPage/CalendarPage';
+import { ChoosedMonth } from './ChoosedMonth/ChoosedMonth';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const AccountPage = lazy(() => import('pages/AccountPage/AccountPage'));
@@ -50,15 +51,10 @@ export function App() {
           <Route path="/" element={<MainLayout />}>
             <Route path="account" element={<AccountPage />} />
             <Route path="calendar" element={<CalendarPage />}>
-              {/* <Route path="month/:currentDate" element={<ChoosedMonth />} /> */}
-              <Route path="day" element={<ChoosedDay />} />
-              {/* <Route path="month" element={<ChoosedMonth />} /> */}
-              {/* <Route path="month/:month" element={null} /> */}
-              {/* <Route path="day" element={<ChoosedDay />} /> */}
-              {/* <Route path="day/:date" element={null} /> */}
+              <Route path="month/:currentDate" element={<ChoosedMonth />} />
+              <Route path="day/:currentDay" element={<ChoosedDay />} />
             </Route>
             <Route path="statistics" element={<StatisticsPage />} />
-
             <Route path="*" element={<NotFoundPage />} />
           </Route>
           {/* </Route> */}

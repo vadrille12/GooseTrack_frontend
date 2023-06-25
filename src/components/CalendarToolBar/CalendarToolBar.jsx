@@ -1,22 +1,28 @@
-import { Suspense } from 'react';
-import {
-  CalendarToolBarStyled,
-  CalendarToolBarContainer,
-} from './CalendarToolBar.styled';
+import { CalendarToolBarStyled } from './CalendarToolBar.styled';
 import { ChangeTypeDate } from './ChangeTypeDate/ChangeTypeDate';
 import { DateBar } from './DateBar/DateBar';
-import { Outlet } from 'react-router-dom';
 
-export const CalendarToolBar = () => {
+export const CalendarToolBar = ({
+  today,
+  typeSelect,
+  prevDayHandler,
+  nextDayHandler,
+  typeMonthHendler,
+  typeDayHendler,
+}) => {
   return (
-    <CalendarToolBarContainer>
-      <CalendarToolBarStyled>
-        <DateBar />
-        <ChangeTypeDate />
-      </CalendarToolBarStyled>
-      <Suspense>
-        <Outlet />
-      </Suspense>
-    </CalendarToolBarContainer>
+    <CalendarToolBarStyled>
+      <DateBar
+        today={today}
+        typeSelect={typeSelect}
+        prevDayHandler={prevDayHandler}
+        nextDayHandler={nextDayHandler}
+      />
+      <ChangeTypeDate
+        typeSelect={typeSelect}
+        typeMonthHendler={typeMonthHendler}
+        typeDayHendler={typeDayHendler}
+      />
+    </CalendarToolBarStyled>
   );
 };
