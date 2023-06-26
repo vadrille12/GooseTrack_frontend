@@ -1,10 +1,10 @@
 import { TasksColumn } from '../TasksColumn/TasksColumn';
 import { TasksColumnsListStyled } from './TasksColumnsList.styled';
 
-export const TasksColumnsList = () => {
+export const TasksColumnsList = ({ tasks }) => {
   return (
     <TasksColumnsListStyled>
-      <TasksColumn />
+      <TasksColumn tasks={tasks} />
     </TasksColumnsListStyled>
   );
 };

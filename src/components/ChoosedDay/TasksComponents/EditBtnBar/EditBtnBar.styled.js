@@ -7,6 +7,7 @@ import { ReactComponent as Delete } from '../../../../images/tasksSvg/del.svg';
 export const EditBntContainer = styled.div`
   display: flex;
   gap: 13px;
+  position: relative;
 
   align-items: center;
   justify-content: center;
@@ -90,14 +91,12 @@ export const ChangeCategoryContainer = styled.div`
   box-shadow: ${variables.shadow.shadow};
 
   padding: 8px 10px;
-  top: 63%;
-  left: 60%;
+
+  overflow: visible;
 
   @media screen and (min-width: 768px) {
     width: 147px;
     height: 90px;
-    top: 60%;
-    left: 50%;
 
     color: #343434;
     font-size: 14px;
@@ -110,6 +109,9 @@ export const ChangeCategoryContainer = styled.div`
     gap: 12px;
 
     padding: 16px 16px;
+
+    top: 100%;
+    left: 0;
   }
 
   @media screen and (min-width: 1440px) {

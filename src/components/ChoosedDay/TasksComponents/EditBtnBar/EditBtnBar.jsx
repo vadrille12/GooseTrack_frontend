@@ -10,7 +10,7 @@ import {
 } from './EditBtnBar.styled';
 
 export const EditBtnBar = ({ onOpen, setAction }) => {
-  const [isActiv, setIsActiv] = useState(true);
+  const [isActiv, setIsActiv] = useState(false);
 
   const handleOpenMoveBar = () => {
     setIsActiv(true);

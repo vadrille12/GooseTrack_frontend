@@ -81,7 +81,7 @@ export const Avatar = styled.div`
   }
 `;
 
-export const Status = styled.div`
+export const StatusLow = styled.div`
   display: flex;
   /* flex-direction: row; */
   justify-content: center;
@@ -100,6 +100,60 @@ export const Status = styled.div`
   height: 20px;
 
   background: #72c2f8;
+  border-radius: 4px;
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const StatusMedium = styled.div`
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  margin-top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+
+  color: #f7f6f9;
+
+  height: 20px;
+
+  background: #f3b249;
+  border-radius: 4px;
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const StatusHigh = styled.div`
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  margin-top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+
+  color: #f7f6f9;
+
+  height: 20px;
+
+  background: #ea3d65;
   border-radius: 4px;
   @media screen and (min-width: 768px) {
   }
