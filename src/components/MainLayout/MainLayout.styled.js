@@ -2,7 +2,7 @@ import styled from 'styled-components';
 // import { variables } from '../../Styles/GlobalStyle';
 
 export const Container = styled.div`
-  display: flex;
+  /* display: flex; */
 `;
 
 export const Header = styled.header`
