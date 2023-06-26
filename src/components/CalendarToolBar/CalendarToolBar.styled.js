@@ -2,7 +2,7 @@ import styled from 'styled-components';
 // коммент
 
 export const CalendarToolBarStyled = styled.div`
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
 
   gap: 18px;
@@ -10,7 +10,8 @@ export const CalendarToolBarStyled = styled.div`
   width: 335px;
   height: 82px;
 
-  margin-bottom: 24px;
+  margin: 0 auto 24px auto;
+  /* padding: 0 20px; */
 
   @media screen and (max-width: 370px) {
     height: 100px;
@@ -24,14 +25,13 @@ export const CalendarToolBarStyled = styled.div`
     height: 34px;
     width: 704px;
 
-    margin-bottom: 32px;
+    margin: 0 auto 32px auto;
+    padding: 0;
   }
 
   @media screen and (min-width: 1440px) {
     display: flex;
     width: 1087px;
     height: 34px;
-    margin: auto;
-    margin-bottom: 32px;
   }
 `;
