@@ -46,7 +46,7 @@ export const AuthSection = () => {
         </h1>
         <nav>
           <LinkLogin to="login">
-            Log in{' '}
+            Log in
             <IconLogIn
               style={{ width: '13px', height: '13px', marginLeft: '8px' }}
             />
