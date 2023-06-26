@@ -1,17 +1,28 @@
 import styled from 'styled-components';
 
-import { Form as FormikForm, Field } from 'formik';
+import {
+  Form as FormikForm,
+  Field,
+  ErrorMessage as FormikErrorMessage,
+} from 'formik';
 
 export const Form = styled(FormikForm)`
   position: relative;
-  width: 396px;
-  height: 360px;
-  padding: 40px 28px;
+  width: 303px;
+  /* height: 336px; */
+  max-height: 420px;
+  padding: 48px 18px 40px;
   background-color: #fff;
 
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
+
+  @media (min-width: 768px) {
+    width: 396px;
+    /* height: 360px; */
+    padding: 40px 28px;
+  }
 `;
 
 export const Label = styled.label`
@@ -27,9 +38,9 @@ export const Label = styled.label`
 `;
 
 export const InputTitle = styled(Field)`
-  width: 340px;
-  height: 46px;
-  padding: 14px 18px;
+  width: 267px;
+  height: 42px;
+  padding: 12px 14px;
   border-radius: 8px;
   background: #f6f6f6;
   border: none;
@@ -39,6 +50,12 @@ export const InputTitle = styled(Field)`
   font-family: Inter;
   font-weight: 600;
   line-height: 18px;
+
+  @media (min-width: 768px) {
+    width: 340px;
+    height: 46px;
+    padding: 14px 18px;
+  }
 
   &::placeholder {
     opacity: 1;
@@ -53,26 +70,36 @@ export const InputTitle = styled(Field)`
 export const TimeWrapper = styled.div`
   display: flex;
   gap: 14px;
-  margin-top: 18px;
+  margin-top: 16px;
+
+  @media (min-width: 768px) {
+    margin-top: 18px;
+  }
 `;
 
 export const InputTime = styled(Field)`
-  width: 163px;
-  height: 46px;
-  padding: 14px 18px;
+  width: 126px;
+  height: 42px;
+  padding: 12px 14px;
   border-radius: 8px;
   background: #f6f6f6;
   border: none;
-
-  &::-webkit-calendar-picker-indicator {
-    display: none;
-  }
 
   color: #343434;
   font-size: 14px;
   font-family: Inter;
   font-weight: 600;
   line-height: 18px;
+
+  @media (min-width: 768px) {
+    width: 163px;
+    height: 46px;
+    padding: 14px 18px;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
 `;
 
 export const RadioWrapper = styled.div`
@@ -91,15 +118,20 @@ export const RadioLabel = styled.label`
   padding-left: 16px;
   display: flex;
   align-items: center;
-  margin-top: 28px;
+  margin-top: 16px;
 
   color: #343434;
-  font-size: 14px;
+  font-size: 12px;
   font-family: Inter;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 14px;
   cursor: pointer;
-  transition: transform 250ms linear;
+
+  @media (min-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 28px;
+  }
 `;
 
 export const RadioSpan = styled.span`
@@ -160,12 +192,12 @@ export const ButtonWrapper = styled.div`
 
 export const ButtonAction = styled.button`
   display: flex;
-  width: 182px;
-  height: 48px;
+  width: 135px;
+  height: 42px;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  padding: 15px;
+  padding: 12px;
 
   border-radius: 8px;
   border: none;
@@ -177,12 +209,18 @@ export const ButtonAction = styled.button`
   font-family: Inter;
   font-weight: 600;
   line-height: 18px;
+
+  @media (min-width: 768px) {
+    width: 182px;
+    height: 48px;
+    padding: 15px;
+  }
 `;
 
 export const ButtonCancel = styled.button`
-  width: 144px;
-  height: 48px;
-  padding: 15px;
+  width: 118px;
+  height: 42px;
+  padding: 12px;
 
   border-radius: 8px;
   border: none;
@@ -194,6 +232,12 @@ export const ButtonCancel = styled.button`
   font-family: Inter;
   font-weight: 600;
   line-height: 18px;
+
+  @media (min-width: 768px) {
+    width: 182px;
+    height: 48px;
+    padding: 15px;
+  }
 `;
 
 export const ButtonCloseWrap = styled.button`
@@ -207,4 +251,13 @@ export const ButtonCloseWrap = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+`;
+
+export const ErrorMessage = styled(FormikErrorMessage)`
+  margin-left: 18px;
+  max-width: 100%;
+  color: #da1414;
+  font-size: 12px;
+  font-family: Inter;
+  line-height: 14px;
 `;
