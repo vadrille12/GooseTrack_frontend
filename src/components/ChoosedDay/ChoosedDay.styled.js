@@ -8,7 +8,7 @@ export const ChoosedDayStyled = styled.div`
   padding: 0 20px;
   width: 100%;
 
-  margin: 0 auto;
+  margin: auto;
 
   @media screen and (min-width: 375px) {
     width: 375px;
