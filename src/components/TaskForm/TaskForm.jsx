@@ -10,6 +10,7 @@ import {
   ButtonCancel,
   ButtonCloseWrap,
   ButtonWrapper,
+  ErrorMessage,
   Form,
   InputTime,
   InputTitle,
@@ -23,10 +24,24 @@ import {
 
 const TaskSchema = Yup.object().shape({
   title: Yup.string()
-    .max(250, 'title is too long')
+    .max(250, 'Title is too long')
     .required('Title is required'),
-  start: Yup.string().required(),
-  end: Yup.string().required(),
+  start: Yup.string().required('Start time is required'),
+  end: Yup.string()
+    .required('End time is required')
+    .test(
+      'is-greater',
+      'End time should be greater than start time',
+      function (value) {
+        const { start } = this.parent;
+        if (start && value) {
+          const startTime = new Date(`2000-01-01T${start}`);
+          const endTime = new Date(`2000-01-01T${value}`);
+          return endTime > startTime;
+        }
+        return true;
+      }
+    ),
   priority: Yup.string()
     .oneOf(['low', 'medium', 'high'])
     .required('Priority is required'),
@@ -53,16 +68,19 @@ export const TaskForm = ({ onClose, action }) => {
         <Label>
           Title
           <InputTitle type="text" name="title" placeholder="Enter text" />
+          <ErrorMessage name="title" component="div" />
         </Label>
 
         <TimeWrapper>
           <Label>
             Start
             <InputTime type="time" name="start" />
+            <ErrorMessage name="start" component="div" />
           </Label>
           <Label>
             End
             <InputTime type="time" name="end" />
+            <ErrorMessage name="end" component="div" />
           </Label>
         </TimeWrapper>
 
@@ -107,7 +125,7 @@ export const TaskForm = ({ onClose, action }) => {
           aria-label="close button"
           onClick={onClose}
         >
-          <IconClose style={{ width: 24, height: 24 }} />
+          <IconClose />
         </ButtonCloseWrap>
       </Form>
     </Formik>
