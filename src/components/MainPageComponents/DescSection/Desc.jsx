@@ -71,7 +71,7 @@ const { isRetina, isMobile, isTablet, isDesktop } = useAdaptiveImage();
             )}
           </ImageWrapper>
         </DescSection>
-
+        
         <DescSection>
           <DescSectionBoxСontr>
             <Number>2.</Number>
@@ -120,7 +120,6 @@ const { isRetina, isMobile, isTablet, isDesktop } = useAdaptiveImage();
                 height="700"
               />
             )}
-            />
           </ImageWrapper>
         </DescSection>
 
