@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { variables } from '../../../../Styles/GlobalStyle';
 
 export const DayCalendarHeadStyledMobile = styled.ul`
-  min-width: 100%;
-  height: 100%;
+  width: 335px;
+  height: auto;
 
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +16,13 @@ export const DayCalendarHeadStyledMobile = styled.ul`
   background: #ffffff;
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
+
+  @media screen and (max-width: 375px) {
+    width: calc(100% - 20px);
+    height: auto;
+    padding: 10px;
+    flex-wrap: wrap;
+  }
 
   @media screen and (min-width: 768px) {
     display: none;

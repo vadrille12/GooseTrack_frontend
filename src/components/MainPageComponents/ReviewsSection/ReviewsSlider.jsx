@@ -87,7 +87,7 @@ export const ReviewsSlider = () => {
                           value={slide.rating}
                           itemStyles={rateStyled}
                           style={{ maxWidth: 110, gap: 4 }}
-                          itemStyles={rateStyled}
+                          // itemStyles={rateStyled}
                           readOnly
                         />
                       </Rate>

@@ -43,6 +43,7 @@ export const TasksColumnStyled = styled.li`
   overflow-x: auto;
   gap: 22px;
   padding-bottom: 20px;
+  width: 335px;
 
   ::-webkit-scrollbar {
     height: 12px;
@@ -64,13 +65,18 @@ export const TasksColumnStyled = styled.li`
     border-radius: 12px;
   }
 
+  @media screen and (max-width: 375px) {
+  }
+
   @media screen and (min-width: 768px) {
     gap: 22px;
+    width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
     gap: 27px;
     margin-left: 0;
+    width: 1086px;
   }
 
   ${TaskItem} {
