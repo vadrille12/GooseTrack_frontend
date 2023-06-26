@@ -96,8 +96,7 @@ export const LinkLogin = styled(Link)`
   width: 131px;
   padding-top: 14px;
   padding-bottom: 14px;
-  font-family: Inter;
-  font-weight: 600;
+  font-family: 'InterSemiBold';
   font-size: 14px;
   line-height: 1.29;
   text-decoration: none;
@@ -115,9 +114,9 @@ export const LinkLogin = styled(Link)`
 `;
 
 export const LinkRegister = styled(Link)`
-  font-family: Inter;
-  font-size: 12px;
-  line-height: 1.16;
+  font-family: 'InterSemiBold';
+  font-size: 14px;
+  line-height: 1.29;
   text-decoration: underline;
   color: #fff;
   cursor: pointer;
