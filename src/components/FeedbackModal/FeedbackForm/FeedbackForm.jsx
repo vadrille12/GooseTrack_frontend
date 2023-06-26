@@ -22,7 +22,7 @@ import { useState } from "react";
 
 const FeedbackSchema = Yup.object().shape({
     review: Yup.string()
-      .max(3000, 'review is too long')
+      .max(300, 'review is too long')
       .required('review is required')
     })
 
@@ -78,6 +78,7 @@ export const FeedbackForm = ({ onClose }) => {
                         activeColor="#FFAC33"
                         color="#CEC9C1"
                         value={ratingValue}
+                        edit={!isEditActive}
                         style={{marginBottom:"20px"}}/>
                         
                     <WrapForReview>
@@ -98,7 +99,9 @@ export const FeedbackForm = ({ onClose }) => {
                         placeholder="Enter text" 
                         id="review" 
                         name="review" 
-                        component="textarea"/>
+                        component="textarea"
+                        // isActive={isEditActive} 
+                        disabled={!isEditActive && isFeedback}/>
                     <ErrorMessage name="review" component="div" />
 
                     {(!isFeedback || isEditActive )&& <FormBtnWrap>
