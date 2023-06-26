@@ -196,6 +196,7 @@ export const UserForm = () => {
 
                     <Label htmlFor="birthday" className={isValid('birthday')}>
                       Birthday calendar
+                     <Input>
                       <Calendar
                         className={isValid('birthday')}
                         id="birthday"
@@ -218,6 +219,7 @@ export const UserForm = () => {
                         ) && <IconDone />}
                       {isValid('birthday') === 'is-invalid' && <IconError />}
                       <ErrorMessage name="birthday" component="div" />
+                   </Input>
                     </Label>
 
                    

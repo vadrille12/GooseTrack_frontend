@@ -18,10 +18,10 @@ export const Wrap = styled.div`
   padding: 18px;
   background-color: #ffffff;
   padding-top: 0px;
-  @media (max-width: 376px) {
-    width: 299px;
+  @media (max-width: 374px) {
+    /* width: 299px; */
   }
-  @media (min-width: 377px) {
+  @media (min-width: 375px) {
     width: 100%;
   }
 
@@ -43,7 +43,7 @@ export const AvatarWrap = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  @media (max-width: 373px) {
+  @media (max-width: 374px) {
     position: relative;
   }
 `;
@@ -75,7 +75,7 @@ export const Img = styled.img`
   width: 72px;
   height: 68px;
   align-items: center;
-  @media (min-width: 767px) {
+  @media (min-width: 768px) {
     width: 124px;
     height: 120px;
   }
@@ -210,7 +210,7 @@ export const IconDone = styled(IconSuccess)`
   align-content: center;
   top: 30%;
   right: 18px;
-  @media (min-width: 767px) {
+  @media (min-width: 768px) {
     top: 11px;
     width: 24px;
     height: 24px;
@@ -223,7 +223,7 @@ export const IconError = styled(IconErrors)`
   align-content: center;
   top: 12px;
   right: 18px;
-  @media (min-width: 767px) {
+  @media (min-width: 768px) {
     /* top: 33%;
     right: 18px; */
     top: 11px;
@@ -309,16 +309,7 @@ export const FormBtnWrap = styled.div`
 `;
 
 export const FormBtn = styled.button`
-  /* display:block;
- 
- width: 262px;
-
-
-
-
-*/
-
-  width: 100%;
+width: 100%;
   @media (min-width: 374px) {
     width: 262px;
   }
