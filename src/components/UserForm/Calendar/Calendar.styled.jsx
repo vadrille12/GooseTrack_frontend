@@ -24,6 +24,9 @@ export const DatePickerCalendar = styled.div`
     font-family: Inter;
     font-weight: 300;
     line-height: calc((18 / 14) * 100%);
+    @media (min-width: 375px) {
+      width: 327px;
+    }
     @media (min-width: 768px) {
       top: 5px;
       left: 8px;
@@ -33,8 +36,6 @@ export const DatePickerCalendar = styled.div`
     @media (min-width: 1440px) {
       top: -190px;
       left: 208px;
-      width: 337px;
-      height: 376px;
     }
 
     &__header {
@@ -76,7 +77,7 @@ export const DatePickerCalendar = styled.div`
         opacity: 1;
         background-color: #ffffff;
         color: #3e85f3;
-        outline: none; 
+        outline: none;
       }
       &--keyboard-selected {
         border-radius: 50%;
@@ -149,8 +150,8 @@ export const DatePickerCalendar = styled.div`
 export const DatePickerInput = styled(DatePicker)`
   box-sizing: border-box;
   display: block;
-  margin-top: 8px;
   height: 42px;
+  width:100%;
   border: 1px solid rgba(17, 17, 17, 0.15);
   border-radius: 8px;
   padding: 14px;
@@ -161,7 +162,9 @@ export const DatePickerInput = styled(DatePicker)`
   color: #111111;
   outline: none;
   cursor: pointer;
-
+  @media (min-width: 375px) {
+    width: 299px;
+  }
   @media (min-width: 768px) {
     width: 354px;
     height: 46px;
