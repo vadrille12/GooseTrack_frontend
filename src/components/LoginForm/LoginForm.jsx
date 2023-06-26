@@ -1,6 +1,8 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { ReactComponent as IconButton } from 'images/Icon.svg';
+import { useDispatch } from 'react-redux';
+import { login } from 'redux/auth/operations';
 
 import {
   Form,
@@ -25,6 +27,19 @@ const userSchema = Yup.object().shape({
 });
 
 export const LoginForm = () => {
+
+    const dispatch = useDispatch();
+    const handleSubmit = e => {
+      e.preventDefault();
+      const {
+        email: { value: email },
+        password: { value: password },
+      } = e.currentTarget;
+
+      dispatch(login({ email, password }));
+      e.currentTarget.reset();
+  };
+  
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
@@ -39,7 +54,7 @@ export const LoginForm = () => {
             : '';
 
         return (
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Title>Log In</Title>
             <Label className={isValid('email')}>
               Email
