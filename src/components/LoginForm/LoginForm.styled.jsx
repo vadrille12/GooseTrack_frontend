@@ -164,7 +164,7 @@ export const Button = styled.button`
   border-radius: 16px;
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
 
-  color: #ffffff;
+  color: ${variables.colors.white};
   background-color: ${variables.colors.primary};
   cursor: pointer;
 
@@ -186,4 +186,12 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   margin-top: 8px;
 
   color: ${variables.colors.redError};
+`;
+
+export const HidePassword = styled.span`
+  color: ${variables.colors.black};
+  position: absolute;
+  right: 12px;
+  top: 18px;
+  cursor: pointer;
 `;
