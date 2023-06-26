@@ -1,7 +1,10 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { ReactComponent as IconButton } from 'images/Icon.svg';
+import { ReactComponent as HideIcon } from 'images/eye-slash.svg';
+import { ReactComponent as ShowIcon } from 'images/eye.svg';
 
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 
@@ -14,6 +17,7 @@ import {
   Input,
   PasswordInput,
   Button,
+  HidePassword,
 } from './RegisterForm.styled';
 
 const userSchema = Yup.object().shape({
@@ -38,20 +42,24 @@ const userSchema = Yup.object().shape({
 });
 
 export const RegisterForm = () => {
-
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
 
-   const handleSubmit = e => {
-     e.preventDefault();
-     const {
-       name: { value: name },
-       email: { value: email },
-       password: { value: password },
-     } = e.currentTarget;
+  const handleSubmit = e => {
+    e.preventDefault();
+    const {
+      name: { value: name },
+      email: { value: email },
+      password: { value: password },
+    } = e.currentTarget;
 
-     dispatch(register({ name, email, password }));
-     e.currentTarget.reset();
-   };
+    dispatch(register({ name, email, password }));
+    e.currentTarget.reset();
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <Formik
@@ -103,11 +111,15 @@ export const RegisterForm = () => {
               Password
               <PasswordInput>
                 <Field
+                  type={showPassword ? 'text' : 'password'}
                   className={isValid('password')}
                   name="password"
                   placeholder="Enter password"
                   value={values.password}
                 />
+                <HidePassword type="button" onClick={handleShowPassword}>
+                  {showPassword ? <ShowIcon /> : <HideIcon />}
+                </HidePassword>
               </PasswordInput>
               {isValid('password') === 'is-valid' && (
                 <p>This is a CORRECT password</p>

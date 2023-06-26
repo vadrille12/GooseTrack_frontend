@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { variables } from '../../Styles/GlobalStyle';
+
 import {
   Form as FormikForm,
   Field as FormikField,
@@ -10,7 +12,7 @@ export const Form = styled(FormikForm)`
   flex-direction: column;
   padding: 40px 24px;
 
-  background-color: #ffffff;
+  background-color: ${variables.colors.white};
   border-radius: 8px;
 
   @media screen and (max-width: 345px) {
@@ -32,7 +34,7 @@ export const Title = styled.p`
   font-size: 18px;
   line-height: 1.33;
 
-  color: #3e85f3;
+  color: ${variables.colors.primary};
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
@@ -49,7 +51,7 @@ export const Label = styled.label`
   font-size: 12px;
   line-height: 1.25;
 
-  color: #111111;
+  color: ${variables.colors.black};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -73,11 +75,11 @@ export const Label = styled.label`
   }
 
   &.is-valid {
-    color: #3cbc81;
+    color: ${variables.colors.greenValid};
   }
 
   &.is-invalid {
-    color: #e74a3b;
+    color: ${variables.colors.redErrorLight};
   }
 
   & p {
@@ -85,7 +87,7 @@ export const Label = styled.label`
     padding: 0;
     margin-top: 8px;
     margin-left: 18px;
-    color: 3CBC81;
+    color: ${variables.colors.greenValid};
   }
 
   & .error-success {
@@ -105,7 +107,7 @@ export const Field = styled(FormikField)`
   font-weight: 600;
   line-height: 1.29px;
 
-  color: #111111;
+  color: ${variables.colors.black};
   outline: none;
   border: 1px solid rgba(17, 17, 17, 0.15);
   border-radius: 8px;
@@ -130,15 +132,15 @@ export const Field = styled(FormikField)`
 
   &:hover,
   &:focus {
-    border: 1px solid #111111;
+    border: 1px solid ${variables.colors.black};
   }
 
   &.is-valid {
-    border: 1px solid #3cbc81;
+    border: 1px solid ${variables.colors.greenValid};
   }
 
   &.is-invalid {
-    border: 1px solid #e74a3b;
+    border: 1px solid ${variables.colors.redErrorLight};
   }
 `;
 
@@ -170,8 +172,8 @@ export const Button = styled.button`
   border-radius: 16px;
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
 
-  color: #ffffff;
-  background-color: #3e85f3;
+  color: ${variables.colors.white};
+  background-color: ${variables.colors.primary};
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
@@ -183,12 +185,20 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    background-color: #2b78ef;
+    background-color: ${variables.colors.secondary};
   }
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`
   margin-left: 18px;
   margin-top: 8px;
-  color: #da1414;
+  color: ${variables.colors.redError};
+`;
+
+export const HidePassword = styled.span`
+  color: ${variables.colors.black};
+  position: absolute;
+  right: 12px;
+  top: 18px;
+  cursor: pointer;
 `;

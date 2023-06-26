@@ -1,4 +1,4 @@
-import { startOfMonth, getDay, endOfMonth } from 'date-fns';
+import { startOfMonth, getDay } from 'date-fns';
 import { useParams } from 'react-router';
 
 import {
@@ -6,6 +6,7 @@ import {
   CalendarWrapper,
   LabelCell,
   TodayLabelCell,
+  OtherMonthLabelCell,
 } from './CalendarTable.styled';
 
 import { TaskCalendar } from '../TaskCalendar/TaskCalendar';
@@ -61,48 +62,79 @@ const tasks = [
   },
 ];
 
-const isCurrentDay = (day, month) => {
+const isCurrentDay = date => {
   const today = new Date();
-  if (today.getDate() === day && today.getMonth() === month.getMonth()) {
+  if (
+    date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getYear() === today.getYear()
+  ) {
     return true;
   }
   return false;
 };
 
-const isCurrentTask = (day, task) => {
-  const taskDate = new Date(task.date);
-  if (taskDate.getDate() === day) {
+const isCurrentMonth = (date, curentDate) => {
+  if (date.getMonth() === curentDate.getMonth()) {
     return true;
   }
   return false;
+};
+
+const isCurrentTask = (date, task) => {
+  const day = trimDate(date);
+  if (task.date === day) {
+    return true;
+  }
+  return false;
+};
+
+const gotolink = day => {
+  return `/calendar/day/${trimDate(day)}`;
+};
+
+const trimDate = date => {
+  var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return [year, month, day].join('-');
+};
+
+const extendDate = string => {
+  return new Date(string);
 };
 
 export const CalendarTable = () => {
   const { currentDate } = useParams();
-  const dateSelected = new Date(currentDate);
-  const firstDay = getDay(startOfMonth(dateSelected));
-  const lastDay = endOfMonth(dateSelected).getDate();
+  const dateSelected = extendDate(currentDate);
+  const weekFirstDay = getDay(startOfMonth(dateSelected));
   const calendar = [];
 
-  const daysToAdd = firstDay === 0 ? 6 : firstDay - 1;
-  for (let i = 0; i < daysToAdd; i++) {
-    calendar.push('');
-  }
-  for (let i = 1; i <= lastDay; i++) {
-    calendar.push(i);
-  }
-  for (let i = calendar.length; i < 35; i++) {
-    calendar.push('');
+  const daysToAddInPreviousMonth = weekFirstDay === 0 ? 6 : weekFirstDay - 1;
+  const firstDay = new Date(
+    startOfMonth(dateSelected) - daysToAddInPreviousMonth * 3600 * 1000 * 24
+  );
+
+  for (let i = 0; i < 42; i++) {
+    const result = new Date(firstDay.getTime() + i * 86400000);
+    calendar.push(result);
   }
 
   return (
     <CalendarWrapper>
       {calendar.map((day, index) => (
-        <Cell key={index}>
-          {isCurrentDay(day, dateSelected) ? (
-            <TodayLabelCell>{day}</TodayLabelCell>
+        <Cell to={gotolink(day)} key={index}>
+          {isCurrentDay(day) ? (
+            <TodayLabelCell>{day.getDate()}</TodayLabelCell>
+          ) : isCurrentMonth(day, dateSelected) ? (
+            <LabelCell>{day.getDate()}</LabelCell>
           ) : (
-            <LabelCell>{day}</LabelCell>
+            <OtherMonthLabelCell>{day.getDate()}</OtherMonthLabelCell>
           )}
           {tasks.map((task, index) =>
             isCurrentTask(day, task) ? (
