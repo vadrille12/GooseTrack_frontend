@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 // import { variables } from '../../Styles/GlobalStyle';
 
 export const Container = styled.div`
@@ -51,6 +51,47 @@ export const ButtonFeedback = styled.button`
   }
 `;
 
+export const ContentWrapper = styled.div`
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+      column-gap: 24px;
+    }
+
+    @media screen and (max-height: 425px) {
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+      column-gap: 24px;
+    }
+
+    ${({ height }) => css`
+      row-gap: calc(${height}px * 25.61 / 100);
+    `}
+  }`
+
+export const ImageWrapper = styled.div`
+  width: 32px;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+  }
+`;
+
 export const UserAccount = styled.div`
   display: flex;
   justify-content: center;
@@ -70,7 +111,91 @@ export const Sidebar = styled.div`
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transition: opacity var(---transition), visibility var(---transition);
+`;
+
+export const ContainerSidebar = styled.div`
+padding: 32px 24px;
+`;
+
+// export const HeaderSidebar = styled.h3`
+// font-family: Coolvetica
+// ;
+// font-size: 24px;
+// font-style: italic;
+// font-weight: 400;
+// line-height: 24px;
+// letter-spacing: 0em;
+// text-align: left;
+// `;
+
+// export const SidebarNavBox = styled.div`
+// display:flex;
+// flex:colume;  
+// `;
+
+// export const LabelSidebar = styled.div`
+//   opacity: 1;
+//   visibility: visible;
+//   pointer-events: auto;
+// `;
+
+// export const ListSidebar = styled.div`
+//   opacity: 1;
+//   visibility: visible;
+//   pointer-events: auto;
+// `;
+
+// export const ItemSidebar = styled.div`
+//   opacity: 1;
+//   visibility: visible;
+//   pointer-events: auto;
+// `;
+
+// export const ButtonLogoutSidebar = styled.div`
+//   opacity: 1;
+//   visibility: visible;
+//   pointer-events: auto;
+// `;
+
+// export const IconSidebar = styled.div`
+//   opacity: 1;
+//   visibility: visible;
+//   pointer-events: auto;
+// `;
+
+
+
+export const LogoTitle = styled.h2`
+
+`;
+
+export const SidebarWrapper = styled.div`
+position: fixed;
+z-index: 2;
+width: 225px;
+height: 100%;
+top: 0;
+left: 0;
+overflow: scroll;
+background-color: #fff;
+opacity: 1;
+visibility: visible;
+pointer-events: auto;
+`;
+
+export const SidebarHeader = styled.div`
+
+`;
+
+export const GooseImg = styled.img`
+
+`;
+
+export const CloseIcon = styled.svg`
+`;
+
+export const SidebarSubTitle = styled.h3`
+
 `;
 
 export const SidebarOpen = styled.div`
