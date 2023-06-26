@@ -18,6 +18,7 @@
     "react-datepicker": "^4.14.1",
     "react-dom": "^18.1.0",
     "react-icons": "^4.10.1",
+    "react-loader-spinner": "^5.3.4",
     "react-rating-stars-component": "^2.2.0",
     "react-redux": "^8.1.1",
     "react-responsive": "^9.0.2",
