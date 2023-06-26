@@ -26,19 +26,78 @@ export const Label = styled.label`
     line-height: calc((14 / 12) * 100%);
 `;
 
+export const WrapForReview = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 8px;
+`;
+
+export const WrapForEdit = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const EditBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => { return props.isActive ? '#3E85F3' : '#E3F3FF'}} ;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%; 
+  stroke:  ${props => { return props.isActive ? '#FFFFFF' : '#3E85F3'}} ;
+  cursor: pointer;
+  transition: stroke ${variables.transitions.standart}, background-color ${variables.transitions.standart};
+
+  &:hover, 
+  &:focus {
+    stroke: #ffffff;
+    background-color: #3E85F3;
+  }
+`
+
+export const DeleteBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+  background-color: #EA3D6533;
+  stroke: #EA3D65;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: stroke ${variables.transitions.standart}, background-color ${variables.transitions.standart};
+
+  &:hover, 
+  &:focus {
+    stroke: #ffffff;
+    background-color: #EA3D65;
+  }
+`;
+
 export const Input = styled(Field)`
     resize:  none;
     margin-bottom: 14px;
+    padding: 12px 0 12px 14px;
     width: 295px;
-    min-height: 127px;
+    box-sizing: border-box;
+    height: 127px;
     font-weight: 600;
     font-size: 14px;
     line-height: calc((18 / 14) * 100%);
     color: ${variables.colors.text};
+
     background-color: #F6F6F6;
     border-radius: 8px;
-    border: none;
-    padding: 12px 0 12px 14px;
+    border: 1px solid transparent;
+
+    transition: border ${variables.transitions.standart};
+    /* cursor: ${props=>{return props.isActive ? "text" : "not-allowed"}}; */
+    
     @media (min-width: 768px) {
         width: 404px;
     }
@@ -46,12 +105,14 @@ export const Input = styled(Field)`
     @media (min-width: 1440px) {
         margin-bottom: 18px;
     }
+
     &:hover,
     &:focus {
       border: 1px solid #111111;
     }
 
     ::placeholder {
+      opacity: 1;
       color: ${variables.colors.text};
       font-weight: 600;
       font-size: 14px;
@@ -64,6 +125,8 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   max-width: 100%;
   color: #da1414;
   max-width: 240px;
+  font-size: 12px;
+  font-weight: 500;
   @media (min-width: 768px) {
     max-width: 330px;
   }
@@ -87,7 +150,7 @@ export const FormBtn = styled.button`
   border: none;
   border-radius: 16px;
   cursor: pointer;
-  transition: background-color 250ms linear;
+  transition: background-color ${variables.transitions.standart};
   &:hover, 
   &:focus {
     background-color: ${variables.colors.secondary};
@@ -105,60 +168,10 @@ export const FormBtnCancel = styled.button`
   border: none;
   border-radius: 16px;
   cursor: pointer;
-  transition: background-color 250ms linear;
+  transition: color ${variables.transitions.standart};
   &:hover, 
   &:focus {
-    background-color: ${variables.colors.secondary};
-  }
-`;
-
-export const WrapForReview = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  margin-bottom: 8px;
-`;
-
-export const WrapForEdit = styled.div`
-  display: flex;
-  gap: 8px;
-`;
-
-export const EditBtn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${props => { return props.isActive ? '#3E85F3' : '#E3F3FF'}} ;
-  border: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%; 
-  stroke:  ${props => { return props.isActive ? '#E3F3FF' : '#3E85F3'}} ;
-  cursor: pointer;
-
-  &:hover, 
-  &:focus {
-    stroke: #ffffff;
-    background-color: #3E85F3;
-  }
-`
-
-export const DeleteBtn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #EA3D6533;
-  border: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-
-  cursor: pointer;
-  stroke: #EA3D65;
-  &:hover, 
-  &:focus {
-    stroke: #ffffff;
-    background-color: #EA3D65;
+    color: ${variables.colors.secondary};
   }
 `;
 
@@ -173,4 +186,5 @@ export const BtnCloseWrap = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  stroke: ${variables.colors.closeButton};
 `;
