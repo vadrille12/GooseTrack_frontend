@@ -4,73 +4,25 @@ import {
   ErrorMessage as FormikErrorMessage,
 } from 'formik';
 
-
-
 import { ReactComponent as Icon } from 'images/user/cross.svg';
-import { ReactComponent as IconErrors  } from 'images/user/error.svg';
+import { ReactComponent as IconErrors } from 'images/user/error.svg';
 import { ReactComponent as IconSuccess } from 'images/user/done.svg';
-
-
-import DatePicker  from 'react-datepicker';
- import 'react-datepicker/dist/react-datepicker.css';
-
-
-export const DatePick = styled(DatePicker)`
-  display: flex;
-
-  width: 100%;
-  height: 42px;
-  border: 1px solid rgba(17, 17, 17, 0.15);
-  border-radius: 8px;
-  padding: 14px;
-
-  font-weight: 600;
-  font-size: 14px;
-  line-height: calc((18 / 14) * 100%);
-  color: #111111;
-  outline: none;
-  cursor: pointer;
-
-  @media (min-width: 768px) {
-    width: 354px;
-    height: 46px;
-    padding: 14px 0 14px 18px;
-    font-size: 16px;
-    line-height: calc((18 / 16) * 100%);
-  }
-  @media (min-width: 1440px) {
-    margin-bottom: 0px;
-  }
-  &::placeholder {
-    font-family: Inter;
-    font-size: 14px;
-    line-height: 1.29;
-    color: rgba(17, 17, 17, 0.15);
-
-    @media (min-width: 768px) {
-      font-size: 16px;
-      line-height: calc((18 / 16) * 100%);
-    }
-  }
-
-  &:hover,
-  &:focus {
-    border: 1px solid #111111;
-  }
-
-`;
-
 
 export const Wrap = styled.div`
   position: relative;
-  display: inline-block;
+  /* display: flex; */
   margin: 151px 32 32 32;
+
   border-radius: 16px;
-width:100%;
+
   padding: 18px;
   background-color: #ffffff;
   padding-top: 0px;
-  @media (max-width: 767px) {
+  @media (max-width: 376px) {
+    width: 299px;
+  }
+  @media (min-width: 377px) {
+    width: 100%;
   }
 
   @media (min-width: 768px) {
@@ -84,7 +36,6 @@ width:100%;
     padding: 60px 165px;
   }
 `;
-
 
 export const AvatarWrap = styled.div`
   display: flex;
@@ -127,7 +78,6 @@ export const Img = styled.img`
   @media (min-width: 767px) {
     width: 124px;
     height: 120px;
-  
   }
 `;
 
@@ -148,7 +98,6 @@ export const AddIcon = styled(Icon)`
   @media (max-width: 767px) {
     width: 14px;
     height: 14px;
-  
   }
   &:hover,
   &:focus {
@@ -210,7 +159,7 @@ export const FormInputBox = styled.div`
     }
   }
   @media (min-width: 768px) {
-    max-width:354px;
+    max-width: 354px;
     row-gap: 24px;
     font-size: 14px;
     line-height: calc((18 / 14) * 100%);
@@ -221,7 +170,7 @@ export const Label = styled.label`
   font-family: Inter;
   font-weight: 400;
   font-size: 12px;
-  
+
   line-height: calc((14 / 12) * 100%);
   color: #111111;
 
@@ -254,7 +203,7 @@ export const Label = styled.label`
   }
 `;
 
-export const IconDone= styled(IconSuccess)`
+export const IconDone = styled(IconSuccess)`
   width: 18px;
   height: 18px;
   position: absolute;
@@ -262,8 +211,6 @@ export const IconDone= styled(IconSuccess)`
   top: 30%;
   right: 18px;
   @media (min-width: 767px) {
-    /* top: 33%;
-    right: 18px; */
     top: 11px;
     width: 24px;
     height: 24px;
@@ -282,10 +229,11 @@ export const IconError = styled(IconErrors)`
     top: 11px;
     width: 24px;
     height: 24px;
-  }`;
+  }
+`;
 
 export const Field = styled(FormikField)`
-   /* margin-top: 8px; */
+  /* margin-top: 8px; */
   width: 100%;
   height: 42px;
   border: 1px solid rgba(17, 17, 17, 0.15);
@@ -313,7 +261,8 @@ export const Field = styled(FormikField)`
     font-family: Inter;
     font-size: 14px;
     line-height: 1.29;
-    color: rgba(17, 17, 17, 0.15);
+    color: deeppink;
+    /* color: rgba(17, 17, 17, 0.15); */
 
     @media (min-width: 768px) {
       font-size: 16px;
@@ -360,9 +309,21 @@ export const FormBtnWrap = styled.div`
 `;
 
 export const FormBtn = styled.button`
-  width: 262px;
-  height: 48px;
+  /* display:block;
+ 
+ width: 262px;
 
+
+
+
+*/
+
+  width: 100%;
+  @media (min-width: 374px) {
+    width: 262px;
+  }
+  height: 48px;
+  padding: 14px;
   font-family: Inter;
   font-weight: 600;
   font-size: 14px;
@@ -373,8 +334,8 @@ export const FormBtn = styled.button`
   border-radius: 16px;
   color: #ffffff;
   background-color: #3e85f3;
-  cursor: pointer;
 
+  cursor: pointer;
   :disabled {
     background-color: #dcebf7;
   }

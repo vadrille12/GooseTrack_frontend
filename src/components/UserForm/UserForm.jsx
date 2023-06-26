@@ -19,16 +19,13 @@ import {
   Field,
   IconDone,
   IconError,
-  DatePick,
 } from './UserForm.styled';
 
 import goose from '../../images/mainPage/mobile/mobile_goose_mainPage.png';
 
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { useEffect } from 'react';
-
-import './DatePicker/Calendar.css';
+import { Calendar } from './Calendar/Calendar';
 
 const regex = {
   name: /^[a-z]*$/,
@@ -39,9 +36,9 @@ const regex = {
   skype: /^\S[\S\s]{0,28}\S$/,
 };
 const originalDate = new Date();
-console.log('originalDate', originalDate);
+// console.log('originalDate', originalDate);
 export const formattedDate = originalDate.toISOString().slice(0, 10);
-console.log('formattedDate', formattedDate);
+// console.log('formattedDate', formattedDate);
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
@@ -80,16 +77,18 @@ const userSchema = Yup.object().shape({
     ),
 });
 
+
+
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
-  const [startDate, setStartDate] = useState(new Date());
-  // console.log('startDate', startDate);
+  const [birthdayDate, setBirthdayDate] = useState(new Date());
+
   const [formData, setFormData] = useState({
     name: 'User Name',
     email: 'email@mail.com',
     phone: '+38 097 111 11 11',
     skype: 'Add skype',
-    birthday: 'YYYY-MM-DD',
+    birthday: formattedDate,
     avatarUrl: null,
   });
 
@@ -102,11 +101,9 @@ export const UserForm = () => {
     birthday: '',
     avatarUrl: '',
   };
+ 
 
-  useEffect(() => {}, []);
-
-  const { name, email, skype, phone } = formData;
-
+  const { name, email, skype, phone, birthday } = formData;
 
   return (
     <Wrap>
@@ -173,7 +170,7 @@ export const UserForm = () => {
                   />
 
                   <UserWrapInfo>
-                    <UserName>User nickname</UserName>
+                    <UserName>{name}</UserName>
                     <User>User</User>
                   </UserWrapInfo>
                 </AvatarWrap>
@@ -198,41 +195,32 @@ export const UserForm = () => {
                     </Label>
 
                     <Label htmlFor="birthday" className={isValid('birthday')}>
-                      Birthday
-                      <Input>
-                        <DatePick
-                          className={isValid('birthday')}
-                          id="birthday"
-                          name="birthday"
-                          // input={true}
-
-                          maxDate={new Date()}
-                          dateFormat="yyyy-MM-dd"
-                          selected={startDate}
-                          onChange={date => setStartDate(date)}
-                          date={values.birthday}
-                          placeholderText={formattedDate}
-                          clearIcon={null}
-                          // calendarIcon={<IconDone />}
-                          // locale="en-GB"
-                          formatShortWeekday={(locale, date) =>
-                            date
-                              .toLocaleDateString('en-GB', { weekday: 'short' })
-                              .slice(0, 1)
-                          }
-                          showPopperArrow={false}
-                          disabledKeyboardNavigation
-                          calendarClassName="my-calendar"
-                         
-                        />
-                        {isValid('birthday') === 'is-valid' && (
-                            <p>This is a CORRECT birthday</p>
-                          ) && <IconDone />}
-                        {isValid('birthday') === 'is-invalid' && <IconError />}
-                        <ErrorMessage name="birthday" component="div" />
-                      </Input>
+                      Birthday calendar
+                      <Calendar
+                        className={isValid('birthday')}
+                        id="birthday"
+                        name="birthday"
+                        type="date"
+                        placeholder={birthday}
+                        value={values.birthday}
+                        selected={birthdayDate}
+                        onChange={data => {
+                          setBirthdayDate(data);
+                        }}
+                        input={true}
+                        showYearDropdown
+                        yearDropdownItemNumber={100}
+                        scrollableYearDropdown
+                       
+                      />
+                      {isValid('birthday') === 'is-valid' && (
+                          <p>This is a CORRECT birthday</p>
+                        ) && <IconDone />}
+                      {isValid('birthday') === 'is-invalid' && <IconError />}
+                      <ErrorMessage name="birthday" component="div" />
                     </Label>
 
+                   
                     <Label htmlFor="email" className={isValid('email')}>
                       Email
                       <Input>
