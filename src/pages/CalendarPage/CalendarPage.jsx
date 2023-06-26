@@ -1,4 +1,5 @@
 import { CalendarToolBar } from 'components/CalendarToolBar/CalendarToolBar';
+import { CalendarPageContainer } from './CalendarPage.styled';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router';
@@ -37,7 +38,7 @@ export default function CalendarPage() {
   };
 
   return (
-    <div>
+    <CalendarPageContainer>
       <CalendarToolBar
         today={moment(workDate)}
         typeSelect={typeSelect}
@@ -47,6 +48,6 @@ export default function CalendarPage() {
       <Suspense>
         <Outlet />
       </Suspense>
-    </div>
+    </CalendarPageContainer>
   );
 }

@@ -17,7 +17,7 @@ export const DayCalendarHeadStyledMobile = styled.ul`
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 374px) {
     width: calc(100% - 20px);
     height: auto;
     padding: 10px;
