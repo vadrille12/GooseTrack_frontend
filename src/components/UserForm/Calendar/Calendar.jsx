@@ -1,4 +1,4 @@
-import { IconDone, IconError } from '../UserForm.styled';
+// import { IconDone, IconError } from '../UserForm.styled';
 import { DatePickerCalendar, DatePickerInput } from './Calendar.styled';
 
 export const Calendar = ({
