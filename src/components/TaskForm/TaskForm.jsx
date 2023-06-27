@@ -1,7 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { ReactComponent as IconClose } from 'images/close.svg';
 import { ReactComponent as IconAdd } from 'images/addIcon.svg';
 import { ReactComponent as IconEdit } from 'images/tasksSvg/edit.svg';
 
@@ -10,6 +9,7 @@ import {
   ButtonCancel,
   ButtonCloseWrap,
   ButtonWrapper,
+  CloseIcon,
   ErrorMessage,
   Form,
   InputTime,
@@ -125,7 +125,7 @@ export const TaskForm = ({ onClose, action }) => {
           aria-label="close button"
           onClick={onClose}
         >
-          <IconClose />
+          <CloseIcon />
         </ButtonCloseWrap>
       </Form>
     </Formik>
