@@ -38,6 +38,18 @@ export const StatisticsChart = () => {
       barCategoryGap={165}
       barGap={14}
     >
+      <defs>
+        <linearGradient id="colorM" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="rgb(255, 210, 221)" stopOpacity={0} />
+          <stop offset="100%" stopColor="rgb(255, 210, 221)" stopOpacity={1} />
+        </linearGradient>
+      </defs>
+      <defs>
+        <linearGradient id="colorD" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="rgb(62, 133, 243)" stopOpacity={0} />
+          <stop offset="100%" stopColor="rgb(62, 133, 243)" stopOpacity={1} />
+        </linearGradient>
+      </defs>
       <CartesianGrid
         x={100}
         stroke="#E3F3FF"
@@ -53,7 +65,7 @@ export const StatisticsChart = () => {
       <Bar
         name="By Day"
         dataKey="byDay"
-        fill="#FFD1DC"
+        fill="url(#colorM)"
         barSize={27}
         radius={10}
       >
@@ -62,7 +74,7 @@ export const StatisticsChart = () => {
       <Bar
         name="By Month"
         dataKey="byMonth"
-        fill="#3E86F5"
+        fill="url(#colorD)"
         barSize={27}
         radius={10}
       >
