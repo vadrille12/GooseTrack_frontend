@@ -29,6 +29,7 @@ import { useState } from 'react';
 import { Calendar } from './Calendar/Calendar';
 
 import { useEffect } from 'react';
+// import { useSelector } from 'react-redux';
 
 const regex = {
   name: /^[a-z]*$/,
@@ -83,6 +84,10 @@ export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthdayDate, setBirthdayDate] = useState(null);
 
+  // const { user } = useSelector(selectUser);
+
+
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -91,6 +96,8 @@ export const UserForm = () => {
     birthday: new Date(),
     avatarUrl: '',
   });
+
+  console.log(formData)
 
   useEffect(() => {
     const saveFormData = localStorage.getItem('formDataUserAccountPage');
