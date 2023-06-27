@@ -5,7 +5,7 @@ export const TaskItem = styled.div`
   display: block;
   flex-direction: row;
   align-items: center;
-  padding: 25px 18px 20px 18px;
+  padding: 0 7px 0 0;
   margin-top: 14px;
 
   min-width: 335px;
@@ -37,7 +37,7 @@ export const TaskItem = styled.div`
   }
 `;
 
-export const TasksColumnStyled = styled.li`
+export const TasksColumnStyled = styled.div`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;

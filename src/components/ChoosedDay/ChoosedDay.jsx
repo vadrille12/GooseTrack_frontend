@@ -229,7 +229,7 @@ const ChoosedDay = () => {
   return (
     <ChoosedDayStyled>
       <DayCalendarHead />
-      <TasksColumnsList tasks={filteredTasks} targetDate={targetDate} />
+      <TasksColumnsList tasks={filteredTasks} />
     </ChoosedDayStyled>
   );
 };
