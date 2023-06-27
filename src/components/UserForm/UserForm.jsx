@@ -19,6 +19,7 @@ import {
   Field,
   IconDone,
   IconError,
+  IconArrowDown,
 } from './UserForm.styled';
 
 import goose from '../../images/mainPage/mobile/mobile_goose_mainPage.png';
@@ -27,16 +28,17 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import { Calendar } from './Calendar/Calendar';
 
+import { useEffect } from 'react';
+
 const regex = {
   name: /^[a-z]*$/,
   email:
     /^(?!.@.@.$)(?!.@.--...$)(?!.@.-..$)(?!.@.-$)((.*)?@[a-z0-9]{1,}.[a-z]{2,}(.[a-z]{2,})?)$/,
-  phone:
-    /^[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,3}[-\s.]?[0-9]{1,4}[-\s.]?[0-9]{1,4}$/,
+  phone: /^\+380\d{9}$/,
   skype: /^\S[\S\s]{0,28}\S$/,
 };
+
 const originalDate = new Date();
-// console.log('originalDate', originalDate);
 export const formattedDate = originalDate.toISOString().slice(0, 10);
 // console.log('formattedDate', formattedDate);
 
@@ -61,9 +63,9 @@ const userSchema = Yup.object().shape({
     .required('phone is required')
     .matches(
       regex.phone,
-      'Phone must not contain spaces and letters. At most 13 digits is required'
+      'The phone number must start with +38 and be 10 digits long'
     )
-    .min(6, 'At least 7 digits is required')
+    .min(13, 'At least 12 digits is required')
     .max(13, 'At most 13 digits is required'),
   skype: Yup.string()
     .matches(/^\S[\S\s]{0,28}\S$/, 'Skype must be between 2 and 16 characters')
@@ -77,46 +79,72 @@ const userSchema = Yup.object().shape({
     ),
 });
 
-
-
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
-  const [birthdayDate, setBirthdayDate] = useState(new Date());
+  const [birthdayDate, setBirthdayDate] = useState(null);
 
   const [formData, setFormData] = useState({
-    name: 'User Name',
-    email: 'email@mail.com',
-    phone: '+38 097 111 11 11',
-    skype: 'Add skype',
-    birthday: formattedDate,
-    avatarUrl: null,
-  });
-
-  console.log(formData);
-  const initialValues = {
     name: '',
     email: '',
-    skype: '',
     phone: '',
-    birthday: '',
+    skype: '',
+    birthday: new Date(),
     avatarUrl: '',
-  };
- 
+  });
 
-  const { name, email, skype, phone, birthday } = formData;
+  useEffect(() => {
+    const saveFormData = localStorage.getItem('formDataUserAccountPage');
+    if (saveFormData) {
+      setFormData(JSON.parse(saveFormData));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('formDataUserAccountPage', JSON.stringify(formData));
+  }, [formData]);
+
 
   return (
     <Wrap>
       <div>
         <Formik
-          initialValues={initialValues}
+          enableReinitialize={true}
+          initialValues={{
+            name: formData.name || '',
+            email: formData.email || '',
+            phone: formData.phone || '',
+            skype: formData.skype || '',
+            birthday:
+              birthdayDate || formData.birthday
+                ? new Date(birthdayDate || formData.birthday)
+                : '',
+            avatarUrl: formData.avatarUrl || '',
+          }}
           validationSchema={userSchema}
           onSubmit={async values => {
+            console.log('values', values);
+            const formData = new FormData();
+            console.log('new FormData()', formData);
+            formData.append('email', values.email);
+            formData.append('birthday', values.birthday);
+            formData.append('phone', values.phone);
+
+            formData.append('skype', values.skype);
+            formData.append('avatarUrl', values.avatar);
             setFormData(values);
             alert(JSON.stringify(values, null, 2));
           }}
         >
-          {({ isSubmitting, errors, touched, values }) => {
+          {({
+            handleSubmit,
+            handleChange,
+            handleBlur,
+            dirty,
+            isSubmitting,
+            errors,
+            touched,
+            values,
+            setFieldValue,
+          }) => {
             const isValid = field =>
               touched[field] && errors[field]
                 ? 'is-invalid'
@@ -157,20 +185,15 @@ export const UserForm = () => {
                     accept="image/*,.png,.jpg,.gif,.web"
                     onChange={e => {
                       const file = e.target.files[0];
-                      console.log(file);
-                      if (file) {
-                        setFormData({
-                          ...formData,
-                          avatarUrl: URL.createObjectURL(file),
-                        });
-                        setAvatarURL(file);
-                      }
+                      setFieldValue('avatarUrl', file);
+                      setAvatarURL(file);
+                      setFieldValue('avatarUrl', URL.createObjectURL(file));
                     }}
                     style={{ display: 'none' }}
                   />
 
                   <UserWrapInfo>
-                    <UserName>{name}</UserName>
+                    <UserName>{formData.name || 'User NickName'}</UserName>
                     <User>User</User>
                   </UserWrapInfo>
                 </AvatarWrap>
@@ -184,45 +207,45 @@ export const UserForm = () => {
                           className={isValid('name')}
                           id="name"
                           name="name"
-                          placeholder={name}
+                          placeholder={'User Name'}
+                          value={values.name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          type="text"
                         />
-                        {isValid('name') === 'is-valid' && (
-                            <p>This is a CORRECT name</p>
-                          ) && <IconDone />}
+                        {isValid('name') === 'is-valid' && 
+                            <IconDone />}
                         {isValid('name') === 'is-invalid' && <IconError />}
                         <ErrorMessage name="name" component="div" />
                       </Input>
                     </Label>
 
                     <Label htmlFor="birthday" className={isValid('birthday')}>
-                      Birthday calendar
-                     <Input>
-                      <Calendar
-                        className={isValid('birthday')}
-                        id="birthday"
-                        name="birthday"
-                        type="date"
-                        placeholder={birthday}
-                        value={values.birthday}
-                        selected={birthdayDate}
-                        onChange={data => {
-                          setBirthdayDate(data);
-                        }}
-                        input={true}
-                        showYearDropdown
-                        yearDropdownItemNumber={100}
-                        scrollableYearDropdown
-                       
-                      />
-                      {isValid('birthday') === 'is-valid' && (
-                          <p>This is a CORRECT birthday</p>
-                        ) && <IconDone />}
-                      {isValid('birthday') === 'is-invalid' && <IconError />}
-                      <ErrorMessage name="birthday" component="div" />
-                   </Input>
+                      Birthday
+                      <Input>
+                        <Calendar
+                          className={isValid('birthday')}
+                          id="birthday"
+                          name="birthday"
+                          type="date"
+                          selected={new Date(values.birthday)}
+                          onChange={e => {
+                            setFieldValue('birthday', e);
+                            setBirthdayDate();
+                          }}
+                          placeholder={'Birthday Date'}
+                          value={values.birthday}
+                        />
+                        {isValid('birthday') === 'is-valid'
+                          ?  <IconDone />
+                          : <IconArrowDown /> 
+                            }
+
+                        {isValid('birthday') === 'is-invalid' && <IconError />}
+                        <ErrorMessage name="birthday" component="div" />
+                      </Input>
                     </Label>
 
-                   
                     <Label htmlFor="email" className={isValid('email')}>
                       Email
                       <Input>
@@ -230,14 +253,13 @@ export const UserForm = () => {
                           className={isValid('email')}
                           id="email"
                           name="email"
-                          placeholder={email}
+                          placeholder={'email@mail.com'}
                           type="email"
                           value={values.email}
-                          title="Email must be in the format username@domain.com"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                         />
-                        {isValid('email') === 'is-valid' && (
-                            <p>This is a CORRECT email</p>
-                          ) && <IconDone />}
+                        {isValid('email') === 'is-valid' &&  <IconDone />}
                         {isValid('email') === 'is-invalid' && <IconError />}
                         <ErrorMessage name="email" component="div" />
                       </Input>
@@ -252,12 +274,10 @@ export const UserForm = () => {
                           id="phone"
                           name="phone"
                           type="tel"
-                          placeholder={phone}
+                          placeholder={'+38 097 111 11 11'}
                           value={values.phone}
                         />
-                        {isValid('phone') === 'is-valid' && (
-                            <p>This is a CORRECT phone</p>
-                          ) && <IconDone />}
+                        {isValid('phone') === 'is-valid' &&  <IconDone />}
                         {isValid('phone') === 'is-invalid' && <IconError />}
                         <ErrorMessage name="phone" component="div" />
                       </Input>
@@ -269,12 +289,13 @@ export const UserForm = () => {
                           className={isValid('skype')}
                           id="skype"
                           name="skype"
-                          placeholder={skype}
+                          type="text"
+                          placeholder={'Add skype'}
                           value={values.skype}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                         />
-                        {isValid('skype') === 'is-valid' && (
-                            <p>This is a CORRECT skype</p>
-                          ) && <IconDone />}
+                        {isValid('skype') === 'is-valid' &&   <IconDone />}
                         {isValid('skype') === 'is-invalid' && <IconError />}
                         <ErrorMessage name="skype" component="div" />
                       </Input>
@@ -282,7 +303,7 @@ export const UserForm = () => {
                   </FormInputBox>
                 </FormInputWrap>
                 <FormBtnWrap>
-                  <FormBtn type="submit" disabled={isSubmitting}>
+                  <FormBtn type="submit" disabled={!dirty}>
                     Save changes
                   </FormBtn>
                 </FormBtnWrap>
