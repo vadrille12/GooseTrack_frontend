@@ -1,4 +1,4 @@
-// import { IconDone, IconError } from '../UserForm.styled';
+
 import { DatePickerCalendar, DatePickerInput } from './Calendar.styled';
 
 export const Calendar = ({
@@ -25,9 +25,9 @@ export const Calendar = ({
         input={true}
         maxDate={new Date()}
         dateFormat="yyyy-MM-dd"
-        showYearDropdown
-        yearDropdownItemNumber={100}
-        scrollableYearDropdown
+        // showYearDropdown
+        // yearDropdownItemNumber={100}
+        // scrollableYearDropdown
       />
     </DatePickerCalendar>
   );
