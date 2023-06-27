@@ -40,7 +40,7 @@ export const ContentWrapper = styled.div`
   h1 {
     margin-top: 0;
     margin-bottom: 0;
-    font-family: 'Coolvetica';
+    font-family: 'CoolveticaRegular';
     font-weight: 400;
     font-size: 44px;
     line-height: 1.09;
@@ -67,6 +67,7 @@ export const ContentWrapper = styled.div`
     }
 
     span {
+      margin-right: 5px;
       font-style: italic;
     }
   }
