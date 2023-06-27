@@ -6,9 +6,9 @@ export const AddTaskBtnStyled = styled.button`
   align-items: center;
   justify-content: center;
   padding: 16px 0 16px 0;
-  margin-top: 14px;
+  margin: 0 auto 10px auto;
 
-  width: 299px;
+  width: 297px;
   height: 48px;
 
   background: #e3f3ff;
@@ -35,7 +35,8 @@ export const AddTaskBtnStyled = styled.button`
   }
 
   @media screen and (min-width: 768px) {
-    margin-top: 32px;
+    margin: 32px auto 28px auto;
+    width: 304px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -46,5 +47,15 @@ export const AddTaskBtnStyled = styled.button`
     margin-bottom: 5px;
     font-size: 30px;
     font-weight: 400;
+  }
+`;
+
+export const AddTaskBtnContainer = styled.div`
+  padding-left: 11px;
+  padding-right: 6px;
+
+  @media screen and (min-width: 1440px) {
+    padding-left: 13px;
+    padding-right: 6px;
   }
 `;

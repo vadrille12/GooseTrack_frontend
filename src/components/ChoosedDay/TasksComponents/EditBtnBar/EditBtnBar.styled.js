@@ -120,6 +120,8 @@ export const ChangeCategoryContainer = styled.div`
 
 export const MoveToInProgress = styled.div`
   button {
+    /* position: absolute; */
+
     font-family: Inter;
     font-size: 14px;
     font-weight: 500;

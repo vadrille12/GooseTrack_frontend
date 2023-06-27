@@ -7,6 +7,8 @@ export const ColumnHeadBarStyled = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 
+  padding: 25px 18px 0 18px;
+
   margin-bottom: 30px;
 
   @media screen and (min-width: 768px) {

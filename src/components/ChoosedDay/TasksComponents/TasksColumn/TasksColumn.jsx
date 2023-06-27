@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AddTaskBtn } from '../AddTaskBtn/AddTaskBtn';
 import { ColumnHeadBar } from '../ColumnHeadBar/ColumnHeadBar';
 import { ColumnTasksList } from '../ColumnTasksList/ColumnTasksList';
@@ -17,10 +17,6 @@ export const TasksColumn = ({ tasks }) => {
   const closeModal = () => {
     setShowModal(false);
   };
-
-  useEffect(() => {
-    tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
-  }, [tasks]);
 
   const categorizedTasks = {
     'To do': tasks.filter(task => task.category === 'to-do'),

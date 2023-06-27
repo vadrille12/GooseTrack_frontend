@@ -4,8 +4,9 @@ import { variables } from '../../../../Styles/GlobalStyle';
 export const TaskCardStyled = styled.div`
   display: block;
   justify-content: center;
-  width: 299px;
+  width: 296px;
   height: 108px;
+  /* position: relative; */
 
   padding: 14px 14px 18px 14px;
 
@@ -13,7 +14,7 @@ export const TaskCardStyled = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
 
-  overflow: hidden;
+  /* overflow: hidden; */
   text-overflow: ellipsis;
   white-space: nowrap;
 
@@ -26,6 +27,7 @@ export const TaskCardStyled = styled.div`
 
   @media screen and (min-width: 768px) {
     height: 112px;
+    width: 300px;
   }
 
   @media screen and (min-width: 1440px) {
