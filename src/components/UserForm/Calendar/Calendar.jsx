@@ -1,16 +1,14 @@
-import { IconDone, IconError } from '../UserForm.styled';
 import { DatePickerCalendar, DatePickerInput } from './Calendar.styled';
 
 export const Calendar = ({
   name,
   onChange,
-className,
+  className,
   type,
   value,
   selected,
   placeholder,
 }) => {
- 
   return (
     <DatePickerCalendar>
       <DatePickerInput
@@ -30,7 +28,6 @@ className,
         yearDropdownItemNumber={100}
         scrollableYearDropdown
       />
-     
     </DatePickerCalendar>
   );
 };

@@ -180,8 +180,8 @@ export const DatePickerInput = styled(DatePicker)`
     font-family: Inter;
     font-size: 14px;
     line-height: 1.29;
-    color: deeppink;
-    /* color: rgba(17, 17, 17, 0.15); */
+  
+    color: rgba(17, 17, 17, 0.15);
 
     @media (min-width: 768px) {
       font-size: 16px;
