@@ -7,6 +7,7 @@ import {
 import { ReactComponent as Icon } from 'images/user/cross.svg';
 import { ReactComponent as IconErrors } from 'images/user/error.svg';
 import { ReactComponent as IconSuccess } from 'images/user/done.svg';
+import { ReactComponent as IconArrow } from 'images/user/arrow-down.svg';
 
 export const Wrap = styled.div`
   position: relative;
@@ -229,6 +230,20 @@ export const IconError = styled(IconErrors)`
     top: 11px;
     width: 24px;
     height: 24px;
+  }
+`;
+
+export const IconArrowDown = styled(IconArrow)`
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  align-content: center;
+  top: 35%;
+  right: 40px;
+  @media (min-width: 768px) {
+    top: 14px;
+    width: 18px;
+    height: 18px;
   }
 `;
 
