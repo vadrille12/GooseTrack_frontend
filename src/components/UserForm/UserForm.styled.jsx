@@ -276,8 +276,8 @@ export const Field = styled(FormikField)`
     font-family: Inter;
     font-size: 14px;
     line-height: 1.29;
-    color: deeppink;
-    /* color: rgba(17, 17, 17, 0.15); */
+   
+    color: rgba(17, 17, 17, 0.15);
 
     @media (min-width: 768px) {
       font-size: 16px;
@@ -303,7 +303,6 @@ export const Input = styled.div`
   width: 100%;
   position: relative;
   margin-top: 8px;
-  /* margin-bottom: 8px; */
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`
