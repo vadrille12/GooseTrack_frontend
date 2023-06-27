@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ReactComponent as IconClose } from 'images/close.svg';
+
 import {
   Form as FormikForm,
   Field,
@@ -84,6 +86,7 @@ export const InputTime = styled(Field)`
   border-radius: 8px;
   background: #f6f6f6;
   border: none;
+  cursor: pointer;
 
   color: #343434;
   font-size: 14px;
@@ -202,6 +205,7 @@ export const ButtonAction = styled.button`
   border-radius: 8px;
   border: none;
   background-color: #3e85f3;
+  cursor: pointer;
 
   color: #fff;
   text-align: center;
@@ -209,6 +213,13 @@ export const ButtonAction = styled.button`
   font-family: Inter;
   font-weight: 600;
   line-height: 18px;
+
+  transition: background-color 250ms linear;
+
+  &:hover,
+  &:focus {
+    background-color: #2b78ef;
+  }
 
   @media (min-width: 768px) {
     width: 182px;
@@ -225,6 +236,7 @@ export const ButtonCancel = styled.button`
   border-radius: 8px;
   border: none;
   background: #efefef;
+  cursor: pointer;
 
   color: #111;
   text-align: center;
@@ -232,6 +244,13 @@ export const ButtonCancel = styled.button`
   font-family: Inter;
   font-weight: 600;
   line-height: 18px;
+
+  transition: background-color 250ms linear;
+
+  &:hover,
+  &:focus {
+    background-color: #e7e3e3;
+  }
 
   @media (min-width: 768px) {
     width: 182px;
@@ -260,4 +279,14 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   font-size: 12px;
   font-family: Inter;
   line-height: 14px;
+`;
+
+export const CloseIcon = styled(IconClose)`
+  transition: stroke 250ms linear;
+  stroke: #111111;
+
+  &:hover,
+  &:focus {
+    stroke: #2b78ef;
+  }
 `;
