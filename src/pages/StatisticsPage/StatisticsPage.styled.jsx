@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-export const StatisticsPageContainer = styled.section`
+
+export const StatisticsContainer = styled.section`
   border-radius: 16px;
   @media screen and (max-width: 375px) {
     max-width: 335px;
@@ -29,5 +30,39 @@ export const StatisticsPageContainer = styled.section`
     padding-bottom: 104px;
     padding-left: 113px;
     padding-right: 114px;
+  }
+`;
+
+export const ChartContainer = styled.div`
+  margin-top: auto;
+
+  border-radius: 29px;
+  border: 0.8px solid #e3f3ff;
+  @media screen and (max-width: 375px) {
+    max-width: 307px;
+  }
+
+  @media screen and (min-width: 376px) and (max-width: 767px) {
+    width: 307px;
+    height: 413px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 640px;
+    height: 424px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 860px;
+    height: 440px;
+    padding: 40px;
   }
 `;
