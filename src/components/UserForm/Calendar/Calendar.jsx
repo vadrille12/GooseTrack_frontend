@@ -1,24 +1,36 @@
-import { DatePickerCalendar , DatePickerInput} from "./Calendar.styled"
+import { IconDone, IconError } from '../UserForm.styled';
+import { DatePickerCalendar, DatePickerInput } from './Calendar.styled';
 
-export const Calendar = ({ name, date, type, value, selected, placeholder }) => {
+export const Calendar = ({
+  name,
+  onChange,
+className,
+  type,
+  value,
+  selected,
+  placeholder,
+}) => {
+ 
   return (
     <DatePickerCalendar>
       <DatePickerInput
+        className={className}
         id={name}
         name={name}
-        type={type}
+        // type={type}
+
         selected={selected}
+        value={value}
         placeholder={placeholder}
-        formatShortWeekday={(locale, date) =>
-          date.toLocaleDateString('en-GB', { weekday: 'short' }).slice(0, 1)
-        }
+        onChange={onChange}
+        input={true}
         maxDate={new Date()}
         dateFormat="yyyy-MM-dd"
         showYearDropdown
         yearDropdownItemNumber={100}
         scrollableYearDropdown
-        input={true}
       />
+     
     </DatePickerCalendar>
   );
 };

@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export const DatePickerCalendar = styled.div`
   display: block;
+  /* margin-top: 8px; */
   .react-datepicker {
     position: absolute;
     top: 5px;
@@ -151,7 +152,7 @@ export const DatePickerInput = styled(DatePicker)`
   box-sizing: border-box;
   display: block;
   height: 42px;
-  width:100%;
+  width: 100%;
   border: 1px solid rgba(17, 17, 17, 0.15);
   border-radius: 8px;
   padding: 14px;
@@ -179,7 +180,8 @@ export const DatePickerInput = styled(DatePicker)`
     font-family: Inter;
     font-size: 14px;
     line-height: 1.29;
-    color: rgba(17, 17, 17, 0.15);
+    color: deeppink;
+    /* color: rgba(17, 17, 17, 0.15); */
 
     @media (min-width: 768px) {
       font-size: 16px;
