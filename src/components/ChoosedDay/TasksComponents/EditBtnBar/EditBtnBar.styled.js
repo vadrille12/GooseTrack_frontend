@@ -75,7 +75,9 @@ export const ChangeCategoryContainer = styled.div`
   height: 70px;
   border-radius: 8px;
   background-color: ${variables.colors.background};
+
   position: absolute;
+
   gap: 2px;
 
   color: #343434;

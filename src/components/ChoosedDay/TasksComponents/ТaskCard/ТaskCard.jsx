@@ -11,7 +11,7 @@ import {
 } from './ТaskCard.styled';
 
 export const TaskCard = ({ task, onOpen, setAction }) => {
-  const { title, priority } = task;
+  const { title, priority, category } = task;
 
   return (
     <TaskCardStyled>
@@ -23,7 +23,7 @@ export const TaskCard = ({ task, onOpen, setAction }) => {
           {priority === 'medium' && <StatusMedium>Medium</StatusMedium>}
           {priority === 'high' && <StatusHigh>High</StatusHigh>}
         </AvatarGroupContainer>
-        <EditBtnBar onOpen={onOpen} setAction={setAction} />
+        <EditBtnBar onOpen={onOpen} setAction={setAction} category={category} />
       </TaskContainer>
     </TaskCardStyled>
   );

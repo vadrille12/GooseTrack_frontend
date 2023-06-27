@@ -9,7 +9,7 @@ import {
   MoveToDone,
 } from './EditBtnBar.styled';
 
-export const EditBtnBar = ({ onOpen, setAction }) => {
+export const EditBtnBar = ({ onOpen, setAction, category }) => {
   const [isActiv, setIsActiv] = useState(false);
 
   const handleOpenMoveBar = () => {
@@ -25,18 +25,50 @@ export const EditBtnBar = ({ onOpen, setAction }) => {
       <MoveBtn onClick={handleOpenMoveBar}></MoveBtn>
 
       {isActiv && (
-        <ChangeCategoryContainer>
-          <MoveToInProgress>
-            <button>
-              In progress <MoveBtn />
-            </button>
-          </MoveToInProgress>
-          <MoveToDone>
-            <button>
-              Done <MoveBtn />
-            </button>
-          </MoveToDone>
-        </ChangeCategoryContainer>
+        <>
+          {category === 'done' && (
+            <ChangeCategoryContainer>
+              <MoveToInProgress>
+                <button>
+                  In progress <MoveBtn />
+                </button>
+              </MoveToInProgress>
+              <MoveToDone>
+                <button>
+                  To do <MoveBtn />
+                </button>
+              </MoveToDone>
+            </ChangeCategoryContainer>
+          )}
+          {category === 'to-do' && (
+            <ChangeCategoryContainer>
+              <MoveToInProgress>
+                <button>
+                  In progress <MoveBtn />
+                </button>
+              </MoveToInProgress>
+              <MoveToDone>
+                <button>
+                  Done <MoveBtn />
+                </button>
+              </MoveToDone>
+            </ChangeCategoryContainer>
+          )}
+          {category === 'in-progress' && (
+            <ChangeCategoryContainer>
+              <MoveToInProgress>
+                <button>
+                  To do <MoveBtn />
+                </button>
+              </MoveToInProgress>
+              <MoveToDone>
+                <button>
+                  Done <MoveBtn />
+                </button>
+              </MoveToDone>
+            </ChangeCategoryContainer>
+          )}
+        </>
       )}
       <EditBtn
         onClick={() => {
