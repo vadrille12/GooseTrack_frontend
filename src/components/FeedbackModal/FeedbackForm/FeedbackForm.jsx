@@ -1,6 +1,7 @@
 import ReactStars from "react-rating-stars-component";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
+
 import { ReactComponent as IconEdit } from "images/reviews/editPen.svg";
 import { ReactComponent as IconTrash } from "images/reviews/trash.svg";
 import { ReactComponent as IconClose } from 'images/close.svg';
@@ -17,30 +18,43 @@ import {
     WrapForReview, 
     BtnCloseWrap, 
     ErrorMessage } from "./FeedbackForm.styled";
+
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsFeedback } from "redux/reviews/selectors";
+import { addReview, deleteReview, editReview, fetchReviews } from "redux/reviews/operations";
 
 
 const FeedbackSchema = Yup.object().shape({
     review: Yup.string()
+      .min(10, 'review is too short')
       .max(300, 'review is too long')
       .required('review is required')
     })
 
 export const FeedbackForm = ({ onClose }) => {
+    const dispatch = useDispatch();
+    const isFeedback = useSelector(selectIsFeedback);
+
     const [ratingValue, setRatingValue] = useState(0);
     const [isEditActive, setIsEditActive] = useState(false);
-    const [isFeedback, setIsFeedback] = useState(false);
+    // const [isFeedback, setIsFeedback] = useState(false);
 
     const ratingChanged = (newRating) => {
         setRatingValue(newRating);
-        console.log(newRating);
     };
 
     const handleSubmit = (values, actions) => {
-        setIsEditActive(false);
+        const reviews = dispatch(fetchReviews());
+        console.log(reviews);
         values.rating = ratingValue;
-        console.log(values);
-        setIsFeedback(true);
+        if(isEditActive){
+            dispatch(editReview(values));
+        }
+        dispatch(addReview(values));
+
+        // setIsFeedback(true);
+        setIsEditActive(false);
         actions.resetForm();
         onClose();
     };
@@ -55,7 +69,8 @@ export const FeedbackForm = ({ onClose }) => {
     };
 
     const handleDelete = ()=> {
-        setIsFeedback(false);
+        // setIsFeedback(false);
+        dispatch(deleteReview());
         setIsEditActive(false);
         onClose();
     }

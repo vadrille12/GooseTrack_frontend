@@ -12,6 +12,7 @@ const reviewSlice = createSlice({
     reviews: [],
     isLoading: false,
     error: null,
+    isFeedback: false,
   },
   extraReducers: builder => {
     builder
@@ -33,10 +34,12 @@ const reviewSlice = createSlice({
       .addCase(addReview.fulfilled, (state, action) => {
         state.reviews = [...state.reviews, action.payload];
         state.isLoading = false;
+        state.isFeedback = true;
         state.error = null;
       })
       .addCase(addReview.rejected, (state, action) => {
         state.isLoading = false;
+        state.isFeedback = false;
         state.error = action.payload;
       })
       .addCase(deleteReview.pending, state => {
@@ -47,6 +50,7 @@ const reviewSlice = createSlice({
           review => review.id !== action.payload.id
         );
         state.isLoading = false;
+        state.isFeedback = false;
         state.error = null;
       })
       .addCase(deleteReview.rejected, (state, action) => {
