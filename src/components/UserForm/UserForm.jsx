@@ -25,13 +25,13 @@ import {
 import goose from '../../images/mainPage/mobile/mobile_goose_mainPage.png';
 
 import * as Yup from 'yup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Calendar } from './Calendar/Calendar';
 
 // import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
-import { updateUser } from 'redux/auth/operations';
+import { refresh } from 'redux/auth/operations';
 import dayjs from 'dayjs';
 
 const regex = {
@@ -83,8 +83,8 @@ const day = dayjs(new Date()).format('YYYY-MM-DD');
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthdayDate, setBirthdayDate] = useState(null);
-  const [setIsUpdateForm] = useState(null);
-  // Добавите на строку выше isUpdateForm, когда он будет нужен  -- Тимлид
+  const [isUpdateForm, setIsUpdateForm] = useState(null);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -96,8 +96,14 @@ export const UserForm = () => {
   // console.log('formData', formData);
 
   const user = useSelector(selectUser);
-  console.log('user UserForm', user);
+  // console.log('user UserForm', user);
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (isUpdateForm) {
+      dispatch(refresh());
+      setIsUpdateForm(null);
+    }
+  }, [dispatch, isUpdateForm, formData]);
 
   return (
     <Wrap>
@@ -105,8 +111,8 @@ export const UserForm = () => {
         <Formik
           enableReinitialize={true}
           initialValues={{
-            name: formData.name || '',
-            email: formData.email || '',
+            name: user.name || formData.name || '',
+            email: user.email || formData.email || '',
             phone: formData.phone || '',
             skype: formData.skype || '',
             birthday: birthdayDate || day || '',
@@ -123,7 +129,7 @@ export const UserForm = () => {
             formData.append('avatarUrl', values.avatar);
             setFormData(values);
             alert(JSON.stringify(values, null, 2));
-            await dispatch(updateUser(formData));
+            await dispatch(refresh(formData));
             setIsUpdateForm(true);
           }}
         >
@@ -132,7 +138,6 @@ export const UserForm = () => {
             handleChange,
             handleBlur,
             dirty,
-            isSubmitting,
             errors,
             touched,
             values,
@@ -186,7 +191,7 @@ export const UserForm = () => {
                   />
 
                   <UserWrapInfo>
-                    <UserName>{formData.name || 'User NickName'}</UserName>
+                    <UserName>{user.name || 'User NickName'}</UserName>
                     <User>User</User>
                   </UserWrapInfo>
                 </AvatarWrap>
