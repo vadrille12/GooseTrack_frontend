@@ -11,6 +11,8 @@ import InterSemiBoldItalic from '../fonts/inter/Inter-SemiBold-Italic.ttf';
 import CoolveticaRegular from '../fonts/coolvetica/Coolvetica-Regular.otf';
 import CoolveticaRegularItalic from '../fonts/coolvetica/Coolvetica-Regular-Italic.otf';
 
+const mode = 'dankl';
+
 export const variables = {
   colors: {
     primary: '#3E85F3',
@@ -22,7 +24,7 @@ export const variables = {
     white: '#FFFFFF',
     blackTitle: '#171820',
     black: '#111111',
-    text: '#343434',
+    text: 'rgba(52, 52, 52, 0.5)',
     mainYellow: '#F3B249',
     lightYellow: '#FCF0D4',
     redError: '#DA1414',
@@ -33,6 +35,29 @@ export const variables = {
     muted: '#F7F6F9',
     closeButton: '#111111',
     lightBlueBackground: '#CEEEFD',
+  },
+
+  colors_mode: {
+    text_1: mode === 'light' ? 'rgba(52, 52, 52, 0.5)' : '#FFFFFF',
+    text_2:
+      mode === 'light' ? 'rgba(52, 52, 52, 0.5)' : 'rgba(250, 250, 250, 0.3)',
+    text_3: mode === 'light' ? 'rgba(52, 52, 52, 1)' : '#FFFFFF',
+    title: mode === 'light' ? '#111' : '#FFF',
+    main_bg:
+      mode === 'light' ? 'rgba(247, 246, 249, 1)' : 'rgba(23, 24, 32, 1)',
+    page_bg: mode === 'light' ? '#FFF' : '#21222C',
+    date_btn:
+      mode === 'light' ? 'rgba(227, 243, 255, 1)' : 'rgba(33, 34, 44, 1)',
+    date_btn_active:
+      mode === 'light' ? 'rgba(202, 232, 255, 1)' : 'rgba(62, 133, 243, 1)',
+    date_btn_active_text:
+      mode === 'light' ? 'rgba(62, 133, 243, 1)' : '#FFFFFF',
+    bg_1: mode === 'light' ? '#FFFFFF' : 'rgba(19, 21, 26, 1)',
+    activeLink_text: mode === 'light' ? 'rgba(62, 133, 243, 1)' : '#FFFFFF',
+    activeLink_bg: mode === 'light' ? '#e3f3ff' : '#3E85F3',
+    main_border:
+      mode === 'light' ? 'rgba(220, 227, 229, 0.5)' : 'rgba(19, 21, 26, 1)',
+    tabl_border: mode === 'light' ? '#dce3e580' : 'rgba(255, 255, 255, 0.15)',
   },
 
   transitions: {
@@ -140,7 +165,7 @@ code {
 #root {
   transition: color ${variables.transitions.standart}, background-color ${variables.transitions.standart},
     box-shadow ${variables.transitions.standart}, transform ${variables.transitions.standart};
-  background: #f7f6f9;
+  background: ${variables.colors_mode.main_bg};
 }
 
 p {

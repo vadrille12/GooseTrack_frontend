@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Icon } from 'images/close.svg';
 import { ReactComponent as LogoIcon } from 'images/logo.svg';
+import { variables } from '../../Styles/GlobalStyle';
 
 export const Aside = styled.aside`
   /* height: 100vh; */
   min-height: 100%;
   width: 290px;
-  background-color: #fff;
+  background-color: ${variables.colors_mode.bg_1};
   padding-left: 24px;
   padding-right: 24px;
   padding-top: 32px;
@@ -16,7 +17,7 @@ export const Aside = styled.aside`
   flex-direction: column;
   justify-content: space-between;
   transition: 250ms ease-in-out;
-  border-right: 1px solid rgba(220, 227, 229, 0.5);
+  border-right: 1px solid ${variables.colors_mode.main_border};
 
   @media (max-width: 1279px) {
     position: absolute;
@@ -73,7 +74,7 @@ export const PanelTitle = styled.p`
   font-family: 'InterSemiBold';
   font-size: 12px;
   line-height: calc((15 / 12) * 100%);
-  color: #3e85f3;
+  color: ${variables.colors_mode.text_2};
   margin-bottom: 24px;
 
   @media (min-width: 768px) {
@@ -134,30 +135,30 @@ export const Link = styled(NavLink)`
   transition: 250ms ease-in-out;
   display: flex;
   align-items: center;
-  color: #34343480;
+  color: ${variables.colors_mode.text_1};
   &:hover,
   &:focus {
-    background-color: #e3f3ff;
+    background-color: ${variables.colors_mode.activeLink_bg};
   }
   &:hover span,
   &:focus span {
-    color: #3e85f3;
+    color: ${variables.colors_mode.activeLink_text};
   }
   &:hover svg,
   &:focus svg {
-    stroke: #3e85f3;
+    stroke: ${variables.colors_mode.activeLink_text};
   }
   &.active {
-    background: #e3f3ff;
-    color: #3e85f3;
+    background: ${variables.colors_mode.activeLink_bg};
+    color: ${variables.colors_mode.activeLink_text};
     transition: 250ms ease-in-out;
   }
   svg {
-    stroke: #34343480;
+    stroke: ${variables.colors_mode.text_1};
     transition: 250ms ease-in-out;
   }
   &.active svg {
-    stroke: #3e85f3;
+    stroke: ${variables.colors_mode.activeLink_text};
     transition: 250ms ease-in-out;
   }
 `;
@@ -180,7 +181,7 @@ export const Button = styled.button`
   transition: 250ms ease-in-out;
   &:hover,
   &:focus {
-    background: #e3f3ff;
+    background: #2b78ef;
   }
 
   @media (min-width: 768px) {
