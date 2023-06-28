@@ -11,20 +11,40 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+const percentagesLabel = props => {
+  const { x, y, width, value } = props;
+  const radius = 10;
+  const labelY = y - (y === 0 ? radius : 0);
+
+  return (
+    <svg>
+      <text
+        x={x + 2 + width / 2}
+        y={labelY}
+        fill="#343434"
+        textAnchor="middle"
+        dominantBaseline="middle"
+      >
+        {`${value}%`}
+      </text>
+    </svg>
+  );
+};
+
 const data = [
   {
     name: 'To Do',
-    byMonth: 20,
-    byDay: 50,
+    byMonth: 40,
+    byDay: 80,
   },
   {
     name: 'In Progress',
-    byMonth: 60,
+    byMonth: 90,
     byDay: 30,
   },
   {
     name: 'Done',
-    byMonth: 35,
+    byMonth: 75,
     byDay: 40,
   },
 ];
@@ -56,17 +76,30 @@ export const StatisticsChart = () => {
           </linearGradient>
         </defs>
         <CartesianGrid x={100} stroke="#E3F3FF" vertical={false} />
-        <XAxis dataKey="name" tickSize={0} tickMargin={16} />
+        <XAxis dataKey="name" tickSize={0} tickMargin={16} stroke="" />
         <YAxis
           ticks={[0, 20, 40, 60, 80, 100]}
           position="left"
           axisLine={false}
           tickLine={false}
           tickCount={6}
-          tickMargin={28}
-          label={{ value: 'Tasks', position: 'top', offset: '50' }}
+          tickMargin={20}
+          fontSize={14}
+          label={{
+            value: 'Tasks',
+            position: 'top',
+            offset: '50',
+            fontSize: '14',
+            fontWeight: '600',
+            color: '#343434',
+          }}
         ></YAxis>
-        <Tooltip />
+        <Tooltip
+          itemStyle={{
+            backgroundColor: 'rgb(255, 210, 221)',
+            color: 'rgb(62, 133, 243)',
+          }}
+        />
         <Legend
           iconType="circle"
           iconSize={8}
@@ -80,7 +113,12 @@ export const StatisticsChart = () => {
           barSize={27}
           radius={10}
         >
-          <LabelList position="top"></LabelList>
+          <LabelList
+            position="top"
+            fontSize={16}
+            fontWeight={500}
+            content={percentagesLabel}
+          ></LabelList>
         </Bar>
         <Bar
           name="By Month"
@@ -89,7 +127,12 @@ export const StatisticsChart = () => {
           barSize={27}
           radius={10}
         >
-          <LabelList position="top"></LabelList>
+          <LabelList
+            position="top"
+            fontSize={16}
+            fontWeight={500}
+            content={percentagesLabel}
+          ></LabelList>
         </Bar>
       </BarChart>
     </ResponsiveContainer>
