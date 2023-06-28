@@ -26,12 +26,28 @@ export const Cell = styled(Link)`
     padding: 0px 8px;
   }
 
-  &:nth-child(n + 36) {
-    border-bottom: none;
+  &:nth-child(-n + 7) {
+    border-top: 1px solid #dce3e580;
   }
 
-  &:nth-child(7n) {
-    border-right: none;
+  &:nth-child(7n + 1) {
+    border-left: 1px solid #dce3e580;
+  }
+
+  &:nth-child(1) {
+    border-top-left-radius: 8px;
+  }
+
+  &:nth-child(7) {
+    border-top-right-radius: 8px;
+  }
+
+  &:nth-child(36) {
+    border-bottom-left-radius: 8px;
+  }
+
+  &:nth-child(42) {
+    border-bottom-right-radius: 8px;
   }
 
   &:hover,
@@ -81,11 +97,10 @@ export const OtherMonthLabelCell = styled(LabelCell)`
 export const CalendarWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 338px;
+  width: 340px;
   height: 564px;
   margin: auto;
-  border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.5);
+
   background: ${variables.colors.background};
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
