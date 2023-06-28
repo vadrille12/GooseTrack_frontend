@@ -12,11 +12,13 @@ import { UserInfo } from './UserInfo/UserInfo';
 import { useState } from 'react';
 import { useAdaptiveImage } from 'hooks/useAdaptiveImage';
 import { FeedbackModal } from 'components/FeedbackModal/FeedbackModal';
-// import { useDispatch } from 'react-redux';
-// import { fetchReviewById } from 'redux/reviews/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchReviewById } from 'redux/reviews/operations';
+import { selectUser } from 'redux/auth/selectors';
 
 export const Header = ({ onSidebarShow }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
   const [showModal, setShowModal] = useState(false);
   const { isTablet, isDesktop } = useAdaptiveImage();
   const TabletOrDesktop = isTablet || isDesktop;
@@ -46,7 +48,7 @@ export const Header = ({ onSidebarShow }) => {
   }
 
   const openModal = () => {
-    // dispatch(fetchReviewById())
+    dispatch(fetchReviewById(user.id));
     setShowModal(true);
   };
 
