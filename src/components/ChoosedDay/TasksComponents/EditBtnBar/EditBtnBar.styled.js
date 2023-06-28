@@ -78,6 +78,9 @@ export const ChangeCategoryContainer = styled.div`
 
   position: absolute;
 
+  bottom: 75%;
+  right: 0%;
+
   gap: 2px;
 
   color: #343434;
@@ -112,8 +115,8 @@ export const ChangeCategoryContainer = styled.div`
 
     padding: 16px 16px;
 
-    top: 100%;
-    left: 0;
+    bottom: 75%;
+    right: 0%;
   }
 
   @media screen and (min-width: 1440px) {
