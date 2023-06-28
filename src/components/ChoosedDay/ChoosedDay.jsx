@@ -3,8 +3,7 @@ import { TasksColumnsList } from './TasksComponents/TasksColumnsList/TasksColumn
 import { ChoosedDayStyled } from './ChoosedDay.styled';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTasks } from 'redux/tasks/operations';
+import { useSelector } from 'react-redux';
 import {
   selectTasks,
   selectIsLoading,
@@ -15,15 +14,10 @@ import Spinner from 'components/Spinner/spinner';
 const ChoosedDay = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
 
   const tasks = useSelector(selectTasks);
 
-  console.log(tasks);
+  // console.log(tasks);
 
   const { currentDay: targetDate } = useParams();
   const [filteredTasks, setFilteredTasks] = useState([]);

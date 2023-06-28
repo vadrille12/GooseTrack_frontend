@@ -11,57 +11,6 @@ import {
 
 import { TaskCalendar } from '../TaskCalendar/TaskCalendar';
 
-const tasks = [
-  {
-    title: 'To do 1',
-    start: '09:00',
-    end: '10:00',
-    priority: 'low',
-    date: '2023-06-25',
-    category: 'done',
-  },
-  {
-    title: 'To do 2',
-    start: '09:00',
-    end: '10:00',
-    priority: 'low',
-    date: '2023-06-25',
-    category: 'to-do',
-  },
-  {
-    title: 'To do 3',
-    start: '09:00',
-    end: '10:00',
-    priority: 'low',
-    date: '2023-06-23',
-    category: 'to-do',
-  },
-  {
-    title: 'To do 4',
-    start: '09:00',
-    end: '10:00',
-    priority: 'high',
-    date: '2023-06-24',
-    category: 'in-progress',
-  },
-  {
-    title: 'To do 5',
-    start: '09:00',
-    end: '10:00',
-    priority: 'low',
-    date: '2023-06-25',
-    category: 'to-do',
-  },
-  {
-    title: 'To do 6 To do 6To do 6To do 6To do 6To do 6To do 6To do 6To do 6',
-    start: '09:00',
-    end: '10:00',
-    priority: 'medium',
-    date: '2023-06-26',
-    category: 'to-do',
-  },
-];
-
 const isCurrentDay = date => {
   const today = new Date();
   if (
@@ -109,7 +58,7 @@ const extendDate = string => {
   return new Date(string);
 };
 
-export const CalendarTable = () => {
+export const CalendarTable = ({ tasks }) => {
   const { currentDate } = useParams();
   const dateSelected = extendDate(currentDate);
   const weekFirstDay = getDay(startOfMonth(dateSelected));
