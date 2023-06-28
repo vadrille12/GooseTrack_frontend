@@ -65,9 +65,10 @@ export const authSlice = createSlice({
       state.isLoading = false;
     },
 
-    [refresh.fulfilled]: state => {
+    [refresh.fulfilled]: (state, { payload }) => {
       state.isLoggedIn = true;
       state.isLoading = false;
+      state.user = payload;
     },
 
     [refresh.pending]: state => {

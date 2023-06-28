@@ -8,7 +8,7 @@ import { TaskModal } from 'components/TaskModal/TaskModal';
 export const TasksColumn = ({ tasks }) => {
   const [showModal, setShowModal] = useState(false);
   const [action, setAction] = useState('edit');
-  const [column, setColumn] = useState('toDo');
+  const [column, setColumn] = useState('to-do');
 
   const tasksNames = ['To do', 'In progress', 'Done'];
 
