@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StatisticsContainer = styled.section`
   border-radius: 16px;
+  background-color: #ffffff;
   @media screen and (max-width: 375px) {
     max-width: 335px;
   }
