@@ -66,6 +66,19 @@ export const refresh = createAsyncThunk(
   }
 );
 
+export const updateUser = createAsyncThunk(
+  'auth/update',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const {
+        data: { data },
+      } = await axios.patch('api/auth/update', credentials);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 // export const getUserInfo = createAsyncThunk(
 //   'auth/userInfo',
 //   async (_, thunkAPI) => {
