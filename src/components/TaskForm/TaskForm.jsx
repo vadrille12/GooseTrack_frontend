@@ -62,7 +62,7 @@ const TaskSchema = Yup.object().shape({
       return value;
     }),
   category: Yup.string()
-    .oneOf(['toDo', 'inProgress', 'done'])
+    .oneOf(['to-do', 'in-progress', 'done'])
     .required('Category is required'),
 });
 
@@ -78,8 +78,8 @@ export const TaskForm = ({ onClose, action, column }) => {
   };
 
   const setCategory = () => {
-    if (column === 'To do') return 'toDo';
-    if (column === 'In progress') return 'inProgress';
+    if (column === 'To do') return 'to-do';
+    if (column === 'In progress') return 'in-progress';
     if (column === 'Done') return 'done';
   };
 
