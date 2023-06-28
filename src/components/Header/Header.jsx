@@ -53,7 +53,7 @@ export const Header = ({ onSidebarShow }) => {
     <>
       <Container>
         <Box display="flex" alignItems="center" gap="8px">
-          {!TabletOrDesktop && (
+          {!isDesktop && (
             <BurgerButton type="button" onClick={() => onSidebarShow()}>
               <BurgerIcon />
             </BurgerButton>
