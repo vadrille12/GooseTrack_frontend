@@ -211,7 +211,7 @@ export const Box = styled.div`
   min-height: 100vh;
   padding: 40px 32px 32px;
   transition: 250ms ease-in-out;
-  background-color: #FFFFFF;
+  /* background-color: #FFFFFF; */
 `;
 
 export const Wrapper = styled.div`
