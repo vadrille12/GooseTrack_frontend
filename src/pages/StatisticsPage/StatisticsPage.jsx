@@ -4,13 +4,13 @@ import {
   ChartContainer,
 } from 'pages/StatisticsPage/StatisticsPage.styled';
 
-import { StatisticsChart } from 'components/StatisticsChart/StatisticsChart';
+import { SectionStatistics } from 'components/StatisticsPageComponents/SectionStatistics';
 
 export default function StatisticsPage() {
   return (
     <StatisticsContainer>
       <ChartContainer>
-        <StatisticsChart />
+        <SectionStatistics />
       </ChartContainer>
     </StatisticsContainer>
   );

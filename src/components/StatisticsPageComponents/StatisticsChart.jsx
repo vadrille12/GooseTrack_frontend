@@ -25,37 +25,47 @@ const percentagesLabel = props => {
         textAnchor="middle"
         dominantBaseline="middle"
       >
-        {`${value}%`}
+        {`${Math.round(value)}%`}
       </text>
     </svg>
   );
 };
 
-const data = [
-  {
-    name: 'To Do',
-    byMonth: 40,
-    byDay: 80,
-  },
-  {
-    name: 'In Progress',
-    byMonth: 90,
-    byDay: 30,
-  },
-  {
-    name: 'Done',
-    byMonth: 75,
-    byDay: 40,
-  },
-];
+export const StatisticsChart = ({ data }) => {
+  const {
+    toDoByMonthInPercent,
+    inProgressByMonthInPercent,
+    doneByMonthInPercent,
+  } = data.statistics.month;
 
-export const StatisticsChart = () => {
+  const { toDoByDayInPercent, inProgressByDayInPercent, doneByDayInPercent } =
+    data.statistics.day;
+
+  const columns = [
+    {
+      name: 'To Do',
+      byDay: `${toDoByDayInPercent * 100}`,
+      byMonth: `${toDoByMonthInPercent * 100}`,
+    },
+
+    {
+      name: 'In Progress',
+      byDay: `${inProgressByDayInPercent * 100}`,
+      byMonth: `${inProgressByMonthInPercent * 100}`,
+    },
+    {
+      name: 'Done',
+      byDay: `${doneByDayInPercent * 100}`,
+      byMonth: `${doneByMonthInPercent * 100}`,
+    },
+  ];
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
         width={500}
         height={300}
-        data={data}
+        data={columns}
         barCategoryGap={75}
         barGap={14}
       >
