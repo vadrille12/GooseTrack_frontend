@@ -27,7 +27,7 @@ export const CalendarToolBarStyled = styled.div`
 
     /* margin: 0 auto 32px auto; */
     margin-bottom: 32px;
-    margin-left: 20px;
+    margin-left: 0;
     padding: 0;
   }
 
