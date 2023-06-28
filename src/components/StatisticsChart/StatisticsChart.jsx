@@ -64,6 +64,7 @@ export const StatisticsChart = () => {
           tickLine={false}
           tickCount={6}
           tickMargin={28}
+          label={{ value: 'Tasks', position: 'top', offset: '50' }}
         ></YAxis>
         <Tooltip />
         <Legend
