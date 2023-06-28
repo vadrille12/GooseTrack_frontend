@@ -23,7 +23,9 @@ export const Header = ({ onSidebarShow }) => {
   let pageTitle = '';
 
   const words = pathname.split('/');
-  const title = words.find(word => word === 'calendar' || word === 'account');
+  const title = words.find(
+    word => word === 'calendar' || word === 'account' || word === 'statistics'
+  );
 
   switch (title) {
     case 'calendar':
@@ -31,6 +33,9 @@ export const Header = ({ onSidebarShow }) => {
       break;
     case 'account':
       pageTitle = 'User Profile';
+      break;
+    case 'statistics':
+      pageTitle = 'Statistics';
       break;
     default:
       pageTitle = '';
