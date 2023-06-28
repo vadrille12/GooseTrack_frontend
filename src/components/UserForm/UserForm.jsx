@@ -83,7 +83,8 @@ const day = dayjs(new Date()).format('YYYY-MM-DD');
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthdayDate, setBirthdayDate] = useState(null);
-  const [isUpdateForm, setIsUpdateForm] = useState(null);
+  const [setIsUpdateForm] = useState(null);
+  // Добавите на строку выше isUpdateForm, когда он будет нужен  -- Тимлид
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -94,7 +95,7 @@ export const UserForm = () => {
   });
   // console.log('formData', formData);
 
-  const { user } = useSelector(selectUser);
+  const user = useSelector(selectUser);
   console.log('user UserForm', user);
   const dispatch = useDispatch();
 
