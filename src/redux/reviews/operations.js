@@ -53,3 +53,16 @@ export const editReview = createAsyncThunk(
       }
     }
   );
+
+export const fetchReviewById = createAsyncThunk(
+  'reviews/getReviewById',
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/api/reviews/${id}`);
+
+      return data;
+    } catch (e) {
+        thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

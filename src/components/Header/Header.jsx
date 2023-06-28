@@ -12,8 +12,11 @@ import { UserInfo } from './UserInfo/UserInfo';
 import { useState } from 'react';
 import { useAdaptiveImage } from 'hooks/useAdaptiveImage';
 import { FeedbackModal } from 'components/FeedbackModal/FeedbackModal';
+// import { useDispatch } from 'react-redux';
+// import { fetchReviewById } from 'redux/reviews/operations';
 
 export const Header = ({ onSidebarShow }) => {
+  // const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const { isTablet, isDesktop } = useAdaptiveImage();
   const TabletOrDesktop = isTablet || isDesktop;
@@ -43,6 +46,7 @@ export const Header = ({ onSidebarShow }) => {
   }
 
   const openModal = () => {
+    // dispatch(fetchReviewById())
     setShowModal(true);
   };
 
