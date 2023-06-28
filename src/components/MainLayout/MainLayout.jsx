@@ -9,9 +9,8 @@ import { useAdaptiveImage } from 'hooks/useAdaptiveImage';
 import { Header } from 'components/Header/Header';
 
 export const MainLayout = () => {
-  const { isTablet, isDesktop } = useAdaptiveImage();
+  const { isDesktop } = useAdaptiveImage();
   const [sideBarIsVisible, setSideBarIsVisible] = useState(false);
-  const TabletOrDesktop = isTablet || isDesktop;
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const onSidebarShow = () => {
@@ -25,7 +24,7 @@ export const MainLayout = () => {
           <Container style={{ display: isLoggedIn ? 'flex' : 'block' }}>
             {isLoggedIn ? (
               <>
-                {(TabletOrDesktop || sideBarIsVisible) && (
+                {(isDesktop || sideBarIsVisible) && (
                   <AsideBar onSidebarShow={onSidebarShow} />
                 )}
 
