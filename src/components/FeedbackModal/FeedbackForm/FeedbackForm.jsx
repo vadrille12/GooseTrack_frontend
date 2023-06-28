@@ -21,8 +21,9 @@ import {
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsFeedback } from "redux/reviews/selectors";
-import { addReview, deleteReview, editReview, fetchReviews } from "redux/reviews/operations";
+import { selectIsFeedback, selectUserReview } from "redux/reviews/selectors";
+import { addReview, deleteReview, editReview } from "redux/reviews/operations";
+import { changeRating } from "redux/reviews/reviewSlice";
 
 
 const FeedbackSchema = Yup.object().shape({
@@ -35,25 +36,25 @@ const FeedbackSchema = Yup.object().shape({
 export const FeedbackForm = ({ onClose }) => {
     const dispatch = useDispatch();
     const isFeedback = useSelector(selectIsFeedback);
+    const userReview = useSelector(selectUserReview);
 
-    const [ratingValue, setRatingValue] = useState(0);
+    // const [ratingValue, setRatingValue] = useState(0);
     const [isEditActive, setIsEditActive] = useState(false);
-    // const [isFeedback, setIsFeedback] = useState(false);
 
     const ratingChanged = (newRating) => {
-        setRatingValue(newRating);
+        // setRatingValue(newRating);
+        dispatch(changeRating(newRating))
     };
 
     const handleSubmit = (values, actions) => {
-        const reviews = dispatch(fetchReviews());
-        console.log(reviews);
-        values.rating = ratingValue;
+        values.rating = userReview.rating;
         if(isEditActive){
-            dispatch(editReview(values));
+            const reviewRequest = {id: userReview._id, review: values}
+            dispatch(editReview(reviewRequest));
         }
-        dispatch(addReview(values));
-
-        // setIsFeedback(true);
+        else{
+            dispatch(addReview(values));
+        }
         setIsEditActive(false);
         actions.resetForm();
         onClose();
@@ -61,16 +62,11 @@ export const FeedbackForm = ({ onClose }) => {
 
     const handleEdit = ()=> {
         setIsEditActive(!isEditActive);
-        // if(isEditActive) {
-        //     setIsEditActive(false);
-        // }else{
-        //     setIsEditActive(true)
-        // };
     };
 
     const handleDelete = ()=> {
         // setIsFeedback(false);
-        dispatch(deleteReview());
+        dispatch(deleteReview(userReview._id));
         setIsEditActive(false);
         onClose();
     }
@@ -78,8 +74,8 @@ export const FeedbackForm = ({ onClose }) => {
     return (
         <Wrap>
             <Formik initialValues={{
-                rating: '',
-                review: '',
+                rating: userReview.rating || '',
+                review: userReview.review || '',
             }}
             validationSchema={FeedbackSchema}
             onSubmit={handleSubmit}
@@ -92,7 +88,7 @@ export const FeedbackForm = ({ onClose }) => {
                         size={24}
                         activeColor="#FFAC33"
                         color="#CEC9C1"
-                        value={ratingValue}
+                        value={userReview.rating}
                         edit={!isEditActive}
                         style={{marginBottom:"20px"}}/>
                         
@@ -116,6 +112,7 @@ export const FeedbackForm = ({ onClose }) => {
                         name="review" 
                         component="textarea"
                         // isActive={isEditActive} 
+                        // value = {userReview.review || ''} 
                         disabled={!isEditActive && isFeedback}/>
                     <ErrorMessage name="review" component="div" />
 
