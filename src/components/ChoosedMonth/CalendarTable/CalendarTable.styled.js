@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 
 import { variables } from '../../../Styles/GlobalStyle';
 
+const customGrey = '#dce3e580';
+
 export const Cell = styled(Link)`
   width: 48px;
   height: 93px;
   text-align: right;
-  border-bottom: 1px solid #dce3e580;
-  border-right: 1px solid #dce3e580;
+  border-bottom: 1px solid ${customGrey};
+  border-right: 1px solid ${customGrey};
   padding: 0px 2px;
-
+  overflow-y: scroll;
+  overflow-x: hidden;
   cursor: pointer;
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
@@ -27,11 +30,11 @@ export const Cell = styled(Link)`
   }
 
   &:nth-child(-n + 7) {
-    border-top: 1px solid #dce3e580;
+    border-top: 1px solid ${customGrey};
   }
 
   &:nth-child(7n + 1) {
-    border-left: 1px solid #dce3e580;
+    border-left: 1px solid ${customGrey};
   }
 
   &:nth-child(1) {
@@ -53,6 +56,20 @@ export const Cell = styled(Link)`
   &:hover,
   :focus {
     box-shadow: ${variables.shadow.shadow};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    /* color of the scroll thumb */
+    background-color: ${customGrey};
+    /* roundness of the scroll thumb */
+    border-radius: 3px;
+    /* creates padding around scroll thumb */
+    border: 2px solid ${customGrey};
+  }
+
+  &::-webkit-scrollbar {
+    /* width of the entire scrollbar */
+    width: 4px;
   }
 `;
 
