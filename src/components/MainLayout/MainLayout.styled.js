@@ -209,9 +209,13 @@ export const Box = styled.div`
   flex: 1;
   width: 100%;
   min-height: 100vh;
-  padding: 40px 32px 32px;
+  padding: 24px 20px 20px;
+
   transition: 250ms ease-in-out;
-  /* background-color: #FFFFFF; */
+
+  @media screen and (min-width: 768px) {
+    padding: 40px 32px 32px;
+  }
 `;
 
 export const Wrapper = styled.div`
