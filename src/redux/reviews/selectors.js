@@ -1,3 +1,5 @@
-export const reviews = state => state.reviews.reviews;
-export const isLoading = state => state.reviews.isLoading;
-export const error = state => state.reviews.error;
+export const selectReviews = state => state.reviews.reviews;
+export const selectIsLoading = state => state.reviews.isLoading;
+export const selectError = state => state.reviews.error;
+export const selectIsFeedback = state => state.reviews.isFeedback;
+export const selectUserReview = state => state.reviews.userReview;
