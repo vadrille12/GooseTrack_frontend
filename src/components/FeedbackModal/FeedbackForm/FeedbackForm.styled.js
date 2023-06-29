@@ -43,11 +43,13 @@ export const EditBtn = styled.button`
   justify-content: center;
   align-items: center;
   background-color: ${props => { return props.isActive ? '#3E85F3' : '#E3F3FF'}} ;
+  background-color:  #E3F3FF;
   border: none;
   width: 30px;
   height: 30px;
   border-radius: 50%; 
   stroke:  ${props => { return props.isActive ? '#FFFFFF' : '#3E85F3'}} ;
+  stroke:  #3e85f3;
   cursor: pointer;
   transition: stroke ${variables.transitions.standart}, background-color ${variables.transitions.standart};
 
@@ -89,7 +91,7 @@ export const Input = styled(Field)`
     font-weight: 600;
     font-size: 14px;
     line-height: calc((18 / 14) * 100%);
-    color: ${variables.colors.text};
+    color: #343434;
 
     background-color: #F6F6F6;
     border-radius: 8px;
@@ -113,7 +115,7 @@ export const Input = styled(Field)`
 
     ::placeholder {
       opacity: 1;
-      color: ${variables.colors.text};
+      color: #343434;
       font-weight: 600;
       font-size: 14px;
 }
@@ -158,7 +160,7 @@ export const FormBtn = styled.button`
 `;
 
 export const FormBtnCancel = styled.button`
-  color: ${variables.colors.text};
+  color: #343434;
   background-color: #E5EDFA;
   text-transform: none;
   width: 262px;
