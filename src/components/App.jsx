@@ -9,6 +9,7 @@ import { PrivateRoute } from 'components/PrivateRoute';
 import { GlobalStyle } from 'Styles/GlobalStyle';
 import { MainLayout } from 'components/MainLayout/MainLayout';
 import { Container } from 'Styles/Container';
+import Spinner from './Spinner/spinner';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const AccountPage = lazy(() => import('pages/AccountPage/AccountPage'));
@@ -30,7 +31,7 @@ export function App() {
 
   return (
     <Container>
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Spinner/>}>
         <Routes>
           <Route element={<PublicRoute />}>
             <Route path="/" element={<MainPage />} />
