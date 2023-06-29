@@ -15,6 +15,7 @@ import {
   IconClose,
 } from './SideBar.styled.jsx';
 import Icon from '../Icon/Icon';
+import {ReactComponent as IconStatistic} from '../../images/shape.svg'
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/operations.js';
 
@@ -60,7 +61,7 @@ const AsideBar = ({ onSidebarShow }) => {
             </Item>
             <Item>
               <Link to="/statistics">
-                <Icon id="calendarCheked" />
+                <IconStatistic/>
                 <span style={{ marginLeft: '10px' }}>Statistics</span>
               </Link>
             </Item>
