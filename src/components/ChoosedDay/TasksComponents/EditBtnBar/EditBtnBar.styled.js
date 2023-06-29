@@ -3,8 +3,17 @@ import { variables } from '../../../../Styles/GlobalStyle';
 import { ReactComponent as Move } from '../../../../images/tasksSvg/move-right.svg';
 import { ReactComponent as Edit } from '../../../../images/tasksSvg/edit.svg';
 import { ReactComponent as Delete } from '../../../../images/tasksSvg/del.svg';
+import Popover from '@mui/material/Popover';
 
-export const EditBntContainer = styled.div`
+export const PopoverStyled = styled(Popover)`
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const EditBtnContainer = styled.div`
   display: flex;
   gap: 13px;
   position: relative;
@@ -76,10 +85,10 @@ export const ChangeCategoryContainer = styled.div`
   border-radius: 8px;
   background-color: ${variables.colors.background};
 
-  position: absolute;
+  /* position: absolute; */
 
-  bottom: 75%;
-  right: 0%;
+  /* bottom: 75%;
+  right: 0%; */
 
   gap: 2px;
 
@@ -109,14 +118,12 @@ export const ChangeCategoryContainer = styled.div`
     font-weight: 500;
     line-height: 18px;
 
-    padding: 14px 18px;
+    gap: 7px;
 
-    gap: 12px;
+    padding: 16px 24px;
 
-    padding: 16px 16px;
-
-    bottom: 75%;
-    right: 0%;
+    /* bottom: 75%;
+    right: 0%; */
   }
 
   @media screen and (min-width: 1440px) {
