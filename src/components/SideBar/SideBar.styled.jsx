@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Icon } from 'images/close.svg';
 import { ReactComponent as LogoIcon } from 'images/logo.svg';
+import { ReactComponent as Profile } from 'images/sideBar/user-check.svg';
+import { ReactComponent as Calendar } from 'images/sideBar/calendar-check.svg';
+import { ReactComponent as Chart } from 'images/sideBar/chart.svg';
 
 export const Aside = styled.aside`
   /* height: 100vh; */
@@ -135,31 +138,44 @@ export const Link = styled(NavLink)`
   display: flex;
   align-items: center;
   color: ${props => props.theme.text_1};
+
   &:hover,
   &:focus {
     background-color: ${props => props.theme.activeLink_bg};
   }
+
   &:hover span,
   &:focus span {
     color: ${props => props.theme.activeLink_text};
   }
+
   &:hover svg,
   &:focus svg {
-    stroke: ${props => props.theme.activeLink_text};
+    color: ${props => props.theme.activeLink_text};
   }
+
   &.active {
     background: ${props => props.theme.activeLink_bg};
     color: ${props => props.theme.activeLink_text};
     transition: 250ms ease-in-out;
   }
-  svg {
-    stroke: ${props => props.theme.text_1};
-    transition: 250ms ease-in-out;
-  }
+
   &.active svg {
     stroke: ${props => props.theme.activeLink_text};
     transition: 250ms ease-in-out;
   }
+`;
+
+export const ProfileIcon = styled(Profile)`
+  stroke: ${props => props.theme.text_5};
+`;
+
+export const CalendarIcon = styled(Calendar)`
+  stroke: ${props => props.theme.text_5};
+`;
+
+export const ChartIcon = styled(Chart)`
+  fill: ${props => props.theme.text_5};
 `;
 
 export const Button = styled.button`
