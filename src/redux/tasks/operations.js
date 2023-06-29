@@ -26,3 +26,15 @@ export const addTask = createAsyncThunk(
     }
   }
 );
+
+export const deleteTask = createAsyncThunk(
+  'tasks/deleteTask',
+  async (taskId, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete(`/api/tasks/${taskId}`);
+      return data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);

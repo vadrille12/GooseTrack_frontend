@@ -8,9 +8,16 @@ import {
   MoveToInProgress,
   MoveToDone,
 } from './EditBtnBar.styled';
+import { useDispatch } from 'react-redux';
+import { deleteTask } from 'redux/tasks/operations';
 
-export const EditBtnBar = ({ onOpen, setAction, category }) => {
+export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
   const [isActiv, setIsActiv] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteTask(task._id));
+  };
 
   const handleOpenMoveBar = () => {
     setIsActiv(true);
@@ -78,7 +85,7 @@ export const EditBtnBar = ({ onOpen, setAction, category }) => {
       >
         ed
       </EditBtn>
-      <DeleteBtn>del</DeleteBtn>
+      <DeleteBtn onClick={handleDelete}>del</DeleteBtn>
     </EditBntContainer>
   );
 };

@@ -23,7 +23,12 @@ export const TaskCard = ({ task, onOpen, setAction }) => {
           {priority === 'medium' && <StatusMedium>Medium</StatusMedium>}
           {priority === 'high' && <StatusHigh>High</StatusHigh>}
         </AvatarGroupContainer>
-        <EditBtnBar onOpen={onOpen} setAction={setAction} category={category} />
+        <EditBtnBar
+          onOpen={onOpen}
+          setAction={setAction}
+          category={category}
+          task={task}
+        />
       </TaskContainer>
     </TaskCardStyled>
   );
