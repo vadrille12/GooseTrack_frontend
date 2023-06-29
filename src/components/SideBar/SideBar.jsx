@@ -5,6 +5,8 @@ import { logout } from 'redux/auth/operations.js';
 import Box from 'components/Box/Box';
 import Icon from 'components/Icon/Icon';
 
+import {ReactComponent as IconStatistic} from 'images/shape.svg'
+
 import {
   Aside,
   Item,
@@ -19,7 +21,7 @@ import {
   CalendarIcon,
   ChartIcon,
   ProfileIcon,
-} from './SideBar.styled.jsx';
+} from './SideBar.styled.jsx'
 
 const AsideBar = ({ onSidebarShow }) => {
   const dispatch = useDispatch();
@@ -63,7 +65,8 @@ const AsideBar = ({ onSidebarShow }) => {
             </Item>
             <Item>
               <Link to="/statistics">
-                <ChartIcon />
+                <IconStatistic/>
+                //<ChartIcon />
                 <span style={{ marginLeft: '10px' }}>Statistics</span>
               </Link>
             </Item>
