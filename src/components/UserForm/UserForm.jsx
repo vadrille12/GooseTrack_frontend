@@ -28,11 +28,14 @@ import * as Yup from 'yup';
 import { useEffect, useState } from 'react';
 import { Calendar } from './Calendar/Calendar';
 
-// import { useEffect } from 'react';
+import 'react-datepicker/dist/react-datepicker.css';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
-import { refresh } from 'redux/auth/operations';
+import { refresh, updateUser } from 'redux/auth/operations';
 import dayjs from 'dayjs';
+
+const day = dayjs(new Date()).format('YYYY-MM-DD');
 
 const regex = {
   name: /^[a-z]*$/,
@@ -45,104 +48,100 @@ const regex = {
 const userSchema = Yup.object().shape({
   name: Yup.string()
     .required('Name is required')
-    .matches(/^\S[\S\s]{0,28}\S$/, 'Name must be between 2 and 16 characters')
+    .matches(/^\S[\S\s]{0,28}\S$/, 'Name must be between 3 and 16 characters')
     .max(16, 'At most 16 digits is required')
     .test(
       'name-validation',
-      'Name must be at least 2 characters long',
+      'Name must be at least 3 characters long',
       value => {
-        return value && value.replace(/\s/g, '').length >= 2;
+        return value && value.replace(/\s/g, '').length >= 3;
       }
     ),
-  birthday: Yup.date().max(new Date(), 'Birthday must be earlier than today'),
+  birthday: Yup.date().max(day, 'Birthday must be earlier than today'),
   email: Yup.string()
     .email('This is an ERROR email')
     .matches(/^[a-zA-Z0-9@.]+$/, 'Email must contain only Latin characters')
-    .required('Email is required'),
+    .required('Email is required field'),
   phone: Yup.string()
-    .required('phone is required')
+    .required(
+      'Phone is required field. Must start with +380 and be 9 digits long'
+    )
     .matches(
       regex.phone,
-      'The phone number must start with +38 and be 10 digits long'
+      'The phone number must start with +380 and be 9 digits long'
     )
-    .min(13, 'At least 12 digits is required')
+    .min(13, 'At least 13 digits is required')
     .max(13, 'At most 13 digits is required'),
   skype: Yup.string()
-    .matches(/^\S[\S\s]{0,28}\S$/, 'Skype must be between 2 and 16 characters')
+    .matches(/^\S[\S\s]{0,28}\S$/, 'Skype must be between 3 and 16 characters')
     .max(13, 'At most 13 digits is required')
     .test(
       'Skype-validation',
-      'Skype must be at least 2 characters long',
+      'Skype must be at least 3 characters long',
       value => {
-        return value && value.replace(/\s/g, '').length >= 2;
+        return value && value.replace(/\s/g, '').length >= 3;
       }
     ),
 });
-const day = dayjs(new Date()).format('YYYY-MM-DD');
 
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthdayDate, setBirthdayDate] = useState(null);
-  const [isUpdateForm, setIsUpdateForm] = useState(null);
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    skype: '',
-    birthday: day,
-    avatarUrl: '',
-  });
-  // console.log('formData', formData);
+  // const [isUpdateForm, setIsUpdateForm] = useState(null);
 
   const user = useSelector(selectUser);
-  // console.log('user UserForm', user);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    if (isUpdateForm) {
-      dispatch(refresh());
-      setIsUpdateForm(null);
-    }
-  }, [dispatch, isUpdateForm, formData]);
+    const getUserInfo = async () => {
+      await dispatch(refresh());
+      //  setIsUpdateForm(null);
+    };
+
+    getUserInfo();
+  }, [dispatch]);
 
   return (
     <Wrap>
       <div>
         <Formik
           enableReinitialize={true}
-          initialValues={{
-            name: user.name || formData.name || '',
-            email: user.email || formData.email || '',
-            phone: formData.phone || '',
-            skype: formData.skype || '',
-            birthday: birthdayDate || day || '',
-            avatarUrl: formData.avatarUrl || '',
-          }}
           validationSchema={userSchema}
+          initialValues={{
+            name: user?.name || '',
+            email: user?.email || '',
+            phone: user?.phone || '',
+            skype: user?.skype || '',
+            birthday: birthdayDate || day,
+
+            // birthdayDate
+            // ? birthdayDate
+            // : user
+            // ? dayjs(user.birthday).format('YYYY-MM-DD')
+            // : new Date(),
+            // avatarURL: avatarURL || user?.avatarURL || '',
+          }}
           onSubmit={async values => {
             const formData = new FormData();
+            formData.append('name', values.name);
             formData.append('email', values.email);
             formData.append('birthday', values.birthday);
             formData.append('phone', values.phone);
-
             formData.append('skype', values.skype);
-            formData.append('avatarUrl', values.avatar);
-            setFormData(values);
+            // console.log("('skype')", formData.get('skype'));
+            if (avatarURL) {
+              formData.append('avatarURL', avatarURL);
+            }
+            for (const [key, value] of formData.entries()) {
+              console.log(`${key}, ${value}`);
+            }
+
             alert(JSON.stringify(values, null, 2));
-            await dispatch(refresh(formData));
-            setIsUpdateForm(true);
+            await dispatch(updateUser(formData));
+            // setIsUpdateForm(true);
           }}
         >
-          {({
-            handleSubmit,
-            handleChange,
-            handleBlur,
-            dirty,
-            errors,
-            touched,
-            values,
-            setFieldValue,
-          }) => {
+          {({ dirty, errors, touched, values }) => {
             const isValid = field =>
               touched[field] && errors[field]
                 ? 'is-invalid'
@@ -153,7 +152,16 @@ export const UserForm = () => {
               <Form>
                 <AvatarWrap>
                   <AvatarBox>
-                    {!avatarURL ? (
+                    {avatarURL ? (
+                      <Label htmlFor="avatar">
+                        <Img
+                          src={URL.createObjectURL(avatarURL)}
+                          alt="avatar"
+                        />
+                      </Label>
+                    ) : user?.avatarURL ? (
+                      <Img src={user.avatarURL} alt="avatar" />
+                    ) : (
                       <div>
                         <Img
                           src={goose}
@@ -166,13 +174,6 @@ export const UserForm = () => {
                           </AvatarSvg>
                         </Label>
                       </div>
-                    ) : (
-                      <Label htmlFor="avatar">
-                        <Img
-                          src={URL.createObjectURL(avatarURL)}
-                          alt="avatar"
-                        />
-                      </Label>
                     )}
                   </AvatarBox>
 
@@ -183,9 +184,7 @@ export const UserForm = () => {
                     accept="image/*,.png,.jpg,.gif,.web"
                     onChange={e => {
                       const file = e.target.files[0];
-                      setFieldValue('avatarUrl', file);
                       setAvatarURL(file);
-                      setFieldValue('avatarUrl', URL.createObjectURL(file));
                     }}
                     style={{ display: 'none' }}
                   />
@@ -207,8 +206,6 @@ export const UserForm = () => {
                           name="name"
                           placeholder={'User Name'}
                           value={values.name}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
                           type="text"
                         />
                         {isValid('name') === 'is-valid' && <IconDone />}
@@ -226,13 +223,14 @@ export const UserForm = () => {
                           name="birthday"
                           type="date"
                           selected={new Date(values.birthday)}
-                          onChange={e => {
-                            setFieldValue('birthday', e);
-                            setBirthdayDate(dayjs(e).format('YYYY-MM-DD'));
+                          onChange={date => {
+                            setBirthdayDate(dayjs(date).format('YYYY-MM-DD'));
+                            // setIsUpdateForm(true);
                           }}
-                          placeholder={'Birthday Date'}
-                          value={dayjs(values.birthday).format('YYYY-MM-DD')}
+                          value={values.birthday}
+                          // value={dayjs(values.birthday).format('YYYY-MM-DD')}
                         />
+
                         {isValid('birthday') === 'is-valid' ? (
                           <IconDone />
                         ) : (
@@ -254,8 +252,6 @@ export const UserForm = () => {
                           placeholder={'email@mail.com'}
                           type="email"
                           value={values.email}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
                         />
                         {isValid('email') === 'is-valid' && <IconDone />}
                         {isValid('email') === 'is-invalid' && <IconError />}
@@ -290,8 +286,6 @@ export const UserForm = () => {
                           type="text"
                           placeholder={'Add skype'}
                           value={values.skype}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
                         />
                         {isValid('skype') === 'is-valid' && <IconDone />}
                         {isValid('skype') === 'is-invalid' && <IconError />}

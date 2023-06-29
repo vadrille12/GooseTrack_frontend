@@ -81,23 +81,8 @@ export const authSlice = createSlice({
       state.error = payload;
     },
 
-    // [getUserInfo.fulfilled]: (state, { payload }) => {
-    //   state.user = payload;
-    //   state.isLoading = false;
-    //   state.error = null;
-    // },
-
-    // [getUserInfo.pending]: state => {
-    //   state.isLoading = true;
-    // },
-
-    // [getUserInfo.rejected]: (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.isLoggedIn = false;
-    //   state.error = payload;
-    // },
     [updateUser.fulfilled]: (state, { payload }) => {
-      state.user = payload.user;
+      state.user = payload;
       state.isLoading = false;
     },
 

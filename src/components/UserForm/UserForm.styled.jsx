@@ -344,8 +344,8 @@ width: 100%;
   :disabled {
     background-color: #dcebf7;
   }
-  &:hover,
+  /* &:hover,
   &:focus {
     background-color: #2b78ef;
-  }
+  } */
 `;
