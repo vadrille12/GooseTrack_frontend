@@ -1,8 +1,4 @@
-import {
-  lazy,
-  Suspense,
-  useEffect
-} from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { refresh } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -28,7 +24,6 @@ const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
 export function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(refresh());
   }, [dispatch]);
@@ -42,7 +37,6 @@ export function App() {
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
           </Route>
-
           <Route path="/" element={<PrivateRoute />}>
             <Route path="/" element={<MainLayout />}>
               <Route path="account" element={<AccountPage />} />

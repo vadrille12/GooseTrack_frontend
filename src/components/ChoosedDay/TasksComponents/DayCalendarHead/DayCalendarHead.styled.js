@@ -13,8 +13,8 @@ export const DayCalendarHeadStyledMobile = styled.ul`
   padding: 14px 22px;
   margin: auto;
 
-  background: #ffffff;
-  border: 1px solid rgba(220, 227, 229, 0.5);
+  background: ${props => props.theme.page_bg};
+  border: 1px solid ${props => props.theme.tabl_border};
   border-radius: 8px;
 
   @media screen and (max-width: 374px) {
@@ -56,7 +56,7 @@ export const DayNameMobile = styled.span`
 
   text-transform: uppercase;
 
-  color: #343434;
+  color: ${props => props.theme.text_4};
 `;
 
 export const DateMobile = styled.div`
@@ -105,8 +105,8 @@ export const DayCalendarHeadStyledDesktop = styled.ul`
     width: 704px;
     height: 68px;
 
-    background: #ffffff;
-    border: 1px solid rgba(220, 227, 229, 0.8);
+    background: ${props => props.theme.page_bg};
+    border: 1px solid ${props => props.theme.tabl_border};
     border-radius: 8px;
   }
 
@@ -139,10 +139,10 @@ export const DayName = styled.span`
 
   text-transform: uppercase;
 
-  color: #343434;
+  color: ${props => props.theme.text_4};
 
   &.weekend {
-    color: ${variables.colors.primary};
+    color: ${props => props.theme.text_5};
   }
 `;
 
@@ -167,7 +167,7 @@ export const DateDesktop = styled.div`
 
   text-transform: uppercase;
 
-  color: #343434;
+  color: ${props => props.theme.text_3};
 
   justify-content: center;
   align-items: center;

@@ -32,7 +32,7 @@ export const MoveBtn = styled(Move)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: ${variables.colors.black};
+  stroke: ${props => props.theme.title};
   transition: ${variables.transitions.standart};
 
   &:hover,
@@ -45,7 +45,7 @@ export const EditBtn = styled(Edit)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: ${variables.colors.black};
+  stroke: ${props => props.theme.title};
   transition: ${variables.transitions.standart};
   &:hover,
   :focus {
@@ -60,7 +60,7 @@ export const DeleteBtn = styled(Delete)`
   cursor: pointer;
   width: 16px;
   height: 16px;
-  stroke: ${variables.colors.black};
+  stroke: ${props => props.theme.title};
   transition: stroke 250ms linear;
   &:hover,
   :focus {

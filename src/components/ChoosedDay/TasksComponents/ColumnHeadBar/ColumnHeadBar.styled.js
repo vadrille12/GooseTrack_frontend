@@ -8,7 +8,6 @@ export const ColumnHeadBarStyled = styled.div`
   justify-content: space-between;
 
   padding: 25px 18px 0 18px;
-
   margin-bottom: 30px;
 
   @media screen and (min-width: 768px) {
@@ -28,7 +27,7 @@ export const TaskTitle = styled.h3`
 
   text-align: center;
 
-  color: #111111;
+  color: ${props => props.theme.title};
 `;
 
 export const TaskHeaderBtn = styled(Plus)`
@@ -37,7 +36,7 @@ export const TaskHeaderBtn = styled(Plus)`
 
   cursor: pointer;
 
-  stroke: ${variables.colors.black};
+  stroke: ${props => props.theme.title};
   transition: ${variables.transitions.standart};
 
   &:hover {

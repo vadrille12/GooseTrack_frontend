@@ -11,7 +11,7 @@ export const AddTaskBtnStyled = styled.button`
   width: 297px;
   height: 48px;
 
-  background: #e3f3ff;
+  background: ${props => props.theme.addtask_btn};
   border: 1px dashed #3e85f3;
   border-radius: 8px;
 
@@ -23,13 +23,13 @@ export const AddTaskBtnStyled = styled.button`
 
   cursor: pointer;
 
-  color: #111111;
+  color: ${props => props.theme.title};
 
   transition: ${variables.transitions.standart};
 
   &:hover,
   :focus {
-    color: ${variables.colors.secondary};
+    color: ${props => props.theme.title_2};
     transform: translateY(-2px);
     box-shadow: ${variables.shadow.shadow};
   }

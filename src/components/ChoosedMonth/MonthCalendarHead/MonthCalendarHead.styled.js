@@ -14,8 +14,8 @@ export const MobileDaysList = styled.ul`
   margin: auto;
   margin-bottom: 14px;
 
-  background: ${variables.colors_mode.page_bg};
-  border: 1px solid ${variables.colors_mode.tabl_border};
+  background: ${props => props.theme.page_bg};
+  border: 1px solid ${props => props.theme.tabl_border};
   border-radius: 8px;
 
   @media screen and (min-width: ${variables.breakpoints.tablet}) {
@@ -38,8 +38,8 @@ export const DesktopDayList = styled.ul`
     width: 704px;
     height: 46px;
 
-    background: ${variables.colors_mode.page_bg};
-    border: 1px solid ${variables.colors_mode.tabl_border};
+    background: ${props => props.theme.page_bg};
+    border: 1px solid ${props => props.theme.tabl_border};
     border-radius: 8px;
 
     @media screen and (min-width: calc(${variables.breakpoints
@@ -55,7 +55,7 @@ export const DesktopDayList = styled.ul`
   }
 `;
 export const WorkDay = styled.li`
-  color: ${variables.colors_mode.text_3};
+  color: ${props => props.theme.text_3};
   font-size: 16px;
   font-family: Inter;
   font-weight: 600;

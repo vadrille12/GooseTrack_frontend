@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { ReactComponent as Icon } from 'images/icon-menu-burger.svg';
-import { variables } from 'Styles/GlobalStyle';
 
 export const Container = styled.div`
   display: flex;
@@ -53,7 +52,7 @@ export const Title = styled.h2`
   font-family: 'InterBold';
   font-size: 32px;
   line-height: calc((32 / 32) * 100%);
-  color: ${variables.colors_mode.title};
+  color: ${props => props.theme.title};
 `;
 
 export const ButtonFeedback = styled.button`

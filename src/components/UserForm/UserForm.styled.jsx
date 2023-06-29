@@ -17,7 +17,7 @@ export const Wrap = styled.div`
   border-radius: 16px;
 
   padding: 18px;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.page_bg};
   padding-top: 0px;
   @media (max-width: 374px) {
     /* width: 299px; */
@@ -118,14 +118,14 @@ export const UserName = styled.p`
   font-weight: 700;
   font-size: 18px;
   line-height: 0;
-  color: #343434;
+  color: ${props => props.theme.text_3};
   @media (max-width: 767px) {
     font-size: 14px;
   }
 `;
 
 export const User = styled.p`
-  color: #343434;
+  color: ${props => props.theme.text_6};
   font-weight: 600;
   font-size: 14px;
   @media (max-width: 767px) {
@@ -173,7 +173,7 @@ export const Label = styled.label`
   font-size: 12px;
 
   line-height: calc((14 / 12) * 100%);
-  color: #111111;
+  color: ${props => props.theme.text_7};
 
   @media (min-width: 768px) {
     font-size: 14px;
@@ -240,6 +240,7 @@ export const IconArrowDown = styled(IconArrow)`
   align-content: center;
   top: 35%;
   right: 40px;
+  stroke: ${props => props.theme.title};
   @media (min-width: 768px) {
     top: 14px;
     width: 18px;
@@ -251,16 +252,17 @@ export const Field = styled(FormikField)`
   /* margin-top: 8px; */
   width: 100%;
   height: 42px;
-  border: 1px solid rgba(17, 17, 17, 0.15);
+  border: 1px solid ${props => props.theme.input_border_2};
   border-radius: 8px;
   padding: 14px;
+  background: ${props => props.theme.page_bg};
 
   font-weight: 600;
   font-size: 14px;
   line-height: calc((18 / 14) * 100%);
-  color: #111111;
+  color: ${props => props.theme.title};
   outline: none;
-  cursor: pointer;
+  cursor: text;
 
   @media (min-width: 768px) {
     width: 354px;
@@ -276,7 +278,7 @@ export const Field = styled(FormikField)`
     font-family: Inter;
     font-size: 14px;
     line-height: 1.29;
-   
+
     color: rgba(17, 17, 17, 0.15);
 
     @media (min-width: 768px) {
@@ -287,7 +289,7 @@ export const Field = styled(FormikField)`
 
   &:hover,
   &:focus {
-    border: 1px solid #111111;
+    border: 1px solid ${props => props.theme.scroll_bar};
   }
 
   &.is-valid {
@@ -323,7 +325,7 @@ export const FormBtnWrap = styled.div`
 `;
 
 export const FormBtn = styled.button`
-width: 100%;
+  width: 100%;
   @media (min-width: 374px) {
     width: 262px;
   }
@@ -337,6 +339,7 @@ width: 100%;
   text-transform: none;
   border: none;
   border-radius: 16px;
+
   color: #ffffff;
   background-color: #3e85f3;
 

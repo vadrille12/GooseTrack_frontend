@@ -17,7 +17,7 @@ import { reviewReducer } from './reviews/reviewSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'user'],
 };
 
 export const store = configureStore({

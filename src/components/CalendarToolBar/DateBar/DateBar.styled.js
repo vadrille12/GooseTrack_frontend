@@ -78,13 +78,13 @@ export const CurrentDate = styled.div`
 export const ArrowLeftStyled = styled(ArrowLeft)`
   width: 16px;
   height: 16px;
-  stroke: ${variables.colors_mode.title};
+  stroke: ${props => props.theme.title};
 `;
 
 export const ArrowRightStyled = styled(ArrowRight)`
   width: 16px;
   height: 16px;
-  stroke: ${variables.colors_mode.title};
+  stroke: ${props => props.theme.title};
 `;
 
 export const ArrowLeftBtn = styled.button`
@@ -96,9 +96,9 @@ export const ArrowLeftBtn = styled.button`
   text-align: center;
   border-radius: 8px 0 0 8px;
   background-color: transparent;
-  border: 1px solid ${variables.colors_mode.tabl_border};
-  border-right: 0.5px solid ${variables.colors_mode.tabl_border};
-  background: ${variables.colors_mode.page_bg};
+  border: 1px solid ${props => props.theme.tabl_border};
+  border-right: 0.5px solid ${props => props.theme.tabl_border};
+  background: ${props => props.theme.page_bg};
 
   cursor: pointer;
 
@@ -117,9 +117,9 @@ export const ArrowRightBtn = styled.button`
   text-align: center;
   border-radius: 0 8px 8px 0;
   background-color: transparent;
-  border: 1px solid ${variables.colors_mode.tabl_border};
-  border-left: 0.5px solid ${variables.colors_mode.tabl_border};
-  background: ${variables.colors_mode.page_bg};
+  border: 1px solid ${props => props.theme.tabl_border};
+  border-left: 0.5px solid ${props => props.theme.tabl_border};
+  background: ${props => props.theme.page_bg};
 
   cursor: pointer;
 

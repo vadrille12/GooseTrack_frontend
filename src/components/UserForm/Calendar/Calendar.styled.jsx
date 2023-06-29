@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-
 export const DatePickerCalendar = styled.div`
   display: block;
   /* margin-top: 8px; */
@@ -153,14 +152,15 @@ export const DatePickerInput = styled(DatePicker)`
   display: block;
   height: 42px;
   width: 100%;
-  border: 1px solid rgba(17, 17, 17, 0.15);
+  border: 1px solid ${props => props.theme.input_border_2};
   border-radius: 8px;
   padding: 14px;
+  background: ${props => props.theme.page_bg};
 
   font-weight: 600;
   font-size: 14px;
   line-height: calc((18 / 14) * 100%);
-  color: #111111;
+  color: ${props => props.theme.title};
   outline: none;
   cursor: pointer;
   @media (min-width: 375px) {
@@ -180,7 +180,7 @@ export const DatePickerInput = styled(DatePicker)`
     font-family: Inter;
     font-size: 14px;
     line-height: 1.29;
-  
+
     color: rgba(17, 17, 17, 0.15);
 
     @media (min-width: 768px) {
@@ -190,7 +190,7 @@ export const DatePickerInput = styled(DatePicker)`
   }
   &:hover,
   &:focus {
-    border: 1px solid #111111;
+    border: 1px solid ${props => props.theme.scroll_bar};
   }
 
   &.is-valid {

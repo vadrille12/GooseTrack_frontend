@@ -1,4 +1,3 @@
-import { variables } from 'Styles/GlobalStyle';
 // import styled, { css } from 'styled-components';
 // // import { variables } from '../../Styles/GlobalStyle';
 
@@ -212,7 +211,7 @@ export const Box = styled.div`
   min-height: 100vh;
   padding: 40px 32px 32px;
   transition: 250ms ease-in-out;
-  background-color: ${variables.colors_mode.main_bg}; //
+  background-color: ${props => props.theme.main_bg}; //
 `;
 
 export const Wrapper = styled.div`

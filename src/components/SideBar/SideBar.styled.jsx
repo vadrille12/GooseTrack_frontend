@@ -2,13 +2,12 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Icon } from 'images/close.svg';
 import { ReactComponent as LogoIcon } from 'images/logo.svg';
-import { variables } from '../../Styles/GlobalStyle';
 
 export const Aside = styled.aside`
   /* height: 100vh; */
   min-height: 100%;
   width: 290px;
-  background-color: ${variables.colors_mode.bg_1};
+  background-color: ${props => props.theme.bg_1};
   padding-left: 24px;
   padding-right: 24px;
   padding-top: 32px;
@@ -17,7 +16,7 @@ export const Aside = styled.aside`
   flex-direction: column;
   justify-content: space-between;
   transition: 250ms ease-in-out;
-  border-right: 1px solid ${variables.colors_mode.main_border};
+  border-right: 1px solid ${props => props.theme.main_border};
 
   @media (max-width: 1279px) {
     position: absolute;
@@ -74,7 +73,7 @@ export const PanelTitle = styled.p`
   font-family: 'InterSemiBold';
   font-size: 12px;
   line-height: calc((15 / 12) * 100%);
-  color: ${variables.colors_mode.text_2};
+  color: ${props => props.theme.text_2};
   margin-bottom: 24px;
 
   @media (min-width: 768px) {
@@ -135,30 +134,30 @@ export const Link = styled(NavLink)`
   transition: 250ms ease-in-out;
   display: flex;
   align-items: center;
-  color: ${variables.colors_mode.text_1};
+  color: ${props => props.theme.text_1};
   &:hover,
   &:focus {
-    background-color: ${variables.colors_mode.activeLink_bg};
+    background-color: ${props => props.theme.activeLink_bg};
   }
   &:hover span,
   &:focus span {
-    color: ${variables.colors_mode.activeLink_text};
+    color: ${props => props.theme.activeLink_text};
   }
   &:hover svg,
   &:focus svg {
-    stroke: ${variables.colors_mode.activeLink_text};
+    stroke: ${props => props.theme.activeLink_text};
   }
   &.active {
-    background: ${variables.colors_mode.activeLink_bg};
-    color: ${variables.colors_mode.activeLink_text};
+    background: ${props => props.theme.activeLink_bg};
+    color: ${props => props.theme.activeLink_text};
     transition: 250ms ease-in-out;
   }
   svg {
-    stroke: ${variables.colors_mode.text_1};
+    stroke: ${props => props.theme.text_1};
     transition: 250ms ease-in-out;
   }
   &.active svg {
-    stroke: ${variables.colors_mode.activeLink_text};
+    stroke: ${props => props.theme.activeLink_text};
     transition: 250ms ease-in-out;
   }
 `;
