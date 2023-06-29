@@ -10,13 +10,14 @@ export const TaskCardStyled = styled.div`
 
   padding: 14px 14px 18px 14px;
 
-  background: #f7f6f9;
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  background: ${props => props.theme.task_bg};
+  border: 1px solid ${props => props.theme.tabl_border};
   border-radius: 8px;
 
   /* overflow: hidden; */
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: default;
 
   transition: ${variables.transitions.standart};
 
@@ -41,7 +42,7 @@ export const TaskText = styled.div`
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 28px;
-  color: #111111;
+  color: ${props => props.theme.title};
   text-align: left;
 
   overflow: hidden;
@@ -96,8 +97,9 @@ export const StatusLow = styled.div`
   font-weight: 600;
   font-size: 10px;
   line-height: 12px;
+  cursor: default;
 
-  color: #f7f6f9;
+  color: ${props => props.theme.title_2};
 
   height: 20px;
 
@@ -123,8 +125,9 @@ export const StatusMedium = styled.div`
   font-weight: 600;
   font-size: 10px;
   line-height: 12px;
+  cursor: default;
 
-  color: #f7f6f9;
+  color: ${props => props.theme.title_2};
 
   height: 20px;
 
@@ -150,8 +153,9 @@ export const StatusHigh = styled.div`
   font-weight: 600;
   font-size: 10px;
   line-height: 12px;
+  cursor: default;
 
-  color: #f7f6f9;
+  color: ${props => props.theme.title_2};
 
   height: 20px;
 

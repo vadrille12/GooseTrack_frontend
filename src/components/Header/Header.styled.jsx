@@ -52,7 +52,7 @@ export const Title = styled.h2`
   font-family: 'InterBold';
   font-size: 32px;
   line-height: calc((32 / 32) * 100%);
-  color: #111;
+  color: ${props => props.theme.title};
 `;
 
 export const ButtonFeedback = styled.button`

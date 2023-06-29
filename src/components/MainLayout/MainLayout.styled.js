@@ -212,6 +212,8 @@ export const Box = styled.div`
   padding: 24px 20px 20px;
 
   transition: 250ms ease-in-out;
+  background-color: ${props => props.theme.main_bg}; //
+
 
   @media screen and (min-width: 768px) {
     padding: 40px 32px 32px;

@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
-
 import PoppinsMedium from '../fonts/poppins/Poppins-Medium.ttf';
 import PoppinsRegular from '../fonts/poppins/Poppins-Regular.ttf';
 import InterBold from '../fonts/inter/Inter-Bold.ttf';
@@ -11,6 +10,70 @@ import InterSemiBoldItalic from '../fonts/inter/Inter-SemiBold-Italic.ttf';
 import CoolveticaRegular from '../fonts/coolvetica/Coolvetica-Regular.otf';
 import CoolveticaRegularItalic from '../fonts/coolvetica/Coolvetica-Regular-Italic.otf';
 
+export const theme = {
+  dark: {
+    text_1: '#FFF',
+    text_2: 'rgba(250, 250, 250, 0.3)',
+    text_3: '#FFFFFF',
+    text_4: 'rgba(250, 250, 250, 0.3)',
+    text_5: 'rgba(250, 250, 250, 0.9)',
+    text_6: 'rgba(250, 250, 250, 0.3)',
+    text_7: 'rgba(250, 250, 250, 0.3)',
+    title: '#FFF',
+    title_2: '#111',
+    main_bg: 'rgba(23, 24, 32, 1)',
+    page_bg: '#21222C',
+    task_bg: 'rgba(23, 24, 32, 1)',
+    task_modal_bg: 'rgba(23, 24, 32, 1)',
+    task_modal_border: 'rgba(23, 24, 32, 1)',
+    date_btn: 'rgba(33, 34, 44, 1)',
+    date_btn_active: 'rgba(62, 133, 243, 1)',
+    date_btn_active_text: '#FFFFFF',
+    addtask_btn: 'rgba(62, 133, 243, 1)',
+    bg_1: 'rgba(19, 21, 26, 1)',
+    activeLink_text: '#FFFFFF',
+    activeLink_bg: '#3E85F3',
+    scroll_bar: 'rgba(45, 48, 55, 1)',
+    scroll_bar_track: 'rgba(33, 34, 44, 1)',
+    main_border: 'rgba(19, 21, 26, 1)',
+    tabl_border: 'rgba(255, 255, 255, 0.15)',
+    input_border: 'rgba(255, 255, 255, 0.15)',
+    input_border_2: 'rgba(255, 255, 255, 0.15)',
+    input_bg: 'rgba(23, 24, 32, 1)',
+    close_btn: 'rgba(255, 255, 255, 0.6)',
+  },
+  light: {
+    text_1: 'rgba(52, 52, 52, 0.5)',
+    text_2: 'rgba(52, 52, 52, 0.5)',
+    text_3: 'rgba(52, 52, 52, 1)',
+    text_4: 'rgba(52, 52, 52, 0.5)',
+    text_5: 'rgba(52, 52, 52, 1)',
+    text_6: 'rgba(52, 52, 52, 1)',
+    text_7: '#111',
+    title: '#111',
+    title_2: '#FFF',
+    main_bg: 'rgba(247, 246, 249, 1)',
+    page_bg: '#FFF',
+    task_bg: 'rgba(247, 246, 249, 1)',
+    task_modal_bg: '#FFF',
+    task_modal_border: 'rgba(220, 227, 229, 0.8)',
+    date_btn: 'rgba(227, 243, 255, 1)',
+    date_btn_active: 'rgba(202, 232, 255, 1)',
+    date_btn_active_text: 'rgba(62, 133, 243, 1)',
+    addtask_btn: 'rgba(227, 243, 255, 1)',
+    bg_1: '#FFFFFF',
+    activeLink_text: 'rgba(62, 133, 243, 1)',
+    activeLink_bg: '#e3f3ff',
+    scroll_bar: 'rgba(231, 229, 229, 1)',
+    scroll_bar_track: 'rgba(242, 242, 242, 1)',
+    main_border: 'rgba(220, 227, 229, 0.5)',
+    tabl_border: '#dce3e580',
+    input_border: 'rgba(246, 246, 246, 1)',
+    input_border_2: 'rgba(17, 17, 17, 0.15)',
+    input_bg: 'rgba(246, 246, 246, 1)',
+    close_btn: 'rgba(62, 133, 243, 1)',
+  },
+};
 export const variables = {
   colors: {
     primary: '#3E85F3',
@@ -22,7 +85,7 @@ export const variables = {
     white: '#FFFFFF',
     blackTitle: '#171820',
     black: '#111111',
-    text: '#343434',
+    text: 'rgba(52, 52, 52, 0.5)',
     mainYellow: '#F3B249',
     lightYellow: '#FCF0D4',
     redError: '#DA1414',
@@ -138,9 +201,13 @@ code {
 }
 
 #root {
-  transition: color ${variables.transitions.standart}, background-color ${variables.transitions.standart},
-    box-shadow ${variables.transitions.standart}, transform ${variables.transitions.standart};
-  background: #f7f6f9;
+  transition: color ${variables.transitions.standart}, background-color ${
+  variables.transitions.standart
+},
+    box-shadow ${variables.transitions.standart}, transform ${
+  variables.transitions.standart
+};
+  background: ${props => props.theme.main_bg};
 }
 
 p {

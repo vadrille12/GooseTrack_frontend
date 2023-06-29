@@ -23,12 +23,12 @@ export const ColumnTasksListStyled = styled.div`
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
+    background-color: ${props => props.theme.scroll_bar};
     border-radius: 12px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #cac8c8;
+    background-color: ${props => props.theme.scroll_bar};
     border-radius: 12px;
   }
 

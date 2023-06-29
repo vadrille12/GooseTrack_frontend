@@ -14,10 +14,10 @@ export const Form = styled(FormikForm)`
   /* height: 336px; */
   max-height: 420px;
   padding: 48px 18px 40px;
-  background-color: #fff;
+  background-color: ${props => props.theme.task_modal_bg};
 
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: 1px solid ${props => props.theme.task_modal_border};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
   @media (min-width: 768px) {
@@ -32,7 +32,7 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 8px;
 
-  color: rgba(52, 52, 52, 0.8);
+  color: ${props => props.theme.text_3};
   font-size: 12px;
   font-family: Inter;
   font-weight: 500;
@@ -44,10 +44,10 @@ export const InputTitle = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: #f6f6f6;
-  border: none;
+  background: ${props => props.theme.input_bg};
+  border: 1px solid ${props => props.theme.input_border};
 
-  color: #343434;
+  color: ${props => props.theme.text_3};
   font-size: 14px;
   font-family: Inter;
   font-weight: 600;
@@ -61,7 +61,7 @@ export const InputTitle = styled(Field)`
 
   &::placeholder {
     opacity: 1;
-    color: #343434;
+    color: ${props => props.theme.text_3};
     font-size: 14px;
     font-family: Inter;
     font-weight: 600;
@@ -84,11 +84,11 @@ export const InputTime = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: #f6f6f6;
-  border: none;
+  background: ${props => props.theme.input_bg};
+  border: 1px solid ${props => props.theme.input_border};
   cursor: pointer;
 
-  color: #343434;
+  color: ${props => props.theme.text_3};
   font-size: 14px;
   font-family: Inter;
   font-weight: 600;
@@ -123,7 +123,7 @@ export const RadioLabel = styled.label`
   align-items: center;
   margin-top: 16px;
 
-  color: #343434;
+  color: ${props => props.theme.text_3};
   font-size: 12px;
   font-family: Inter;
   font-weight: 600;
@@ -263,7 +263,6 @@ export const ButtonCloseWrap = styled.button`
   position: absolute;
   top: 14px;
   right: 18px;
-
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -283,10 +282,10 @@ export const ErrorMessage = styled(FormikErrorMessage)`
 
 export const CloseIcon = styled(IconClose)`
   transition: stroke 250ms linear;
-  stroke: #111111;
+  stroke: ${props => props.theme.title};
 
   &:hover,
   &:focus {
-    stroke: #2b78ef;
+    stroke: ${props => props.theme.close_btn};
   }
 `;

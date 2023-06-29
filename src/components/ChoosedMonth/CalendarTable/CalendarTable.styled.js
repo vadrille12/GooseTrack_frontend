@@ -9,8 +9,10 @@ export const Cell = styled(Link)`
   width: 48px;
   height: 93px;
   text-align: right;
-  border-bottom: 1px solid ${customGrey};
-  border-right: 1px solid ${customGrey};
+  border-bottom: 1px solid ${props => props.theme.tabl_border};
+  border-right: 1px solid ${props => props.theme.tabl_border};
+  padding: 0px 2px;
+  background: ${props => props.theme.page_bg};
   padding: 0px 2px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -82,7 +84,7 @@ export const LabelCell = styled.div`
 
   border-radius: 6px;
 
-  color: ${variables.colors.text};
+  color: ${props => props.theme.text_3};
   font-size: 12px;
   font-family: Inter;
   font-weight: 700;
@@ -108,7 +110,7 @@ export const TodayLabelCell = styled(LabelCell)`
 `;
 
 export const OtherMonthLabelCell = styled(LabelCell)`
-  color: #d3d3d3;
+  color: ${props => props.theme.page_bg};
 `;
 
 export const CalendarWrapper = styled.div`
@@ -117,7 +119,9 @@ export const CalendarWrapper = styled.div`
   width: 340px;
   height: 564px;
   margin: auto;
-
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.tabl_border};
   background: ${variables.colors.background};
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {

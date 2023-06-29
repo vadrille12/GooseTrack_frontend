@@ -12,8 +12,8 @@ export const TaskItem = styled.div`
   min-height: 155px;
   flex: 1;
 
-  background: #ffffff;
-  border: 1px solid rgba(220, 227, 229, 0.5);
+  background: ${props => props.theme.page_bg};
+  border: 1px solid ${props => props.theme.tabl_border};
   border-radius: 8px;
 
   position: relative;
@@ -40,19 +40,19 @@ export const TaskItem = styled.div`
 export const TasksColumnStyled = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: scroll;
   gap: 22px;
   padding-bottom: 20px;
   width: 335px;
 
   ::-webkit-scrollbar {
     height: 12px;
-    background: #f2f2f2;
+    background: ${props => props.theme.scroll_bar_track};
     border-radius: 12px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #cac8c8;
+    background-color: ${props => props.theme.scroll_bar};
     border-radius: 12px;
   }
 
@@ -61,7 +61,7 @@ export const TasksColumnStyled = styled.div`
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
+    background-color: ${props => props.theme.scroll_bar_track};
     border-radius: 12px;
   }
 

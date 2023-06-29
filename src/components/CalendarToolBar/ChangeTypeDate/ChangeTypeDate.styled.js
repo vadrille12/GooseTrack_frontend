@@ -16,7 +16,7 @@ export const MonthBnt = styled(NavLink)`
 
   border: none;
   border-right: 1px solid rgba(62, 133, 243, 0.2);
-  background: #e3f3ff;
+  background: ${props => props.theme.date_btn};
 
   color: #3e85f3;
   text-align: center;
@@ -26,7 +26,8 @@ export const MonthBnt = styled(NavLink)`
   line-height: 18px;
 
   &.active {
-    background: #cae8ff;
+    background: ${props => props.theme.date_btn_active};
+    color: ${props => props.theme.date_btn_active_text};
   }
 `;
 
@@ -40,7 +41,7 @@ export const DayBnt = styled(NavLink)`
 
   border: none;
   border-left: 1px solid rgba(62, 133, 243, 0.2);
-  background: #e3f3ff;
+  background: ${props => props.theme.date_btn};
 
   color: #3e85f3;
   text-align: center;
@@ -54,6 +55,7 @@ export const DayBnt = styled(NavLink)`
   }
 
   &.active {
-    background: #cae8ff;
+    background: ${props => props.theme.date_btn_active};
+    color: ${props => props.theme.date_btn_active_text};
   }
 `;
