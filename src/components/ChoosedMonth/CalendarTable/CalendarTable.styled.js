@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { variables } from '../../../Styles/GlobalStyle';
 
+const customGrey = '#dce3e580';
+
 export const Cell = styled(Link)`
   width: 48px;
   height: 93px;
@@ -11,7 +13,9 @@ export const Cell = styled(Link)`
   border-right: 1px solid ${props => props.theme.tabl_border};
   padding: 0px 2px;
   background: ${props => props.theme.page_bg};
-
+  padding: 0px 2px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   cursor: pointer;
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
@@ -27,17 +31,47 @@ export const Cell = styled(Link)`
     padding: 0px 8px;
   }
 
-  &:nth-child(n + 36) {
-    border-bottom: none;
+  &:nth-child(-n + 7) {
+    border-top: 1px solid ${customGrey};
   }
 
-  &:nth-child(7n) {
-    border-right: none;
+  &:nth-child(7n + 1) {
+    border-left: 1px solid ${customGrey};
+  }
+
+  &:nth-child(1) {
+    border-top-left-radius: 8px;
+  }
+
+  &:nth-child(7) {
+    border-top-right-radius: 8px;
+  }
+
+  &:nth-child(36) {
+    border-bottom-left-radius: 8px;
+  }
+
+  &:nth-child(42) {
+    border-bottom-right-radius: 8px;
   }
 
   &:hover,
   :focus {
     box-shadow: ${variables.shadow.shadow};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    /* color of the scroll thumb */
+    background-color: ${customGrey};
+    /* roundness of the scroll thumb */
+    border-radius: 3px;
+    /* creates padding around scroll thumb */
+    border: 2px solid ${customGrey};
+  }
+
+  &::-webkit-scrollbar {
+    /* width of the entire scrollbar */
+    width: 4px;
   }
 `;
 
@@ -82,12 +116,13 @@ export const OtherMonthLabelCell = styled(LabelCell)`
 export const CalendarWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 338px;
+  width: 340px;
   height: 564px;
   margin: auto;
   overflow: hidden;
   border-radius: 8px;
   border: 1px solid ${props => props.theme.tabl_border};
+  background: ${variables.colors.background};
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
     width: 704px;

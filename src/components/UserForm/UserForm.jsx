@@ -25,11 +25,14 @@ import {
 import goose from '../../images/mainPage/mobile/mobile_goose_mainPage.png';
 
 import * as Yup from 'yup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Calendar } from './Calendar/Calendar';
 
-import { useEffect } from 'react';
-// import { useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+import { refresh } from 'redux/auth/operations';
+import dayjs from 'dayjs';
 
 const regex = {
   name: /^[a-z]*$/,
@@ -38,10 +41,6 @@ const regex = {
   phone: /^\+380\d{9}$/,
   skype: /^\S[\S\s]{0,28}\S$/,
 };
-
-const originalDate = new Date();
-export const formattedDate = originalDate.toISOString().slice(0, 10);
-// console.log('formattedDate', formattedDate);
 
 const userSchema = Yup.object().shape({
   name: Yup.string()
@@ -55,7 +54,7 @@ const userSchema = Yup.object().shape({
         return value && value.replace(/\s/g, '').length >= 2;
       }
     ),
-  birthday: Yup.date().max(originalDate, 'Birthday must be earlier than today'),
+  birthday: Yup.date().max(new Date(), 'Birthday must be earlier than today'),
   email: Yup.string()
     .email('This is an ERROR email')
     .matches(/^[a-zA-Z0-9@.]+$/, 'Email must contain only Latin characters')
@@ -79,36 +78,32 @@ const userSchema = Yup.object().shape({
       }
     ),
 });
+const day = dayjs(new Date()).format('YYYY-MM-DD');
 
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthdayDate, setBirthdayDate] = useState(null);
+  const [isUpdateForm, setIsUpdateForm] = useState(null);
 
-  // const { user } = useSelector(selectUser);
-
-
-  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     skype: '',
-    birthday: new Date(),
+    birthday: day,
     avatarUrl: '',
   });
+  // console.log('formData', formData);
 
-  console.log(formData)
-
+  const user = useSelector(selectUser);
+  // console.log('user UserForm', user);
+  const dispatch = useDispatch();
   useEffect(() => {
-    const saveFormData = localStorage.getItem('formDataUserAccountPage');
-    if (saveFormData) {
-      setFormData(JSON.parse(saveFormData));
+    if (isUpdateForm) {
+      dispatch(refresh());
+      setIsUpdateForm(null);
     }
-  }, []);
-  useEffect(() => {
-    localStorage.setItem('formDataUserAccountPage', JSON.stringify(formData));
-  }, [formData]);
-
+  }, [dispatch, isUpdateForm, formData]);
 
   return (
     <Wrap>
@@ -116,21 +111,16 @@ export const UserForm = () => {
         <Formik
           enableReinitialize={true}
           initialValues={{
-            name: formData.name || '',
-            email: formData.email || '',
+            name: user.name || formData.name || '',
+            email: user.email || formData.email || '',
             phone: formData.phone || '',
             skype: formData.skype || '',
-            birthday:
-              birthdayDate || formData.birthday
-                ? new Date(birthdayDate || formData.birthday)
-                : '',
+            birthday: birthdayDate || day || '',
             avatarUrl: formData.avatarUrl || '',
           }}
           validationSchema={userSchema}
           onSubmit={async values => {
-            console.log('values', values);
             const formData = new FormData();
-            console.log('new FormData()', formData);
             formData.append('email', values.email);
             formData.append('birthday', values.birthday);
             formData.append('phone', values.phone);
@@ -139,6 +129,8 @@ export const UserForm = () => {
             formData.append('avatarUrl', values.avatar);
             setFormData(values);
             alert(JSON.stringify(values, null, 2));
+            await dispatch(refresh(formData));
+            setIsUpdateForm(true);
           }}
         >
           {({
@@ -146,7 +138,6 @@ export const UserForm = () => {
             handleChange,
             handleBlur,
             dirty,
-            isSubmitting,
             errors,
             touched,
             values,
@@ -200,7 +191,7 @@ export const UserForm = () => {
                   />
 
                   <UserWrapInfo>
-                    <UserName>{formData.name || 'User NickName'}</UserName>
+                    <UserName>{user.name || 'User NickName'}</UserName>
                     <User>User</User>
                   </UserWrapInfo>
                 </AvatarWrap>
@@ -220,8 +211,7 @@ export const UserForm = () => {
                           onBlur={handleBlur}
                           type="text"
                         />
-                        {isValid('name') === 'is-valid' && 
-                            <IconDone />}
+                        {isValid('name') === 'is-valid' && <IconDone />}
                         {isValid('name') === 'is-invalid' && <IconError />}
                         <ErrorMessage name="name" component="div" />
                       </Input>
@@ -238,15 +228,16 @@ export const UserForm = () => {
                           selected={new Date(values.birthday)}
                           onChange={e => {
                             setFieldValue('birthday', e);
-                            setBirthdayDate();
+                            setBirthdayDate(dayjs(e).format('YYYY-MM-DD'));
                           }}
                           placeholder={'Birthday Date'}
-                          value={values.birthday}
+                          value={dayjs(values.birthday).format('YYYY-MM-DD')}
                         />
-                        {isValid('birthday') === 'is-valid'
-                          ?  <IconDone />
-                          : <IconArrowDown /> 
-                            }
+                        {isValid('birthday') === 'is-valid' ? (
+                          <IconDone />
+                        ) : (
+                          <IconArrowDown />
+                        )}
 
                         {isValid('birthday') === 'is-invalid' && <IconError />}
                         <ErrorMessage name="birthday" component="div" />
@@ -266,7 +257,7 @@ export const UserForm = () => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {isValid('email') === 'is-valid' &&  <IconDone />}
+                        {isValid('email') === 'is-valid' && <IconDone />}
                         {isValid('email') === 'is-invalid' && <IconError />}
                         <ErrorMessage name="email" component="div" />
                       </Input>
@@ -284,7 +275,7 @@ export const UserForm = () => {
                           placeholder={'+38 097 111 11 11'}
                           value={values.phone}
                         />
-                        {isValid('phone') === 'is-valid' &&  <IconDone />}
+                        {isValid('phone') === 'is-valid' && <IconDone />}
                         {isValid('phone') === 'is-invalid' && <IconError />}
                         <ErrorMessage name="phone" component="div" />
                       </Input>
@@ -302,7 +293,7 @@ export const UserForm = () => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {isValid('skype') === 'is-valid' &&   <IconDone />}
+                        {isValid('skype') === 'is-valid' && <IconDone />}
                         {isValid('skype') === 'is-invalid' && <IconError />}
                         <ErrorMessage name="skype" component="div" />
                       </Input>

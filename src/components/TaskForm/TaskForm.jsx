@@ -21,6 +21,9 @@ import {
   RadioWrapper,
   TimeWrapper,
 } from './TaskForm.styled';
+import { useDispatch } from 'react-redux';
+import { addTask } from 'redux/tasks/operations';
+import { useParams } from 'react-router-dom';
 
 const TaskSchema = Yup.object().shape({
   title: Yup.string()
@@ -45,12 +48,39 @@ const TaskSchema = Yup.object().shape({
   priority: Yup.string()
     .oneOf(['low', 'medium', 'high'])
     .required('Priority is required'),
+  date: Yup.date()
+    .required('Date is required')
+    // .min(new Date('1900-01-01'), 'Date must be after 1900-01-01')
+    // .max(new Date(), 'Date must be before or equal to the current date')
+    .transform((value, originalValue) => {
+      if (originalValue) {
+        const [year, month, day] = originalValue.split('-');
+        return new Date(
+          `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+        );
+      }
+      return value;
+    }),
+  category: Yup.string()
+    .oneOf(['to-do', 'in-progress', 'done'])
+    .required('Category is required'),
 });
 
-export const TaskForm = ({ onClose, action }) => {
+export const TaskForm = ({ onClose, action, column }) => {
+  const dispatch = useDispatch();
+  const { currentDay } = useParams();
+
   const handleSubmit = (values, actions) => {
     console.log(values);
+    dispatch(addTask(values));
     actions.resetForm();
+    onClose();
+  };
+
+  const setCategory = () => {
+    if (column === 'To do') return 'to-do';
+    if (column === 'In progress') return 'in-progress';
+    if (column === 'Done') return 'done';
   };
 
   return (
@@ -60,6 +90,8 @@ export const TaskForm = ({ onClose, action }) => {
         start: '09:00',
         end: '14:00',
         priority: 'low',
+        date: currentDay,
+        category: setCategory(),
       }}
       validationSchema={TaskSchema}
       onSubmit={handleSubmit}

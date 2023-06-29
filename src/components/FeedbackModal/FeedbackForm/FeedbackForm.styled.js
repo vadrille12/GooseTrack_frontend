@@ -53,7 +53,7 @@ export const EditBtn = styled.button`
 
   &:hover, 
   &:focus {
-    stroke: #ffffff;
+    stroke: #FFFFFF;
     background-color: #3E85F3;
   }
 `
@@ -187,4 +187,10 @@ export const BtnCloseWrap = styled.button`
   background-color: transparent;
   cursor: pointer;
   stroke: ${variables.colors.closeButton};
+
+  transition: stroke ${variables.transitions.standart};
+  &:hover, 
+  &:focus {
+    stroke: ${variables.colors.secondary};
+  }
 `;
