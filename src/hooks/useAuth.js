@@ -13,6 +13,7 @@ export const useAuth = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const accessToken = useSelector(selectToken);
 
+  
   return {
     isRefreshing,
     isLoggedIn,
