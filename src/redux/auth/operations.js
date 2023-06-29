@@ -50,7 +50,7 @@ export const logout = createAsyncThunk(
 );
 
 export const refresh = createAsyncThunk(
-  'auth/refresh',
+  'auth/refresh/fetchCurrentUser',
   async (_, { getState, rejectWithValue }) => {
     const { token } = getState().auth;
     if (!token) {
@@ -70,25 +70,11 @@ export const updateUser = createAsyncThunk(
   'auth/update',
   async (credentials, { rejectWithValue }) => {
     try {
-      const {
-        data: { data },
-      } = await axios.patch('api/auth/update', credentials);
+      const { data } = await axios.patch('api/auth/update', credentials);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
-// export const getUserInfo = createAsyncThunk(
-//   'auth/userInfo',
-//   async (_, thunkAPI) => {
-//     const savedToken = thunkAPI.getState().auth.token;
-//     try {
-//       setToken(savedToken);
-//       const res = await axios('/user/info');
-//       return res.data;
-//     } catch (error) {
-//       thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+
