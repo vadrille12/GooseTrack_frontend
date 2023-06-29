@@ -114,7 +114,7 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
           ed
       </EditBtn>
       <DeleteBtn onClick={handleDelete}>del</DeleteBtn>
-    </EditBntContainer>
+    </EditBtnContainer>
 
   );
 };
