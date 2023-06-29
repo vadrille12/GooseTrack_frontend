@@ -5,9 +5,9 @@ axios.defaults.baseURL = 'https://goose-track-api-l50t.onrender.com';
 
 export const fetchReviews = createAsyncThunk(
   'reviews/getReviews',
-  async (_, thunkAPI) => {
+  async ({page, limit}, thunkAPI) => {
     try {
-      const { data } = await axios.get('/api/reviews');
+      const { data } = await axios.get(`/api/reviews?page=${page}&limit=4${limit}`);
 
       return data;
     } catch (e) {
