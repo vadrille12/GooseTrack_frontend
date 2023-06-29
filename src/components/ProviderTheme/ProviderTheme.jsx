@@ -10,7 +10,6 @@ export const ProviderTheme = ({ children }) => {
   useEffect(() => {
     setThemeState(themeInterface === 'light' ? light : dark);
   }, [themeInterface, dark, light]);
-  console.log(themeInterface);
 
   return <ThemeProvider theme={themeState}>{children}</ThemeProvider>;
 };
