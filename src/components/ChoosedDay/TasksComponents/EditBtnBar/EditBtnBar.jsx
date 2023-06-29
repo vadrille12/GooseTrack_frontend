@@ -2,39 +2,65 @@ import { useState } from 'react';
 import {
   ChangeCategoryContainer,
   DeleteBtn,
-  EditBntContainer,
+  EditBtnContainer,
   EditBtn,
   MoveBtn,
   MoveToInProgress,
   MoveToDone,
+  PopoverStyled,
 } from './EditBtnBar.styled';
 import { useDispatch } from 'react-redux';
 import { deleteTask } from 'redux/tasks/operations';
 
-export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
-  const [isActiv, setIsActiv] = useState(false);
-  const dispatch = useDispatch();
 
-  const handleDelete = () => {
+export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
+   const dispatch = useDispatch();
+   const [anchorEl, setAnchorEl] = useState(null);
+   const handleDelete = () => {
     dispatch(deleteTask(task._id));
   };
 
-  const handleOpenMoveBar = () => {
-    setIsActiv(true);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleCloseMoveBar = () => {
-    setIsActiv(false);
+  const handleClose = () => {
+    setAnchorEl(null);
   };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
-    <EditBntContainer onMouseLeave={handleCloseMoveBar}>
-      <MoveBtn onClick={handleOpenMoveBar}></MoveBtn>
+    <EditBtnContainer>
+      <MoveBtn
+        aria-describedby={id}
+        variant="contained"
+        onClick={handleClick}
+      ></MoveBtn>
 
-      {isActiv && (
-        <>
+      <PopoverStyled
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        // anchorOrigin={{
+        //   vertical: 'bottom',
+        //   horizontal: 'right',
+        // }}
+        // transformOrigin={{
+        //   vertical: 'top',
+        //   horizontal: 'center',
+        // }}
+      >
+        <ChangeCategoryContainer>
           {category === 'done' && (
-            <ChangeCategoryContainer>
+            <>
               <MoveToInProgress>
                 <button>
                   In progress <MoveBtn />
@@ -45,10 +71,11 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
                   To do <MoveBtn />
                 </button>
               </MoveToDone>
-            </ChangeCategoryContainer>
+            </>
           )}
+
           {category === 'to-do' && (
-            <ChangeCategoryContainer>
+            <>
               <MoveToInProgress>
                 <button>
                   In progress <MoveBtn />
@@ -59,10 +86,11 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
                   Done <MoveBtn />
                 </button>
               </MoveToDone>
-            </ChangeCategoryContainer>
+            </>
           )}
+
           {category === 'in-progress' && (
-            <ChangeCategoryContainer>
+            <>
               <MoveToInProgress>
                 <button>
                   To do <MoveBtn />
@@ -73,19 +101,20 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
                   Done <MoveBtn />
                 </button>
               </MoveToDone>
-            </ChangeCategoryContainer>
+            </>
           )}
-        </>
-      )}
+        </ChangeCategoryContainer>
+      </PopoverStyled>
+
       <EditBtn
         onClick={() => {
           onOpen();
           setAction();
-        }}
-      >
-        ed
+        }}>
+          ed
       </EditBtn>
       <DeleteBtn onClick={handleDelete}>del</DeleteBtn>
     </EditBntContainer>
+
   );
 };
