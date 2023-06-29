@@ -47,7 +47,7 @@ export const ReviewsSlider = () => {
   SwiperCore.use([Autoplay]);
 
   useEffect(() => {
-    dispatch(fetchReviews());
+    dispatch(fetchReviews({page: 1, limit: 8}));
   }, [dispatch]);
 
   const slides = reviews;
