@@ -9,9 +9,17 @@ import {
   MoveToDone,
   PopoverStyled,
 } from './EditBtnBar.styled';
+import { useDispatch } from 'react-redux';
+import { deleteTask } from 'redux/tasks/operations';
 
-export const EditBtnBar = ({ onOpen, setAction, category }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
+
+export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
+   const dispatch = useDispatch();
+   const [anchorEl, setAnchorEl] = useState(null);
+   const handleDelete = () => {
+    dispatch(deleteTask(task._id));
+  };
+
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -102,9 +110,11 @@ export const EditBtnBar = ({ onOpen, setAction, category }) => {
         onClick={() => {
           onOpen();
           setAction();
-        }}
-      />
-      <DeleteBtn />
-    </EditBtnContainer>
+        }}>
+          ed
+      </EditBtn>
+      <DeleteBtn onClick={handleDelete}>del</DeleteBtn>
+    </EditBntContainer>
+
   );
 };
