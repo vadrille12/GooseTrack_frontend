@@ -32,6 +32,7 @@ export const AddTaskBtnStyled = styled.button`
     color: ${props => props.theme.title_2};
     transform: translateY(-2px);
     box-shadow: ${variables.shadow.shadow};
+    background: #3e85f3;
   }
 
   @media screen and (min-width: 768px) {

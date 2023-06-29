@@ -2,32 +2,57 @@ import { useState } from 'react';
 import {
   ChangeCategoryContainer,
   DeleteBtn,
-  EditBntContainer,
+  EditBtnContainer,
   EditBtn,
   MoveBtn,
   MoveToInProgress,
   MoveToDone,
+  PopoverStyled,
 } from './EditBtnBar.styled';
 
 export const EditBtnBar = ({ onOpen, setAction, category }) => {
-  const [isActiv, setIsActiv] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleOpenMoveBar = () => {
-    setIsActiv(true);
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleCloseMoveBar = () => {
-    setIsActiv(false);
+  const handleClose = () => {
+    setAnchorEl(null);
   };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
-    <EditBntContainer onMouseLeave={handleCloseMoveBar}>
-      <MoveBtn onClick={handleOpenMoveBar}></MoveBtn>
+    <EditBtnContainer>
+      <MoveBtn
+        aria-describedby={id}
+        variant="contained"
+        onClick={handleClick}
+      ></MoveBtn>
 
-      {isActiv && (
-        <>
+      <PopoverStyled
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        // anchorOrigin={{
+        //   vertical: 'bottom',
+        //   horizontal: 'right',
+        // }}
+        // transformOrigin={{
+        //   vertical: 'top',
+        //   horizontal: 'center',
+        // }}
+      >
+        <ChangeCategoryContainer>
           {category === 'done' && (
-            <ChangeCategoryContainer>
+            <>
               <MoveToInProgress>
                 <button>
                   In progress <MoveBtn />
@@ -38,10 +63,11 @@ export const EditBtnBar = ({ onOpen, setAction, category }) => {
                   To do <MoveBtn />
                 </button>
               </MoveToDone>
-            </ChangeCategoryContainer>
+            </>
           )}
+
           {category === 'to-do' && (
-            <ChangeCategoryContainer>
+            <>
               <MoveToInProgress>
                 <button>
                   In progress <MoveBtn />
@@ -52,10 +78,11 @@ export const EditBtnBar = ({ onOpen, setAction, category }) => {
                   Done <MoveBtn />
                 </button>
               </MoveToDone>
-            </ChangeCategoryContainer>
+            </>
           )}
+
           {category === 'in-progress' && (
-            <ChangeCategoryContainer>
+            <>
               <MoveToInProgress>
                 <button>
                   To do <MoveBtn />
@@ -66,19 +93,18 @@ export const EditBtnBar = ({ onOpen, setAction, category }) => {
                   Done <MoveBtn />
                 </button>
               </MoveToDone>
-            </ChangeCategoryContainer>
+            </>
           )}
-        </>
-      )}
+        </ChangeCategoryContainer>
+      </PopoverStyled>
+
       <EditBtn
         onClick={() => {
           onOpen();
           setAction();
         }}
-      >
-        ed
-      </EditBtn>
-      <DeleteBtn>del</DeleteBtn>
-    </EditBntContainer>
+      />
+      <DeleteBtn />
+    </EditBtnContainer>
   );
 };
