@@ -1,5 +1,7 @@
 import { startOfMonth, getDay } from 'date-fns';
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import {
   Cell,
@@ -8,8 +10,8 @@ import {
   TodayLabelCell,
   OtherMonthLabelCell,
 } from './CalendarTable.styled';
-
 import { TaskCalendar } from '../TaskCalendar/TaskCalendar';
+import { TaskModal } from 'components/TaskModal/TaskModal';
 
 const isCurrentDay = date => {
   const today = new Date();
@@ -59,6 +61,9 @@ const extendDate = string => {
 };
 
 export const CalendarTable = ({ tasks }) => {
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [category, setCategory] = useState('to-do');
   const { currentDate } = useParams();
   const dateSelected = extendDate(currentDate);
   const weekFirstDay = getDay(startOfMonth(dateSelected));
@@ -69,6 +74,21 @@ export const CalendarTable = ({ tasks }) => {
     startOfMonth(dateSelected) - daysToAddInPreviousMonth * 3600 * 1000 * 24
   );
 
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const navigateToLink = (e, day) => {
+    if (e.target === e.currentTarget) {
+      navigate(gotolink(day));
+    }
+    return;
+  };
+
   for (let i = 0; i < 42; i++) {
     const result = new Date(firstDay.getTime() + i * 86400000);
     calendar.push(result);
@@ -77,7 +97,7 @@ export const CalendarTable = ({ tasks }) => {
   return (
     <CalendarWrapper>
       {calendar.map((day, index) => (
-        <Cell to={gotolink(day)} key={index}>
+        <Cell onClick={e => navigateToLink(e, day)} key={index}>
           {isCurrentDay(day) ? (
             <TodayLabelCell>{day.getDate()}</TodayLabelCell>
           ) : isCurrentMonth(day, dateSelected) ? (
@@ -90,11 +110,18 @@ export const CalendarTable = ({ tasks }) => {
               <TaskCalendar
                 key={day.toString() + index.toString()}
                 task={task}
+                onOpen={openModal}
+                setCategory={() => {
+                  setCategory(task.category);
+                }}
               />
             ) : null
           )}
         </Cell>
       ))}
+      {showModal && (
+        <TaskModal action={'edit'} onClose={closeModal} column={category} />
+      )}
     </CalendarWrapper>
   );
 };

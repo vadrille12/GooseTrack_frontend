@@ -1,7 +1,17 @@
 import { Task } from './TaskCalendar.styled';
 
-export const TaskCalendar = ({ task }) => {
+export const TaskCalendar = ({ task, onOpen, setCategory }) => {
   const { title, priority } = task;
-  return <Task priority={priority}>{title}</Task>;
+  // priority: [low | medium | high] |
+  return (
+    <Task
+      priority={priority}
+      onClick={() => {
+        setCategory(task.category);
+        onOpen();
+      }}
+    >
+      {title}
+    </Task>
+  );
 };
-// priority: [low | medium | high] | обов'язково

@@ -34,6 +34,12 @@ export const Task = styled.p`
   font-family: Inter;
   font-weight: 700;
   line-height: 1.4;
+
+  &:hover,
+  :focus {
+    box-shadow: ${variables.shadow.shadow};
+  }
+
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
     width: 92px;
     height: 26px;

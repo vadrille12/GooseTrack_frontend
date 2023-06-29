@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import { variables } from '../../../Styles/GlobalStyle';
 
 const customGrey = '#dce3e580';
 
-export const Cell = styled(Link)`
+export const Cell = styled.div`
   width: 48px;
   height: 93px;
   text-align: right;
