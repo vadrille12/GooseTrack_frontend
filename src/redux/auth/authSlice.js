@@ -69,6 +69,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isLoggedIn = false;
         state.error = payload;
+        state.token = null;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         state.user = payload;
