@@ -35,6 +35,7 @@ export const StatisticsContainer = styled.section`
 `;
 
 export const ChartContainer = styled.div`
+  position: relative;
   margin-top: auto;
 
   border-radius: 29px;

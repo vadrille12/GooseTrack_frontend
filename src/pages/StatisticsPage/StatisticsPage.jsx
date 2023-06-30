@@ -4,7 +4,7 @@ import {
   ChartContainer,
 } from 'pages/StatisticsPage/StatisticsPage.styled';
 
-import { SectionStatistics } from 'components/StatisticsPageComponents/SectionStatistics';
+import { SectionStatistics } from 'components/StatisticsPageComponents/SectionStatistics/SectionStatistics';
 
 export default function StatisticsPage() {
   return (

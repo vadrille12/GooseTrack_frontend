@@ -12,20 +12,26 @@ export const StatisticsDateBar = ({
   currentDate,
   prevDayHandler,
   nextDayHandler,
+  toggleCalendar,
 }) => {
   return (
-    <DateBarStyled>
-      <DateContainer>
-        <CurrentDate>{currentDate}</CurrentDate>
-        <div>
-          <ArrowLeftBtn onClick={prevDayHandler}>
-            <ArrowLeftStyled />
-          </ArrowLeftBtn>
-          <ArrowRightBtn onClick={nextDayHandler}>
-            <ArrowRightStyled />
-          </ArrowRightBtn>
-        </div>
-      </DateContainer>
-    </DateBarStyled>
+    <div>
+      <DateBarStyled>
+        <DateContainer>
+          <div onClick={toggleCalendar}>
+            <CurrentDate>{currentDate}</CurrentDate>
+          </div>
+
+          <div>
+            <ArrowLeftBtn onClick={prevDayHandler}>
+              <ArrowLeftStyled />
+            </ArrowLeftBtn>
+            <ArrowRightBtn onClick={nextDayHandler}>
+              <ArrowRightStyled />
+            </ArrowRightBtn>
+          </div>
+        </DateContainer>
+      </DateBarStyled>
+    </div>
   );
 };
