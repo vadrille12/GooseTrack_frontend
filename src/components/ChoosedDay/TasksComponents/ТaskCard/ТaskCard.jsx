@@ -10,7 +10,7 @@ import {
   StatusHigh,
 } from './ТaskCard.styled';
 
-export const TaskCard = ({ task, onOpen, setAction }) => {
+export const TaskCard = ({ task, onOpen, setAction, setColumn, onEdit }) => {
   const { title, priority, category } = task;
 
   return (
@@ -26,8 +26,10 @@ export const TaskCard = ({ task, onOpen, setAction }) => {
         <EditBtnBar
           onOpen={onOpen}
           setAction={setAction}
+          setColumn={setColumn}
           category={category}
           task={task}
+          onEdit={onEdit}
         />
       </TaskContainer>
     </TaskCardStyled>

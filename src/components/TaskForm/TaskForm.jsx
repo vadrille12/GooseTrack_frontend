@@ -22,7 +22,7 @@ import {
   TimeWrapper,
 } from './TaskForm.styled';
 import { useDispatch } from 'react-redux';
-import { addTask } from 'redux/tasks/operations';
+import { addTask, editTask } from 'redux/tasks/operations';
 import { useParams } from 'react-router-dom';
 
 const TaskSchema = Yup.object().shape({
@@ -50,8 +50,6 @@ const TaskSchema = Yup.object().shape({
     .required('Priority is required'),
   date: Yup.date()
     .required('Date is required')
-    // .min(new Date('1900-01-01'), 'Date must be after 1900-01-01')
-    // .max(new Date(), 'Date must be before or equal to the current date')
     .transform((value, originalValue) => {
       if (originalValue) {
         const [year, month, day] = originalValue.split('-');
@@ -66,13 +64,21 @@ const TaskSchema = Yup.object().shape({
     .required('Category is required'),
 });
 
-export const TaskForm = ({ onClose, action, column }) => {
+export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
+  const { _id, title, start, end, priority } = taskToEdit;
   const dispatch = useDispatch();
   const { currentDay } = useParams();
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
-    dispatch(addTask(values));
+    if (action === 'add') {
+      dispatch(addTask(values));
+    }
+
+    if (action === 'edit') {
+      console.log(column);
+      dispatch(editTask({ _id, ...values }));
+    }
+
     actions.resetForm();
     onClose();
   };
@@ -86,10 +92,10 @@ export const TaskForm = ({ onClose, action, column }) => {
   return (
     <Formik
       initialValues={{
-        title: '',
-        start: '09:00',
-        end: '14:00',
-        priority: 'low',
+        title: (action === 'edit' && title) || '',
+        start: (action === 'edit' && start) || '09:00',
+        end: (action === 'edit' && end) || '14:00',
+        priority: (action === 'edit' && priority) || 'low',
         date: currentDay,
         category: setCategory(),
       }}
