@@ -7,6 +7,7 @@ import { fetchStatistics } from 'redux/statistics/operations';
 import { Calendar } from '../StatisticsDatePickerCalendar/StatisticsDatePickerCalendar';
 import Spinner from 'components/Spinner/spinner';
 import moment from 'moment';
+import { HeadContainer } from 'pages/StatisticsPage/StatisticsPage.styled';
 
 export const SectionStatistics = () => {
   const [currentDate, setCurrentDate] = useState(moment());
@@ -35,22 +36,27 @@ export const SectionStatistics = () => {
   };
 
   const handleDateChange = date => {
-    console.log(`date in handleDateChange: ${date}`);
+    // console.log(`date in handleDateChange: ${date}`);
     setCurrentDate(moment(date));
     setIsCalendarOpen(false);
   };
 
   return (
     <>
-      <StatisticsDateBar
-        currentDate={currentDate.format('D MMM YYYY ')}
-        prevDayHandler={prevDayHandler}
-        nextDayHandler={nextDayHandler}
-        toggleCalendar={toggleCalendar}
-      />
-      {isCalendarOpen && (
-        <Calendar selected={currentDate.toDate()} onChange={handleDateChange} />
-      )}
+      <HeadContainer>
+        <StatisticsDateBar
+          currentDate={currentDate.format('D MMM YYYY ')}
+          prevDayHandler={prevDayHandler}
+          nextDayHandler={nextDayHandler}
+          toggleCalendar={toggleCalendar}
+        />
+        {isCalendarOpen && (
+          <Calendar
+            selected={currentDate.toDate()}
+            onChange={handleDateChange}
+          />
+        )}
+      </HeadContainer>
       {!data.statistics.month ? <Spinner /> : <StatisticsChart data={data} />}
     </>
   );

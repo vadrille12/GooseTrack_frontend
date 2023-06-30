@@ -67,24 +67,22 @@ export const StatisticsDatePickerCalendar = styled.div`
       &--weekend {
         opacity: 35%;
       }
-      &--today {
-        border-radius: 50%;
-        opacity: 1;
-        background-color: #ffffff;
-        color: #3e85f3;
-      }
       &--selected {
         border-radius: 50%;
         opacity: 1;
         background-color: #3e85f3;
         color: #ffffff;
+        /* background-color: #ffffff;
+        color: #3e85f3; */
         outline: none;
       }
       &--keyboard-selected {
         border-radius: 50%;
         opacity: 1;
-        background-color: #ffffff;
-        color: #3e85f3;
+        /* background-color: #ffffff;
+        color: #3e85f3; */
+        background-color: #3e85f3;
+        color: #ffffff;
         outline: none;
         @media (min-width: 768px) {
         }
@@ -100,7 +98,7 @@ export const StatisticsDatePickerCalendar = styled.div`
       padding-bottom: 12px;
       padding-top: 12px;
       @media (min-width: 768px) {
-        padding-right: 28px;
+        padding-right: 30px;
         padding-left: 10px;
 
         font-size: 24px;
@@ -114,36 +112,6 @@ export const StatisticsDatePickerCalendar = styled.div`
         font-size: 24px;
         font-weight: 600;
         line-height: calc((28 / 24) * 100%);
-      }
-    }
-    &__year {
-    }
-    &__navigation--years {
-      background-color: #ffffff;
-      font-size: 11px;
-
-      &:hover {
-      }
-    }
-    &__year-option {
-      background-color: #ffffff;
-      color: #3e85f3;
-      &:hover {
-        background-color: #3e85f3;
-        color: #ffffff;
-        font-size: 18px;
-      }
-    }
-    &__year-dropdown {
-      background-color: #3e85f3;
-      &::-webkit-scrollbar {
-        width: 10px;
-        background: #ffffff;
-        border-radius: 8px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: #3e85f3;
-        border-radius: 8px;
       }
     }
   }
