@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactComponent as IconLogIn } from 'images/logIn.svg';
 import { useAdaptiveImage } from '../../../hooks/useAdaptiveImage';
+import { GoogleLogin } from '@react-oauth/google';
 import {
   ContainerHero,
   ContentWrapper,
@@ -52,6 +53,14 @@ export const AuthSection = () => {
             />
           </LinkLogin>
           <LinkRegister to="register">Sign up</LinkRegister>
+          <GoogleLogin
+  onSuccess={credentialResponse => {
+    console.log(credentialResponse);
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>
         </nav>
       </ContentWrapper>
     </ContainerHero>
