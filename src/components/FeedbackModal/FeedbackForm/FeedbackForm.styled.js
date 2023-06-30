@@ -81,9 +81,13 @@ export const DeleteBtn = styled.button`
   }
 `;
 
+export const WrapForInput = styled.div`
+  margin-bottom: 14px;
+
+`;
+
 export const Input = styled(Field)`
     resize:  none;
-    margin-bottom: 14px;
     padding: 12px 0 12px 14px;
     width: 295px;
     box-sizing: border-box;
@@ -98,7 +102,6 @@ export const Input = styled(Field)`
     border: 1px solid transparent;
 
     transition: border ${variables.transitions.standart};
-    /* cursor: ${props=>{return props.isActive ? "text" : "not-allowed"}}; */
     
     @media (min-width: 768px) {
         width: 404px;
@@ -112,6 +115,10 @@ export const Input = styled(Field)`
     &:focus {
       border: 1px solid #111111;
     }
+    &:disabled{
+      border-color: transparent;
+      cursor: not-allowed;
+    }
 
     ::placeholder {
       opacity: 1;
@@ -122,7 +129,7 @@ export const Input = styled(Field)`
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`
-  margin-bottom: 14px;
+
   margin-left: 18px;
   max-width: 100%;
   color: #da1414;
@@ -156,6 +163,10 @@ export const FormBtn = styled.button`
   &:hover, 
   &:focus {
     background-color: ${variables.colors.secondary};
+  }
+
+  &:disabled{
+    cursor: not-allowed;
   }
 `;
 
