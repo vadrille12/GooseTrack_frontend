@@ -34,10 +34,13 @@ export const Task = styled.p`
   font-family: Inter;
   font-weight: 700;
   line-height: 1.4;
+  transition: ${variables.transitions.standart};
 
   &:hover,
   :focus {
+    transform: translateY(-2px);
     box-shadow: ${variables.shadow.shadow};
+    z-index: 20;
   }
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
