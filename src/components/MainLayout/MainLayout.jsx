@@ -5,14 +5,10 @@ import { Wrapper, Main, Box, Container } from './MainLayout.styled';
 import AsideBar from 'components/SideBar/SideBar';
 import { useAdaptiveImage } from 'hooks/useAdaptiveImage';
 import { Header } from 'components/Header/Header';
-import { selectIsLoading } from 'redux/auth/selectors';
-import { useSelector } from 'react-redux';
 
 export const MainLayout = () => {
   const { isDesktop } = useAdaptiveImage();
   const [sideBarIsVisible, setSideBarIsVisible] = useState(false);
-  const isLoading = useSelector(selectIsLoading);
-  // console.log(isLoading);
 
   const onSidebarShow = () => {
     setSideBarIsVisible(state => !state);
