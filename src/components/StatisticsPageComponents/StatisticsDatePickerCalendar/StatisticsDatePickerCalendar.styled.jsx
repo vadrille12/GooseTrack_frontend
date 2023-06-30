@@ -49,6 +49,10 @@ export const StatisticsDatePickerCalendar = styled.div`
     &__month-container {
       background-color: #3e85f3;
     }
+
+    &__day--outside-month {
+      opacity: 0.35;
+    }
     &__day {
       color: #ffffff;
       margin: 6px 6px;
@@ -64,23 +68,16 @@ export const StatisticsDatePickerCalendar = styled.div`
         color: #3e85f3;
         opacity: 35%;
       }
-      &--weekend {
-        opacity: 35%;
-      }
       &--selected {
         border-radius: 50%;
         opacity: 1;
         background-color: #3e85f3;
         color: #ffffff;
-        /* background-color: #ffffff;
-        color: #3e85f3; */
         outline: none;
       }
       &--keyboard-selected {
         border-radius: 50%;
         opacity: 1;
-        /* background-color: #ffffff;
-        color: #3e85f3; */
         background-color: #3e85f3;
         color: #ffffff;
         outline: none;
@@ -88,6 +85,7 @@ export const StatisticsDatePickerCalendar = styled.div`
         }
       }
     }
+
     &__day-name {
       color: #ffffff;
       text-align: center;

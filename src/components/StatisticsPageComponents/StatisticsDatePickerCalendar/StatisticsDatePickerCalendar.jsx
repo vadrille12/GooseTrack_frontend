@@ -26,6 +26,7 @@ export const Calendar = ({ onChange, selected }) => {
         formatWeekDay={formatWeekDay}
         locale="en-US"
         calendarStartDay={1}
+        showOtherMonths={true}
       />
     </StatisticsDatePickerCalendar>
   );
