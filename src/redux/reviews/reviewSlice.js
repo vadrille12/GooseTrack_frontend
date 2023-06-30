@@ -17,7 +17,6 @@ const reviewSlice = createSlice({
     },
     isLoading: false,
     error: null,
-    isFeedback: false,
   },
   reducers: {
     changeRating(state, action){
@@ -45,12 +44,10 @@ const reviewSlice = createSlice({
         state.userReview = action.payload;
         state.reviews = [...state.reviews, action.payload];
         state.isLoading = false;
-        state.isFeedback = true;
         state.error = null;
       })
       .addCase(addReview.rejected, (state, action) => {
         state.isLoading = false;
-        state.isFeedback = false;
         state.error = action.payload;
       })
       .addCase(deleteReview.pending, state => {
@@ -65,7 +62,6 @@ const reviewSlice = createSlice({
           review => review.id !== action.payload._id
         );
         state.isLoading = false;
-        state.isFeedback = false;
         state.error = null;
       })
       .addCase(deleteReview.rejected, (state, action) => {
@@ -94,15 +90,12 @@ const reviewSlice = createSlice({
       .addCase(fetchReviewById.fulfilled, (state, action) => {
         if (action.payload) {
            state.userReview = action.payload;
-           state.isFeedback = true;
         } else {
           state.userReview = {
             rating: '',
             review: ''
           };
-          state.isFeedback = false;
         }
-
         state.isLoading = false;
         state.error = null;
       })
