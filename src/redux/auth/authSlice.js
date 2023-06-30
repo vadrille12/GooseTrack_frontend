@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, register, logout, refresh, updateUser } from './operations';
+import {
+  login,
+  register,
+  logout,
+  refresh,
+  updateUser,
+  toggleTheme,
+} from './operations';
 
 const initialState = {
   user: {},
@@ -80,6 +87,18 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(updateUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(toggleTheme.fulfilled, (state, { payload }) => {
+        state.user.themeInterface = payload.themeInterface;
+        state.isLoading = false;
+      })
+      .addCase(toggleTheme.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(toggleTheme.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });
