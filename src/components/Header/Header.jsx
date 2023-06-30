@@ -12,6 +12,7 @@ import { UserInfo } from './UserInfo/UserInfo';
 import { useState } from 'react';
 import { useAdaptiveImage } from 'hooks/useAdaptiveImage';
 import { FeedbackModal } from 'components/FeedbackModal/FeedbackModal';
+import { ThemeToggler } from './ThemeToggler/ThemeToggler';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReviewById } from 'redux/reviews/operations';
 import { selectUser } from 'redux/auth/selectors';
@@ -76,6 +77,7 @@ export const Header = ({ onSidebarShow }) => {
           <ButtonFeedback type="button" onClick={openModal}>
             Feedback
           </ButtonFeedback>
+          <ThemeToggler></ThemeToggler>
           <UserInfo />
         </Menu>
         {showModal && <FeedbackModal onClose={closeModal} />}
