@@ -6,7 +6,10 @@ import {
   BurgerButton,
   BurgerIcon,
   ButtonFeedback,
+  GooseTask,
+  MotivationTask,
 } from './Header.styled';
+import gooseTask from '../../images/goose-task.svg';
 import Box from 'components/Box/Box';
 import { UserInfo } from './UserInfo/UserInfo';
 import { useState } from 'react';
@@ -20,10 +23,13 @@ export const Header = ({ onSidebarShow }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [showModal, setShowModal] = useState(false);
-  const { isTablet, isDesktop } = useAdaptiveImage();
-  const TabletOrDesktop = isTablet || isDesktop;
+  const { isTablet, isMobile } = useAdaptiveImage();
+  const TabletOrMobile = isTablet || isMobile;
 
   const { pathname } = useLocation();
+  const currentPath = pathname;
+
+  const isCalendarPage = currentPath.startsWith('/calendar/day');
 
   let pageTitle = '';
 
@@ -55,21 +61,25 @@ export const Header = ({ onSidebarShow }) => {
   const closeModal = () => {
     setShowModal(false);
   };
+
   return (
     <>
       <Container>
         <Box display="flex" alignItems="center" gap="8px">
-          {!isDesktop && (
+          {isCalendarPage && <GooseTask src={gooseTask} alt="goose" />}
+          <div>
+            <Title>{pageTitle}</Title>
+
+            {isCalendarPage && (
+              <MotivationTask>
+                Let go of the past and focus on the present!
+              </MotivationTask>
+            )}
+          </div>
+          {TabletOrMobile && (
             <BurgerButton type="button" onClick={() => onSidebarShow()}>
               <BurgerIcon />
             </BurgerButton>
-          )}
-          {TabletOrDesktop && (
-            <>
-              <div>
-                <Title>{pageTitle}</Title>
-              </div>
-            </>
           )}
         </Box>
         <Menu>

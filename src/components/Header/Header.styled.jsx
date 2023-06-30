@@ -37,6 +37,30 @@ export const BurgerIcon = styled(Icon)`
   }
 `;
 
+export const GooseTask = styled.img`
+  display: none;
+
+  @media (min-width: 1440px) {
+    weight: 64px;
+    display: block;
+    margin-right: 8px;
+  }
+`;
+
+export const MotivationTask = styled.p`
+  display: none;
+  color: ${({ theme }) => theme.text};
+
+  @media (min-width: 1440px) {
+    display: block;
+    font-family: 'Inter';
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+`;
+
 export const Menu = styled.div`
   display: flex;
   align-items: center;
