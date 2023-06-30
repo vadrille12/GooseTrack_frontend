@@ -225,8 +225,12 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
+  display: flex;
   min-height: 100vh;
   width: 100%;
+  @media screen and (min-width: 1440px) {
+    width: 1150px;
+  }
 `;
 
 export const HeaderWrapper = styled.div`
