@@ -60,6 +60,19 @@ const extendDate = string => {
   return new Date(string);
 };
 
+const setCategory = column => {
+  switch (column) {
+    case 'to-do':
+      return 'To do';
+    case 'in-progress':
+      return 'In progress';
+    case 'done':
+      return 'Done';
+    default:
+      return null;
+  }
+};
+
 export const CalendarTable = ({ tasks }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -123,7 +136,7 @@ export const CalendarTable = ({ tasks }) => {
         <TaskModal
           action={'edit'}
           onClose={closeModal}
-          column={taskToEdit.category}
+          column={setCategory(taskToEdit.category)}
           taskToEdit={taskToEdit}
         />
       )}
