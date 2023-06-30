@@ -1,11 +1,10 @@
 import { Outlet } from 'react-router';
-import { useState, Suspense } from 'react';
+import { useState } from 'react';
 
 import { Wrapper, Main, Box, Container } from './MainLayout.styled';
 import AsideBar from 'components/SideBar/SideBar';
 import { useAdaptiveImage } from 'hooks/useAdaptiveImage';
 import { Header } from 'components/Header/Header';
-import Spinner from 'components/Spinner/spinner';
 import { selectIsLoading } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 
