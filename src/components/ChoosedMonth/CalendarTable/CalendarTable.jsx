@@ -63,7 +63,7 @@ const extendDate = string => {
 export const CalendarTable = ({ tasks }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const [category, setCategory] = useState('to-do');
+  const [taskToEdit, setTaskToEdit] = useState({});
   const { currentDate } = useParams();
   const dateSelected = extendDate(currentDate);
   const weekFirstDay = getDay(startOfMonth(dateSelected));
@@ -111,8 +111,8 @@ export const CalendarTable = ({ tasks }) => {
                 key={day.toString() + index.toString()}
                 task={task}
                 onOpen={openModal}
-                setCategory={() => {
-                  setCategory(task.category);
+                setTask={() => {
+                  setTaskToEdit(task);
                 }}
               />
             ) : null
@@ -120,7 +120,12 @@ export const CalendarTable = ({ tasks }) => {
         </Cell>
       ))}
       {showModal && (
-        <TaskModal action={'edit'} onClose={closeModal} column={category} />
+        <TaskModal
+          action={'edit'}
+          onClose={closeModal}
+          column={taskToEdit.category}
+          taskToEdit={taskToEdit}
+        />
       )}
     </CalendarWrapper>
   );
