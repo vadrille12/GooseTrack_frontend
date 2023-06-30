@@ -75,7 +75,6 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
     }
 
     if (action === 'edit') {
-      console.log(column);
       dispatch(editTask({ _id, ...values }));
     }
 
