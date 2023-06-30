@@ -76,8 +76,8 @@ export const StatisticsDatePickerCalendar = styled.div`
       &--selected {
         border-radius: 50%;
         opacity: 1;
-        background-color: #ffffff;
-        color: #3e85f3;
+        background-color: #3e85f3;
+        color: #ffffff;
         outline: none;
       }
       &--keyboard-selected {
@@ -146,6 +146,17 @@ export const StatisticsDatePickerCalendar = styled.div`
         border-radius: 8px;
       }
     }
+  }
+
+  .react-datepicker__day--highlighted,
+  .react-datepicker__month-text--highlighted,
+  .react-datepicker__quarter-text--highlighted,
+  .react-datepicker__year-text--highlighted {
+    border-radius: 50%;
+    opacity: 1;
+    background-color: #ffffff;
+    color: #3e85f3;
+    outline: none;
   }
 `;
 

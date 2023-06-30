@@ -6,7 +6,7 @@ import {
   ArrowRightStyled,
   ArrowLeftBtn,
   ArrowRightBtn,
-} from './StatisticsDateBar.styled';
+} from 'components/CalendarToolBar/DateBar/DateBar.styled';
 
 export const StatisticsDateBar = ({
   currentDate,

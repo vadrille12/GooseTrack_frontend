@@ -3,14 +3,15 @@ import {
   StatisticsDatePickerInput,
 } from './StatisticsDatePickerCalendar.styled';
 
-export const Calendar = ({ onChange, selected, onSelect }) => {
+export const Calendar = ({ onChange, selected }) => {
+  const highlightedDates = [selected];
   return (
     <StatisticsDatePickerCalendar>
       <StatisticsDatePickerInput
-        selected={selected}
+        selected={new Date()}
         onChange={onChange}
-        onSelect={onSelect}
         open={true}
+        highlightDates={highlightedDates}
       />
     </StatisticsDatePickerCalendar>
   );
