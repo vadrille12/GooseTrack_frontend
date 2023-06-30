@@ -1,13 +1,13 @@
 import { Task } from './TaskCalendar.styled';
 
-export const TaskCalendar = ({ task, onOpen, setCategory }) => {
+export const TaskCalendar = ({ task, onOpen, setTask }) => {
   const { title, priority } = task;
   // priority: [low | medium | high] |
   return (
     <Task
       priority={priority}
       onClick={() => {
-        setCategory(task.category);
+        setTask(task);
         onOpen();
       }}
     >
