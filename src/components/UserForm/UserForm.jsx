@@ -19,14 +19,14 @@ import {
   Field,
   IconDone,
   IconError,
-  IconArrowDown,
+  // IconArrowDown,
 } from './UserForm.styled';
 
 import goose from '../../images/mainPage/mobile/mobile_goose_mainPage.png';
 
 import * as Yup from 'yup';
 import { useEffect, useState } from 'react';
-import { Calendar } from './Calendar/Calendar';
+// import { Calendar } from './Calendar/Calendar';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
