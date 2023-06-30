@@ -8,7 +8,8 @@ import { TaskModal } from 'components/TaskModal/TaskModal';
 export const TasksColumn = ({ tasks }) => {
   const [showModal, setShowModal] = useState(false);
   const [action, setAction] = useState('edit');
-  const [column, setColumn] = useState('to-do');
+  const [column, setColumn] = useState('To do');
+  const [taskToEdit, setTaskToEdit] = useState({});
 
   const tasksNames = ['To do', 'In progress', 'Done'];
 
@@ -40,6 +41,8 @@ export const TasksColumn = ({ tasks }) => {
             tasks={categorizedTasks[columnName]}
             onOpen={openModal}
             setAction={() => setAction('edit')}
+            setColumn={() => setColumn(columnName)}
+            onEdit={setTaskToEdit}
           />
           <AddTaskBtn
             onOpen={openModal}
@@ -48,7 +51,12 @@ export const TasksColumn = ({ tasks }) => {
           ></AddTaskBtn>
 
           {showModal && (
-            <TaskModal action={action} onClose={closeModal} column={column} />
+            <TaskModal
+              action={action}
+              onClose={closeModal}
+              column={column}
+              taskToEdit={taskToEdit}
+            />
           )}
         </TaskItem>
       ))}

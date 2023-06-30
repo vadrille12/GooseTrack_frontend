@@ -34,6 +34,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { refresh, updateUser } from 'redux/auth/operations';
 import dayjs from 'dayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { DatePicker, PopperDateStyles } from './Calendar/DatePicker.styled';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 
 const day = dayjs(new Date()).format('YYYY-MM-DD');
 
@@ -93,6 +99,7 @@ export const UserForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+  
     const getUserInfo = async () => {
       await dispatch(refresh());
       //  setIsUpdateForm(null);
@@ -130,7 +137,7 @@ export const UserForm = () => {
             formData.append('skype', values.skype);
             // console.log("('skype')", formData.get('skype'));
             if (avatarURL) {
-              formData.append('avatarURL', avatarURL);
+              formData.append('avatar', avatarURL);
             }
             for (const [key, value] of formData.entries()) {
               console.log(`${key}, ${value}`);
@@ -213,33 +220,50 @@ export const UserForm = () => {
                         <ErrorMessage name="name" component="div" />
                       </Input>
                     </Label>
-
                     <Label htmlFor="birthday" className={isValid('birthday')}>
                       Birthday
-                      <Input>
-                        <Calendar
-                          className={isValid('birthday')}
-                          id="birthday"
-                          name="birthday"
-                          type="date"
-                          selected={new Date(values.birthday)}
-                          onChange={date => {
-                            setBirthdayDate(dayjs(date).format('YYYY-MM-DD'));
-                            // setIsUpdateForm(true);
-                          }}
-                          value={values.birthday}
-                          // value={dayjs(values.birthday).format('YYYY-MM-DD')}
-                        />
-
-                        {isValid('birthday') === 'is-valid' ? (
-                          <IconDone />
-                        ) : (
-                          <IconArrowDown />
-                        )}
-
-                        {isValid('birthday') === 'is-invalid' && <IconError />}
-                        <ErrorMessage name="birthday" component="div" />
-                      </Input>
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <Input>
+                          <DemoContainer
+                            components={['DatePicker']}
+                            sx={{ padding: '8px 0px 0px 0px' }}
+                          >
+                            <DatePicker
+                              className={isValid('birthday')}
+                              id="birthday"
+                              name="birthday"
+                              disableFuture={true}
+                              onChange={e =>
+                                setBirthdayDate(e.format('DD/MM/YYYY'))
+                              }
+                              format="DD/MM/YYYY"
+                              // views={['year', 'month', 'day']}
+                              textField={dayjs(user.birthday).format(
+                                'DD/MM/YYYY'
+                              )}
+                              slots={{
+                                openPickerIcon: KeyboardArrowDownIcon,
+                              }}
+                              slotProps={{
+                                popper: {
+                                  sx: PopperDateStyles,
+                                },
+                                textField: {
+                                  placeholder:
+                                    dayjs(user.birthday).format('DD/MM/YYYY') ||
+                                    birthdayDate ||
+                                    `${day}`,
+                                },
+                              }}
+                            />
+                            {isValid('name') === 'is-valid' && <IconDone />}
+                            {isValid('birthday') === 'is-invalid' && (
+                              <IconError />
+                            )}
+                            <ErrorMessage name="birthday" component="div" />
+                          </DemoContainer>
+                        </Input>
+                      </LocalizationProvider>
                     </Label>
 
                     <Label htmlFor="email" className={isValid('email')}>

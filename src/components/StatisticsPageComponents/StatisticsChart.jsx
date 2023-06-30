@@ -6,7 +6,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  // Legend,
   LabelList,
   ResponsiveContainer,
 } from 'recharts';
@@ -110,12 +110,12 @@ export const StatisticsChart = ({ data }) => {
             color: 'rgb(62, 133, 243)',
           }}
         />
-        <Legend
+        {/* <Legend
           iconType="circle"
           iconSize={8}
           height={90}
           verticalAlign="top"
-        />
+        /> */}
         <Bar
           name="By Day"
           dataKey="byDay"

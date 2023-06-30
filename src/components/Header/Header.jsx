@@ -16,10 +16,13 @@ import { ThemeToggler } from './ThemeToggler/ThemeToggler';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReviewById } from 'redux/reviews/operations';
 import { selectUser } from 'redux/auth/selectors';
+import Spinner from 'components/Spinner/spinner';
+import { selectIsLoading } from 'redux/reviews/selectors';
 
 export const Header = ({ onSidebarShow }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const isLoading = useSelector(selectIsLoading);
   const [showModal, setShowModal] = useState(false);
   const { isTablet, isDesktop } = useAdaptiveImage();
   const TabletOrDesktop = isTablet || isDesktop;
@@ -50,6 +53,7 @@ export const Header = ({ onSidebarShow }) => {
 
   const openModal = () => {
     dispatch(fetchReviewById(user.id));
+
     setShowModal(true);
   };
 
@@ -80,7 +84,9 @@ export const Header = ({ onSidebarShow }) => {
           <ThemeToggler></ThemeToggler>
           <UserInfo />
         </Menu>
-        {showModal && <FeedbackModal onClose={closeModal} />}
+        {isLoading && <Spinner/> }
+        {(showModal && !isLoading) && <FeedbackModal onClose={closeModal} />}
+        
       </Container>
     </>
   );

@@ -1,6 +1,9 @@
-// import {} from './RegisterForm.styled';
+import { useDispatch } from 'react-redux';
+
+import { logout } from 'redux/auth/operations.js';
 
 import Box from 'components/Box/Box';
+import Icon from 'components/Icon/Icon';
 
 import {
   Aside,
@@ -13,10 +16,10 @@ import {
   ButtonText,
   ButtonClose,
   IconClose,
+  CalendarIcon,
+  ChartIcon,
+  ProfileIcon,
 } from './SideBar.styled.jsx';
-import Icon from '../Icon/Icon';
-import { useDispatch } from 'react-redux';
-import { logout } from 'redux/auth/operations.js';
 
 const AsideBar = ({ onSidebarShow }) => {
   const dispatch = useDispatch();
@@ -48,19 +51,19 @@ const AsideBar = ({ onSidebarShow }) => {
           <nav>
             <Item>
               <Link to="/account">
-                <Icon id="user" />
+                <ProfileIcon />
                 <span style={{ marginLeft: '10px' }}>My account</span>
               </Link>
             </Item>
             <Item>
               <Link to="/calendar">
-                <Icon id="calendarCheked" />
+                <CalendarIcon />
                 <span style={{ marginLeft: '10px' }}>Calendar</span>
               </Link>
             </Item>
             <Item>
               <Link to="/statistics">
-                <Icon id="calendarCheked" />
+                <ChartIcon />
                 <span style={{ marginLeft: '10px' }}>Statistics</span>
               </Link>
             </Item>
