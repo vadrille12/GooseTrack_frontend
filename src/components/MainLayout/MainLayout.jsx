@@ -22,7 +22,7 @@ export const MainLayout = () => {
   return (
     <Wrapper>
       <main>
-        <Container style={{ display: 'flex', width: isLoading && '85vw' }}>
+        <Container style={{ display: 'flex' }}>
           {(isDesktop || sideBarIsVisible) && (
             <AsideBar onSidebarShow={onSidebarShow} />
           )}
@@ -30,9 +30,7 @@ export const MainLayout = () => {
           <Box>
             <Header onSidebarShow={onSidebarShow} />
             <Main>
-              <Suspense fallback={<Spinner />}>
-                <Outlet />
-              </Suspense>
+              <Outlet />
             </Main>
           </Box>
         </Container>
