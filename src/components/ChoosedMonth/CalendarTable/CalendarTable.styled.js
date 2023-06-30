@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { variables } from '../../../Styles/GlobalStyle';
 
 const customGrey = '#dce3e580';
+// const shadow = '4px 2px 16px 0px rgba(136, 165, 191, 0.48);';
 
 export const Cell = styled.div`
   width: 48px;
@@ -10,7 +11,6 @@ export const Cell = styled.div`
   text-align: right;
   border-bottom: 1px solid ${props => props.theme.tabl_border};
   border-right: 1px solid ${props => props.theme.tabl_border};
-  padding: 0px 2px;
   background: ${props => props.theme.page_bg};
   padding: 0px 2px;
   overflow-y: scroll;
@@ -54,9 +54,12 @@ export const Cell = styled.div`
     border-bottom-right-radius: 8px;
   }
 
+  transition: ${variables.transitions.standart};
   &:hover,
   :focus {
+    transform: translateY(-2px);
     box-shadow: ${variables.shadow.shadow};
+    z-index: 10;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -109,7 +112,7 @@ export const TodayLabelCell = styled(LabelCell)`
 `;
 
 export const OtherMonthLabelCell = styled(LabelCell)`
-  color: ${props => props.theme.page_bg};
+  color: #d3d3d3;
 `;
 
 export const CalendarWrapper = styled.div`
@@ -118,10 +121,6 @@ export const CalendarWrapper = styled.div`
   width: 340px;
   height: 564px;
   margin: auto;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid ${props => props.theme.tabl_border};
-  background: ${variables.colors.background};
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
     width: 704px;
