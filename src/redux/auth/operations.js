@@ -59,6 +59,7 @@ export const refresh = createAsyncThunk(
     try {
       setToken(token);
       const { data } = await axios.get('api/auth/current');
+      console.log('fetchCurrentUser', data)
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -71,6 +72,7 @@ export const updateUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.patch('api/auth/update', credentials);
+       console.log('updateUser', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
