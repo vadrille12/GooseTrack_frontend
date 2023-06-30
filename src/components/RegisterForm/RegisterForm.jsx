@@ -23,12 +23,12 @@ import {
 const userSchema = Yup.object().shape({
   name: Yup.string()
     .required('Name is required')
-    .matches(/^\S[\S\s]{0,28}\S$/, 'Name must be between 2 and 30 characters')
+    .matches(/^\S[\S\s]{0,28}\S$/, 'Name must be between 3 and 30 characters')
     .test(
       'name-validation',
-      'Name must be at least 2 characters long',
+      'Name must be at least 3 characters long',
       value => {
-        return value && value.replace(/\s/g, '').length >= 2;
+        return value && value.replace(/\s/g, '').length >= 3;
       }
     ),
   email: Yup.string()
