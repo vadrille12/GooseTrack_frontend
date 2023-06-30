@@ -38,3 +38,25 @@ export const deleteTask = createAsyncThunk(
     }
   }
 );
+
+export const editTask = createAsyncThunk(
+  'tasks/editTask',
+  async (
+    { _id, title, start, end, priority, date, category },
+    { rejectWithValue }
+  ) => {
+    try {
+      const { data } = await axios.patch(`/api/tasks/${_id}`, {
+        title,
+        start,
+        end,
+        priority,
+        date,
+        category,
+      });
+      return data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);

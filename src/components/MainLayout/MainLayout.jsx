@@ -12,7 +12,7 @@ export const MainLayout = () => {
   const { isDesktop } = useAdaptiveImage();
   const [sideBarIsVisible, setSideBarIsVisible] = useState(false);
   const isLoading = useSelector(selectIsLoading);
-  console.log(isLoading);
+  // console.log(isLoading);
 
   const onSidebarShow = () => {
     setSideBarIsVisible(state => !state);

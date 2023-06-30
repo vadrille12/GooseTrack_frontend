@@ -12,7 +12,14 @@ import {
 import { useDispatch } from 'react-redux';
 import { deleteTask } from 'redux/tasks/operations';
 
-export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
+export const EditBtnBar = ({
+  onOpen,
+  setAction,
+  setColumn,
+  category,
+  task,
+  onEdit,
+}) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -109,6 +116,8 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
         onClick={() => {
           onOpen();
           setAction();
+          setColumn();
+          onEdit(task);
         }}
       >
         ed
