@@ -130,7 +130,7 @@ export const UserForm = () => {
             formData.append('skype', values.skype);
             // console.log("('skype')", formData.get('skype'));
             if (avatarURL) {
-              formData.append('avatarURL', avatarURL);
+              formData.append('avatar', avatarURL);
             }
             for (const [key, value] of formData.entries()) {
               console.log(`${key}, ${value}`);
