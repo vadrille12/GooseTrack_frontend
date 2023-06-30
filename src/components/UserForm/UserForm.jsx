@@ -234,12 +234,12 @@ export const UserForm = () => {
                               name="birthday"
                               disableFuture={true}
                               onChange={e =>
-                                setBirthdayDate(e.format('YYYY-MM-DD'))
+                                setBirthdayDate(e.format('DD/MM/YYYY'))
                               }
-                              format="YYYY-MM-DD"
+                              format="DD/MM/YYYY"
                               // views={['year', 'month', 'day']}
                               textField={dayjs(user.birthday).format(
-                                'YYYY-MM-DD'
+                                'DD/MM/YYYY'
                               )}
                               slots={{
                                 openPickerIcon: KeyboardArrowDownIcon,
@@ -250,7 +250,7 @@ export const UserForm = () => {
                                 },
                                 textField: {
                                   placeholder:
-                                    dayjs(user.birthday).format('YYYY-MM-DD') ||
+                                    dayjs(user.birthday).format('DD/MM/YYYY') ||
                                     birthdayDate ||
                                     `${day}`,
                                 },
@@ -265,8 +265,6 @@ export const UserForm = () => {
                         </Input>
                       </LocalizationProvider>
                     </Label>
-
-          
 
                     <Label htmlFor="email" className={isValid('email')}>
                       Email
