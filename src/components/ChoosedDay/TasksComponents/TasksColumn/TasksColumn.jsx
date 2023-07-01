@@ -1,17 +1,57 @@
 import { useState } from 'react';
-import { AddTaskBtn } from '../AddTaskBtn/AddTaskBtn';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { TasksColumnStyled, TaskItem } from './TasksColumn.styled';
 import { ColumnHeadBar } from '../ColumnHeadBar/ColumnHeadBar';
 import { ColumnTasksList } from '../ColumnTasksList/ColumnTasksList';
-import { TaskItem, TasksColumnStyled } from './TasksColumn.styled';
 import { TaskModal } from 'components/TaskModal/TaskModal';
+import { AddTaskBtn } from '../AddTaskBtn/AddTaskBtn';
 
-export const TasksColumn = ({ tasks }) => {
+const tasksNames = ['To do', 'In progress', 'Done'];
+
+export const TasksColumn = ({ tasks, setTasks }) => {
   const [showModal, setShowModal] = useState(false);
   const [action, setAction] = useState('edit');
   const [column, setColumn] = useState('To do');
   const [taskToEdit, setTaskToEdit] = useState({});
 
-  const tasksNames = ['To do', 'In progress', 'Done'];
+  const onDragEnd = result => {
+    const { destination, source } = result;
+
+    if (!destination) return;
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const sourceColumn = tasksNames[source.droppableId];
+    const destinationColumn = tasksNames[destination.droppableId];
+
+    const sourceTasks = categorizedTasks[sourceColumn];
+    const movedTask = sourceTasks[source.index];
+
+    const updatedSourceTasks = [...sourceTasks];
+    updatedSourceTasks.splice(source.index, 1);
+
+    const destinationTasks = categorizedTasks[destinationColumn];
+    const updatedDestinationTasks = [...destinationTasks];
+    updatedDestinationTasks.splice(destination.index, 0, movedTask);
+
+    const updatedCategorizedTasks = {
+      ...categorizedTasks,
+      [sourceColumn]: updatedSourceTasks,
+      [destinationColumn]: updatedDestinationTasks,
+    };
+
+    const newState = {
+      ...tasks,
+      [column]: updatedCategorizedTasks,
+    };
+
+    setTasks(newState);
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -28,38 +68,40 @@ export const TasksColumn = ({ tasks }) => {
   };
 
   return (
-    <TasksColumnStyled>
-      {tasksNames.map((columnName, index) => (
-        <TaskItem key={index}>
-          <ColumnHeadBar
-            taskName={columnName}
-            onOpen={openModal}
-            setAction={() => setAction('add')}
-            setColumn={() => setColumn(columnName)}
-          ></ColumnHeadBar>
-          <ColumnTasksList
-            tasks={categorizedTasks[columnName]}
-            onOpen={openModal}
-            setAction={() => setAction('edit')}
-            setColumn={() => setColumn(columnName)}
-            onEdit={setTaskToEdit}
-          />
-          <AddTaskBtn
-            onOpen={openModal}
-            setAction={() => setAction('add')}
-            setColumn={() => setColumn(columnName)}
-          ></AddTaskBtn>
-
-          {showModal && (
-            <TaskModal
-              action={action}
-              onClose={closeModal}
-              column={column}
-              taskToEdit={taskToEdit}
+    <DragDropContext onDragEnd={onDragEnd}>
+      <TasksColumnStyled>
+        {tasksNames.map((columnName, index) => (
+          <TaskItem key={columnName}>
+            <ColumnHeadBar
+              taskName={columnName}
+              onOpen={openModal}
+              setAction={() => setAction('add')}
+              setColumn={() => setColumn(columnName)}
             />
-          )}
-        </TaskItem>
-      ))}
-    </TasksColumnStyled>
+            <ColumnTasksList
+              tasks={categorizedTasks[columnName]}
+              onOpen={openModal}
+              setAction={() => setAction('edit')}
+              setColumn={() => setColumn(columnName)}
+              onEdit={setTaskToEdit}
+            />
+            <AddTaskBtn
+              onOpen={openModal}
+              setAction={() => setAction('add')}
+              setColumn={() => setColumn(columnName)}
+            />
+
+            {showModal && (
+              <TaskModal
+                action={action}
+                onClose={closeModal}
+                column={column}
+                taskToEdit={taskToEdit}
+              />
+            )}
+          </TaskItem>
+        ))}
+      </TasksColumnStyled>
+    </DragDropContext>
   );
 };
