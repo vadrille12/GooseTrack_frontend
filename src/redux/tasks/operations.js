@@ -6,7 +6,6 @@ export const fetchTasks = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get('/api/tasks');
-      // console.log(data);
       return data;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -19,7 +18,6 @@ export const addTask = createAsyncThunk(
   async (task, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/api/tasks', task);
-      // console.log(data);
       return data;
     } catch (e) {
       return rejectWithValue(e.message);

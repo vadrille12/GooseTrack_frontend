@@ -13,14 +13,14 @@ export const DateBarStyled = styled.div`
     display: flex;
   }
 
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     width: 704px;
     height: 34px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 1087px;
-  }
+  } */
 `;
 
 export const DateContainer = styled.div`
@@ -32,12 +32,13 @@ export const DateContainer = styled.div`
   @media screen and (max-width: 374px) {
     display: block;
   }
-  @media screen and (min-width: 480px) {
-    gap: 8px;
+  @media screen and (min-width: 375px) {
+    gap: 126px;
   }
 
   @media screen and (min-width: 768px) {
     justify-content: start;
+    gap: 8px;
   }
 
   @media screen and (min-width: 1440px) {
