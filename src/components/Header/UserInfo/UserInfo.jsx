@@ -4,7 +4,7 @@ import {
   UserPicture,
   UserNameIcon,
   BackgroundName,
-} from './User.styled';
+} from './UserInfo.styled';
 import { useAuth } from '../../../hooks/useAuth';
 
 export const UserInfo = () => {

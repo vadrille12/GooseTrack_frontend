@@ -13,7 +13,7 @@ import { useAuth } from '../../../../hooks/useAuth';
 import {
   BackgroundName,
   UserNameIcon,
-} from 'components/Header/UserInfo/User.styled';
+} from 'components/Header/UserInfo/UserInfo.styled';
 
 export const TaskCard = ({ task, onOpen, setAction, setColumn, onEdit }) => {
   const { title, priority, category } = task;
