@@ -36,11 +36,14 @@ import { DatePicker, PopperDateStyles } from './Calendar/DatePicker.styled';
 import { userSchema } from './helpers/Schemas';
 
 import dayjs from 'dayjs';
+import Spinner from 'components/Spinner/spinner';
 // const day = dayjs(new Date()).format('DD/MM/YYYY');
 
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthdayDate, setBirthdayDate] = useState(null);
+    const [isFormChanged, setIsFormChanged] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -63,12 +66,11 @@ export const UserForm = () => {
             email: user?.email || '',
             phone: user?.phone || '',
             skype: user?.skype || '',
-            birthday:
-              birthdayDate
+            birthday: birthdayDate
               ? birthdayDate
-              : user
-              // ? new Date(dayjs(user.birthday).format('DD/MM/YYYY'))
-              // : new Date(),
+              : dayjs(user.birthday).format('DD/MM/YYYY'),
+            // ? new Date(dayjs(user.birthday).format('DD/MM/YYYY'))
+            // : new Date(),
 
             // user?.birthday
             // ? user?.birthday
@@ -76,27 +78,42 @@ export const UserForm = () => {
             //  birthdayDate?dayjs(birthdayDate).format('DD/MM/YYYY'):user?.birthday,
           }}
           onSubmit={async values => {
-            const formData = new FormData();
-            formData.append('name', values.name);
-            formData.append('email', values.email);
-            formData.append('birthday', values.birthday);
-            formData.append('phone', values.phone);
-            formData.append('skype', values.skype);
-            if (avatarURL) {
-              formData.append('avatar', avatarURL);
+            try {
+              setIsLoading(true);
+              const formData = new FormData();
+              formData.append('name', values.name);
+              formData.append('email', values.email);
+              formData.append('birthday', values.birthday);
+              formData.append('phone', values.phone);
+              formData.append('skype', values.skype);
+              if (avatarURL) {
+                formData.append('avatar', avatarURL);
+              }
+              // for (const [key, value] of formData.entries()) {
+              //   console.log(`${key}, ${value}`);
+              // }
+              if (values.birthday) {
+                setBirthdayDate(values.birthday);
+              }
+              // alert(JSON.stringify(values, null, 2));
+              await dispatch(updateUser(formData));
+              // alert('update');
+              setIsLoading(false);
+               setIsFormChanged(false);
+            } catch (error) {
+              setIsLoading(false);
+              console.error('Error occurred during form submission:', error);
             }
-            // for (const [key, value] of formData.entries()) {
-            //   console.log(`${key}, ${value}`);
-            // }
-          if (values.birthday) {
-            setBirthdayDate(values.birthday)
-          }
-            // alert(JSON.stringify(values, null, 2));
-            await dispatch(updateUser(formData));
-            // alert('update');
           }}
         >
-          {({ dirty, errors, touched, values, setFieldValue }) => {
+          {({
+            dirty,
+            errors,
+            touched,
+            values,
+            setFieldValue,
+            isSubmitting,
+          }) => {
             const isValid = field =>
               touched[field] && errors[field]
                 ? 'is-invalid'
@@ -140,6 +157,7 @@ export const UserForm = () => {
                     onChange={e => {
                       const file = e.target.files[0];
                       setAvatarURL(file);
+                      setIsFormChanged(true);
                     }}
                     style={{ display: 'none' }}
                   />
@@ -268,8 +286,14 @@ export const UserForm = () => {
                   </FormInputBox>
                 </FormInputWrap>
                 <FormBtnWrap>
-                  <FormBtn type="submit" disabled={!dirty}>
-                    Save changes
+                  <FormBtn
+                    type="submit"
+                    // disabled={avatarURL === null || !dirty}
+                    //  disabled={!dirty ||isFormChanged|| isLoading || isSubmitting}
+                    disabled={!dirty || isFormChanged}
+                  >
+                    {isSubmitting ? 'Updating Your profile...' : 'Save changes'}
+                    {isLoading && <Spinner />}
                   </FormBtn>
                 </FormBtnWrap>
               </Form>
