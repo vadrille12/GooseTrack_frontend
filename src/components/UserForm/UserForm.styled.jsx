@@ -36,6 +36,16 @@ export const Wrap = styled.div`
     margin: 116px 32 32 32;
     padding: 60px 165px;
   }
+
+  .InvalidInput {
+    border: 1px solid deeppink;
+  }
+  .ValidInput {
+    border: 1px solid yellowgreen;
+  }
+  .ErrorMsg {
+    color: green;
+  }
 `;
 
 export const AvatarWrap = styled.div`

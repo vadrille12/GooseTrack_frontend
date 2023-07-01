@@ -19,92 +19,36 @@ import {
   Field,
   IconDone,
   IconError,
-  // IconArrowDown,
 } from './UserForm.styled';
 
 import goose from '../../images/mainPage/mobile/mobile_goose_mainPage.png';
 
-import * as Yup from 'yup';
 import { useEffect, useState } from 'react';
-// import { Calendar } from './Calendar/Calendar';
-
-import 'react-datepicker/dist/react-datepicker.css';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
+
 import { refresh, updateUser } from 'redux/auth/operations';
-import dayjs from 'dayjs';
+
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { DatePicker, PopperDateStyles } from './Calendar/DatePicker.styled';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { userSchema } from './helpers/Schemas';
 
-const day = dayjs(new Date()).format('YYYY-MM-DD');
-
-const regex = {
-  name: /^[a-z]*$/,
-  email:
-    /^(?!.@.@.$)(?!.@.--...$)(?!.@.-..$)(?!.@.-$)((.*)?@[a-z0-9]{1,}.[a-z]{2,}(.[a-z]{2,})?)$/,
-  phone: /^\+380\d{9}$/,
-  skype: /^\S[\S\s]{0,28}\S$/,
-};
-
-const userSchema = Yup.object().shape({
-  name: Yup.string()
-    .required('Name is required')
-    .matches(/^\S[\S\s]{0,28}\S$/, 'Name must be between 3 and 16 characters')
-    .max(16, 'At most 16 digits is required')
-    .test(
-      'name-validation',
-      'Name must be at least 3 characters long',
-      value => {
-        return value && value.replace(/\s/g, '').length >= 3;
-      }
-    ),
-  birthday: Yup.date().max(day, 'Birthday must be earlier than today'),
-  email: Yup.string()
-    .email('This is an ERROR email')
-    .matches(/^[a-zA-Z0-9@.]+$/, 'Email must contain only Latin characters')
-    .required('Email is required field'),
-  phone: Yup.string()
-    .required(
-      'Phone is required field. Must start with +380 and be 9 digits long'
-    )
-    .matches(
-      regex.phone,
-      'The phone number must start with +380 and be 9 digits long'
-    )
-    .min(13, 'At least 13 digits is required')
-    .max(13, 'At most 13 digits is required'),
-  skype: Yup.string()
-    .matches(/^\S[\S\s]{0,28}\S$/, 'Skype must be between 3 and 16 characters')
-    .max(13, 'At most 13 digits is required')
-    .test(
-      'Skype-validation',
-      'Skype must be at least 3 characters long',
-      value => {
-        return value && value.replace(/\s/g, '').length >= 3;
-      }
-    ),
-});
+import dayjs from 'dayjs';
+// const day = dayjs(new Date()).format('DD/MM/YYYY');
 
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthdayDate, setBirthdayDate] = useState(null);
-  // const [isUpdateForm, setIsUpdateForm] = useState(null);
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
-  
     const getUserInfo = async () => {
       await dispatch(refresh());
-      //  setIsUpdateForm(null);
     };
-
     getUserInfo();
   }, [dispatch]);
 
@@ -119,14 +63,17 @@ export const UserForm = () => {
             email: user?.email || '',
             phone: user?.phone || '',
             skype: user?.skype || '',
-            birthday: birthdayDate || day,
+            birthday:
+              birthdayDate
+              ? birthdayDate
+              : user
+              // ? new Date(dayjs(user.birthday).format('DD/MM/YYYY'))
+              // : new Date(),
 
-            // birthdayDate
-            // ? birthdayDate
-            // : user
-            // ? dayjs(user.birthday).format('YYYY-MM-DD')
-            // : new Date(),
-            // avatarURL: avatarURL || user?.avatarURL || '',
+            // user?.birthday
+            // ? user?.birthday
+            // : new Date()
+            //  birthdayDate?dayjs(birthdayDate).format('DD/MM/YYYY'):user?.birthday,
           }}
           onSubmit={async values => {
             const formData = new FormData();
@@ -135,20 +82,21 @@ export const UserForm = () => {
             formData.append('birthday', values.birthday);
             formData.append('phone', values.phone);
             formData.append('skype', values.skype);
-            // console.log("('skype')", formData.get('skype'));
             if (avatarURL) {
               formData.append('avatar', avatarURL);
             }
-            for (const [key, value] of formData.entries()) {
-              console.log(`${key}, ${value}`);
-            }
-
-            alert(JSON.stringify(values, null, 2));
+            // for (const [key, value] of formData.entries()) {
+            //   console.log(`${key}, ${value}`);
+            // }
+          if (values.birthday) {
+            setBirthdayDate(values.birthday)
+          }
+            // alert(JSON.stringify(values, null, 2));
             await dispatch(updateUser(formData));
-            // setIsUpdateForm(true);
+            // alert('update');
           }}
         >
-          {({ dirty, errors, touched, values }) => {
+          {({ dirty, errors, touched, values, setFieldValue }) => {
             const isValid = field =>
               touched[field] && errors[field]
                 ? 'is-invalid'
@@ -222,48 +170,49 @@ export const UserForm = () => {
                     </Label>
                     <Label htmlFor="birthday" className={isValid('birthday')}>
                       Birthday
-                      <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <Input>
-                          <DemoContainer
-                            components={['DatePicker']}
-                            sx={{ padding: '8px 0px 0px 0px' }}
-                          >
-                            <DatePicker
-                              className={isValid('birthday')}
-                              id="birthday"
-                              name="birthday"
-                              disableFuture={true}
-                              onChange={e =>
-                                setBirthdayDate(e.format('DD/MM/YYYY'))
+                      <Input>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                          <DatePicker
+                            className={isValid('birthday')}
+                            id="birthday"
+                            name="birthday"
+                            views={['year', 'month', 'day']}
+                            format="DD/MM/YYYY"
+                            closeOnSelect={true}
+                            disableFuture={true}
+                            slotProps={{
+                              popper: {
+                                sx: PopperDateStyles,
+                              },
+                              textField: {
+                                placeholder: dayjs(user.birthday).format(
+                                  'DD/MM/YYYY'
+                                ),
+                              },
+                            }}
+                            onChange={date => {
+                              if (!date) {
+                                setFieldValue('birthday', '');
                               }
-                              format="DD/MM/YYYY"
-                              // views={['year', 'month', 'day']}
-                              textField={dayjs(user.birthday).format(
-                                'DD/MM/YYYY'
-                              )}
-                              slots={{
-                                openPickerIcon: KeyboardArrowDownIcon,
-                              }}
-                              slotProps={{
-                                popper: {
-                                  sx: PopperDateStyles,
-                                },
-                                textField: {
-                                  placeholder:
-                                    dayjs(user.birthday).format('DD/MM/YYYY') ||
-                                    birthdayDate ||
-                                    `${day}`,
-                                },
-                              }}
-                            />
-                            {isValid('name') === 'is-valid' && <IconDone />}
-                            {isValid('birthday') === 'is-invalid' && (
-                              <IconError />
-                            )}
-                            <ErrorMessage name="birthday" component="div" />
-                          </DemoContainer>
-                        </Input>
-                      </LocalizationProvider>
+                              const formattedBirthDate =
+                                dayjs(date).format('YYYY-MM-DD');
+                              // console.log(
+                              //   'formattedBirthDate',
+                              //   formattedBirthDate
+                              // );
+                              setFieldValue('birthday', formattedBirthDate);
+                            }}
+                            slots={{
+                              openPickerIcon: KeyboardArrowDownIcon,
+                            }}
+                          />
+                          {isValid('birthday') === 'is-valid' && <IconDone />}
+                          {isValid('birthday') === 'is-invalid' && (
+                            <IconError />
+                          )}
+                          <ErrorMessage name="birthday" component="div" />
+                        </LocalizationProvider>
+                      </Input>
                     </Label>
 
                     <Label htmlFor="email" className={isValid('email')}>
