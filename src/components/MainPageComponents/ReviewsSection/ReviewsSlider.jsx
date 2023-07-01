@@ -51,7 +51,6 @@ export const ReviewsSlider = () => {
 
   const slides = reviews;
 
-  console.log(slides);
   return (
     <Section>
       <Container>
