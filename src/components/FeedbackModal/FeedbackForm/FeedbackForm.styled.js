@@ -42,7 +42,7 @@ export const EditBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => { return props.isActive ? '#3E85F3' : '#E3F3FF'}} ;
+  background-color: ${props => { return props.isActive ? '#3E85F3' : props.theme.feedback_light_btn}} ;
   border: none;
   width: 30px;
   height: 30px;
@@ -169,7 +169,7 @@ export const FormBtn = styled.button`
 
 export const FormBtnCancel = styled.button`
   color: ${props=> props.theme.text_3};
-  background-color: #E5EDFA;
+  background-color: ${props=> props.theme.feedback_light_btn};
   text-transform: none;
   width: 262px;
   height: 48px;
@@ -196,9 +196,10 @@ export const BtnCloseWrap = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  stroke:  ${props=> props.theme.close_btn};
+  stroke: ${props => props.theme.title};
 
   transition: stroke ${variables.transitions.standart};
+
   &:hover, 
   &:focus {
     stroke: ${variables.colors.secondary};
