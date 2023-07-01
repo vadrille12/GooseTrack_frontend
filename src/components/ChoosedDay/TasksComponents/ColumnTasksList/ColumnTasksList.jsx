@@ -1,4 +1,3 @@
-import React from 'react';
 import { ColumnTasksListStyled } from './ColumnTasksList.styled';
 import { TaskCard } from '../ТaskCard/ТaskCard';
 

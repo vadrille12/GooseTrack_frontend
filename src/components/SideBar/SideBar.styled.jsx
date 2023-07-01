@@ -25,7 +25,6 @@ export const Aside = styled.aside`
     position: absolute;
     z-index: 2;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px;
-    justify-content: space-between;
 
     transition: 250ms ease-in-out;
     @media (min-width: 768px) {
