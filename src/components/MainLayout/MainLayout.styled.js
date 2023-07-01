@@ -217,6 +217,31 @@ export const Box = styled.div`
   @media screen and (min-width: 768px) {
     padding: 40px 32px 32px;
   }
+
+  @media screen and (min-width: 1200px) {
+    height: 700px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.scroll_bar_track};
+    border-radius: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.scroll_bar};
+    border-radius: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #cac8c8;
+  }
 `;
 
 export const Wrapper = styled.div`

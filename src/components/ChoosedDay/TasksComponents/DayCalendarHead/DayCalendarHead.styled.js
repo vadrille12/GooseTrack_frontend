@@ -76,6 +76,8 @@ export const DateMobile = styled.div`
   width: 27px;
   height: 26px;
 
+  color: ${props => props.theme.text_3};
+
   border-radius: 8px;
   background: none;
 

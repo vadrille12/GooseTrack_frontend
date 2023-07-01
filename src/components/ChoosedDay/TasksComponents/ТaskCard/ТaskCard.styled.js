@@ -73,15 +73,13 @@ export const Avatar = styled.div`
   width: 32px;
   height: 32px;
 
-  /* background: url(.jpg); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+
   border: 2px solid #3e85f3;
   border-radius: 50%;
-
-  @media screen and (min-width: 768px) {
-  }
-
-  @media screen and (min-width: 1440px) {
-  }
 `;
 
 export const StatusLow = styled.div`
