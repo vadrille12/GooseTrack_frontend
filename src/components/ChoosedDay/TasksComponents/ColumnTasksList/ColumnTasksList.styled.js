@@ -12,18 +12,12 @@ export const ColumnTasksListStyled = styled.div`
 
   padding: 0 6px 0 18px;
 
-  @media screen and (min-width: 768px) {
-    gap: 18px;
-    max-height: 372px;
-  }
-
   ::-webkit-scrollbar {
     width: 6px;
-    margin-left: -6px;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.scroll_bar};
+    background-color: ${props => props.theme.scroll_bar_track};
     border-radius: 12px;
   }
 
@@ -34,5 +28,14 @@ export const ColumnTasksListStyled = styled.div`
 
   ::-webkit-scrollbar-thumb:hover {
     background-color: #cac8c8;
+  }
+
+  @media screen and (min-width: 768px) {
+    gap: 18px;
+    max-height: 372px;
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
   }
 `;

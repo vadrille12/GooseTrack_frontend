@@ -1,3 +1,4 @@
+import React from 'react';
 import { EditBtnBar } from '../EditBtnBar/EditBtnBar';
 import {
   Avatar,
@@ -14,8 +15,16 @@ import {
   BackgroundName,
   UserNameIcon,
 } from 'components/Header/UserInfo/User.styled';
+import { Draggable } from 'react-beautiful-dnd';
 
-export const TaskCard = ({ task, onOpen, setAction, setColumn, onEdit }) => {
+export const TaskCard = ({
+  task,
+  onOpen,
+  setAction,
+  setColumn,
+  onEdit,
+  index,
+}) => {
   const { title, priority, category } = task;
 
   function getInitials(name) {
@@ -42,24 +51,32 @@ export const TaskCard = ({ task, onOpen, setAction, setColumn, onEdit }) => {
   );
 
   return (
-    <TaskCardStyled>
-      <TaskText>{title}</TaskText>
-      <TaskContainer>
-        <AvatarGroupContainer>
-          <Avatar>{displayName}</Avatar>
-          {priority === 'low' && <StatusLow>Low</StatusLow>}
-          {priority === 'medium' && <StatusMedium>Medium</StatusMedium>}
-          {priority === 'high' && <StatusHigh>High</StatusHigh>}
-        </AvatarGroupContainer>
-        <EditBtnBar
-          onOpen={onOpen}
-          setAction={setAction}
-          setColumn={setColumn}
-          category={category}
-          task={task}
-          onEdit={onEdit}
-        />
-      </TaskContainer>
-    </TaskCardStyled>
+    <Draggable draggableId={task._id} index={index}>
+      {provided => (
+        <TaskCardStyled
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+        >
+          <TaskText>{title}</TaskText>
+          <TaskContainer>
+            <AvatarGroupContainer>
+              <Avatar>{displayName}</Avatar>
+              {priority === 'low' && <StatusLow>Low</StatusLow>}
+              {priority === 'medium' && <StatusMedium>Medium</StatusMedium>}
+              {priority === 'high' && <StatusHigh>High</StatusHigh>}
+            </AvatarGroupContainer>
+            <EditBtnBar
+              onOpen={onOpen}
+              setAction={setAction}
+              setColumn={setColumn}
+              category={category}
+              task={task}
+              onEdit={onEdit}
+            />
+          </TaskContainer>
+        </TaskCardStyled>
+      )}
+    </Draggable>
   );
 };

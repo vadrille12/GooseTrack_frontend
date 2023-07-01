@@ -175,7 +175,15 @@ export const CalendarIcon = styled(Calendar)`
 `;
 
 export const ChartIcon = styled(Chart)`
+  width: 20px;
+  height: 20px;
   fill: ${props => props.theme.text_5};
+  opacity: 0.7;
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const Button = styled.button`
