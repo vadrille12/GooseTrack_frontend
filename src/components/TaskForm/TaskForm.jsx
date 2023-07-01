@@ -23,6 +23,7 @@ import {
 } from './TaskForm.styled';
 import { useDispatch } from 'react-redux';
 import { addTask, editTask } from 'redux/tasks/operations';
+import { useParams } from 'react-router-dom';
 
 const TaskSchema = Yup.object().shape({
   title: Yup.string()
@@ -66,6 +67,7 @@ const TaskSchema = Yup.object().shape({
 export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
   const { _id, title, start, end, priority, date } = taskToEdit;
   const dispatch = useDispatch();
+  const { currentDay } = useParams();
 
   const handleSubmit = (values, actions) => {
     if (action === 'add') {
@@ -93,7 +95,7 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
         start: (action === 'edit' && start) || '09:00',
         end: (action === 'edit' && end) || '14:00',
         priority: (action === 'edit' && priority) || 'low',
-        date,
+        date: date ? date : currentDay,
         category: setCategory(),
       }}
       validationSchema={TaskSchema}

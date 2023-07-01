@@ -26,32 +26,46 @@ export const DatePicker = styled(DatePickerCalendar)`
     top: 50%;
     transform: translateY(-50%);
   }
-  /* &:hover,
-  &:focus {
-    border: 1px solid ${props => props.theme.scroll_bar};
-  } */
 
-  && .MuiInputBase-root {
+  .MuiInputBase-root {
     height: 42px;
     border-radius: 8px;
     border-radius: 8px;
     font-family: Inter;
+    border: 0.1px solid rgba(255, 255, 255, 0.12);
   }
   /* &:hover,
   &:focus {
     border: 1px solid ${props => props.theme.scroll_bar};
   } */
 
-  && .MuiSvgIcon-root {
-    color: #111111;
-    width: 20px;
-    height: 20px;
-    font-size: 18px;
+  input::placeholder {
+    font-family: Inter;
+    font-size: 14px;
+    color: ${props => props.theme.title};
+    /* color: rgba(17, 17, 17, 0.15); */
+    font-weight: 600;
+    opacity: 1;
+    outline: none;
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+  & .MuiButtonBase-root {
+    margin-left: 18px;
+    padding: 4px;
+    border-radius: 1%;
+    stroke: #ffffff;
     margin: 0px 27px;
-    padding: 0px;
   }
 
-  && .MuiInputBase-input {
+  && .MuiSvgIcon-root {
+    color: #111111;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+  & .MuiInputBase-input {
     padding: 0px 0px 0px 14px;
     /* padding: 12px 0px 12px 18px; */
     font-size: 14px;
@@ -70,18 +84,20 @@ export const DatePicker = styled(DatePickerCalendar)`
 
   @media (min-width: 768px) {
     width: 354px;
-    height: 46px;
+
     font-size: 16px;
     line-height: 1.12;
 
-    && .MuiStack-root {
-      height: 46px;
+    .MuiStack-root {
       color: ${props => props.theme.title};
-      border: 1px solid ${props => props.theme.input_border_2};
+      /* border: 1px solid ${props => props.theme.input_border_2}; */
+
+      /* border: 1px solid rgba(245, 243, 243, 0.12); */
     }
 
     && .MuiInputBase-root {
       height: 46px;
+      border: 0.1px solid rgba(255, 255, 255, 0.12);
     }
 
     && .MuiInputBase-input {
@@ -90,6 +106,7 @@ export const DatePicker = styled(DatePickerCalendar)`
       line-height: 1.12;
       height: 20px;
       font-weight: 600;
+      /* border: 0.1px solid rgba(255, 255, 255, 0.12); */
     }
   }
 `;

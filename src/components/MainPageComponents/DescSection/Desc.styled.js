@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { variables } from 'Styles/GlobalStyle';
 
 export const ContainerMain = styled.div`
-  background-color: #fff;
+  background-color: ${variables.colors.white};
 `;
 
 export const WrapperDesc = styled.div`
@@ -102,7 +103,7 @@ export const Number = styled.h1`
   font-size: 80px;
   line-height: 0.8;
   letter-spacing: -4px;
-  color: #3e85f3;
+  color: ${variables.colors.primary};
 
   @media screen and (min-width: 768px) {
     font-size: 104px;
@@ -133,8 +134,8 @@ export const Title = styled.h1`
   font-size: 32px;
   line-height: 1.25;
   text-align: center;
-  color: #3e85f3;
-  background-color: #dcebf7;
+  color: ${variables.colors.primary};
+  background-color: ${variables.colors.bgBlue};
   border-radius: 44px;
 
   @media screen and (min-width: 768px) {
@@ -154,8 +155,8 @@ export const TitleContr = styled.h1`
   font-size: 32px;
   line-height: 1.25;
   text-align: center;
-  color: #3e85f3;
-  background-color: #dcebf7;
+  color: ${variables.colors.primary};
+  background-color: ${variables.colors.bgBlue};
   border-radius: 44px;
 
   @media screen and (min-width: 768px) {
