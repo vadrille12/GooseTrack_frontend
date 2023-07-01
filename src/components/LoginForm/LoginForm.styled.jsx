@@ -139,11 +139,13 @@ export const Field = styled(FormikField)`
 export const PasswordInput = styled.div`
   position: relative;
   margin-top: 8px;
+  transition: ${variables.transitions.standart};
 `;
 
 export const Input = styled.div`
   position: relative;
   margin-top: 8px;
+  transition: ${variables.transitions.standart};
 `;
 
 export const Button = styled.button`
@@ -167,6 +169,7 @@ export const Button = styled.button`
   color: ${variables.colors.white};
   background-color: ${variables.colors.primary};
   cursor: pointer;
+  transition: ${variables.transitions.standart};
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -178,6 +181,7 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background-color: ${variables.colors.secondary};
+    transition: ${variables.transitions.standart};
   }
 `;
 

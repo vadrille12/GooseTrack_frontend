@@ -26,7 +26,6 @@ import {
   SwiperNavBtn,
 } from './ReviewsSlider.styled';
 
-// import reviwers from './reviwers.json';
 import { fetchReviews } from 'redux/reviews/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectReviews } from 'redux/reviews/selectors';
@@ -47,7 +46,7 @@ export const ReviewsSlider = () => {
   SwiperCore.use([Autoplay]);
 
   useEffect(() => {
-    dispatch(fetchReviews({page: 1, limit: 8}));
+    dispatch(fetchReviews({ page: 1, limit: 8 }));
   }, [dispatch]);
 
   const slides = reviews;
