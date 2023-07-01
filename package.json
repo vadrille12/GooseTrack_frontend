@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://vadrille12.github.io/GooseTrack_frontend/",
   "dependencies": {
-    "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.6",
     "@mui/x-date-pickers": "^6.9.1",

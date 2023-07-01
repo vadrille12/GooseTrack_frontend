@@ -315,6 +315,10 @@ export const Input = styled.div`
   width: 100%;
   position: relative;
   margin-top: 8px;
+
+  & input {
+    color: ${props => props.theme.title};
+  }
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
+
 import { EditBtnBar } from '../EditBtnBar/EditBtnBar';
 import {
   Avatar,
@@ -10,12 +12,13 @@ import {
   StatusMedium,
   StatusHigh,
 } from './ТaskCard.styled';
-import { useAuth } from '../../../../hooks/useAuth';
+
 import {
   BackgroundName,
   UserNameIcon,
-} from 'components/Header/UserInfo/User.styled';
-import { Draggable } from 'react-beautiful-dnd';
+} from 'components/Header/UserInfo/UserInfo.styled';
+import { selectUser } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
 
 export const TaskCard = ({
   task,
@@ -40,7 +43,7 @@ export const TaskCard = ({
     }
   }
 
-  const { name, avatarURL } = useAuth();
+  const { name, avatarURL } = useSelector(selectUser);
 
   const displayName = avatarURL ? (
     <img src={avatarURL} alt="UserPicture" style={{ borderRadius: '50%' }} />
