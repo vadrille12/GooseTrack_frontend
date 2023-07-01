@@ -1,3 +1,4 @@
+import React from 'react';
 import { EditBtnBar } from '../EditBtnBar/EditBtnBar';
 import {
   Avatar,

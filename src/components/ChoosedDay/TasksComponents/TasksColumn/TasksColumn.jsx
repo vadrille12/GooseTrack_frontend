@@ -1,10 +1,13 @@
-import { useState } from 'react';
-import { DragDropContext } from 'react-beautiful-dnd';
+import React, { useState } from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { TasksColumnStyled, TaskItem } from './TasksColumn.styled';
 import { ColumnHeadBar } from '../ColumnHeadBar/ColumnHeadBar';
 import { ColumnTasksList } from '../ColumnTasksList/ColumnTasksList';
 import { TaskModal } from 'components/TaskModal/TaskModal';
 import { AddTaskBtn } from '../AddTaskBtn/AddTaskBtn';
+import { editTask } from 'redux/tasks/operations';
+import { useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
 const tasksNames = ['To do', 'In progress', 'Done'];
 
@@ -14,43 +17,27 @@ export const TasksColumn = ({ tasks, setTasks }) => {
   const [column, setColumn] = useState('To do');
   const [taskToEdit, setTaskToEdit] = useState({});
 
-  const onDragEnd = result => {
-    const { destination, source } = result;
+  const dispatch = useDispatch();
 
-    if (!destination) return;
-
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
+  const onDragEnd = async result => {
+    const { destination, source, draggableId } = result;
+    if (!destination) {
       return;
     }
 
-    const sourceColumn = tasksNames[source.droppableId];
-    const destinationColumn = tasksNames[destination.droppableId];
+    if (destination.droppableId === source.droppableId) {
+      return;
+    }
 
-    const sourceTasks = categorizedTasks[sourceColumn];
-    const movedTask = sourceTasks[source.index];
+    const taskId = draggableId;
+    const newCategory = Object.keys(droppableIds).find(
+      key => droppableIds[key] === result.destination.droppableId
+    );
+    const formattedCategory = newCategory.toLowerCase().replace(/\s+/g, '-');
 
-    const updatedSourceTasks = [...sourceTasks];
-    updatedSourceTasks.splice(source.index, 1);
-
-    const destinationTasks = categorizedTasks[destinationColumn];
-    const updatedDestinationTasks = [...destinationTasks];
-    updatedDestinationTasks.splice(destination.index, 0, movedTask);
-
-    const updatedCategorizedTasks = {
-      ...categorizedTasks,
-      [sourceColumn]: updatedSourceTasks,
-      [destinationColumn]: updatedDestinationTasks,
-    };
-
-    const newState = {
-      ...tasks,
-      [column]: updatedCategorizedTasks,
-    };
-
-    setTasks(newState);
+    try {
+      await dispatch(editTask({ _id: taskId, category: formattedCategory }));
+    } catch (error) {}
   };
 
   const openModal = () => {
@@ -67,6 +54,12 @@ export const TasksColumn = ({ tasks, setTasks }) => {
     Done: tasks.filter(task => task.category === 'done'),
   };
 
+  const droppableIds = tasksNames.reduce((acc, columnName) => {
+    const id = nanoid();
+    acc[columnName] = id;
+    return acc;
+  }, {});
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <TasksColumnStyled>
@@ -78,13 +71,20 @@ export const TasksColumn = ({ tasks, setTasks }) => {
               setAction={() => setAction('add')}
               setColumn={() => setColumn(columnName)}
             />
-            <ColumnTasksList
-              tasks={categorizedTasks[columnName]}
-              onOpen={openModal}
-              setAction={() => setAction('edit')}
-              setColumn={() => setColumn(columnName)}
-              onEdit={setTaskToEdit}
-            />
+            <Droppable droppableId={droppableIds[columnName].toString()}>
+              {(provided, snapshot) => (
+                <ColumnTasksList
+                  tasks={categorizedTasks[columnName]}
+                  onOpen={openModal}
+                  setAction={() => setAction('edit')}
+                  setColumn={() => setColumn(columnName)}
+                  onEdit={setTaskToEdit}
+                  column={columnName}
+                  provided={provided}
+                  snapshot={snapshot}
+                />
+              )}
+            </Droppable>
             <AddTaskBtn
               onOpen={openModal}
               setAction={() => setAction('add')}

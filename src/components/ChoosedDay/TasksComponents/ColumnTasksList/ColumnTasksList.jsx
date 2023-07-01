@@ -1,8 +1,6 @@
-import { Droppable } from 'react-beautiful-dnd';
-
+import React from 'react';
 import { ColumnTasksListStyled } from './ColumnTasksList.styled';
 import { TaskCard } from '../ТaskCard/ТaskCard';
-import { nanoid } from '@reduxjs/toolkit';
 
 export const ColumnTasksList = ({
   tasks,
@@ -10,28 +8,27 @@ export const ColumnTasksList = ({
   setAction,
   setColumn,
   onEdit,
+  provided,
+  snapshot,
 }) => {
   return (
-    <Droppable droppableId={nanoid()}>
-      {provided => (
-        <ColumnTasksListStyled
-          ref={provided.innerRef}
-          {...provided.droppableProps}
-        >
-          {tasks.map((task, index) => (
-            <TaskCard
-              key={task._id}
-              task={task}
-              onOpen={onOpen}
-              setAction={setAction}
-              setColumn={setColumn}
-              onEdit={onEdit}
-              index={index}
-            />
-          ))}
-          {provided.placeholder}
-        </ColumnTasksListStyled>
-      )}
-    </Droppable>
+    <ColumnTasksListStyled
+      ref={provided.innerRef}
+      {...provided.droppableProps}
+      isDraggingOver={snapshot.isDraggingOver}
+    >
+      {tasks.map((task, index) => (
+        <TaskCard
+          key={task._id}
+          task={task}
+          onOpen={onOpen}
+          setAction={setAction}
+          setColumn={setColumn}
+          onEdit={onEdit}
+          index={index}
+        />
+      ))}
+      {provided.placeholder}
+    </ColumnTasksListStyled>
   );
 };
