@@ -49,8 +49,7 @@ export const GooseTask = styled.img`
 
 export const MotivationTask = styled.p`
   display: none;
-  color: ${({ theme }) => theme.text};
-
+  color: ${props => props.theme.text_3};
   @media (min-width: 1440px) {
     display: block;
     font-family: 'Inter';
