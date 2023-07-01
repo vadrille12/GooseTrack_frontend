@@ -1,16 +1,16 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const UserName = styled.p`
   font-size: 14px;
   font-weight: 700;
   line-height: 1.3;
   margin-right: 14px;
+  color: ${props => props.theme.text_3};
 
   @media (min-width: 765px) {
     font-size: 18px;
     line-height: 1;
   }
-  color: ${props => props.theme.text};
 `;
 
 export const BackgroundName = styled.div`
@@ -38,7 +38,7 @@ export const UserPicture = styled.div`
   width: 32px;
   height: 32px;
   overflow: hidden;
-  border: 1.8px solid ${props => props.theme.componentAccent};
+  border: 1.8px solid #3e85f3;
   border-radius: 50%;
 
   & img {
