@@ -41,6 +41,7 @@ export const theme = {
     input_border_2: 'rgba(255, 255, 255, 0.15)',
     input_bg: 'rgba(23, 24, 32, 1)',
     close_btn: 'rgba(255, 255, 255, 0.6)',
+    feedback_light_btn: '#21222C',
   },
   light: {
     text_1: 'rgba(52, 52, 52, 0.5)',
@@ -72,6 +73,7 @@ export const theme = {
     input_border_2: 'rgba(17, 17, 17, 0.15)',
     input_bg: 'rgba(246, 246, 246, 1)',
     close_btn: 'rgba(62, 133, 243, 1)',
+    feedback_light_btn: '#E5EDFA',
   },
 };
 export const variables = {
