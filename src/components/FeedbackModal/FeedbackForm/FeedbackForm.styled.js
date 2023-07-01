@@ -9,7 +9,7 @@ export const Wrap = styled.div`
   padding: 28px 20px;
   border-radius: 16px;
   width: 335px;
-  background: ${variables.colors.background};
+  background: ${props=> props.theme.task_modal_bg};
 
   @media (min-width: 768px) {
     width: 468px;
@@ -42,14 +42,12 @@ export const EditBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => { return props.isActive ? '#3E85F3' : '#E3F3FF'}} ;
-  background-color:  #E3F3FF;
+  background-color: ${props => { return props.isActive ? '#3E85F3' : props.theme.feedback_light_btn}} ;
   border: none;
   width: 30px;
   height: 30px;
   border-radius: 50%; 
   stroke:  ${props => { return props.isActive ? '#FFFFFF' : '#3E85F3'}} ;
-  stroke:  #3e85f3;
   cursor: pointer;
   transition: stroke ${variables.transitions.standart}, background-color ${variables.transitions.standart};
 
@@ -95,13 +93,13 @@ export const Input = styled(Field)`
     font-weight: 600;
     font-size: 14px;
     line-height: calc((18 / 14) * 100%);
-    color: #343434;
+    color: ${props=> props.theme.text_3};
 
-    background-color: #F6F6F6;
+    background-color: ${props=> props.theme.input_bg};
     border-radius: 8px;
-    border: 1px solid transparent;
+    border: 1px solid  ${props=> props.theme.input_border};
 
-    transition: border ${variables.transitions.standart};
+    /* transition: border ${variables.transitions.standart}; */
     
     @media (min-width: 768px) {
         width: 404px;
@@ -111,12 +109,11 @@ export const Input = styled(Field)`
         margin-bottom: 18px;
     }
 
-    &:hover,
+    /* &:hover,
     &:focus {
       border: 1px solid #111111;
-    }
+    } */
     &:disabled{
-      border-color: transparent;
       cursor: not-allowed;
     }
 
@@ -171,8 +168,8 @@ export const FormBtn = styled.button`
 `;
 
 export const FormBtnCancel = styled.button`
-  color: #343434;
-  background-color: #E5EDFA;
+  color: ${props=> props.theme.text_3};
+  background-color: ${props=> props.theme.feedback_light_btn};
   text-transform: none;
   width: 262px;
   height: 48px;
@@ -199,9 +196,10 @@ export const BtnCloseWrap = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  stroke: ${variables.colors.closeButton};
+  stroke: ${props => props.theme.title};
 
   transition: stroke ${variables.transitions.standart};
+
   &:hover, 
   &:focus {
     stroke: ${variables.colors.secondary};
