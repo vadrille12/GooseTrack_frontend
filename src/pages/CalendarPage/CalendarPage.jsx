@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchTasks } from 'redux/tasks/operations';
+import Spinner from 'components/Spinner/spinner';
 
 export default function CalendarPage() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function CalendarPage() {
   return (
     <CalendarPageContainer>
       <CalendarToolBar />
-      <Suspense>
+      <Suspense fallback={<Spinner />}>
         <Outlet />
       </Suspense>
     </CalendarPageContainer>
