@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { variables } from 'Styles/GlobalStyle';
 
 export const ContainerHero = styled.header`
   height: 770px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3e85f3;
+  background-color: ${variables.colors.primary};
 `;
 
 export const ContentWrapper = styled.div`
@@ -45,7 +46,7 @@ export const ContentWrapper = styled.div`
     font-size: 44px;
     line-height: 1.09;
     text-align: center;
-    color: #fff;
+    color: ${variables.colors.white};
     text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
       0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
@@ -93,39 +94,48 @@ export const LinkLogin = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 8.25px;
-  width: 131px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  column-gap: 6px;
+  width: 121px;
+  height: 49px;
+  padding: 14px;
   font-family: 'InterSemiBold';
-  font-size: 14px;
-  line-height: 1.29;
   text-decoration: none;
-  color: #3e85f3;
-  background-color: #fff;
+  color: ${variables.colors.primary};
+  background-color: ${variables.colors.white};
   border-radius: 16px;
   box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   opacity: 1;
   cursor: pointer;
+  transition: ${variables.transitions.standart};
 
   &:hover,
   &:focus {
     opacity: 0.8;
+    transition: ${variables.transitions.standart};
   }
 `;
 
 export const LinkRegister = styled(Link)`
   font-family: 'InterSemiBold';
-  font-size: 14px;
-  line-height: 1.29;
+  height: 49px;
+  padding: 14px;
   text-decoration: underline;
-  color: #fff;
+  color: ${variables.colors.white};
   cursor: pointer;
+  transition: ${variables.transitions.standart};
 
   &:hover,
   &:focus {
     opacity: 0.8;
+    transition: ${variables.transitions.standart};
   }
+`;
+
+export const Nav = styled.nav`
+  align-items: center;
+  flex-direction: column;
+  gap: 100px;
+  flex: 1.5 1 0%;
 `;
 
 export const ScrollDownWrapper = styled.div`
