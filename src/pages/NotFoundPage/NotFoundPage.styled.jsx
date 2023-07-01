@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { variables } from 'Styles/GlobalStyle';
 import { ReactComponent as Goose404 } from 'images/404-goose.svg';
-import { style } from 'styled-system';
 
 export const Text = styled.p`
   color: ${variables.colors.primary};
