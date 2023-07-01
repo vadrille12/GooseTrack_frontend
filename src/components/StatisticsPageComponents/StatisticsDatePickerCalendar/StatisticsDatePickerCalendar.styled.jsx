@@ -24,19 +24,19 @@ export const StatisticsDatePickerCalendar = styled.div`
     line-height: calc((18 / 14) * 100%);
 
     @media (min-width: 375px) {
-      width: 327px;
+      width: 300px;
     }
 
     @media (min-width: 768px) {
       top: calc(100% + 5px);
-      left: 0;
+      left: -285px;
       width: 337px;
       height: 376px;
     }
 
     @media (min-width: 1440px) {
       top: calc(100% + 1px);
-      left: 0;
+      left: -400px;
     }
 
     &__header {
