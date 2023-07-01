@@ -43,6 +43,7 @@ export const theme = {
     close_btn: 'rgba(255, 255, 255, 0.6)',
     feedback_light_btn: '#21222C',
     statistics_bg: 'rgba(33, 34, 44, 1)',
+    nfp_message: '#FFF',
   },
   light: {
     text_1: 'rgba(52, 52, 52, 0.5)',
@@ -76,6 +77,7 @@ export const theme = {
     close_btn: 'rgba(62, 133, 243, 1)',
     feedback_light_btn: '#E5EDFA',
     statistics_bg: '#FFFFFF',
+    nfp_message: 'rgba(17, 17, 17, 0.7)',
   },
 };
 export const variables = {
