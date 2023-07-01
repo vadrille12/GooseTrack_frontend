@@ -7,7 +7,6 @@ import 'swiper/css/virtual';
 import 'swiper/css/navigation';
 import { ReactComponent as ArrowLeft } from 'images/arrowLeft.svg';
 import { ReactComponent as ArrowRight } from 'images/arrowRight.svg';
-import { FcButtingIn } from 'react-icons/fc';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 
@@ -17,7 +16,8 @@ import {
   SliderWrapper,
   Title,
   ReviewContentBox,
-  Avatar,
+  AvatarWrapper,
+  AvatarImg,
   Rate,
   Name,
   ReviewSliderCard,
@@ -85,9 +85,12 @@ export const ReviewsSlider = () => {
               <SwiperSlide key={index} virtualIndex={index}>
                 <ReviewSliderCard>
                   <ReviewContentBox>
-                    <Avatar>
-                      <FcButtingIn size={48} />
-                    </Avatar>
+                    <AvatarWrapper>
+                      <AvatarImg
+                        src={slide.owner.avatarURL}
+                        alt="UserPicture"
+                      />
+                    </AvatarWrapper>
                     <div>
                       <Name>{slide.owner.name}</Name>
                       <Rate>
@@ -95,7 +98,6 @@ export const ReviewsSlider = () => {
                           value={slide.rating}
                           itemStyles={rateStyled}
                           style={{ maxWidth: 110, gap: 4 }}
-                          // itemStyles={rateStyled}
                           readOnly
                         />
                       </Rate>
