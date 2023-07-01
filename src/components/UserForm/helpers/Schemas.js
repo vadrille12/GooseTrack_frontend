@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
-import dayjs from 'dayjs';
-const day = dayjs(new Date()).format('DD/MM/YYYY');
+// import dayjs from 'dayjs';
+// const day = dayjs(new Date()).format('DD/MM/YYYY');
 
 const regex = {
   name: /^[a-z]*$/,
