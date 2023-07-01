@@ -56,12 +56,18 @@ export const ReviewSliderCard = styled.div`
   }
 `;
 
-export const Avatar = styled.div`
+export const AvatarWrapper = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
   border: 1px solid #616161;
   margin-right: 18px;
+`;
+
+export const AvatarImg = styled.img`
+width: 50px;
+  height: 50px;
+  border-radius: 50%;
 `;
 
 export const Name = styled.h1`
