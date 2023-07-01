@@ -9,11 +9,13 @@ import {
   StatusMedium,
   StatusHigh,
 } from './ТaskCard.styled';
-import { useAuth } from '../../../../hooks/useAuth';
+
 import {
   BackgroundName,
   UserNameIcon,
 } from 'components/Header/UserInfo/UserInfo.styled';
+import { selectUser } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
 
 export const TaskCard = ({ task, onOpen, setAction, setColumn, onEdit }) => {
   const { title, priority, category } = task;
@@ -31,7 +33,7 @@ export const TaskCard = ({ task, onOpen, setAction, setColumn, onEdit }) => {
     }
   }
 
-  const { name, avatarURL } = useAuth();
+  const { name, avatarURL } = useSelector(selectUser);
 
   const displayName = avatarURL ? (
     <img src={avatarURL} alt="UserPicture" style={{ borderRadius: '50%' }} />

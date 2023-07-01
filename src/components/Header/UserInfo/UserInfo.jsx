@@ -1,3 +1,7 @@
+import { useSelector } from 'react-redux';
+
+import { selectUser } from 'redux/auth/selectors';
+
 import {
   Wrapper,
   UserName,
@@ -5,7 +9,6 @@ import {
   UserNameIcon,
   BackgroundName,
 } from './UserInfo.styled';
-import { useAuth } from '../../../hooks/useAuth';
 
 export const UserInfo = () => {
   function getInitials(name) {
@@ -21,7 +24,7 @@ export const UserInfo = () => {
     }
   }
 
-  const { name, avatarURL } = useAuth();
+  const { name, avatarURL } = useSelector(selectUser);
 
   const displayName = avatarURL ? (
     <img src={avatarURL} alt="UserPicture" />
