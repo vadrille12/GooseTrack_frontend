@@ -1,7 +1,11 @@
-import { startOfMonth, getDay } from 'date-fns';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
+import { startOfMonth, getDay } from 'date-fns';
+
+import { TaskCalendar } from '../TaskCalendar/TaskCalendar';
+import { TaskModal } from 'components/TaskModal/TaskModal';
 
 import {
   Cell,
@@ -9,9 +13,8 @@ import {
   LabelCell,
   TodayLabelCell,
   OtherMonthLabelCell,
+  LabelWrapper,
 } from './CalendarTable.styled';
-import { TaskCalendar } from '../TaskCalendar/TaskCalendar';
-import { TaskModal } from 'components/TaskModal/TaskModal';
 
 const isCurrentDay = date => {
   const today = new Date();
@@ -118,18 +121,20 @@ export const CalendarTable = ({ tasks }) => {
           ) : (
             <OtherMonthLabelCell>{day.getDate()}</OtherMonthLabelCell>
           )}
-          {tasks.map((task, index) =>
-            isCurrentTask(day, task) ? (
-              <TaskCalendar
-                key={day.toString() + index.toString()}
-                task={task}
-                onOpen={openModal}
-                setTask={() => {
-                  setTaskToEdit(task);
-                }}
-              />
-            ) : null
-          )}
+          <LabelWrapper>
+            {tasks.map((task, index) =>
+              isCurrentTask(day, task) ? (
+                <TaskCalendar
+                  key={day.toString() + index.toString()}
+                  task={task}
+                  onOpen={openModal}
+                  setTask={() => {
+                    setTaskToEdit(task);
+                  }}
+                />
+              ) : null
+            )}
+          </LabelWrapper>
         </Cell>
       ))}
       {showModal && (
