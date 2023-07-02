@@ -63,6 +63,7 @@ export const AvatarWrapper = styled.div`
   border-radius: 50%;
   border: 1px solid #616161;
   margin-right: 18px;
+  overflow: hidden;
 `;
 
 export const AvatarImg = styled.img`
