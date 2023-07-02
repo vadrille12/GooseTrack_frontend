@@ -10,31 +10,48 @@ import {
   Label,
 } from 'recharts';
 
-import { Custom } from './StatisticsChart.styles';
-
-const percentagesLabel = props => {
-  const { x, y, width, value } = props;
-  const radius = 10;
-  const labelY = y - (y === 0 ? radius : 0);
-
-  return (
-    <svg>
-      <text
-        x={x + 2 + width / 2}
-        y={labelY}
-        fill="#343434"
-        fontSize={16}
-        fontWeight={500}
-        textAnchor="middle"
-        dominantBaseline="middle"
-      >
-        {`${Math.round(value)}%`}
-      </text>
-    </svg>
-  );
-};
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 export const StatisticsChart = ({ data }) => {
+  const currentUser = useSelector(selectUser);
+
+  const percentagesLabel = props => {
+    const { x, y, width, value } = props;
+    const radius = 10;
+    const labelY = y - (y === 0 ? radius : 0);
+
+    return currentUser.themeInterface === 'light' ? (
+      <svg>
+        <text
+          x={x + 2 + width / 2}
+          y={labelY}
+          fill="rgba(52, 52, 52, 1)"
+          fontSize={16}
+          fontWeight={500}
+          textAnchor="middle"
+          dominantBaseline="middle"
+        >
+          {`${Math.round(value)}%`}
+        </text>
+      </svg>
+    ) : (
+      <svg>
+        <text
+          x={x + 2 + width / 2}
+          y={labelY}
+          fill="rgba(255, 255, 255, 1)"
+          fontSize={16}
+          fontWeight={500}
+          textAnchor="middle"
+          dominantBaseline="middle"
+        >
+          {`${Math.round(value)}%`}
+        </text>
+      </svg>
+    );
+  };
+
   const {
     toDoByMonthInPercent,
     inProgressByMonthInPercent,
@@ -98,11 +115,14 @@ export const StatisticsChart = ({ data }) => {
           dataKey="name"
           tickSize={0}
           tickMargin={16}
-          stroke=""
+          axisLine={false}
           fontSize={14}
           fontWeight={400}
-          // color="rgba(52, 52, 52, 1)"
-          tick={Custom}
+          stroke={
+            currentUser.themeInterface === 'light'
+              ? 'rgba(52, 52, 52, 1)'
+              : '#ffffff'
+          }
         />
         <YAxis
           ticks={[0, 20, 40, 60, 80, 100]}
@@ -112,13 +132,22 @@ export const StatisticsChart = ({ data }) => {
           tickCount={6}
           tickMargin={20}
           fontSize={14}
+          stroke={
+            currentUser.themeInterface === 'light'
+              ? 'rgba(52, 52, 52, 1)'
+              : '#ffffff'
+          }
         >
           <Label
             position="top"
             dy={-28}
             fontSize={14}
             fontWeight={500}
-            fill="#343434"
+            fill={
+              currentUser.themeInterface === 'light'
+                ? 'rgba(52, 52, 52, 1)'
+                : '#ffffff'
+            }
           >
             Tasks
           </Label>
@@ -136,6 +165,7 @@ export const StatisticsChart = ({ data }) => {
             fontSize={16}
             fontWeight={500}
             content={percentagesLabel}
+            theme={currentUser.themeInterface}
           ></LabelList>
         </Bar>
         <Bar
