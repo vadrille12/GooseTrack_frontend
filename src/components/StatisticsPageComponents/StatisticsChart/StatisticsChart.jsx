@@ -159,6 +159,7 @@ export const StatisticsChart = ({ data }) => {
           fill="url(#colorM)"
           barSize={27}
           radius={10}
+          minPointSize={10}
         >
           <LabelList
             position="top"
@@ -166,7 +167,7 @@ export const StatisticsChart = ({ data }) => {
             fontWeight={500}
             content={percentagesLabel}
             theme={currentUser.themeInterface}
-          ></LabelList>
+          />
         </Bar>
         <Bar
           name="By Month"
@@ -174,14 +175,14 @@ export const StatisticsChart = ({ data }) => {
           fill="url(#colorD)"
           barSize={27}
           radius={10}
-          minPointSize={22}
+          minPointSize={10}
         >
           <LabelList
             position="top"
             fontSize={16}
             fontWeight={500}
             content={percentagesLabel}
-          ></LabelList>
+          />
         </Bar>
       </BarChart>
     </ResponsiveContainer>
