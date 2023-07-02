@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { variables } from 'Styles/GlobalStyle';
 import { ReactComponent as Goose404 } from 'images/404-goose.svg';
@@ -38,6 +39,7 @@ export const Goose = styled(Goose404)`
 `;
 export const Info = styled.p`
   width: 281px;
+  margin-bottom: 30px;
   color: ${props => props.theme.nfp_message};
   text-align: center;
   font-size: 14px;
@@ -48,5 +50,30 @@ export const Info = styled.p`
 
   @media screen and (min-width: 768px) {
     width: 387px;
+  }
+`;
+
+export const NavLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 20px;
+  padding: 10px 40px;
+
+  color: ${variables.colors.white};
+  background-color: ${variables.colors.primary};
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+
+  transition: background-color 250ms linear, color 250ms linear;
+
+  &:hover,
+  &:focus {
+    background-color: ${variables.colors.lightBlue};
+    color: ${variables.colors.primary};
   }
 `;
