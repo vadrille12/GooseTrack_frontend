@@ -15,9 +15,9 @@ const textColorPriority = {
 };
 
 export const Task = styled.p`
-  width: 44px;
+  width: 42px;
   height: 22px;
-  padding: 4px 4px 4px 8px;
+  padding: 4px 4px 4px 4px;
   margin-bottom: 1px;
 
   background-color: ${props => backgroundColorPriority[props.priority]};
@@ -40,11 +40,10 @@ export const Task = styled.p`
   :focus {
     transform: translateY(-2px);
     box-shadow: ${variables.shadow.shadow};
-    z-index: 20;
   }
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
-    width: 92px;
+    width: 89px;
     height: 26px;
     padding: 4px 8px 4px 8px;
 

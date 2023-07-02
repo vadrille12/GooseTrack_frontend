@@ -2,40 +2,36 @@ import styled from 'styled-components';
 
 import { variables } from '../../../Styles/GlobalStyle';
 
-const customGrey = '#dce3e580';
-// const shadow = '4px 2px 16px 0px rgba(136, 165, 191, 0.48);';
-
-export const Cell = styled.div`
+export const Cell = styled.li`
+  position: relative;
   width: 48px;
   height: 93px;
   text-align: right;
   border-bottom: 1px solid ${props => props.theme.tabl_border};
   border-right: 1px solid ${props => props.theme.tabl_border};
   background: ${props => props.theme.page_bg};
-  padding: 0px 2px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  padding-top: 31px;
+  padding-bottom: 1px;
   cursor: pointer;
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
     width: 99px;
     height: 143px;
-    padding: 0px 4px;
+    padding-top: 41px;
   }
 
   @media screen and (min-width: calc(${variables.breakpoints
       .desktop} - 0.1px)) {
     width: 155px;
     height: 125px;
-    padding: 0px 8px;
   }
 
   &:nth-child(-n + 7) {
-    border-top: 1px solid ${customGrey};
+    border-top: 1px solid ${props => props.theme.tabl_border};
   }
 
   &:nth-child(7n + 1) {
-    border-left: 1px solid ${customGrey};
+    border-left: 1px solid ${props => props.theme.tabl_border};
   }
 
   &:nth-child(1) {
@@ -59,16 +55,35 @@ export const Cell = styled.div`
   :focus {
     transform: translateY(-2px);
     box-shadow: ${variables.shadow.shadow};
-    z-index: 10;
+  }
+`;
+
+export const LabelWrapper = styled.div`
+  max-height: 93px;
+  padding-top: 2px;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
+    max-height: 103px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  @media screen and (min-width: calc(${variables.breakpoints
+      .desktop} - 0.1px)) {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   &::-webkit-scrollbar-thumb {
     /* color of the scroll thumb */
-    background-color: ${customGrey};
+    background-color: ${props => props.theme.tabl_border};
     /* roundness of the scroll thumb */
     border-radius: 3px;
     /* creates padding around scroll thumb */
-    border: 2px solid ${customGrey};
+    border: 2px solid ${props => props.theme.tabl_border};
   }
 
   &::-webkit-scrollbar {
@@ -78,10 +93,10 @@ export const Cell = styled.div`
 `;
 
 export const LabelCell = styled.div`
-  display: inline-block;
+  position: absolute;
+  top: 8px;
+  right: 4px;
 
-  margin-top: 8px;
-  margin-right: 4px;
   padding: 4px 6px;
 
   border-radius: 6px;
@@ -94,8 +109,8 @@ export const LabelCell = styled.div`
   text-transform: uppercase;
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {
-    margin-top: 14px;
-    margin-right: 14px;
+    top: 14px;
+    right: 14px;
 
     padding: 4px 8px;
 
@@ -115,7 +130,7 @@ export const OtherMonthLabelCell = styled(LabelCell)`
   color: #d3d3d3;
 `;
 
-export const CalendarWrapper = styled.div`
+export const CalendarWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
   width: 340px;
