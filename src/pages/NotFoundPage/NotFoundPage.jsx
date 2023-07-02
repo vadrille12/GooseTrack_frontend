@@ -1,4 +1,6 @@
-import { Text, Main, Info, Goose } from './NotFoundPage.styled';
+import { AiFillHome } from 'react-icons/ai';
+
+import { Text, Main, Info, Goose, NavLink } from './NotFoundPage.styled';
 
 export default function NotFoundPage() {
   return (
@@ -27,6 +29,10 @@ export default function NotFoundPage() {
           We're sorry, the page you requested could not be found. Please go back
           to the homepage.
         </Info>
+        <NavLink to="/">
+          <AiFillHome />
+          HomePage
+        </NavLink>
       </div>
     </Main>
   );
