@@ -92,6 +92,7 @@ export const ButtonFeedback = styled.button`
   border: none;
   border-radius: 12px;
   padding: 8px, 20px, 8px, 20px;
+  cursor: pointer;
 
   &:hover,
   &:focus {
