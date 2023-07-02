@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { variables } from 'Styles/GlobalStyle';
 import {
   Field as FormikField,
   ErrorMessage as FormikErrorMessage,
@@ -11,7 +12,6 @@ import { ReactComponent as IconArrow } from 'images/user/arrow-down.svg';
 
 export const Wrap = styled.div`
   position: relative;
-  /* display: flex; */
   margin: 151px 32 32 32;
 
   border-radius: 16px;
@@ -259,7 +259,6 @@ export const IconArrowDown = styled(IconArrow)`
 `;
 
 export const Field = styled(FormikField)`
-  /* margin-top: 8px; */
   width: 100%;
   height: 42px;
   border: 1px solid ${props => props.theme.input_border_2};
@@ -272,6 +271,7 @@ export const Field = styled(FormikField)`
   line-height: calc((18 / 14) * 100%);
   color: ${props => props.theme.title};
   outline: none;
+  transition: ${variables.transitions.standart};
   cursor: text;
 
   @media (min-width: 768px) {
@@ -299,7 +299,8 @@ export const Field = styled(FormikField)`
 
   &:hover,
   &:focus {
-    border: 1px solid ${props => props.theme.scroll_bar};
+    border: 1px solid ${props => props.theme.title};
+    transition: ${variables.transitions.standart};
   }
 
   &.is-valid {
@@ -353,16 +354,16 @@ export const FormBtn = styled.button`
   text-transform: none;
   border: none;
   border-radius: 16px;
-
   color: #ffffff;
   background-color: #3e85f3;
-
   cursor: pointer;
+  transition: ${variables.transitions.standart};
   :disabled {
     background-color: #dcebf7;
   }
-  /* &:hover,
+  &:hover,
   &:focus {
     background-color: #2b78ef;
-  } */
+    transition: ${variables.transitions.standart};
+  }
 `;

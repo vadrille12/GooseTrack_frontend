@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 // import dayjs from 'dayjs';
-// const day = dayjs(new Date()).format('DD/MM/YYYY');
 
 const regex = {
   name: /^[a-z]*$/,
@@ -22,7 +21,11 @@ export const userSchema = Yup.object().shape({
         return value && value.replace(/\s/g, '').length >= 3;
       }
     ),
-  birthday: Yup.date().max(new Date(), 'Birthday must be earlier than today'),
+  birthday: Yup.date().max(
+    // dayjs(new Date()).format('DD/MM/YYYY'),
+    new Date(),
+    'Birthday must be earlier than today'
+  ),
   email: Yup.string()
     .email('This is an ERROR email')
     .matches(/^[a-zA-Z0-9@.]+$/, 'Email must contain only Latin characters')
