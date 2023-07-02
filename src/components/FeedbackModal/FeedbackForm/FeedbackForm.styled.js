@@ -10,6 +10,7 @@ export const Wrap = styled.div`
   border-radius: 16px;
   width: 335px;
   background: ${props=> props.theme.task_modal_bg};
+  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
   @media (min-width: 768px) {
     width: 468px;
@@ -18,7 +19,7 @@ export const Wrap = styled.div`
 `;
 
 export const Label = styled.label`
-    color: #343434CC;
+    color: ${props=> props.theme.text_8};
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
@@ -119,7 +120,7 @@ export const Input = styled(Field)`
 
     ::placeholder {
       opacity: 1;
-      color: #343434;
+      color: ${props=> props.theme.text_3};
       font-weight: 600;
       font-size: 14px;
 }

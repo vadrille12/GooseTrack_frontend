@@ -100,16 +100,6 @@ export const FeedbackForm = ({ onClose }) => {
                         onChange={ratingChanged}
                         readOnly={Boolean(userReview.rating) && !isEditActive}
                         />
-                    {/* <ReactStars
-                        count={5}
-                        onChange={ratingChanged}
-                        size={24}
-                        activeColor="#FFAC33"
-                        color="#CEC9C1"
-                        value={Number(userReview.rating)}
-                        edit={!isEditActive}
-                        style={{marginBottom:"20px"}}/> */}
-                    {/* {!userReview.rating && <ErrorMessage name="rating">Rating is required</ErrorMessage>} */}
                     <WrapForInput>
                     <WrapForReview>
                         <Label htmlFor="review">Review</Label>
