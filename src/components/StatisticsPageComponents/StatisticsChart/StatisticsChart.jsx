@@ -10,6 +10,8 @@ import {
   Label,
 } from 'recharts';
 
+import { Custom } from './StatisticsChart.styles';
+
 const percentagesLabel = props => {
   const { x, y, width, value } = props;
   const radius = 10;
@@ -99,7 +101,8 @@ export const StatisticsChart = ({ data }) => {
           stroke=""
           fontSize={14}
           fontWeight={400}
-          color="rgba(52, 52, 52, 1)"
+          // color="rgba(52, 52, 52, 1)"
+          tick={Custom}
         />
         <YAxis
           ticks={[0, 20, 40, 60, 80, 100]}
