@@ -37,22 +37,19 @@ import { userSchema } from './helpers/Schemas';
 
 import dayjs from 'dayjs';
 import Spinner from 'components/Spinner/spinner';
-// const day = dayjs(new Date()).format('DD/MM/YYYY');
+//const day = dayjs(new Date()).format('DD/MM/YYYY');
 
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthdayDate, setBirthdayDate] = useState(null);
-    const [isFormChanged, setIsFormChanged] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+  const [isFormChanged, setIsFormChanged] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getUserInfo = async () => {
-      await dispatch(refresh());
-    };
-    getUserInfo();
+    dispatch(refresh());
   }, [dispatch]);
 
   return (
@@ -66,16 +63,10 @@ export const UserForm = () => {
             email: user?.email || '',
             phone: user?.phone || '',
             skype: user?.skype || '',
-            birthday: birthdayDate
-              ? birthdayDate
-              : dayjs(user.birthday).format('DD/MM/YYYY'),
-            // ? new Date(dayjs(user.birthday).format('DD/MM/YYYY'))
-            // : new Date(),
-
-            // user?.birthday
-            // ? user?.birthday
-            // : new Date()
-            //  birthdayDate?dayjs(birthdayDate).format('DD/MM/YYYY'):user?.birthday,
+            birthday:
+              dayjs(user.birthday).format('DD/MM/YYYY') ||
+              dayjs(new Date()).format('DD/MM/YYYY') ||
+              birthdayDate,
           }}
           onSubmit={async values => {
             try {
@@ -89,17 +80,18 @@ export const UserForm = () => {
               if (avatarURL) {
                 formData.append('avatar', avatarURL);
               }
+
+              if (values.birthday) {
+                setBirthdayDate(dayjs(values.birthday).format('DD/MM/YYYY'));
+              }
               // for (const [key, value] of formData.entries()) {
               //   console.log(`${key}, ${value}`);
               // }
-              if (values.birthday) {
-                setBirthdayDate(values.birthday);
-              }
-              // alert(JSON.stringify(values, null, 2));
+
               await dispatch(updateUser(formData));
               // alert('update');
               setIsLoading(false);
-               setIsFormChanged(false);
+              setIsFormChanged(false);
             } catch (error) {
               setIsLoading(false);
               console.error('Error occurred during form submission:', error);
@@ -203,9 +195,9 @@ export const UserForm = () => {
                                 sx: PopperDateStyles,
                               },
                               textField: {
-                                placeholder: dayjs(user.birthday).format(
-                                  'DD/MM/YYYY'
-                                ),
+                                placeholder: user
+                                  ? dayjs(user.birthday).format('DD/MM/YYYY')
+                                  : dayjs(new Date()).format('DD/MM/YYYY'),
                               },
                             }}
                             onChange={date => {
@@ -213,7 +205,7 @@ export const UserForm = () => {
                                 setFieldValue('birthday', '');
                               }
                               const formattedBirthDate =
-                                dayjs(date).format('YYYY-MM-DD');
+                                dayjs(date).format('DD/MM/YYYY');
                               // console.log(
                               //   'formattedBirthDate',
                               //   formattedBirthDate
@@ -286,13 +278,8 @@ export const UserForm = () => {
                   </FormInputBox>
                 </FormInputWrap>
                 <FormBtnWrap>
-                  <FormBtn
-                    type="submit"
-                    // disabled={avatarURL === null || !dirty}
-                    //  disabled={!dirty ||isFormChanged|| isLoading || isSubmitting}
-                    disabled={!dirty || isFormChanged}
-                  >
-                    {isSubmitting ? 'Updating Your profile...' : 'Save changes'}
+                  <FormBtn type="submit" disabled={!dirty && !isFormChanged}>
+                    {isSubmitting ? 'Updating account...' : 'Save changes'}
                     {isLoading && <Spinner />}
                   </FormBtn>
                 </FormBtnWrap>
