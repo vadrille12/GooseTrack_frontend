@@ -18,6 +18,7 @@
     "formik": "^2.4.2",
     "modern-normalize": "^2.0.0",
     "moment": "^2.29.4",
+    "notiflix": "^3.2.6",
     "react": "^18.1.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-components": "^0.5.1",
