@@ -8,6 +8,7 @@ export const ColumnTasksListStyled = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
+  min-height: 5px;
 
   padding: 0 6px 0 18px;
 
