@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://goose-track-api-l50t.onrender.com';
+axios.defaults.baseURL = 'http://goose-track-api-l50t.onrender.com';
+
 
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -29,6 +30,20 @@ export const login = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post('api/auth/login', credentials);
+      setToken(response.data.token);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const loginGoogle = createAsyncThunk(
+  'auth/loginGoogle',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      console.log(credentials)
+      const response = await axios.get('api/auth/loginGoogle', credentials);
       setToken(response.data.token);
       return response.data;
     } catch (error) {
