@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { BsBarChart } from 'react-icons/bs';
+import { FiLogOut } from 'react-icons/fi';
 
 import { logout } from 'redux/auth/operations.js';
 
 import Box from 'components/Box/Box';
-import Icon from 'components/Icon/Icon';
 
 import { ReactComponent as Profile } from 'images/sideBar/user-check.svg';
 import { ReactComponent as Calendar } from 'images/sideBar/calendar-check.svg';
@@ -74,7 +74,7 @@ const AsideBar = ({ onSidebarShow }) => {
         <div>
           <Button type="button" onClick={handleLogout}>
             <ButtonText>Log out</ButtonText>
-            <Icon id="logout" />
+            <FiLogOut style={{ width: '18px', height: '18px' }} />
           </Button>
         </div>
       </Aside>
