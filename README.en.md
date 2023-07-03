@@ -1,3 +1,5 @@
+**Read in other languages: [ukrainian](README.md)**
+
 # GooseTrack
 
 GooseTrack is a website for phones, tablets, personal computers and other
@@ -19,6 +21,9 @@ suitable
 
 <a href="https://www.figma.com/file/kXtsjq7Tts3YzolUVqgNsp/Goose-Track?type=design&node-id=172-1012&mode=design&t=kZx2aNhGi8r3Pdbw-0">Project
 model </a>
+
+<a href="https://github.com/mitrytk/goose-track-api">
+Backend repository</a>
 
 ### Calendar
 
@@ -47,7 +52,7 @@ Team leader:<a href="https://github.com/vadrille12">Danil Zozulia</a>
 Scrum master: <a href="https://github.com/mitrytk">Dmitry Tkachenko</a> -
 ThemeToggler, UserInfo
 
-Developers:
+Frontend developers:
 
 - <a href="https://github.com/TaniaShmigel">Tetiana Shmigel</a> - page
   RegisterPage and LoginPage, component AuthNavigate
@@ -67,5 +72,11 @@ Developers:
 - <a href="https://github.com/VlikToldo">Valentyn Taldykin</a> - creation global
   states in Redux
 - <a href="https://github.com/romis44">Roman Kovalchuk</a> - page Statistics
-- <a href="https://github.com/SashaMak19">Olexander Lukyianenko</a> - Google
-  Auth
+- <a href="">Olexander Lukyianenko</a> - Google Auth
+- <a href="https://github.com/SashaMak19">Oleksandr Makogin</a> - Backend
+  Statistics, Frontend Statistics
+
+Backend developers
+
+- <a href="https://github.com/Pibodee">Bohdan Salo</a> - Backend tasks,
+  documentation
