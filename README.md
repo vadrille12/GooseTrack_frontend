@@ -1,3 +1,5 @@
+**Read in other languages: [english](README.en.md)**
+
 # GooseTrack
 
 GooseTrack- це вебсайт для телефонів, планшетів, персональних комп'ютерів та
@@ -20,6 +22,8 @@ GooseTrack- це вебсайт для телефонів, планшетів, �
 
 <a href="https://www.figma.com/file/kXtsjq7Tts3YzolUVqgNsp/Goose-Track?type=design&node-id=172-1012&mode=design&t=kZx2aNhGi8r3Pdbw-0">Макет
 проекту</a>
+
+<a href="https://github.com/mitrytk/goose-track-api">Репозиторій бекенду</a>
 
 ### Календар
 
@@ -47,7 +51,7 @@ GooseTrack- це вебсайт для телефонів, планшетів, �
 Скрам майстер: <a href="https://github.com/mitrytk">Dmitry Tkachenko</a> -
 ThemeToggler, UserInfo
 
-Розробники:
+Розробники Frontend:
 
 - <a href="https://github.com/TaniaShmigel">Tetiana Shmigel</a> - сторінки
   RegisterPage и LoginPage, компоненти AuthNavigate
@@ -67,5 +71,11 @@ ThemeToggler, UserInfo
 - <a href="https://github.com/VlikToldo">Valentyn Taldykin</a> - створення
   глобальных states в Redux
 - <a href="https://github.com/romis44">Roman Kovalchuk</a> - сторінка Statistics
-- <a href="https://github.com/SashaMak19">Olexander Lukyianenko</a> - Google
-  Auth
+- <a href="">Olexander Lukyianenko</a> - Google Auth
+- <a href="https://github.com/SashaMak19">Oleksandr Makogin</a> - Статистика на
+  бекенді та на фронтенді
+
+Розробники Backend:
+
+- <a href="https://github.com/Pibodee">Bohdan Salo</a> - backend задачі,
+  документація
