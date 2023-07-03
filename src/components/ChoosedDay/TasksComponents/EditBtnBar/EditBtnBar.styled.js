@@ -47,6 +47,7 @@ export const MoveBtn = styled(Move)`
   &:hover,
   :focus {
     stroke: ${variables.colors.secondary};
+    scale: 1.2;
   }
 `;
 
@@ -59,6 +60,7 @@ export const EditBtn = styled(Edit)`
   &:hover,
   :focus {
     stroke: ${variables.colors.secondary};
+    scale: 1.2;
     ${MoveBtn} {
       stroke: ${variables.colors.secondary};
     }
@@ -74,6 +76,7 @@ export const DeleteBtn = styled(Delete)`
   &:hover,
   :focus {
     stroke: ${variables.colors.secondary};
+    scale: 1.2;
   }
 `;
 

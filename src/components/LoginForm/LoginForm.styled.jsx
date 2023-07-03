@@ -104,6 +104,8 @@ export const Field = styled(FormikField)`
   border: 1px solid rgba(17, 17, 17, 0.15);
   border-radius: 8px;
 
+  transition: ${variables.transitions.standart};
+
   @media screen and (min-width: 768px) {
     padding: 18px;
     font-size: 16px;
@@ -182,6 +184,8 @@ export const Button = styled.button`
   &:focus {
     background-color: ${variables.colors.secondary};
     transition: ${variables.transitions.standart};
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
   }
 `;
 

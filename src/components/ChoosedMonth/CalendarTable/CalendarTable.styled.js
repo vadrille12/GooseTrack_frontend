@@ -55,6 +55,8 @@ export const Cell = styled.li`
   :focus {
     transform: translateY(-2px);
     box-shadow: ${variables.shadow.shadow};
+    z-index: 1;
+    scale: 1.1;
   }
 `;
 
@@ -75,6 +77,7 @@ export const LabelWrapper = styled.div`
       .desktop} - 0.1px)) {
     padding-left: 8px;
     padding-right: 8px;
+    height: 78px;
   }
 
   &::-webkit-scrollbar-thumb {

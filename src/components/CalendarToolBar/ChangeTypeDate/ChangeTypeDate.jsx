@@ -8,7 +8,7 @@ import moment from 'moment';
 
 export const ChangeTypeDate = () => {
   const currentDate = moment().format('YYYY-MM-DD');
-  const [activeType, setActiveType] = useState('day');
+  const [activeType, setActiveType] = useState('month');
 
   const handleTypeChange = type => {
     setActiveType(type);

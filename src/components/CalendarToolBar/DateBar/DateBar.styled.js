@@ -70,12 +70,26 @@ export const ArrowLeftStyled = styled(ArrowLeft)`
   width: 16px;
   height: 16px;
   stroke: ${props => props.theme.title};
+
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  &:focus {
+    scale: 1.7;
+  }
 `;
 
 export const ArrowRightStyled = styled(ArrowRight)`
   width: 16px;
   height: 16px;
   stroke: ${props => props.theme.title};
+
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  &:focus {
+    scale: 1.7;
+  }
 `;
 
 export const ArrowLeftBtn = styled.button`

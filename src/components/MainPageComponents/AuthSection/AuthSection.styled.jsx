@@ -112,6 +112,8 @@ export const LinkLogin = styled(Link)`
   &:focus {
     opacity: 0.8;
     transition: ${variables.transitions.standart};
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
   }
 `;
 
