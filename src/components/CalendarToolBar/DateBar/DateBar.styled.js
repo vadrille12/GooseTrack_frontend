@@ -5,22 +5,12 @@ import { ReactComponent as ArrowRight } from '../../../../src/images/chevron-rig
 
 export const DateBarStyled = styled.div`
   display: block;
-  /* max-width: 335px; */
   height: 30px;
   gap: 2px;
 
   @media screen and (min-width: 480px) {
     display: flex;
   }
-
-  /* @media screen and (min-width: 768px) {
-    width: 704px;
-    height: 34px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 1087px;
-  } */
 `;
 
 export const DateContainer = styled.div`
