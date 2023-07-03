@@ -36,8 +36,8 @@ import { DatePicker, PopperDateStyles } from './Calendar/DatePicker.styled';
 import { userSchema } from './helpers/Schemas';
 
 import dayjs from 'dayjs';
+import moment from 'moment/moment';
 import Spinner from 'components/Spinner/spinner';
-//const day = dayjs(new Date()).format('DD/MM/YYYY');
 
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
@@ -45,7 +45,9 @@ export const UserForm = () => {
   const [isFormChanged, setIsFormChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const currentDate = moment().format('DD/MM/YYYY');
   const user = useSelector(selectUser);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -63,10 +65,7 @@ export const UserForm = () => {
             email: user?.email || '',
             phone: user?.phone || '',
             skype: user?.skype || '',
-            birthday:
-              dayjs(user.birthday).format('DD/MM/YYYY') ||
-              dayjs(new Date()).format('DD/MM/YYYY') ||
-              birthdayDate,
+            birthday: user?.birthday || '',
           }}
           onSubmit={async values => {
             try {
@@ -74,22 +73,21 @@ export const UserForm = () => {
               const formData = new FormData();
               formData.append('name', values.name);
               formData.append('email', values.email);
-              formData.append('birthday', values.birthday);
+              formData.append(
+                'birthday',
+                birthdayDate
+                  ? dayjs(birthdayDate).format('DD/MM/YYYY')
+                  : dayjs(new Date()).format('DD/MM/YYYY')
+              );
+
               formData.append('phone', values.phone);
               formData.append('skype', values.skype);
               if (avatarURL) {
                 formData.append('avatar', avatarURL);
               }
 
-              if (values.birthday) {
-                setBirthdayDate(dayjs(values.birthday).format('DD/MM/YYYY'));
-              }
-              // for (const [key, value] of formData.entries()) {
-              //   console.log(`${key}, ${value}`);
-              // }
-
               await dispatch(updateUser(formData));
-              // alert('update');
+
               setIsLoading(false);
               setIsFormChanged(false);
             } catch (error) {
@@ -195,22 +193,15 @@ export const UserForm = () => {
                                 sx: PopperDateStyles,
                               },
                               textField: {
-                                placeholder: user
-                                  ? dayjs(user.birthday).format('DD/MM/YYYY')
-                                  : dayjs(new Date()).format('DD/MM/YYYY'),
+                                placeholder: user.birthday || `${currentDate}`,
                               },
                             }}
                             onChange={date => {
-                              if (!date) {
-                                setFieldValue('birthday', '');
-                              }
-                              const formattedBirthDate =
-                                dayjs(date).format('DD/MM/YYYY');
-                              // console.log(
-                              //   'formattedBirthDate',
-                              //   formattedBirthDate
-                              // );
-                              setFieldValue('birthday', formattedBirthDate);
+                              if (!date) setFieldValue('birthday', '');
+
+                              setFieldValue('birthday', date);
+                              setBirthdayDate(date);
+                              setIsFormChanged(true);
                             }}
                             slots={{
                               openPickerIcon: KeyboardArrowDownIcon,

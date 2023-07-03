@@ -1,5 +1,8 @@
 import * as Yup from 'yup';
-// import dayjs from 'dayjs';
+
+import moment from 'moment/moment';
+
+const dayMoment = moment().format('DD/MM/YYYY');
 
 const regex = {
   name: /^[a-z]*$/,
@@ -22,8 +25,8 @@ export const userSchema = Yup.object().shape({
       }
     ),
   birthday: Yup.date().max(
-    // dayjs(new Date()).format('DD/MM/YYYY'),
-    new Date(),
+    dayMoment,
+
     'Birthday must be earlier than today'
   ),
   email: Yup.string()

@@ -59,7 +59,7 @@ Developers:
   RegisterPage, LoginPage. Components PublicRoute, PrivateRoute, Redax Auth.
   Enabling token authorization via Redux.
 - <a href="https://github.com/NatalieUSA">Nataliia Khrystevych</a> - page
-  AccountPage (User Profile)
+  AccountPage (User Profile), component UserForm, Redux updateUser
 - <a href="https://github.com/diana1m">Diana Malarcuk</a> - reviews component
   AddFeedbackModal, button AddFeedbackBtn
 - <a href="https://github.com/MaxKorovchenko">Maxim Korovchenko</a> - Redux

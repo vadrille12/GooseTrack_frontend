@@ -59,7 +59,7 @@ ThemeToggler, UserInfo
   RegisterPage, LoginPage. Компоненти PublicRoute, PrivateRoute, Redax Auth.
   Підключення авторизації токена через Redux.
 - <a href="https://github.com/NatalieUSA">Nataliia Khrystevych</a> - сторінка
-  AccountPage (User Profile)
+  AccountPage (User Profile), Redux updateUser
 - <a href="https://github.com/diana1m">Diana Malarcuk</a> - компонент відгуків
   AddFeedbackModal, кнопка AddFeedbackBtn
 - <a href="https://github.com/MaxKorovchenko">Maxim Korovchenko</a> - Redux
