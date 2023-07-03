@@ -33,7 +33,7 @@ export const login = createAsyncThunk(
     try {
       const response = await axios.post('api/auth/login', credentials);
       setToken(response.data.token);
-      Notify.success(`Welcome!!!`);
+      Notify.success(`Welcome back!!!`);
       return response.data;
     } catch (error) {
       Notify.failure(`Login failed. Try again`);
