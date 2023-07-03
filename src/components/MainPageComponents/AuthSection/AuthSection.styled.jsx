@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { variables } from 'Styles/GlobalStyle';
 
 export const ContainerHero = styled.header`
-  height: 770px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
