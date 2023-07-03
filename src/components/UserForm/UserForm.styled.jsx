@@ -360,3 +360,13 @@ export const FormBtn = styled.button`
     transition: ${variables.transitions.standart};
   }
 `;
+
+export const PasswordChangeBtn = styled(FormBtn)`
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 354px;
+  }
+  @media (min-width: 1440px) {
+    margin-top: 25px;
+  }
+`;
