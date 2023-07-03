@@ -106,7 +106,7 @@ export const ButtonClose = styled.button`
 `;
 
 export const IconClose = styled(Icon)`
-  stroke: #000000;
+  stroke: ${props => props.theme.text_3};
   box-shadow: none;
   height: 24px;
   width: 24px;
