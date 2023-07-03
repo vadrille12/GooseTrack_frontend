@@ -4,13 +4,12 @@ import { DatePicker as DatePickerCalendar } from '@mui/x-date-pickers/DatePicker
 export const DatePicker = styled(DatePickerCalendar)`
   box-sizing: border-box;
   width: 100%;
-  /* height: 42px; */
+
   font-weight: 600;
   font-family: Inter;
   font-size: 14px;
   line-height: calc((18 / 14) * 100%);
   outline: none;
-  // border: 1px solid ${props => props.theme.input_border_2};
   border-radius: 8px;
   cursor: text;
   &.is-valid {
@@ -32,18 +31,14 @@ export const DatePicker = styled(DatePickerCalendar)`
     border-radius: 8px;
     border-radius: 8px;
     font-family: Inter;
-    border: 0.1px solid rgba(255, 255, 255, 0.12);
+
+    border: 0.1px solid rgba(255, 255, 255, 0.15);
   }
-  /* &:hover,
-  &:focus {
-    border: 1px solid ${props => props.theme.scroll_bar};
-  } */
 
   input::placeholder {
     font-family: Inter;
     font-size: 14px;
     color: ${props => props.theme.title};
-    /* color: rgba(17, 17, 17, 0.15); */
     font-weight: 600;
     opacity: 1;
     outline: none;
@@ -67,11 +62,13 @@ export const DatePicker = styled(DatePickerCalendar)`
   }
   & .MuiInputBase-input {
     padding: 0px 0px 0px 14px;
-    /* padding: 12px 0px 12px 18px; */
     font-size: 14px;
     line-height: 1.29;
     height: 18px;
     font-weight: 600;
+    && .Mui-error .MuiOutlinedInput-notchedOutline {
+      border: none;
+    }
   }
 
   &.MuiFormControl-root {
@@ -90,9 +87,6 @@ export const DatePicker = styled(DatePickerCalendar)`
 
     .MuiStack-root {
       color: ${props => props.theme.title};
-      /* border: 1px solid ${props => props.theme.input_border_2}; */
-
-      /* border: 1px solid rgba(245, 243, 243, 0.12); */
     }
 
     && .MuiInputBase-root {
@@ -106,12 +100,12 @@ export const DatePicker = styled(DatePickerCalendar)`
       line-height: 1.12;
       height: 20px;
       font-weight: 600;
-      /* border: 0.1px solid rgba(255, 255, 255, 0.12); */
+    }
+    && .Mui-error .MuiOutlinedInput-notchedOutline {
+      border: none;
     }
   }
 `;
-;
-
 export const PopperDateStyles = {
   '& .MuiDateCalendar-root': {
     height: '336px',
@@ -177,9 +171,7 @@ export const PopperDateStyles = {
     fontSize: '14px',
     lineHeight: 1.28,
   },
-  //   '& .MuiPickersDay-root.MuiPickersDay-today': {
-  //
-  //   },
+
 
   '& .MuiPickersYear-yearButton': {
     color: '#FFFFFF',
@@ -219,12 +211,7 @@ export const PopperDateStyles = {
       height: '32px',
     },
 
-  // '& .MuiButtonBase-root.MuiPickersDay-root.Mui-disabled': {
-  //   color: 'rgba(17, 17, 17, 0.15);',
-  // },
-  // '& .MuiPickersYear-root.Mui-disabled': {
-  //   color: 'rgba(17, 17, 17, 0.15);',
-  // },
+ 
 
   '@media (min-width: 768px)': {
     '& .MuiDateCalendar-root': {

@@ -98,6 +98,7 @@ export const variables = {
     lightYellow: '#FCF0D4',
     redError: '#DA1414',
     redErrorLight: '#E74A3B',
+    statusLow: '#72c2f8',
     mainRed: '#EA3D65',
     lightRed: '#FFD2DD',
     greenValid: '#3CBC81',

@@ -6,7 +6,6 @@ export const TaskCardStyled = styled.div`
   justify-content: center;
   width: 296px;
   height: 108px;
-  /* position: relative; */
 
   padding: 14px 14px 18px 14px;
 
@@ -14,7 +13,6 @@ export const TaskCardStyled = styled.div`
   border: 1px solid ${props => props.theme.tabl_border};
   border-radius: 8px;
 
-  /* overflow: hidden; */
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: default;
@@ -59,7 +57,6 @@ export const TaskText = styled.div`
 
 export const TaskContainer = styled.div`
   display: flex;
-  /* flex-wrap: wrap; */
   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
@@ -78,13 +75,12 @@ export const Avatar = styled.div`
   align-items: center;
   object-fit: cover;
 
-  border: 2px solid #3e85f3;
+  border: 2px solid ${variables.colors.primary};
   border-radius: 50%;
 `;
 
 export const StatusLow = styled.div`
   display: flex;
-  /* flex-direction: row; */
   justify-content: center;
   align-items: center;
   padding: 4px 12px;
@@ -101,7 +97,7 @@ export const StatusLow = styled.div`
 
   height: 20px;
 
-  background: #72c2f8;
+  background: ${variables.colors.statusLow};
   border-radius: 4px;
   @media screen and (min-width: 768px) {
   }
@@ -112,7 +108,6 @@ export const StatusLow = styled.div`
 
 export const StatusMedium = styled.div`
   display: flex;
-  /* flex-direction: row; */
   justify-content: center;
   align-items: center;
   padding: 4px 12px;
@@ -129,7 +124,7 @@ export const StatusMedium = styled.div`
 
   height: 20px;
 
-  background: #f3b249;
+  background: ${variables.colors.mainYellow};
   border-radius: 4px;
   @media screen and (min-width: 768px) {
   }
@@ -140,7 +135,6 @@ export const StatusMedium = styled.div`
 
 export const StatusHigh = styled.div`
   display: flex;
-  /* flex-direction: row; */
   justify-content: center;
   align-items: center;
   padding: 4px 12px;
@@ -157,7 +151,7 @@ export const StatusHigh = styled.div`
 
   height: 20px;
 
-  background: #ea3d65;
+  background: ${variables.colors.mainRed};
   border-radius: 4px;
   @media screen and (min-width: 768px) {
   }

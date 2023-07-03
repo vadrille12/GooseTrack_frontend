@@ -36,16 +36,6 @@ export const Wrap = styled.div`
     margin: 116px 32 32 32;
     padding: 60px 165px;
   }
-
-  .InvalidInput {
-    border: 1px solid deeppink;
-  }
-  .ValidInput {
-    border: 1px solid yellowgreen;
-  }
-  .ErrorMsg {
-    color: green;
-  }
 `;
 
 export const AvatarWrap = styled.div`
@@ -235,8 +225,6 @@ export const IconError = styled(IconErrors)`
   top: 12px;
   right: 18px;
   @media (min-width: 768px) {
-    /* top: 33%;
-    right: 18px; */
     top: 11px;
     width: 24px;
     height: 24px;
@@ -360,6 +348,11 @@ export const FormBtn = styled.button`
   transition: ${variables.transitions.standart};
   :disabled {
     background-color: #dcebf7;
+    &:hover,
+    &:focus {
+      background-color: #ffffff;
+      transition: ${variables.transitions.standart};
+    }
   }
   &:hover,
   &:focus {

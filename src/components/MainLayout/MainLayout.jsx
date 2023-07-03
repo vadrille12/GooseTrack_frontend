@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Wrapper, Main, Box, Container } from './MainLayout.styled';
 import AsideBar from 'components/SideBar/SideBar';
@@ -9,6 +9,14 @@ import { Header } from 'components/Header/Header';
 export const MainLayout = () => {
   const { isDesktop } = useAdaptiveImage();
   const [sideBarIsVisible, setSideBarIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (sideBarIsVisible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [sideBarIsVisible]);
 
   const onSidebarShow = () => {
     setSideBarIsVisible(state => !state);

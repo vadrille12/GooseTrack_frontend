@@ -2,12 +2,8 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Icon } from 'images/close.svg';
 import { ReactComponent as LogoIcon } from 'images/logo.svg';
-import { ReactComponent as Profile } from 'images/sideBar/user-check.svg';
-import { ReactComponent as Calendar } from 'images/sideBar/calendar-check.svg';
-import { ReactComponent as Chart } from 'images/sideBar/chart.svg';
 
 export const Aside = styled.aside`
-  /* height: 100vh; */
   min-height: 100%;
   width: 290px;
   background-color: ${props => props.theme.bg_1};
@@ -110,7 +106,7 @@ export const ButtonClose = styled.button`
 `;
 
 export const IconClose = styled(Icon)`
-  stroke: #000000;
+  stroke: ${props => props.theme.text_3};
   box-shadow: none;
   height: 24px;
   width: 24px;
@@ -163,26 +159,6 @@ export const Link = styled(NavLink)`
   &.active svg {
     stroke: ${props => props.theme.activeLink_text};
     transition: 250ms ease-in-out;
-  }
-`;
-
-export const ProfileIcon = styled(Profile)`
-  stroke: ${props => props.theme.text_5};
-`;
-
-export const CalendarIcon = styled(Calendar)`
-  stroke: ${props => props.theme.text_5};
-`;
-
-export const ChartIcon = styled(Chart)`
-  width: 20px;
-  height: 20px;
-  fill: ${props => props.theme.text_5};
-  opacity: 0.7;
-
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
   }
 `;
 
