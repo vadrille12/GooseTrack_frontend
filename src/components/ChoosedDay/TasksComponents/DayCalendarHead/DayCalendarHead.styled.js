@@ -102,7 +102,6 @@ export const DayCalendarHeadStyledDesktop = styled.ul`
     gap: 56px;
 
     padding: 10px 35px;
-    /* margin: 0 auto; */
 
     width: 704px;
     height: 68px;

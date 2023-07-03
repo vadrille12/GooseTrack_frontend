@@ -6,11 +6,7 @@ export const CalendarToolBar = () => {
   return (
     <CalendarToolBarStyled>
       <DateBar />
-      <ChangeTypeDate
-      // typeSelect={typeSelect}
-      // typeMonthHendler={typeMonthHendler}
-      // typeDayHendler={typeDayHendler}
-      />
+      <ChangeTypeDate />
     </CalendarToolBarStyled>
   );
 };
