@@ -24,6 +24,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { addTask, editTask } from 'redux/tasks/operations';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 const TaskSchema = Yup.object().shape({
   title: Yup.string()
@@ -66,6 +67,35 @@ const TaskSchema = Yup.object().shape({
 
 export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
   const { _id, title, start, end, priority, date } = taskToEdit;
+
+  const [startTime, setStartTime] = useState('09:00');
+  const [endTime, setEndTime] = useState('10:00');
+  const [autoAddHour, setAutoAddHour] = useState(true);
+
+  const handleStartChange = event => {
+    const start = event.target.value;
+    setStartTime(start);
+
+    if (autoAddHour) {
+      const startTimeObj = new Date(`2000-01-01T${start}`);
+      const endTimeObj = new Date(startTimeObj.getTime() + 60 * 60 * 1000);
+      const end = formatTime(endTimeObj);
+      setEndTime(end);
+    }
+  };
+
+  const handleEndChange = event => {
+    const end = event.target.value;
+    setEndTime(end);
+    setAutoAddHour(false);
+  };
+
+  const formatTime = time => {
+    const hours = time.getHours().toString().padStart(2, '0');
+    const minutes = time.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  };
+
   const dispatch = useDispatch();
   const { currentDay } = useParams();
 
@@ -111,12 +141,22 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
         <TimeWrapper>
           <Label>
             Start
-            <InputTime type="time" name="start" />
+            <InputTime
+              type="time"
+              name="start"
+              value={startTime}
+              onChange={handleStartChange}
+            />
             <ErrorMessage name="start" component="div" />
           </Label>
           <Label>
             End
-            <InputTime type="time" name="end" />
+            <InputTime
+              type="time"
+              name="end"
+              value={endTime}
+              onChange={handleEndChange}
+            />
             <ErrorMessage name="end" component="div" />
           </Label>
         </TimeWrapper>
