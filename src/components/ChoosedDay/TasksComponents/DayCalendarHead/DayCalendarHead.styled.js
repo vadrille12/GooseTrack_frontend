@@ -41,6 +41,7 @@ export const DayBtn = styled.button`
   &:hover,
   :focus {
     box-shadow: ${variables.shadow.shadow};
+    scale: 1.17;
   }
 `;
 

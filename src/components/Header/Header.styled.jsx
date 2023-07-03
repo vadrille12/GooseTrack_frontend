@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as Icon } from 'images/icon-menu-burger.svg';
+import { variables } from '../../../src/Styles/GlobalStyle';
 
 export const Container = styled.div`
   display: flex;
@@ -93,9 +94,12 @@ export const ButtonFeedback = styled.button`
   border-radius: 12px;
   padding: 8px, 20px, 8px, 20px;
   cursor: pointer;
+  transition: ${variables.transitions.standart};
 
   &:hover,
   &:focus {
     background-color: #2b78ef;
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
   }
 `;

@@ -38,8 +38,8 @@ export const Task = styled.p`
 
   &:hover,
   :focus {
-    transform: translateY(-2px);
     box-shadow: ${variables.shadow.shadow};
+    scale: 1.05;
   }
 
   @media screen and (min-width: calc(${variables.breakpoints.tablet} - 0.1px)) {

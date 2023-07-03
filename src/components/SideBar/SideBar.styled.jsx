@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Icon } from 'images/close.svg';
 import { ReactComponent as LogoIcon } from 'images/logo.svg';
+import { variables } from '../../../src/Styles/GlobalStyle';
 
 export const Aside = styled.aside`
   min-height: 100%;
@@ -90,6 +91,7 @@ export const Item = styled.li`
     margin-bottom: 16px;
   }
 `;
+
 export const ButtonClose = styled.button`
   display: flex;
   justify-content: center;
@@ -138,6 +140,7 @@ export const Link = styled(NavLink)`
   &:hover,
   &:focus {
     background-color: ${props => props.theme.activeLink_bg};
+    scale: 1.1;
   }
 
   &:hover span,
@@ -181,6 +184,8 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background: #2b78ef;
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
   }
 
   @media (min-width: 768px) {

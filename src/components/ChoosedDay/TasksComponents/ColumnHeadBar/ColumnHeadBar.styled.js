@@ -41,5 +41,6 @@ export const TaskHeaderBtn = styled(Plus)`
 
   &:hover {
     stroke: ${variables.colors.primary};
+    scale: 1.2;
   }
 `;
