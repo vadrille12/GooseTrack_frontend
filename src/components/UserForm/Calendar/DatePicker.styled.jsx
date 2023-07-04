@@ -1,21 +1,24 @@
 import { styled } from '@mui/material/styles';
 import { DatePicker as DatePickerCalendar } from '@mui/x-date-pickers/DatePicker';
+import { variables } from 'Styles/GlobalStyle';
 
 export const DatePicker = styled(DatePickerCalendar)`
   box-sizing: border-box;
   width: 100%;
-
   font-weight: 600;
   font-family: Inter;
   font-size: 14px;
   line-height: calc((18 / 14) * 100%);
   outline: none;
   border-radius: 8px;
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  transition: ${variables.transitions.standart};
+
   cursor: text;
+
   &.is-valid {
     border: 1px solid #3cbc81;
   }
-
   &.is-invalid {
     border: 1px solid #e74a3b;
   }
@@ -26,6 +29,28 @@ export const DatePicker = styled(DatePickerCalendar)`
     transform: translateY(-50%);
   }
 
+  &:hover,
+  &:focus {
+    border: 1px solid ${props => props.theme.title};
+    transition: ${variables.transitions.standart};
+  }
+
+  & .MuiInputBase-input {
+    padding: 0px 0px 0px 14px;
+    font-size: 14px;
+    line-height: 1.29;
+    height: 18px;
+    font-weight: 600;
+  }
+  .MuiOutlinedInput-root {
+    outline: none;
+    border: none;
+
+    .MuiOutlinedInput-notchedOutline {
+      border: none;
+    }
+  }
+
   .MuiInputBase-root {
     height: 42px;
     border-radius: 8px;
@@ -33,6 +58,11 @@ export const DatePicker = styled(DatePickerCalendar)`
     font-family: Inter;
 
     border: 0.1px solid rgba(255, 255, 255, 0.15);
+    &:hover,
+    &:focus {
+      border: 1px solid white;
+      transition: ${variables.transitions.standart};
+    }
   }
 
   input::placeholder {
@@ -60,16 +90,6 @@ export const DatePicker = styled(DatePickerCalendar)`
     height: 30px;
     font-size: 18px;
   }
-  & .MuiInputBase-input {
-    padding: 0px 0px 0px 14px;
-    font-size: 14px;
-    line-height: 1.29;
-    height: 18px;
-    font-weight: 600;
-    && .Mui-error .MuiOutlinedInput-notchedOutline {
-      border: none;
-    }
-  }
 
   &.MuiFormControl-root {
     background-color: inherit;
@@ -91,7 +111,7 @@ export const DatePicker = styled(DatePickerCalendar)`
 
     && .MuiInputBase-root {
       height: 46px;
-      border: 0.1px solid rgba(255, 255, 255, 0.12);
+      /* border: 0.1px solid rgba(255, 255, 255, 0.12); */
     }
 
     && .MuiInputBase-input {
@@ -100,9 +120,6 @@ export const DatePicker = styled(DatePickerCalendar)`
       line-height: 1.12;
       height: 20px;
       font-weight: 600;
-    }
-    && .Mui-error .MuiOutlinedInput-notchedOutline {
-      border: none;
     }
   }
 `;
@@ -172,7 +189,6 @@ export const PopperDateStyles = {
     lineHeight: 1.28,
   },
 
-
   '& .MuiPickersYear-yearButton': {
     color: '#FFFFFF',
     fontWeight: 600,
@@ -210,8 +226,6 @@ export const PopperDateStyles = {
       width: '32px',
       height: '32px',
     },
-
- 
 
   '@media (min-width: 768px)': {
     '& .MuiDateCalendar-root': {

@@ -122,7 +122,9 @@ export const UserForm = () => {
                         />
                       </Label>
                     ) : user?.avatarURL ? (
-                      <Img src={user.avatarURL} alt="avatar" />
+                      <Label htmlFor="avatar">
+                        <Img src={user.avatarURL} alt="avatar" />
+                      </Label>
                     ) : (
                       <div>
                         <Img
