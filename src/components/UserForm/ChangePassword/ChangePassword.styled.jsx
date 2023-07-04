@@ -13,7 +13,6 @@ export const Form = styled(FormikForm)`
   flex-direction: column;
   padding: 40px 24px;
 
-  color: ${props => props.theme.text_7};
   background-color: ${props => props.theme.page_bg};
   border-radius: 8px;
 
@@ -54,7 +53,7 @@ export const Label = styled.label`
   font-size: 12px;
   line-height: 1.25;
 
-  color: ${variables.colors.closeButton};
+  color: ${props => props.theme.text_7};
 
   @media screen and (min-width: 768px) {
     min-width: 320px;
