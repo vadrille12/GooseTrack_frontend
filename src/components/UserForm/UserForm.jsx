@@ -140,6 +140,58 @@ export const UserForm = () => {
                         </div>
                       )}
                     </AvatarBox>
+              setIsLoading(false);
+              setIsFormChanged(false);
+            } catch (error) {
+              setIsLoading(false);
+              console.error('Error occurred during form submission:', error);
+            }
+          }}
+        >
+          {({
+            dirty,
+            errors,
+            touched,
+            values,
+            setFieldValue,
+            isSubmitting,
+          }) => {
+            const isValid = field =>
+              touched[field] && errors[field]
+                ? 'is-invalid'
+                : touched[field]
+                ? 'is-valid'
+                : '';
+            return (
+              <Form>
+                <AvatarWrap>
+                  <AvatarBox>
+                    {avatarURL ? (
+                      <Label htmlFor="avatar">
+                        <Img
+                          src={URL.createObjectURL(avatarURL)}
+                          alt="avatar"
+                        />
+                      </Label>
+                    ) : user?.avatarURL ? (
+                      <Label htmlFor="avatar">
+                        <Img src={user.avatarURL} alt="avatar" />
+                      </Label>
+                    ) : (
+                      <div>
+                        <Img
+                          src={goose}
+                          alt="Goose welcome you"
+                          title="Goose welcome you"
+                        />
+                        <Label htmlFor="avatar">
+                          <AvatarSvg>
+                            <AddIcon />
+                          </AvatarSvg>
+                        </Label>
+                      </div>
+                    )}
+                  </AvatarBox>
 
                     <input
                       type="file"
