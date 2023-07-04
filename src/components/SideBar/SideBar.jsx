@@ -50,7 +50,7 @@ const AsideBar = ({ onSidebarShow }) => {
   const handleLogout = () => dispatch(logout());
 
   return (
-    <Overlay onClick={handleOverlayClick} >
+    <Overlay onClick={handleOverlayClick}>
       <Aside>
         <div>
           <Box
@@ -94,7 +94,13 @@ const AsideBar = ({ onSidebarShow }) => {
         </div>
 
         <div>
-          <Button type="button" onClick={handleLogout}>
+          <Button
+            type="button"
+            onClick={() => {
+              handleLogout();
+              onSidebarShow();
+            }}
+          >
             <ButtonText>Log out</ButtonText>
             <FiLogOut style={{ width: '18px', height: '18px' }} />
           </Button>
