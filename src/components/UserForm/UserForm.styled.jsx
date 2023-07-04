@@ -8,7 +8,6 @@ import {
 import { ReactComponent as Icon } from 'images/user/cross.svg';
 import { ReactComponent as IconErrors } from 'images/user/error.svg';
 import { ReactComponent as IconSuccess } from 'images/user/done.svg';
-// import { ReactComponent as IconArrow } from 'images/user/arrow-down.svg';
 
 export const Wrap = styled.div`
   position: relative;
@@ -19,9 +18,7 @@ export const Wrap = styled.div`
   padding: 18px;
   background-color: ${props => props.theme.page_bg};
   padding-top: 0px;
-  @media (max-width: 374px) {
-    /* width: 299px; */
-  }
+ 
   @media (min-width: 375px) {
     width: 100%;
   }
@@ -111,16 +108,22 @@ export const UserWrapInfo = styled.div`
   margin-bottom: 44px;
   margin-top: 60px;
   align-items: center;
+  @media (min-width: 768px) {
+    margin-top: 20px; 
+  }
 `;
 
 export const UserName = styled.p`
   margin-bottom: 8px;
   font-weight: 700;
   font-size: 18px;
-  line-height: 0;
+
+  line-height: calc((18 / 14) * 100%);
   color: ${props => props.theme.text_3};
   @media (max-width: 767px) {
     font-size: 14px;
+    line-height: calc((18 / 14) * 100%);
+    margin-bottom: 4px;
   }
 `;
 
@@ -231,20 +234,7 @@ export const IconError = styled(IconErrors)`
   }
 `;
 
-// export const IconArrowDown = styled(IconArrow)`
-//   width: 14px;
-//   height: 14px;
-//   position: absolute;
-//   align-content: center;
-//   top: 35%;
-//   right: 40px;
-//   stroke: ${props => props.theme.title};
-//   @media (min-width: 768px) {
-//     top: 14px;
-//     width: 18px;
-//     height: 18px;
-//   }
-// `;
+
 
 export const Field = styled(FormikField)`
   width: 100%;
@@ -345,36 +335,58 @@ export const FormBtn = styled.button`
   color: #ffffff;
   background-color: #3e85f3;
   cursor: pointer;
-  transition: ${variables.transitions.standart};
+
+  transition: 250ms ease-in-out;
+
   :disabled {
-    background-color: #dcebf7;
+    background-color: ${props => props.theme.disabled_btn};
+    color: ${props => props.theme.text_3};
+
     &:hover,
     &:focus {
-      background-color: #ffffff;
-      transition: ${variables.transitions.standart};
+      transition: none;
+      transform: none;
+      cursor: none;
     }
   }
   &:hover,
   &:focus {
-    background-color: ${variables.colors.secondary};
-    transition: ${variables.transitions.standart};
+    transform: translateY(-2px);
   }
 `;
 
 export const PasswordChangeBtn = styled(FormBtn)`
   width: 100%;
-  background-color: ${props => props.theme.input_border_2};
-  color: ${variables.colors.secondary};
+  height: 42px;
+
+  margin-top: 20px;
+  color: ${props => props.theme.input_border_2};
+  background-color: transparent;
+  border: 1px solid ${props => props.theme.input_border_2};
   border-radius: 8px;
+  box-shadow: none;
+
+  transition: ${variables.transitions.standart};
+
   @media (min-width: 768px) {
     width: 354px;
+    height: 46px;
+    font-size: 16px;
+    line-height: calc((18 / 16) * 100%);
+    margin-top: 25px;
   }
   @media (min-width: 1440px) {
     margin-top: 25px;
+    display: flex;
+    padding: 14px 0 14px 18px;
   }
-
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.title};
+    border: 1px solid ${props => props.theme.title};
+    transition: ${variables.transitions.standart};
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+    color: ${variables.colors.primary};
   }
 `;

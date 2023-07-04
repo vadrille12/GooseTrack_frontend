@@ -7,6 +7,13 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0, auto;
+  margin-bottom: 72px;
+  @media (min-width: 768px) {
+    margin-bottom: 64px;
+  }
+  @media (min-width: 768px) {
+    margin-bottom: 33px;
+  }
 `;
 
 export const BurgerButton = styled.button`
