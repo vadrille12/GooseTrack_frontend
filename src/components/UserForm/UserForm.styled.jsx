@@ -356,7 +356,25 @@ export const FormBtn = styled.button`
   }
   &:hover,
   &:focus {
-    background-color: #2b78ef;
+    background-color: ${variables.colors.secondary};
     transition: ${variables.transitions.standart};
+  }
+`;
+
+export const PasswordChangeBtn = styled(FormBtn)`
+  width: 100%;
+  background-color: ${props => props.theme.input_border_2};
+  color: ${variables.colors.secondary};
+  border-radius: 8px;
+  @media (min-width: 768px) {
+    width: 354px;
+  }
+  @media (min-width: 1440px) {
+    margin-top: 25px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.title};
   }
 `;
