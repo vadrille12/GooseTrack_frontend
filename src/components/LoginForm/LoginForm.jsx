@@ -3,9 +3,10 @@ import { Formik } from 'formik';
 import { ReactComponent as IconButton } from 'images/Icon.svg';
 import { ReactComponent as HideIcon } from 'images/eye-slash.svg';
 import { ReactComponent as ShowIcon } from 'images/eye.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from 'redux/auth/operations';
+import { login, loginGoogle } from 'redux/auth/operations';
+import { useSearchParams } from 'react-router-dom';
 
 import {
   Form,
@@ -31,8 +32,17 @@ const userSchema = Yup.object().shape({
 });
 
 export const LoginForm = () => {
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get('access_token');
+  const mail = searchParams.get('email');
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
+
+  
+  useEffect(() => {
+    dispatch(loginGoogle({ token, mail }));
+  }, [token, mail, dispatch])
+
 
   const handleSubmit = e => {
     e.preventDefault();

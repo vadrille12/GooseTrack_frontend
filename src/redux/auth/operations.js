@@ -2,7 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-axios.defaults.baseURL = 'https://goose-track-api-l50t.onrender.com';
+axios.defaults.baseURL = 'http://goose-track-api-l50t.onrender.com';
+
 
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -37,6 +38,20 @@ export const login = createAsyncThunk(
       return response.data;
     } catch (error) {
       Notify.failure(`Login failed. Try again`);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const loginGoogle = createAsyncThunk(
+  'auth/loginGoogle',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      console.log(credentials)
+      const response = await axios.get('api/auth/loginGoogle', credentials);
+      setToken(response.data.token);
+      return response.data;
+    } catch (error) {
       return rejectWithValue(error.message);
     }
   }
@@ -91,6 +106,23 @@ export const toggleTheme = createAsyncThunk(
       const { data } = await axios.patch('api/auth/toggle-theme', credentials);
       return data;
     } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changePassword = createAsyncThunk(
+  'auth/password',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch('api/auth/password', credentials);
+      Notify.success(`Your password has been changed`);
+      return data;
+    } catch (error) {
+      if (error.response.status !== 401) {
+        Notify.failure(`Password missmach. Try again`);
+        return;
+      }
       return rejectWithValue(error.message);
     }
   }

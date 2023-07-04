@@ -90,6 +90,7 @@ export const ButtonFeedback = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  transition: ${variables.transitions.standart};
 
   @media screen and (min-width: 768px) {
     padding: 12px 32px;
@@ -100,5 +101,7 @@ export const ButtonFeedback = styled.button`
   &:hover,
   &:focus {
     background-color: #2b78ef;
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
   }
 `;
