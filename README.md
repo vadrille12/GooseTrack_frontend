@@ -45,37 +45,42 @@ GooseTrack- це вебсайт для телефонів, планшетів, �
 
 ---
 
-Проект розроблений командою  
-Тім лід: <a href="https://github.com/vadrille12">Danil Zozulia</a>
+Проект розроблений командою
+
+Тім лід: <a href="https://github.com/vadrille12">Danil Zozulia</a> - SideBar,
+Header, NotFoundPage, покращення Private i Public роутів, створення архітектури
+проєкту, незначні фікси по всьому проєкту
 
 Скрам майстер: <a href="https://github.com/mitrytk">Dmitry Tkachenko</a> -
-ThemeToggler, UserInfo
+створення та налаштування репозиторія беку, auth backend, ThemeToggler та усі
+залежності
 
 Розробники Frontend:
 
 - <a href="https://github.com/TaniaShmigel">Tetiana Shmigel</a> - сторінки
   RegisterPage и LoginPage, компоненти AuthNavigate
 - <a href="https://github.com/Yaroslav12002">Yaroslav Mykhailov</a> - компонент
-  ChoosedMonth
-- <a href="https://github.com/SergeiTkachenko">Sergei Tkachenko</a> - компонент
-  ChoosedDay
+  ChoosedMonth, readme
+- <a href="https://github.com/SergeiTkachenko">Sergei Tkachenko</a> - компоненти
+  ChoosedDay, CalendarToolBar, Spinner, картинки, змінні, глобальні стилі
 - <a href="https://github.com/MelnykY">Yuliia Melnyk</a> - сторінка MainPage,
-  RegisterPage, LoginPage. Компоненти PublicRoute, PrivateRoute, Redax Auth.
-  Підключення авторизації токена через Redux.
+  RegisterPage, LoginPage, Private i Public роути, auth redux. Підключення
+  авторизації токена через redux
 - <a href="https://github.com/NatalieUSA">Nataliia Khrystevych</a> - сторінка
-  AccountPage (User Profile), Redux updateUser
+  AccountPage, компонент UserProfile, redux auth operation "updateUser"
 - <a href="https://github.com/diana1m">Diana Malarcuk</a> - компонент відгуків
-  AddFeedbackModal, кнопка AddFeedbackBtn
-- <a href="https://github.com/MaxKorovchenko">Maxim Korovchenko</a> - Redux
-  tasks, компонент TaskModal => Modal + TaskForm
-- <a href="https://github.com/VlikToldo">Valentyn Taldykin</a> - створення
-  глобальных states в Redux
+  AddFeedbackModal, кнопка AddFeedbackBtn, review redux
+- <a href="https://github.com/MaxKorovchenko">Maxim Korovchenko</a> - tasks
+  redux, компонент TaskModal, Modal, TaskForm, додавання/видалення тасок
+- <a href="https://github.com/VlikToldo">Valentyn Taldykin</a> - перша версія
+  SideBar та Header, UserInfo
 - <a href="https://github.com/romis44">Roman Kovalchuk</a> - сторінка Statistics
-- <a href="">Olexander Lukyianenko</a> - Google Auth
-- <a href="https://github.com/SashaMak19">Oleksandr Makogin</a> - Статистика на
-  бекенді та на фронтенді
 
 Розробники Backend:
 
-- <a href="https://github.com/Pibodee">Bohdan Salo</a> - backend задачі,
-  документація
+- <a href="https://github.com/Pibodee">Bohdan Salo</a> - tasks backend,
+  документація беку
+- <a href="https://github.com/SashaMak19">Oleksandr Makogin</a> - statistics
+  backend, статистика на фронтенді
+- <a href="https://github.com/Lukyianenko">Olexander Lukyianenko</a> - reviews
+  backend, зміна пароля, Google Auth

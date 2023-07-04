@@ -47,36 +47,40 @@ Reviews ![Reviews](./assets/reviews.jpg)
 
 The project was develloped by
 
-Team leader:<a href="https://github.com/vadrille12">Danil Zozulia</a>
+Team Lead: <a href="https://github.com/vadrille12">Danil Zozulia</a> - SideBar,
+Header, NotFoundPage, improvement of Private and Public routes, creation of
+architecture project, small fixes throughout the project
 
-Scrum master: <a href="https://github.com/mitrytk">Dmitry Tkachenko</a> -
-ThemeToggler, UserInfo
+Scrum Master: <a href="https://github.com/mitrytk">Dmitry Tkachenko</a> -
+creating and configuring backend repository, auth backend, ThemeToggler and all
+dependencies
 
 Frontend developers:
 
-- <a href="https://github.com/TaniaShmigel">Tetiana Shmigel</a> - page
-  RegisterPage and LoginPage, component AuthNavigate
+- <a href="https://github.com/TaniaShmigel">Tetiana Shmigel</a> - pages
+  RegisterPage and LoginPage, AuthNavigate components
 - <a href="https://github.com/Yaroslav12002">Yaroslav Mykhailov</a> - component
-  ChoosedMonth
-- <a href="https://github.com/SergeiTkachenko">Sergei Tkachenko</a> - component
-  ChoosedDay
-- <a href="https://github.com/MelnykY">Yuliia Melnyk</a> - page MainPage,
-  RegisterPage, LoginPage. Components PublicRoute, PrivateRoute, Redax Auth.
-  Enabling token authorization via Redux.
-- <a href="https://github.com/NatalieUSA">Nataliia Khrystevych</a> - page
-  AccountPage (User Profile), component UserForm, Redux updateUser
-- <a href="https://github.com/diana1m">Diana Malarcuk</a> - reviews component
-  AddFeedbackModal, button AddFeedbackBtn
-- <a href="https://github.com/MaxKorovchenko">Maxim Korovchenko</a> - Redux
-  tasks, component TaskModal => Modal + TaskForm
-- <a href="https://github.com/VlikToldo">Valentyn Taldykin</a> - creation global
-  states in Redux
-- <a href="https://github.com/romis44">Roman Kovalchuk</a> - page Statistics
-- <a href="">Olexander Lukyianenko</a> - Google Auth
-- <a href="https://github.com/SashaMak19">Oleksandr Makogin</a> - Backend
-  Statistics, Frontend Statistics
+  ChosenMonth, readme
+- <a href="https://github.com/SergeiTkachenko">Sergei Tkachenko</a> - components
+  ChosenDay, CalendarToolBar, Spinner, pictures, variables, global styles
+- <a href="https://github.com/MelnykY">Yuliia Melnyk</a> - MainPage,
+  RegisterPage, LoginPage, Private and Public routes, auth redux. Connection
+  token authorization through redux.
+- <a href="https://github.com/NatalieUSA">Natalie Khrystevych</a> - page
+  AccountPage, UserProfile component, redux auth operation "updateUser"
+- <a href="https://github.com/diana1m">Diana Malarcuk</a> - feedback component
+  AddFeedbackModal, AddFeedbackBtn button, review redux
+- <a href="https://github.com/MaxKorovchenko">Maxim Korovchenko</a> - tasks
+  redux, TaskModal component, Modal, TaskForm, adding/removing tasks
+- <a href="https://github.com/VlikToldo">Valentyn Taldykin</a> - first version
+  SideBar and Header, UserInfo
+- <a href="https://github.com/romis44">Roman Kovalchuk</a> - Statistics page
 
-Backend developers
+Backend developers:
 
-- <a href="https://github.com/Pibodee">Bohdan Salo</a> - Backend tasks,
+- <a href="https://github.com/Pibodee">Bohdan Salo</a> - tasks backend, backend
   documentation
+- <a href="https://github.com/SashaMak19">Oleksandr Makogin</a> - statistics
+  backend, frontend statistics
+- <a href="https://github.com/Lukyianenko">Olexander Lukyianenko</a> - reviews
+  backend, password change, Google Auth
