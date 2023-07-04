@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 axios.defaults.baseURL = 'http://goose-track-api-l50t.onrender.com';
 
@@ -18,8 +19,10 @@ export const register = createAsyncThunk(
     try {
       const response = await axios.post('api/auth/register', credentials);
       setToken(response.data.token);
+      Notify.success(`Welcome!!!`);
       return response.data;
     } catch (error) {
+      Notify.failure(`This email is already in use`);
       return rejectWithValue(error.message);
     }
   }
@@ -31,8 +34,10 @@ export const login = createAsyncThunk(
     try {
       const response = await axios.post('api/auth/login', credentials);
       setToken(response.data.token);
+      Notify.success(`Welcome back!!!`);
       return response.data;
     } catch (error) {
+      Notify.failure(`Login failed. Try again`);
       return rejectWithValue(error.message);
     }
   }
@@ -86,6 +91,7 @@ export const updateUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.patch('api/auth/update', credentials);
+      Notify.success(`Your profile has been updated`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -93,3 +99,14 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+export const toggleTheme = createAsyncThunk(
+  'auth/toggle-theme',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch('api/auth/toggle-theme', credentials);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

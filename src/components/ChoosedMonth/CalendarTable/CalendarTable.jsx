@@ -1,7 +1,11 @@
-import { startOfMonth, getDay } from 'date-fns';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
+import { startOfMonth, getDay } from 'date-fns';
+
+import { TaskCalendar } from '../TaskCalendar/TaskCalendar';
+import { TaskModal } from 'components/TaskModal/TaskModal';
 
 import {
   Cell,
@@ -9,9 +13,8 @@ import {
   LabelCell,
   TodayLabelCell,
   OtherMonthLabelCell,
+  LabelWrapper,
 } from './CalendarTable.styled';
-import { TaskCalendar } from '../TaskCalendar/TaskCalendar';
-import { TaskModal } from 'components/TaskModal/TaskModal';
 
 const isCurrentDay = date => {
   const today = new Date();
@@ -60,10 +63,23 @@ const extendDate = string => {
   return new Date(string);
 };
 
+const setCategory = column => {
+  switch (column) {
+    case 'to-do':
+      return 'To do';
+    case 'in-progress':
+      return 'In progress';
+    case 'done':
+      return 'Done';
+    default:
+      return null;
+  }
+};
+
 export const CalendarTable = ({ tasks }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const [category, setCategory] = useState('to-do');
+  const [taskToEdit, setTaskToEdit] = useState({});
   const { currentDate } = useParams();
   const dateSelected = extendDate(currentDate);
   const weekFirstDay = getDay(startOfMonth(dateSelected));
@@ -105,22 +121,29 @@ export const CalendarTable = ({ tasks }) => {
           ) : (
             <OtherMonthLabelCell>{day.getDate()}</OtherMonthLabelCell>
           )}
-          {tasks.map((task, index) =>
-            isCurrentTask(day, task) ? (
-              <TaskCalendar
-                key={day.toString() + index.toString()}
-                task={task}
-                onOpen={openModal}
-                setCategory={() => {
-                  setCategory(task.category);
-                }}
-              />
-            ) : null
-          )}
+          <LabelWrapper>
+            {tasks.map((task, index) =>
+              isCurrentTask(day, task) ? (
+                <TaskCalendar
+                  key={day.toString() + index.toString()}
+                  task={task}
+                  onOpen={openModal}
+                  setTask={() => {
+                    setTaskToEdit(task);
+                  }}
+                />
+              ) : null
+            )}
+          </LabelWrapper>
         </Cell>
       ))}
       {showModal && (
-        <TaskModal action={'edit'} onClose={closeModal} column={category} />
+        <TaskModal
+          action={'edit'}
+          onClose={closeModal}
+          column={setCategory(taskToEdit.category)}
+          taskToEdit={taskToEdit}
+        />
       )}
     </CalendarWrapper>
   );

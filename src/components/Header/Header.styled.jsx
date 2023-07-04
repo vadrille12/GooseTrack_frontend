@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as Icon } from 'images/icon-menu-burger.svg';
+import { variables } from '../../../src/Styles/GlobalStyle';
 
 export const Container = styled.div`
   display: flex;
@@ -37,6 +38,29 @@ export const BurgerIcon = styled(Icon)`
   }
 `;
 
+export const GooseTask = styled.img`
+  display: none;
+
+  @media (min-width: 1440px) {
+    weight: 64px;
+    display: block;
+    margin-right: 8px;
+  }
+`;
+
+export const MotivationTask = styled.p`
+  display: none;
+  color: ${props => props.theme.text_3};
+  @media (min-width: 1440px) {
+    display: block;
+    font-family: 'Inter';
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+`;
+
 export const Menu = styled.div`
   display: flex;
   align-items: center;
@@ -69,9 +93,13 @@ export const ButtonFeedback = styled.button`
   border: none;
   border-radius: 12px;
   padding: 8px, 20px, 8px, 20px;
+  cursor: pointer;
+  transition: ${variables.transitions.standart};
 
   &:hover,
   &:focus {
     background-color: #2b78ef;
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
   }
 `;

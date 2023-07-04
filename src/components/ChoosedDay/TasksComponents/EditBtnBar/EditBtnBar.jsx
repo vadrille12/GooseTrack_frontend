@@ -10,11 +10,19 @@ import {
   PopoverStyled,
 } from './EditBtnBar.styled';
 import { useDispatch } from 'react-redux';
-import { deleteTask } from 'redux/tasks/operations';
+import { deleteTask, editTask } from 'redux/tasks/operations';
 
-export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
+export const EditBtnBar = ({
+  onOpen,
+  setAction,
+  setColumn,
+  category,
+  task,
+  onEdit,
+}) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
+  const { _id } = task;
 
   const handleDelete = () => {
     dispatch(deleteTask(task._id));
@@ -26,6 +34,10 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleChangeCategory = newCategory => {
+    dispatch(editTask({ _id, category: newCategory }));
   };
 
   const open = Boolean(anchorEl);
@@ -48,25 +60,17 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        // anchorOrigin={{
-        //   vertical: 'bottom',
-        //   horizontal: 'right',
-        // }}
-        // transformOrigin={{
-        //   vertical: 'top',
-        //   horizontal: 'center',
-        // }}
       >
         <ChangeCategoryContainer>
           {category === 'done' && (
             <>
               <MoveToInProgress>
-                <button>
+                <button onClick={() => handleChangeCategory('in-progress')}>
                   In progress <MoveBtn />
                 </button>
               </MoveToInProgress>
               <MoveToDone>
-                <button>
+                <button onClick={() => handleChangeCategory('to-do')}>
                   To do <MoveBtn />
                 </button>
               </MoveToDone>
@@ -76,12 +80,12 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
           {category === 'to-do' && (
             <>
               <MoveToInProgress>
-                <button>
+                <button onClick={() => handleChangeCategory('in-progress')}>
                   In progress <MoveBtn />
                 </button>
               </MoveToInProgress>
               <MoveToDone>
-                <button>
+                <button onClick={() => handleChangeCategory('done')}>
                   Done <MoveBtn />
                 </button>
               </MoveToDone>
@@ -91,12 +95,12 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
           {category === 'in-progress' && (
             <>
               <MoveToInProgress>
-                <button>
+                <button onClick={() => handleChangeCategory('to-do')}>
                   To do <MoveBtn />
                 </button>
               </MoveToInProgress>
               <MoveToDone>
-                <button>
+                <button onClick={() => handleChangeCategory('done')}>
                   Done <MoveBtn />
                 </button>
               </MoveToDone>
@@ -109,11 +113,11 @@ export const EditBtnBar = ({ onOpen, setAction, category, task }) => {
         onClick={() => {
           onOpen();
           setAction();
+          setColumn();
+          onEdit(task);
         }}
-      >
-        ed
-      </EditBtn>
-      <DeleteBtn onClick={handleDelete}>del</DeleteBtn>
+      ></EditBtn>
+      <DeleteBtn onClick={handleDelete}></DeleteBtn>
     </EditBtnContainer>
   );
 };

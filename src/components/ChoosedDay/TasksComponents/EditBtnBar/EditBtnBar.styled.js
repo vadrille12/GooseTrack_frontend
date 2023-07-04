@@ -47,6 +47,7 @@ export const MoveBtn = styled(Move)`
   &:hover,
   :focus {
     stroke: ${variables.colors.secondary};
+    scale: 1.2;
   }
 `;
 
@@ -59,6 +60,7 @@ export const EditBtn = styled(Edit)`
   &:hover,
   :focus {
     stroke: ${variables.colors.secondary};
+    scale: 1.2;
     ${MoveBtn} {
       stroke: ${variables.colors.secondary};
     }
@@ -74,6 +76,7 @@ export const DeleteBtn = styled(Delete)`
   &:hover,
   :focus {
     stroke: ${variables.colors.secondary};
+    scale: 1.2;
   }
 `;
 
@@ -84,11 +87,6 @@ export const ChangeCategoryContainer = styled.div`
   height: 70px;
   border-radius: 8px;
   background-color: ${variables.colors.background};
-
-  /* position: absolute; */
-
-  /* bottom: 75%;
-  right: 0%; */
 
   gap: 2px;
 
@@ -121,9 +119,6 @@ export const ChangeCategoryContainer = styled.div`
     gap: 7px;
 
     padding: 16px 24px;
-
-    /* bottom: 75%;
-    right: 0%; */
   }
 
   @media screen and (min-width: 1440px) {
@@ -132,8 +127,6 @@ export const ChangeCategoryContainer = styled.div`
 
 export const MoveToInProgress = styled.div`
   button {
-    /* position: absolute; */
-
     font-family: Inter;
     font-size: 14px;
     font-weight: 500;

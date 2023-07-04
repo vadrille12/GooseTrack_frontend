@@ -17,10 +17,11 @@ import {
     WrapForEdit, 
     WrapForReview, 
     BtnCloseWrap, 
-    ErrorMessage } from "./FeedbackForm.styled";
+    ErrorMessage, 
+    WrapForInput} from "./FeedbackForm.styled";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsFeedback, selectUserReview } from "redux/reviews/selectors";
+import { selectUserReview } from "redux/reviews/selectors";
 import { addReview, deleteReview, editReview } from "redux/reviews/operations";
 import { changeRating } from "redux/reviews/reviewSlice";
 import { Rating } from '@smastrom/react-rating';
@@ -45,11 +46,9 @@ const FeedbackSchema = Yup.object().shape({
 
 
 export const FeedbackForm = ({ onClose }) => {
+    
     const dispatch = useDispatch();
-    const isFeedback = useSelector(selectIsFeedback);
     const userReview = useSelector(selectUserReview);
-
-    // const [ratingValue, setRatingValue] = useState(0);
     const [isEditActive, setIsEditActive] = useState(false);
 
     const ratingChanged = (newRating) => {
@@ -66,9 +65,10 @@ export const FeedbackForm = ({ onClose }) => {
         else{
             dispatch(addReview(values));
         }
-        setIsEditActive(false);
         actions.resetForm();
-        onClose();
+        if(userReview.rating){
+            onClose();
+        }
     };
 
     const handleEdit = ()=> {
@@ -76,9 +76,7 @@ export const FeedbackForm = ({ onClose }) => {
     };
 
     const handleDelete = ()=> {
-        // setIsFeedback(false);
         dispatch(deleteReview(userReview._id));
-        setIsEditActive(false);
         onClose();
     }
 
@@ -97,26 +95,15 @@ export const FeedbackForm = ({ onClose }) => {
                         name="rating"
                         component="div" 
                         value={Number(userReview.rating)}
-                        // placeholderRating={Number(userReview.rating)}
-                        // initialRating={Number(userReview.rating)}
                         itemStyles={rateStyled}
                         style={{ maxWidth: 110, gap: 4, marginBottom:"20px"}}
                         onChange={ratingChanged}
-                        //   {!isEditActive ? "readOnly" : null}
+                        readOnly={Boolean(userReview.rating) && !isEditActive}
                         />
-                    {/* <ReactStars
-                        count={5}
-                        onChange={ratingChanged}
-                        size={24}
-                        activeColor="#FFAC33"
-                        color="#CEC9C1"
-                        value={Number(userReview.rating)}
-                        edit={!isEditActive}
-                        style={{marginBottom:"20px"}}/> */}
-                    {!userReview.rating && <ErrorMessage name="rating"/>}
+                    <WrapForInput>
                     <WrapForReview>
                         <Label htmlFor="review">Review</Label>
-                        {isFeedback && <WrapForEdit>
+                        {Boolean(userReview.review) && <WrapForEdit>
                             <EditBtn onClick={handleEdit} isActive={isEditActive} type="button">
                                 <IconEdit/>
                             </EditBtn>
@@ -126,25 +113,23 @@ export const FeedbackForm = ({ onClose }) => {
                         </WrapForEdit>
                         }
                     </WrapForReview>
-
+                    
                     <Input 
                         type="text" 
                         placeholder="Enter text" 
                         id="review" 
                         name="review" 
                         component="textarea"
-                        // isActive={isEditActive} 
-                        // value = {userReview.review || ''} 
-                        disabled={!isEditActive && isFeedback}/>
+                        disabled={!isEditActive && Boolean(userReview.review)}/>
                     <ErrorMessage name="review" component="div" />
+                    </WrapForInput>
 
-                    {(!isFeedback || isEditActive )&& <FormBtnWrap>
-                        <FormBtn type="submit">{isEditActive?"Edit":"Save"}</FormBtn>
+                    {(!Boolean(userReview.review) || isEditActive )&& <FormBtnWrap>
+                        <FormBtn type="submit" disabled={!userReview.rating}>{isEditActive?"Edit":"Save"}</FormBtn>
                         <FormBtnCancel type="button" onClick={onClose}>Cancel</FormBtnCancel>
                     </FormBtnWrap>
                     }
                     
-
                     <BtnCloseWrap type="button" aria-label="close button" onClick={onClose}>
                         <IconClose style={{ width: 24, height: 24 }} />
                     </BtnCloseWrap>

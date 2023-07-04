@@ -5,21 +5,11 @@ import { ReactComponent as ArrowRight } from '../../../../src/images/chevron-rig
 
 export const DateBarStyled = styled.div`
   display: block;
-  /* max-width: 335px; */
   height: 30px;
   gap: 2px;
 
   @media screen and (min-width: 480px) {
     display: flex;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 704px;
-    height: 34px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 1087px;
   }
 `;
 
@@ -32,12 +22,13 @@ export const DateContainer = styled.div`
   @media screen and (max-width: 374px) {
     display: block;
   }
-  @media screen and (min-width: 480px) {
-    gap: 8px;
+  @media screen and (min-width: 375px) {
+    gap: 126px;
   }
 
   @media screen and (min-width: 768px) {
     justify-content: start;
+    gap: 8px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -79,12 +70,26 @@ export const ArrowLeftStyled = styled(ArrowLeft)`
   width: 16px;
   height: 16px;
   stroke: ${props => props.theme.title};
+
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  &:focus {
+    scale: 1.7;
+  }
 `;
 
 export const ArrowRightStyled = styled(ArrowRight)`
   width: 16px;
   height: 16px;
   stroke: ${props => props.theme.title};
+
+  transition: ${variables.transitions.standart};
+
+  &:hover,
+  &:focus {
+    scale: 1.7;
+  }
 `;
 
 export const ArrowLeftBtn = styled.button`

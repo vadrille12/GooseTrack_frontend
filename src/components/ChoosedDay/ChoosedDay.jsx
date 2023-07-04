@@ -17,8 +17,6 @@ const ChoosedDay = () => {
 
   const tasks = useSelector(selectTasks);
 
-  // console.log(tasks);
-
   const { currentDay: targetDate } = useParams();
   const [filteredTasks, setFilteredTasks] = useState([]);
 

@@ -24,19 +24,19 @@ export const StatisticsDatePickerCalendar = styled.div`
     line-height: calc((18 / 14) * 100%);
 
     @media (min-width: 375px) {
-      width: 327px;
+      width: 300px;
     }
 
     @media (min-width: 768px) {
       top: calc(100% + 5px);
-      left: 0;
+      left: -285px;
       width: 337px;
       height: 376px;
     }
 
     @media (min-width: 1440px) {
       top: calc(100% + 1px);
-      left: 0;
+      left: -400px;
     }
 
     &__header {
@@ -48,6 +48,10 @@ export const StatisticsDatePickerCalendar = styled.div`
     }
     &__month-container {
       background-color: #3e85f3;
+    }
+
+    &__day--outside-month {
+      opacity: 0.35;
     }
     &__day {
       color: #ffffff;
@@ -64,15 +68,6 @@ export const StatisticsDatePickerCalendar = styled.div`
         color: #3e85f3;
         opacity: 35%;
       }
-      &--weekend {
-        opacity: 35%;
-      }
-      &--today {
-        border-radius: 50%;
-        opacity: 1;
-        background-color: #ffffff;
-        color: #3e85f3;
-      }
       &--selected {
         border-radius: 50%;
         opacity: 1;
@@ -83,13 +78,14 @@ export const StatisticsDatePickerCalendar = styled.div`
       &--keyboard-selected {
         border-radius: 50%;
         opacity: 1;
-        background-color: #ffffff;
-        color: #3e85f3;
+        background-color: #3e85f3;
+        color: #ffffff;
         outline: none;
         @media (min-width: 768px) {
         }
       }
     }
+
     &__day-name {
       color: #ffffff;
       text-align: center;
@@ -100,7 +96,7 @@ export const StatisticsDatePickerCalendar = styled.div`
       padding-bottom: 12px;
       padding-top: 12px;
       @media (min-width: 768px) {
-        padding-right: 28px;
+        padding-right: 30px;
         padding-left: 10px;
 
         font-size: 24px;
@@ -114,36 +110,6 @@ export const StatisticsDatePickerCalendar = styled.div`
         font-size: 24px;
         font-weight: 600;
         line-height: calc((28 / 24) * 100%);
-      }
-    }
-    &__year {
-    }
-    &__navigation--years {
-      background-color: #ffffff;
-      font-size: 11px;
-
-      &:hover {
-      }
-    }
-    &__year-option {
-      background-color: #ffffff;
-      color: #3e85f3;
-      &:hover {
-        background-color: #3e85f3;
-        color: #ffffff;
-        font-size: 18px;
-      }
-    }
-    &__year-dropdown {
-      background-color: #3e85f3;
-      &::-webkit-scrollbar {
-        width: 10px;
-        background: #ffffff;
-        border-radius: 8px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: #3e85f3;
-        border-radius: 8px;
       }
     }
   }

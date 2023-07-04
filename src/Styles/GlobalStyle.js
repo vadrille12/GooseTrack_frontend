@@ -19,6 +19,7 @@ export const theme = {
     text_5: 'rgba(250, 250, 250, 0.9)',
     text_6: 'rgba(250, 250, 250, 0.3)',
     text_7: 'rgba(250, 250, 250, 0.3)',
+    text_8: 'rgba(250, 250, 250, 0.3)',
     title: '#FFF',
     title_2: '#111',
     main_bg: 'rgba(23, 24, 32, 1)',
@@ -41,6 +42,9 @@ export const theme = {
     input_border_2: 'rgba(255, 255, 255, 0.15)',
     input_bg: 'rgba(23, 24, 32, 1)',
     close_btn: 'rgba(255, 255, 255, 0.6)',
+    feedback_light_btn: '#21222C',
+    statistics_bg: 'rgba(33, 34, 44, 1)',
+    nfp_message: '#FFF',
   },
   light: {
     text_1: 'rgba(52, 52, 52, 0.5)',
@@ -50,6 +54,7 @@ export const theme = {
     text_5: 'rgba(52, 52, 52, 1)',
     text_6: 'rgba(52, 52, 52, 1)',
     text_7: '#111',
+    text_8: 'rgba(52, 52, 52, 0.8)',
     title: '#111',
     title_2: '#FFF',
     main_bg: 'rgba(247, 246, 249, 1)',
@@ -72,6 +77,9 @@ export const theme = {
     input_border_2: 'rgba(17, 17, 17, 0.15)',
     input_bg: 'rgba(246, 246, 246, 1)',
     close_btn: 'rgba(62, 133, 243, 1)',
+    feedback_light_btn: '#E5EDFA',
+    statistics_bg: '#FFFFFF',
+    nfp_message: 'rgba(17, 17, 17, 0.7)',
   },
 };
 export const variables = {
@@ -90,6 +98,7 @@ export const variables = {
     lightYellow: '#FCF0D4',
     redError: '#DA1414',
     redErrorLight: '#E74A3B',
+    statusLow: '#72c2f8',
     mainRed: '#EA3D65',
     lightRed: '#FFD2DD',
     greenValid: '#3CBC81',

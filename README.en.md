@@ -1,105 +1,82 @@
-# React homework template
+**Read in other languages: [ukrainian](README.md)**
 
-This project was created with
-[Create React App](https://github.com/facebook/create-react-app). To get
-acquainted and configure additional features
-[refer to documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# GooseTrack
 
-## Creating a repository by template
+GooseTrack is a website for phones, tablets, personal computers and other
+gadgets, which is a calendar for storing and displaying events, which the user
+adds through his account. The site helps to save time and effectively plan the
+day.
 
-Use this GoIT repository as a template for creating a repository
-of your project. To use it just tap the `«Use this template»` button and choose
-`«Create a new repository»` option, as you can see on the image below.
+Advantages of GooseTrack
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+• Different ways to view the calendar – quickly switch between modes month or
+day view.
 
-The page for creating a new repository will open on the next step. Fill out
-the Name field and make sure the repository is public, then click
-`«Create repository from template»` button.
+• Tasks - Create, view and manage your tasks in Calendars.
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+• Light/dark themes - use a site with a flower theme that suits you better
+suitable
 
-You now have a personal project repository, having a repository-template file 
-and folder structure. After that, you can work with it as you would with any 
-other private repository: clone it on your computer, write code, commit, and 
-send it to GitHub.
+---
 
-## Preparing for coding
+<a href="https://www.figma.com/file/kXtsjq7Tts3YzolUVqgNsp/Goose-Track?type=design&node-id=172-1012&mode=design&t=kZx2aNhGi8r3Pdbw-0">Project
+model </a>
 
-1. Make sure you have an LTS version of Node.js installed on your computer.
-   [Download and install](https://nodejs.org/en/) if needed.
-2. Install the project's base dependencies with the `npm install` command.
-3. Start development mode by running the `npm start` command.
-4. Go to [http://localhost:3000](http://localhost:3000) in your browser. This
-   page will automatically reload after saving changes to the project files.
+<a href="https://github.com/mitrytk/goose-track-api">
+Backend repository</a>
 
-## Deploy
+### Calendar
 
-The production version of the project will automatically be linted, built, and
-deployed to GitHub Pages, in the `gh-pages` branch, every time the `main` branch
-is updated. For example, after a direct push or an accepted pull request. To do
-this, you need to edit the `homepage` field in the `package.json` file,
-replacing `your_username` and `your_repo_name` with your own, and submit the
-changes to GitHub.
+Calendar for month ![ChoosedMonth](./assets/calendar-choosed-month.jpg)
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
+Calendar for day ![ChoosedMonth](./assets/calendar-choosed-day.jpg)
 
-Next, you need to go to the settings of the GitHub repository (`Settings` >
-`Pages`) and set the distribution of the production version of files from the
-`/root` folder of the `gh-pages` branch, if this was not done automatically.
+### Statistics
 
-![GitHub Pages settings](./assets/repo-settings.png)
+Statistics ![Statistics](./assets/statistics.jpg)
 
-### Deployment status
+### User profile
 
-The deployment status of the latest commit is displayed with an icon next to its
-ID.
+User profile ![UserProfile](./assets/user-profile.jpg)
 
-- **Yellow color** - the project is being built and deployed.
-- **Green color** - deployment completed successfully.
-- **Red color** - an error occurred during linting, build or deployment.
+### Reviews
 
-More detailed information about the status can be viewed by clicking on the
-icon, and in the drop-down window, follow the link `Details`.
+Reviews ![Reviews](./assets/reviews.jpg)
 
-![Deployment status](./assets/deploy-status.png)
+---
 
-### Live page
+The project was develloped by
 
-After some time, usually a couple of minutes, the live page can be viewed at the
-address specified in the edited `homepage` property. For example, here is a link
-to a live version for this repository
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
+Team leader:<a href="https://github.com/vadrille12">Danil Zozulia</a>
 
-If a blank page opens, make sure there are no errors in the `Console` tab
-related to incorrect paths to the CSS and JS files of the project (**404**). You
-most likely have the wrong value for the `homepage` property in the
-`package.json` file.
+Scrum master: <a href="https://github.com/mitrytk">Dmitry Tkachenko</a> -
+ThemeToggler, UserInfo
 
-### Routing
+Frontend developers:
 
-If your application uses the `react-router-dom` library for routing, you must
-additionally configure the `<BrowserRouter>` component by passing the exact name
-of your repository in the `basename` prop. Slashes at the beginning and end of
-the line are required.
+- <a href="https://github.com/TaniaShmigel">Tetiana Shmigel</a> - page
+  RegisterPage and LoginPage, component AuthNavigate
+- <a href="https://github.com/Yaroslav12002">Yaroslav Mykhailov</a> - component
+  ChoosedMonth
+- <a href="https://github.com/SergeiTkachenko">Sergei Tkachenko</a> - component
+  ChoosedDay
+- <a href="https://github.com/MelnykY">Yuliia Melnyk</a> - page MainPage,
+  RegisterPage, LoginPage. Components PublicRoute, PrivateRoute, Redax Auth.
+  Enabling token authorization via Redux.
+- <a href="https://github.com/NatalieUSA">Nataliia Khrystevych</a> - page
+  AccountPage (User Profile), component UserForm, Redux updateUser
+- <a href="https://github.com/diana1m">Diana Malarcuk</a> - reviews component
+  AddFeedbackModal, button AddFeedbackBtn
+- <a href="https://github.com/MaxKorovchenko">Maxim Korovchenko</a> - Redux
+  tasks, component TaskModal => Modal + TaskForm
+- <a href="https://github.com/VlikToldo">Valentyn Taldykin</a> - creation global
+  states in Redux
+- <a href="https://github.com/romis44">Roman Kovalchuk</a> - page Statistics
+- <a href="">Olexander Lukyianenko</a> - Google Auth
+- <a href="https://github.com/SashaMak19">Oleksandr Makogin</a> - Backend
+  Statistics, Frontend Statistics
 
-```jsx
-<BrowserRouter basename="/your_repo_name/">
-  <App />
-</BrowserRouter>
-```
+Backend developers
 
-## How it works
-
-![How it works](./assets/how-it-works.png)
-
-1. After each push to the `main` branch of the GitHub repository, a special
-   script (GitHub Action) is launched from the `.github/workflows/deploy.yml`
-   file.
-2. All repository files are copied to the server, where the project is
-   initialized and linted and built before deployment.
-3. If all steps are successful, the built production version of the project
-   files is sent to the `gh-pages` branch. Otherwise, the script execution log
-   will indicate what the problem is.
+- <a href="https://github.com/Pibodee">Bohdan Salo</a> - Backend tasks,
+  documentation

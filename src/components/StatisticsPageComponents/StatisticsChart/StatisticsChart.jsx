@@ -5,33 +5,53 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend,
   LabelList,
   ResponsiveContainer,
+  Label,
 } from 'recharts';
 
-const percentagesLabel = props => {
-  const { x, y, width, value } = props;
-  const radius = 10;
-  const labelY = y - (y === 0 ? radius : 0);
-
-  return (
-    <svg>
-      <text
-        x={x + 2 + width / 2}
-        y={labelY}
-        fill="#343434"
-        textAnchor="middle"
-        dominantBaseline="middle"
-      >
-        {`${Math.round(value)}%`}
-      </text>
-    </svg>
-  );
-};
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
 
 export const StatisticsChart = ({ data }) => {
+  const currentUser = useSelector(selectUser);
+
+  const percentagesLabel = props => {
+    const { x, y, width, value } = props;
+    const radius = 10;
+    const labelY = y - (y === 0 ? radius : 0);
+
+    return currentUser.themeInterface === 'light' ? (
+      <svg>
+        <text
+          x={x + 2 + width / 2}
+          y={labelY}
+          fill="rgba(52, 52, 52, 1)"
+          fontSize={16}
+          fontWeight={500}
+          textAnchor="middle"
+          dominantBaseline="middle"
+        >
+          {`${Math.round(value)}%`}
+        </text>
+      </svg>
+    ) : (
+      <svg>
+        <text
+          x={x + 2 + width / 2}
+          y={labelY}
+          fill="rgba(255, 255, 255, 1)"
+          fontSize={16}
+          fontWeight={500}
+          textAnchor="middle"
+          dominantBaseline="middle"
+        >
+          {`${Math.round(value)}%`}
+        </text>
+      </svg>
+    );
+  };
+
   const {
     toDoByMonthInPercent,
     inProgressByMonthInPercent,
@@ -63,11 +83,16 @@ export const StatisticsChart = ({ data }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        width={500}
-        height={300}
         data={columns}
+        margin={{
+          top: 45,
+          right: 10,
+          left: 10,
+          bottom: 10,
+        }}
         barCategoryGap={75}
-        barGap={14}
+        barGap={10}
+        barSize={27}
       >
         <defs>
           <linearGradient id="colorM" x1="0" y1="0" x2="0" y2="1">
@@ -86,7 +111,19 @@ export const StatisticsChart = ({ data }) => {
           </linearGradient>
         </defs>
         <CartesianGrid x={100} stroke="#E3F3FF" vertical={false} />
-        <XAxis dataKey="name" tickSize={0} tickMargin={16} stroke="" />
+        <XAxis
+          dataKey="name"
+          tickSize={0}
+          tickMargin={16}
+          axisLine={false}
+          fontSize={14}
+          fontWeight={400}
+          stroke={
+            currentUser.themeInterface === 'light'
+              ? 'rgba(52, 52, 52, 1)'
+              : '#ffffff'
+          }
+        />
         <YAxis
           ticks={[0, 20, 40, 60, 80, 100]}
           position="left"
@@ -95,40 +132,42 @@ export const StatisticsChart = ({ data }) => {
           tickCount={6}
           tickMargin={20}
           fontSize={14}
-          label={{
-            value: 'Tasks',
-            position: 'top',
-            offset: '50',
-            fontSize: '14',
-            fontWeight: '600',
-            color: '#343434',
-          }}
-        ></YAxis>
-        <Tooltip
-          itemStyle={{
-            backgroundColor: 'rgb(255, 210, 221)',
-            color: 'rgb(62, 133, 243)',
-          }}
-        />
-        <Legend
-          iconType="circle"
-          iconSize={8}
-          height={90}
-          verticalAlign="top"
-        />
+          stroke={
+            currentUser.themeInterface === 'light'
+              ? 'rgba(52, 52, 52, 1)'
+              : '#ffffff'
+          }
+        >
+          <Label
+            position="top"
+            dy={-28}
+            fontSize={14}
+            fontWeight={500}
+            fill={
+              currentUser.themeInterface === 'light'
+                ? 'rgba(52, 52, 52, 1)'
+                : '#ffffff'
+            }
+          >
+            Tasks
+          </Label>
+        </YAxis>
+
         <Bar
           name="By Day"
           dataKey="byDay"
           fill="url(#colorM)"
           barSize={27}
           radius={10}
+          minPointSize={10}
         >
           <LabelList
             position="top"
             fontSize={16}
             fontWeight={500}
             content={percentagesLabel}
-          ></LabelList>
+            theme={currentUser.themeInterface}
+          />
         </Bar>
         <Bar
           name="By Month"
@@ -136,13 +175,14 @@ export const StatisticsChart = ({ data }) => {
           fill="url(#colorD)"
           barSize={27}
           radius={10}
+          minPointSize={10}
         >
           <LabelList
             position="top"
             fontSize={16}
             fontWeight={500}
             content={percentagesLabel}
-          ></LabelList>
+          />
         </Bar>
       </BarChart>
     </ResponsiveContainer>

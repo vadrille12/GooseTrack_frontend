@@ -41,6 +41,7 @@ export const DayBtn = styled.button`
   &:hover,
   :focus {
     box-shadow: ${variables.shadow.shadow};
+    scale: 1.17;
   }
 `;
 
@@ -76,6 +77,8 @@ export const DateMobile = styled.div`
   width: 27px;
   height: 26px;
 
+  color: ${props => props.theme.text_3};
+
   border-radius: 8px;
   background: none;
 
@@ -100,7 +103,6 @@ export const DayCalendarHeadStyledDesktop = styled.ul`
     gap: 56px;
 
     padding: 10px 35px;
-    /* margin: 0 auto; */
 
     width: 704px;
     height: 68px;

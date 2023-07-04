@@ -19,86 +19,39 @@ import {
   Field,
   IconDone,
   IconError,
-  IconArrowDown,
 } from './UserForm.styled';
 
 import goose from '../../images/mainPage/mobile/mobile_goose_mainPage.png';
 
-import * as Yup from 'yup';
 import { useEffect, useState } from 'react';
-import { Calendar } from './Calendar/Calendar';
-
-import 'react-datepicker/dist/react-datepicker.css';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
+
 import { refresh, updateUser } from 'redux/auth/operations';
+
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { DatePicker, PopperDateStyles } from './Calendar/DatePicker.styled';
+import { userSchema } from './helpers/Schemas';
+
 import dayjs from 'dayjs';
-
-const day = dayjs(new Date()).format('YYYY-MM-DD');
-
-const regex = {
-  name: /^[a-z]*$/,
-  email:
-    /^(?!.@.@.$)(?!.@.--...$)(?!.@.-..$)(?!.@.-$)((.*)?@[a-z0-9]{1,}.[a-z]{2,}(.[a-z]{2,})?)$/,
-  phone: /^\+380\d{9}$/,
-  skype: /^\S[\S\s]{0,28}\S$/,
-};
-
-const userSchema = Yup.object().shape({
-  name: Yup.string()
-    .required('Name is required')
-    .matches(/^\S[\S\s]{0,28}\S$/, 'Name must be between 3 and 16 characters')
-    .max(16, 'At most 16 digits is required')
-    .test(
-      'name-validation',
-      'Name must be at least 3 characters long',
-      value => {
-        return value && value.replace(/\s/g, '').length >= 3;
-      }
-    ),
-  birthday: Yup.date().max(day, 'Birthday must be earlier than today'),
-  email: Yup.string()
-    .email('This is an ERROR email')
-    .matches(/^[a-zA-Z0-9@.]+$/, 'Email must contain only Latin characters')
-    .required('Email is required field'),
-  phone: Yup.string()
-    .required(
-      'Phone is required field. Must start with +380 and be 9 digits long'
-    )
-    .matches(
-      regex.phone,
-      'The phone number must start with +380 and be 9 digits long'
-    )
-    .min(13, 'At least 13 digits is required')
-    .max(13, 'At most 13 digits is required'),
-  skype: Yup.string()
-    .matches(/^\S[\S\s]{0,28}\S$/, 'Skype must be between 3 and 16 characters')
-    .max(13, 'At most 13 digits is required')
-    .test(
-      'Skype-validation',
-      'Skype must be at least 3 characters long',
-      value => {
-        return value && value.replace(/\s/g, '').length >= 3;
-      }
-    ),
-});
+import moment from 'moment/moment';
+import Spinner from 'components/Spinner/spinner';
 
 export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [birthdayDate, setBirthdayDate] = useState(null);
-  // const [isUpdateForm, setIsUpdateForm] = useState(null);
+  const [isFormChanged, setIsFormChanged] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
+  const currentDate = moment().format('DD/MM/YYYY');
   const user = useSelector(selectUser);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getUserInfo = async () => {
-      await dispatch(refresh());
-      //  setIsUpdateForm(null);
-    };
-
-    getUserInfo();
+    dispatch(refresh());
   }, [dispatch]);
 
   return (
@@ -112,36 +65,45 @@ export const UserForm = () => {
             email: user?.email || '',
             phone: user?.phone || '',
             skype: user?.skype || '',
-            birthday: birthdayDate || day,
-
-            // birthdayDate
-            // ? birthdayDate
-            // : user
-            // ? dayjs(user.birthday).format('YYYY-MM-DD')
-            // : new Date(),
-            // avatarURL: avatarURL || user?.avatarURL || '',
+            birthday: user?.birthday || '',
           }}
           onSubmit={async values => {
-            const formData = new FormData();
-            formData.append('name', values.name);
-            formData.append('email', values.email);
-            formData.append('birthday', values.birthday);
-            formData.append('phone', values.phone);
-            formData.append('skype', values.skype);
-            // console.log("('skype')", formData.get('skype'));
-            if (avatarURL) {
-              formData.append('avatarURL', avatarURL);
-            }
-            for (const [key, value] of formData.entries()) {
-              console.log(`${key}, ${value}`);
-            }
+            try {
+              setIsLoading(true);
+              const formData = new FormData();
+              formData.append('name', values.name);
+              formData.append('email', values.email);
+              formData.append(
+                'birthday',
+                birthdayDate
+                  ? dayjs(birthdayDate).format('DD/MM/YYYY')
+                  : dayjs(new Date()).format('DD/MM/YYYY')
+              );
 
-            alert(JSON.stringify(values, null, 2));
-            await dispatch(updateUser(formData));
-            // setIsUpdateForm(true);
+              formData.append('phone', values.phone);
+              formData.append('skype', values.skype);
+              if (avatarURL) {
+                formData.append('avatar', avatarURL);
+              }
+
+              await dispatch(updateUser(formData));
+
+              setIsLoading(false);
+              setIsFormChanged(false);
+            } catch (error) {
+              setIsLoading(false);
+              console.error('Error occurred during form submission:', error);
+            }
           }}
         >
-          {({ dirty, errors, touched, values }) => {
+          {({
+            dirty,
+            errors,
+            touched,
+            values,
+            setFieldValue,
+            isSubmitting,
+          }) => {
             const isValid = field =>
               touched[field] && errors[field]
                 ? 'is-invalid'
@@ -160,7 +122,9 @@ export const UserForm = () => {
                         />
                       </Label>
                     ) : user?.avatarURL ? (
-                      <Img src={user.avatarURL} alt="avatar" />
+                      <Label htmlFor="avatar">
+                        <Img src={user.avatarURL} alt="avatar" />
+                      </Label>
                     ) : (
                       <div>
                         <Img
@@ -185,6 +149,7 @@ export const UserForm = () => {
                     onChange={e => {
                       const file = e.target.files[0];
                       setAvatarURL(file);
+                      setIsFormChanged(true);
                     }}
                     style={{ display: 'none' }}
                   />
@@ -213,32 +178,43 @@ export const UserForm = () => {
                         <ErrorMessage name="name" component="div" />
                       </Input>
                     </Label>
-
                     <Label htmlFor="birthday" className={isValid('birthday')}>
                       Birthday
                       <Input>
-                        <Calendar
-                          className={isValid('birthday')}
-                          id="birthday"
-                          name="birthday"
-                          type="date"
-                          selected={new Date(values.birthday)}
-                          onChange={date => {
-                            setBirthdayDate(dayjs(date).format('YYYY-MM-DD'));
-                            // setIsUpdateForm(true);
-                          }}
-                          value={values.birthday}
-                          // value={dayjs(values.birthday).format('YYYY-MM-DD')}
-                        />
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                          <DatePicker
+                            className={isValid('birthday')}
+                            id="birthday"
+                            name="birthday"
+                            views={['year', 'month', 'day']}
+                            format="DD/MM/YYYY"
+                            closeOnSelect={true}
+                            disableFuture={true}
+                            slotProps={{
+                              popper: {
+                                sx: PopperDateStyles,
+                              },
+                              textField: {
+                                placeholder: user.birthday || `${currentDate}`,
+                              },
+                            }}
+                            onChange={date => {
+                              if (!date) setFieldValue('birthday', '');
 
-                        {isValid('birthday') === 'is-valid' ? (
-                          <IconDone />
-                        ) : (
-                          <IconArrowDown />
-                        )}
-
-                        {isValid('birthday') === 'is-invalid' && <IconError />}
-                        <ErrorMessage name="birthday" component="div" />
+                              setFieldValue('birthday', date);
+                              setBirthdayDate(date);
+                              setIsFormChanged(true);
+                            }}
+                            slots={{
+                              openPickerIcon: KeyboardArrowDownIcon,
+                            }}
+                          />
+                          {isValid('birthday') === 'is-valid' && <IconDone />}
+                          {isValid('birthday') === 'is-invalid' && (
+                            <IconError />
+                          )}
+                          <ErrorMessage name="birthday" component="div" />
+                        </LocalizationProvider>
                       </Input>
                     </Label>
 
@@ -295,8 +271,9 @@ export const UserForm = () => {
                   </FormInputBox>
                 </FormInputWrap>
                 <FormBtnWrap>
-                  <FormBtn type="submit" disabled={!dirty}>
-                    Save changes
+                  <FormBtn type="submit" disabled={!dirty && !isFormChanged}>
+                    {isSubmitting ? 'Updating account...' : 'Save changes'}
+                    {isLoading && <Spinner />}
                   </FormBtn>
                 </FormBtnWrap>
               </Form>

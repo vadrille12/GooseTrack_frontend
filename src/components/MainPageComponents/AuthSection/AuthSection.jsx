@@ -7,6 +7,7 @@ import {
   ImageWrapper,
   LinkLogin,
   LinkRegister,
+  Nav
 } from './AuthSection.styled';
 
 export const AuthSection = () => {
@@ -44,7 +45,7 @@ export const AuthSection = () => {
         <h1>
           G<span>oo</span>seTrack
         </h1>
-        <nav>
+        <Nav>
           <LinkLogin to="login">
             Log in
             <IconLogIn
@@ -53,7 +54,7 @@ export const AuthSection = () => {
           </LinkLogin>
           <LinkRegister to="register">Sign up</LinkRegister>
           <LinkRegister to="https://goose-track-api-l50t.onrender.com/api/auth/google">Sign up Google</LinkRegister>
-        </nav>
+        </Nav>
       </ContentWrapper>
     </ContainerHero>
   );

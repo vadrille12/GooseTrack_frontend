@@ -22,8 +22,9 @@ import {
   TimeWrapper,
 } from './TaskForm.styled';
 import { useDispatch } from 'react-redux';
-import { addTask } from 'redux/tasks/operations';
+import { addTask, editTask } from 'redux/tasks/operations';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 const TaskSchema = Yup.object().shape({
   title: Yup.string()
@@ -50,8 +51,6 @@ const TaskSchema = Yup.object().shape({
     .required('Priority is required'),
   date: Yup.date()
     .required('Date is required')
-    // .min(new Date('1900-01-01'), 'Date must be after 1900-01-01')
-    // .max(new Date(), 'Date must be before or equal to the current date')
     .transform((value, originalValue) => {
       if (originalValue) {
         const [year, month, day] = originalValue.split('-');
@@ -66,13 +65,49 @@ const TaskSchema = Yup.object().shape({
     .required('Category is required'),
 });
 
-export const TaskForm = ({ onClose, action, column }) => {
+export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
+  const { _id, title, start, end, priority, date } = taskToEdit;
+
+  const [startTime, setStartTime] = useState('09:00');
+  const [endTime, setEndTime] = useState('10:00');
+  const [autoAddHour, setAutoAddHour] = useState(true);
+
+  const handleStartChange = event => {
+    const start = event.target.value;
+    setStartTime(start);
+
+    if (autoAddHour) {
+      const startTimeObj = new Date(`2000-01-01T${start}`);
+      const endTimeObj = new Date(startTimeObj.getTime() + 60 * 60 * 1000);
+      const end = formatTime(endTimeObj);
+      setEndTime(end);
+    }
+  };
+
+  const handleEndChange = event => {
+    const end = event.target.value;
+    setEndTime(end);
+    setAutoAddHour(false);
+  };
+
+  const formatTime = time => {
+    const hours = time.getHours().toString().padStart(2, '0');
+    const minutes = time.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  };
+
   const dispatch = useDispatch();
   const { currentDay } = useParams();
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
-    dispatch(addTask(values));
+    if (action === 'add') {
+      dispatch(addTask(values));
+    }
+
+    if (action === 'edit') {
+      dispatch(editTask({ _id, ...values }));
+    }
+
     actions.resetForm();
     onClose();
   };
@@ -86,11 +121,11 @@ export const TaskForm = ({ onClose, action, column }) => {
   return (
     <Formik
       initialValues={{
-        title: '',
-        start: '09:00',
-        end: '14:00',
-        priority: 'low',
-        date: currentDay,
+        title: (action === 'edit' && title) || '',
+        start: (action === 'edit' && start) || '09:00',
+        end: (action === 'edit' && end) || '14:00',
+        priority: (action === 'edit' && priority) || 'low',
+        date: date ? date : currentDay,
         category: setCategory(),
       }}
       validationSchema={TaskSchema}
@@ -106,12 +141,22 @@ export const TaskForm = ({ onClose, action, column }) => {
         <TimeWrapper>
           <Label>
             Start
-            <InputTime type="time" name="start" />
+            <InputTime
+              type="time"
+              name="start"
+              value={startTime}
+              onChange={handleStartChange}
+            />
             <ErrorMessage name="start" component="div" />
           </Label>
           <Label>
             End
-            <InputTime type="time" name="end" />
+            <InputTime
+              type="time"
+              name="end"
+              value={endTime}
+              onChange={handleEndChange}
+            />
             <ErrorMessage name="end" component="div" />
           </Label>
         </TimeWrapper>

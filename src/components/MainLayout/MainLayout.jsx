@@ -1,19 +1,22 @@
 import { Outlet } from 'react-router';
-import { useState, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Wrapper, Main, Box, Container } from './MainLayout.styled';
 import AsideBar from 'components/SideBar/SideBar';
 import { useAdaptiveImage } from 'hooks/useAdaptiveImage';
 import { Header } from 'components/Header/Header';
-import Spinner from 'components/Spinner/spinner';
-import { selectIsLoading } from 'redux/auth/selectors';
-import { useSelector } from 'react-redux';
 
 export const MainLayout = () => {
   const { isDesktop } = useAdaptiveImage();
   const [sideBarIsVisible, setSideBarIsVisible] = useState(false);
-  const isLoading = useSelector(selectIsLoading);
-  console.log(isLoading);
+
+  useEffect(() => {
+    if (sideBarIsVisible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [sideBarIsVisible]);
 
   const onSidebarShow = () => {
     setSideBarIsVisible(state => !state);
@@ -22,7 +25,7 @@ export const MainLayout = () => {
   return (
     <Wrapper>
       <main>
-        <Container style={{ display: 'flex', width: isLoading && '85vw' }}>
+        <Container style={{ display: 'flex' }}>
           {(isDesktop || sideBarIsVisible) && (
             <AsideBar onSidebarShow={onSidebarShow} />
           )}
@@ -30,9 +33,7 @@ export const MainLayout = () => {
           <Box>
             <Header onSidebarShow={onSidebarShow} />
             <Main>
-              <Suspense fallback={<Spinner />}>
-                <Outlet />
-              </Suspense>
+              <Outlet />
             </Main>
           </Box>
         </Container>

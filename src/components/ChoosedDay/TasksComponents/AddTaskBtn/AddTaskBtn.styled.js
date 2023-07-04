@@ -12,7 +12,7 @@ export const AddTaskBtnStyled = styled.button`
   height: 48px;
 
   background: ${props => props.theme.addtask_btn};
-  border: 1px dashed #3e85f3;
+  border: 1px dashed ${variables.colors.primary};
   border-radius: 8px;
 
   font-family: 'Inter';
@@ -32,7 +32,7 @@ export const AddTaskBtnStyled = styled.button`
     color: ${props => props.theme.title_2};
     transform: translateY(-2px);
     box-shadow: ${variables.shadow.shadow};
-    background: #3e85f3;
+    background: ${variables.colors.primary};
   }
 
   @media screen and (min-width: 768px) {

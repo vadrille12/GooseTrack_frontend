@@ -1,113 +1,81 @@
-# React homework template
+**Read in other languages: [english](README.en.md)**
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+# GooseTrack
 
-## Создание репозитория по шаблону
+GooseTrack- це вебсайт для телефонів, планшетів, персональних комп'ютерів та
+інших гаджетів, який являє собою календар для зберігання та відображення подій,
+які користувач додає через свій кабінет. Сайт допомагає економити час і
+ефективно планувати день.
 
-Используй этот репозиторий организации GoIT как шаблон для создания репозитория
-своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
-`«Create a new repository»`, как показано на изображении.
+Переваги GooseTrack
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+• Різні способи перегляду календаря – швидко перемикайтеся між режимами
+перегляду місяця або дня.
 
-На следующем шаге откроется страница создания нового репозитория. Заполни поле
-его имени, убедись что репозиторий публичный, после чего нажми кнопку
-`«Create repository from template»`.
+• Завдання – створюйте й переглядайте свої завдання, а також керуйте ними в
+Календарі.
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+• Світла/темна теми - користуйтесь сайтом зі цвітовою темою, яка вам більше
+підходить
 
-После того как репозиторий будет создан, необходимо перейти в настройки
-созданного репозитория на вкладку `Settings` > `Actions` > `General` как
-показано на изображении.
+---
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+<a href="https://www.figma.com/file/kXtsjq7Tts3YzolUVqgNsp/Goose-Track?type=design&node-id=172-1012&mode=design&t=kZx2aNhGi8r3Pdbw-0">Макет
+проекту</a>
 
-Проскролив страницу до самого конца, в секции `«Workflow permissions»` выбери
-опцию `«Read and write permissions»` и поставь галочку в чекбоксе. Это
-необходимо для автоматизации процесса деплоя проекта.
+<a href="https://github.com/mitrytk/goose-track-api">Репозиторій бекенду</a>
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+### Календар
 
-Теперь у тебя есть личный репозиторий проекта, со структурой файлов и папок
-репозитория-шаблона. Далее работай с ним как с любым другим личным репозиторием,
-клонируй его себе на компьютер, пиши код, делай коммиты и отправляй их на
-GitHub.
+Календар на місяць ![ChoosedMonth](./assets/calendar-choosed-month.jpg)
 
-## Подготовка к работе
+Календар на день ![ChoosedMonth](./assets/calendar-choosed-day.jpg)
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Установи базовые зависимости проекта командой `npm install`.
-3. Запусти режим разработки, выполнив команду `npm start`.
-4. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
+### Статистика
 
-## Деплой
+Статистика ![Statistics](./assets/statistics.jpg)
 
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
+### Профіль користувача
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
+Профіль користувача ![UserProfile](./assets/user-profile.jpg)
 
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
+### Блок відгуків
 
-![GitHub Pages settings](./assets/repo-settings.png)
+Відгуки ![Reviews](./assets/reviews.jpg)
 
-### Статус деплоя
+---
 
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
+Проект розроблений командою  
+Тім лід: <a href="https://github.com/vadrille12">Danil Zozulia</a>
 
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
+Скрам майстер: <a href="https://github.com/mitrytk">Dmitry Tkachenko</a> -
+ThemeToggler, UserInfo
 
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
+Розробники Frontend:
 
-![Deployment status](./assets/deploy-status.png)
+- <a href="https://github.com/TaniaShmigel">Tetiana Shmigel</a> - сторінки
+  RegisterPage и LoginPage, компоненти AuthNavigate
+- <a href="https://github.com/Yaroslav12002">Yaroslav Mykhailov</a> - компонент
+  ChoosedMonth
+- <a href="https://github.com/SergeiTkachenko">Sergei Tkachenko</a> - компонент
+  ChoosedDay
+- <a href="https://github.com/MelnykY">Yuliia Melnyk</a> - сторінка MainPage,
+  RegisterPage, LoginPage. Компоненти PublicRoute, PrivateRoute, Redax Auth.
+  Підключення авторизації токена через Redux.
+- <a href="https://github.com/NatalieUSA">Nataliia Khrystevych</a> - сторінка
+  AccountPage (User Profile), Redux updateUser
+- <a href="https://github.com/diana1m">Diana Malarcuk</a> - компонент відгуків
+  AddFeedbackModal, кнопка AddFeedbackBtn
+- <a href="https://github.com/MaxKorovchenko">Maxim Korovchenko</a> - Redux
+  tasks, компонент TaskModal => Modal + TaskForm
+- <a href="https://github.com/VlikToldo">Valentyn Taldykin</a> - створення
+  глобальных states в Redux
+- <a href="https://github.com/romis44">Roman Kovalchuk</a> - сторінка Statistics
+- <a href="">Olexander Lukyianenko</a> - Google Auth
+- <a href="https://github.com/SashaMak19">Oleksandr Makogin</a> - Статистика на
+  бекенді та на фронтенді
 
-### Живая страница
+Розробники Backend:
 
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
-
-### Маршрутизация
-
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеш в начале строки обязателен.
-
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
-
-## Как это работает
-
-![How it works](./assets/how-it-works.png)
-
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+- <a href="https://github.com/Pibodee">Bohdan Salo</a> - backend задачі,
+  документація

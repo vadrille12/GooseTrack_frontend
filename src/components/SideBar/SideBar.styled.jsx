@@ -2,12 +2,9 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Icon } from 'images/close.svg';
 import { ReactComponent as LogoIcon } from 'images/logo.svg';
-import { ReactComponent as Profile } from 'images/sideBar/user-check.svg';
-import { ReactComponent as Calendar } from 'images/sideBar/calendar-check.svg';
-import { ReactComponent as Chart } from 'images/sideBar/chart.svg';
+import { variables } from '../../../src/Styles/GlobalStyle';
 
 export const Aside = styled.aside`
-  /* height: 100vh; */
   min-height: 100%;
   width: 290px;
   background-color: ${props => props.theme.bg_1};
@@ -94,6 +91,7 @@ export const Item = styled.li`
     margin-bottom: 16px;
   }
 `;
+
 export const ButtonClose = styled.button`
   display: flex;
   justify-content: center;
@@ -110,7 +108,7 @@ export const ButtonClose = styled.button`
 `;
 
 export const IconClose = styled(Icon)`
-  stroke: #000000;
+  stroke: ${props => props.theme.text_3};
   box-shadow: none;
   height: 24px;
   width: 24px;
@@ -142,6 +140,7 @@ export const Link = styled(NavLink)`
   &:hover,
   &:focus {
     background-color: ${props => props.theme.activeLink_bg};
+    scale: 1.1;
   }
 
   &:hover span,
@@ -166,18 +165,6 @@ export const Link = styled(NavLink)`
   }
 `;
 
-export const ProfileIcon = styled(Profile)`
-  stroke: ${props => props.theme.text_5};
-`;
-
-export const CalendarIcon = styled(Calendar)`
-  stroke: ${props => props.theme.text_5};
-`;
-
-export const ChartIcon = styled(Chart)`
-  fill: ${props => props.theme.text_5};
-`;
-
 export const Button = styled.button`
   display: flex;
   align-items: center;
@@ -197,6 +184,8 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background: #2b78ef;
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
   }
 
   @media (min-width: 768px) {

@@ -1,30 +1,18 @@
-
-import Sun from '../../../images/sun.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTheme } from 'redux/theme/selectors';
-import { THEME_OPTIONS } from 'shared/services/themeOptions';
-import { ThemeIcon, ToggleButton } from './ThemeToggler.styled';
-import { setTheme } from 'redux/theme/themeSlice';
-
+import { MoonSVG, SunSVG, ButtonToggle } from './ThemeToggler.styled';
+import { toggleTheme } from 'redux/auth/operations';
 export const ThemeToggler = () => {
-  const mode = useSelector(selectTheme);
   const dispatch = useDispatch();
+  const themeInterface = useSelector(state => state.auth.user.themeInterface);
 
-  const handleThemeChange = () => {
-    dispatch(
-      setTheme(
-        mode === THEME_OPTIONS.light ? THEME_OPTIONS.dark : THEME_OPTIONS.light
-      )
-    );
-  };
+  function handlerClick() {
+    dispatch(toggleTheme());
+  }
 
   return (
-    <div>
-      <ToggleButton onClick={handleThemeChange}>
-        <ThemeIcon>
-            <Sun/>
-        </ThemeIcon>
-      </ToggleButton>
-    </div>
+    <ButtonToggle onClick={handlerClick}>
+      {themeInterface === 'light' && <SunSVG />}
+      {themeInterface === 'dark' && <MoonSVG />}
+    </ButtonToggle>
   );
 };

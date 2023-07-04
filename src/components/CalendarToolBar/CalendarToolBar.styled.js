@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-// коммент
 
 export const CalendarToolBarStyled = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   gap: 18px;
 
@@ -11,7 +11,6 @@ export const CalendarToolBarStyled = styled.div`
   height: 82px;
 
   margin: 0 auto 24px auto;
-  /* padding: 0 20px; */
 
   @media screen and (max-width: 370px) {
     height: 100px;
@@ -25,7 +24,6 @@ export const CalendarToolBarStyled = styled.div`
     height: 34px;
     width: 704px;
 
-    /* margin: 0 auto 32px auto; */
     margin-bottom: 32px;
     margin-left: 0;
     padding: 0;

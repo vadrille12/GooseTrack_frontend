@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { variables } from 'Styles/GlobalStyle';
 import {
   Field as FormikField,
   ErrorMessage as FormikErrorMessage,
@@ -7,11 +8,10 @@ import {
 import { ReactComponent as Icon } from 'images/user/cross.svg';
 import { ReactComponent as IconErrors } from 'images/user/error.svg';
 import { ReactComponent as IconSuccess } from 'images/user/done.svg';
-import { ReactComponent as IconArrow } from 'images/user/arrow-down.svg';
+// import { ReactComponent as IconArrow } from 'images/user/arrow-down.svg';
 
 export const Wrap = styled.div`
   position: relative;
-  /* display: flex; */
   margin: 151px 32 32 32;
 
   border-radius: 16px;
@@ -225,31 +225,28 @@ export const IconError = styled(IconErrors)`
   top: 12px;
   right: 18px;
   @media (min-width: 768px) {
-    /* top: 33%;
-    right: 18px; */
     top: 11px;
     width: 24px;
     height: 24px;
   }
 `;
 
-export const IconArrowDown = styled(IconArrow)`
-  width: 14px;
-  height: 14px;
-  position: absolute;
-  align-content: center;
-  top: 35%;
-  right: 40px;
-  stroke: ${props => props.theme.title};
-  @media (min-width: 768px) {
-    top: 14px;
-    width: 18px;
-    height: 18px;
-  }
-`;
+// export const IconArrowDown = styled(IconArrow)`
+//   width: 14px;
+//   height: 14px;
+//   position: absolute;
+//   align-content: center;
+//   top: 35%;
+//   right: 40px;
+//   stroke: ${props => props.theme.title};
+//   @media (min-width: 768px) {
+//     top: 14px;
+//     width: 18px;
+//     height: 18px;
+//   }
+// `;
 
 export const Field = styled(FormikField)`
-  /* margin-top: 8px; */
   width: 100%;
   height: 42px;
   border: 1px solid ${props => props.theme.input_border_2};
@@ -262,6 +259,7 @@ export const Field = styled(FormikField)`
   line-height: calc((18 / 14) * 100%);
   color: ${props => props.theme.title};
   outline: none;
+  transition: ${variables.transitions.standart};
   cursor: text;
 
   @media (min-width: 768px) {
@@ -289,7 +287,8 @@ export const Field = styled(FormikField)`
 
   &:hover,
   &:focus {
-    border: 1px solid ${props => props.theme.scroll_bar};
+    border: 1px solid ${props => props.theme.title};
+    transition: ${variables.transitions.standart};
   }
 
   &.is-valid {
@@ -305,6 +304,10 @@ export const Input = styled.div`
   width: 100%;
   position: relative;
   margin-top: 8px;
+
+  & input {
+    color: ${props => props.theme.title};
+  }
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`
@@ -339,16 +342,21 @@ export const FormBtn = styled.button`
   text-transform: none;
   border: none;
   border-radius: 16px;
-
   color: #ffffff;
   background-color: #3e85f3;
-
   cursor: pointer;
+  transition: ${variables.transitions.standart};
   :disabled {
     background-color: #dcebf7;
+    &:hover,
+    &:focus {
+      background-color: #ffffff;
+      transition: ${variables.transitions.standart};
+    }
   }
-  /* &:hover,
+  &:hover,
   &:focus {
     background-color: #2b78ef;
-  } */
+    transition: ${variables.transitions.standart};
+  }
 `;

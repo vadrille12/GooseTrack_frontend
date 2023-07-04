@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { variables } from 'Styles/GlobalStyle';
 
 export const Section = styled.div`
-  background-color: #fff;
+  background-color: ${variables.colors.white};
 `;
 
 export const Container = styled.div`
@@ -34,7 +35,7 @@ export const Title = styled.h2`
   font-weight: 700;
   font-size: 28px;
   line-height: 1.14;
-  color: #3e85f3;
+  color: ${variables.colors.primary};
   text-align: center;
   margin: 0 auto 40px auto;
   @media screen and (min-width: 768px) {
@@ -56,12 +57,19 @@ export const ReviewSliderCard = styled.div`
   }
 `;
 
-export const Avatar = styled.div`
+export const AvatarWrapper = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
   border: 1px solid #616161;
   margin-right: 18px;
+  overflow: hidden;
+`;
+
+export const AvatarImg = styled.img`
+width: 50px;
+  height: 50px;
+  border-radius: 50%;
 `;
 
 export const Name = styled.h1`
@@ -118,8 +126,10 @@ export const SwiperNavBtn = styled.div`
   width: 50px;
   height: 46px;
   cursor: pointer;
+  transition: ${variables.transitions.standart};
   &:hover {
-    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    filter: drop-shadow(0px 5px 2px rgb(0 0 0 / 0.4));
+    transition: ${variables.transitions.standart};
   }
   @media screen and (min-width: 768px) {
     width: 61px;
