@@ -47,7 +47,7 @@ export const loginGoogle = createAsyncThunk(
   'auth/loginGoogle',
   async (credentials, { rejectWithValue }) => {
     try {
-      console.log(credentials)
+      // console.log(credentials)
       const response = await axios.get('api/auth/loginGoogle', credentials);
       setToken(response.data.token);
       return response.data;
