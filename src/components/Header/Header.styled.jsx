@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as Icon } from 'images/icon-menu-burger.svg';
-import { variables } from '../../../src/Styles/GlobalStyle';
+import { variables } from 'Styles/GlobalStyle';
 
 export const Container = styled.div`
   display: flex;
@@ -17,11 +17,8 @@ export const BurgerButton = styled.button`
   border: none;
   padding: 0;
   cursor: pointer;
-
-  /* @media (min-width: 1280px) {
-    display: none;
-  } */
 `;
+
 export const BurgerIcon = styled(Icon)`
   width: 24px;
   height: 24px;
@@ -68,33 +65,38 @@ export const Menu = styled.div`
 `;
 
 export const Title = styled.h2`
-  @media (max-width: 1279px) {
-    display: none;
-  }
+  display: none;
 
-  margin-bottom: 8px;
-  font-family: 'InterBold';
-  font-size: 32px;
-  line-height: calc((32 / 32) * 100%);
-  color: ${props => props.theme.title};
+  @media screen and (min-width: 1440px) {
+    display: inline;
+    margin-bottom: 8px;
+    font-family: 'InterBold';
+    font-size: 32px;
+    line-height: calc((32 / 32) * 100%);
+    color: ${props => props.theme.title};
+  }
 `;
 
 export const ButtonFeedback = styled.button`
+  padding: 8px 20px;
   font-family: Inter;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   line-height: calc((18 / 16) * 100%);
   text-align: center;
   text-transform: none;
-  color: #ffffff;
-  background-color: #3e85f3;
-  width: 97px;
-  height: 32px;
+  color: ${variables.colors.white};
+  background-color: ${variables.colors.primary};
   border: none;
-  border-radius: 12px;
-  padding: 8px, 20px, 8px, 20px;
+  border-radius: 10px;
   cursor: pointer;
   transition: ${variables.transitions.standart};
+
+  @media screen and (min-width: 768px) {
+    padding: 12px 32px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
 
   &:hover,
   &:focus {

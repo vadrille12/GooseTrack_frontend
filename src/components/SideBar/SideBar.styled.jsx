@@ -4,8 +4,19 @@ import { ReactComponent as Icon } from 'images/close.svg';
 import { ReactComponent as LogoIcon } from 'images/logo.svg';
 import { variables } from '../../../src/Styles/GlobalStyle';
 
+export const Overlay = styled.div`
+  @media (max-width: 1439px) {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+`;
+
 export const Aside = styled.aside`
-  min-height: 100%;
+  min-height: 100vh;
   width: 290px;
   background-color: ${props => props.theme.bg_1};
   padding-left: 24px;
@@ -18,7 +29,7 @@ export const Aside = styled.aside`
   transition: 250ms ease-in-out;
   border-right: 1px solid ${props => props.theme.main_border};
 
-  @media (max-width: 1279px) {
+  @media (max-width: 1440px) {
     position: absolute;
     z-index: 2;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px;
@@ -102,7 +113,7 @@ export const ButtonClose = styled.button`
   cursor: pointer;
   padding: 0;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1440px) {
     display: none;
   }
 `;

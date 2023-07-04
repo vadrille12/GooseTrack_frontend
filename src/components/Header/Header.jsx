@@ -1,4 +1,22 @@
-import { useLocation } from 'react-router';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+
+import { selectIsLoading } from 'redux/reviews/selectors';
+import { fetchReviewById } from 'redux/reviews/operations';
+import { selectUser } from 'redux/auth/selectors';
+
+import { FeedbackModal } from 'components/FeedbackModal/FeedbackModal';
+import Spinner from 'components/Spinner/spinner';
+import Box from 'components/Box/Box';
+
+import { useAdaptiveImage } from 'hooks/useAdaptiveImage';
+
+import gooseTask from 'images/goose-task.svg';
+
+import { UserInfo } from './UserInfo/UserInfo';
+import { ThemeToggler } from './ThemeToggler/ThemeToggler';
+
 import {
   Container,
   Menu,
@@ -9,18 +27,6 @@ import {
   GooseTask,
   MotivationTask,
 } from './Header.styled';
-import gooseTask from '../../images/goose-task.svg';
-import Box from 'components/Box/Box';
-import { UserInfo } from './UserInfo/UserInfo';
-import { useState } from 'react';
-import { useAdaptiveImage } from 'hooks/useAdaptiveImage';
-import { FeedbackModal } from 'components/FeedbackModal/FeedbackModal';
-import { ThemeToggler } from './ThemeToggler/ThemeToggler';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchReviewById } from 'redux/reviews/operations';
-import { selectUser } from 'redux/auth/selectors';
-import Spinner from 'components/Spinner/spinner';
-import { selectIsLoading } from 'redux/reviews/selectors';
 
 export const Header = ({ onSidebarShow }) => {
   const dispatch = useDispatch();
@@ -92,11 +98,12 @@ export const Header = ({ onSidebarShow }) => {
             Feedback
           </ButtonFeedback>
           <ThemeToggler></ThemeToggler>
-          <UserInfo />
+          <Link to="/account">
+            <UserInfo />
+          </Link>
         </Menu>
-        {isLoading && <Spinner/> }
-        {(showModal && !isLoading) && <FeedbackModal onClose={closeModal} />}
-        
+        {isLoading && <Spinner />}
+        {showModal && !isLoading && <FeedbackModal onClose={closeModal} />}
       </Container>
     </>
   );
