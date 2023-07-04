@@ -34,15 +34,14 @@ const userSchema = Yup.object().shape({
 export const LoginForm = () => {
   const [searchParams] = useSearchParams();
   const token = searchParams.get('access_token');
-  const email = searchParams.get('email');
-
+  const mail = searchParams.get('email');
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   
   useEffect(() => {
-    dispatch(loginGoogle({ token, email }));
-  }, [token, email, dispatch])
+    dispatch(loginGoogle({ token, mail }));
+  }, [token, mail, dispatch])
 
 
   const handleSubmit = e => {
