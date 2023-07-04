@@ -77,6 +77,14 @@ export const Avatar = styled.div`
 
   border: 2px solid ${variables.colors.primary};
   border-radius: 50%;
+
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 export const StatusLow = styled.div`

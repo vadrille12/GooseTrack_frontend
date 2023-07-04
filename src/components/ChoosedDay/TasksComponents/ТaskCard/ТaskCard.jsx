@@ -46,11 +46,7 @@ export const TaskCard = ({
   const { name, avatarURL } = useSelector(selectUser);
 
   const displayName = avatarURL ? (
-    <img
-      src={avatarURL}
-      alt="UserPicture"
-      style={{ borderRadius: '50%', objecFit: 'cover' }}
-    />
+    <img src={avatarURL} alt="UserPicture" />
   ) : (
     <BackgroundName style={{ borderRadius: '50%' }}>
       <UserNameIcon>{getInitials(name)}</UserNameIcon>
