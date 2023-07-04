@@ -52,7 +52,7 @@ export const AuthSection = () => {
             />
           </LinkLogin>
           <LinkRegister to="register">Sign up</LinkRegister>
-          <LinkRegister to="http://localhost:3030/api/auth/google">Sign up Google</LinkRegister>
+          <LinkRegister to="http://goose-track-api-l50t.onrender.com/api/auth/google">Sign up Google</LinkRegister>
         </nav>
       </ContentWrapper>
     </ContainerHero>
