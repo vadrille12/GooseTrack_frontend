@@ -15,6 +15,7 @@ import moment from 'moment/moment';
 import Spinner from 'components/Spinner/spinner';
 import { ChangePassword } from './ChangePassword/ChangePassword';
 import goose from '../../images/mainPage/mobile/mobile_goose_mainPage.png';
+import { selectToken } from 'redux/auth/selectors';
 
 import {
   AvatarWrap,
@@ -51,9 +52,10 @@ export const UserForm = () => {
 
   const dispatch = useDispatch();
 
+  const token = selectToken;
   useEffect(() => {
     dispatch(refresh());
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   return (
     <>
