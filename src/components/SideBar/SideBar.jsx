@@ -93,18 +93,16 @@ const AsideBar = ({ onSidebarShow }) => {
           </nav>
         </div>
 
-        <div>
-          <Button
-            type="button"
-            onClick={() => {
-              handleLogout();
-              onSidebarShow();
-            }}
-          >
-            <ButtonText>Log out</ButtonText>
-            <FiLogOut style={{ width: '18px', height: '18px' }} />
-          </Button>
-        </div>
+        <Button
+          type="button"
+          onClick={() => {
+            handleLogout();
+            onSidebarShow();
+          }}
+        >
+          <ButtonText>Log out</ButtonText>
+          <FiLogOut style={{ width: '18px', height: '18px' }} />
+        </Button>
       </Aside>
     </Overlay>
   );

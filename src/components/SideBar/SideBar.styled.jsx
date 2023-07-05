@@ -183,7 +183,6 @@ export const Button = styled.button`
   width: 131px;
   height: 46px;
   background: #3e85f3;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px;
   border: none;
   border-radius: 16px;
   color: #fff;

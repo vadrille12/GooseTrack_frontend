@@ -18,7 +18,7 @@ export const Wrap = styled.div`
   padding: 18px;
   background-color: ${props => props.theme.page_bg};
   padding-top: 0px;
- 
+
   @media (min-width: 375px) {
     width: 100%;
   }
@@ -109,7 +109,7 @@ export const UserWrapInfo = styled.div`
   margin-top: 60px;
   align-items: center;
   @media (min-width: 768px) {
-    margin-top: 20px; 
+    margin-top: 20px;
   }
 `;
 
@@ -234,8 +234,6 @@ export const IconError = styled(IconErrors)`
   }
 `;
 
-
-
 export const Field = styled(FormikField)`
   width: 100%;
   height: 42px;
@@ -344,6 +342,7 @@ export const FormBtn = styled.button`
 
     &:hover,
     &:focus {
+      box-shadow: none;
       transition: none;
       transform: none;
       cursor: none;
@@ -352,6 +351,7 @@ export const FormBtn = styled.button`
   &:hover,
   &:focus {
     transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
   }
 `;
 
@@ -382,11 +382,12 @@ export const PasswordChangeBtn = styled(FormBtn)`
   }
   &:hover,
   &:focus {
-    border: 1px solid ${props => props.theme.title};
+    border: 1px solid ${variables.colors.primary};
     transition: ${variables.transitions.standart};
     background-color: transparent;
     box-shadow: none;
     transform: none;
     color: ${variables.colors.primary};
+    box-shadow: ${variables.shadow.shadow};
   }
 `;

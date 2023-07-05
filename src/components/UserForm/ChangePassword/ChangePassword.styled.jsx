@@ -35,7 +35,7 @@ export const Title = styled.p`
   font-size: 18px;
   line-height: 1.33;
 
-  color: ${props => props.theme.text_7};
+  color: ${props => props.theme.text_3};
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
@@ -108,9 +108,10 @@ export const Field = styled(FormikField)`
   font-weight: 600;
   line-height: 1.29px;
 
-  color: ${variables.colors.closeButton};
+  color: ${props => props.theme.title};
+  background: ${props => props.theme.page_bg};
   outline: none;
-  border: 1px solid rgba(17, 17, 17, 0.15);
+  border: 1px solid ${props => props.theme.input_border_2};
   border-radius: 8px;
 
   @media screen and (min-width: 768px) {
@@ -133,7 +134,8 @@ export const Field = styled(FormikField)`
 
   &:hover,
   &:focus {
-    border: 1px solid ${variables.colors.closeButton};
+    border: 1px solid ${props => props.theme.title};
+    transition: ${variables.transitions.standart};
   }
 
   &.is-valid {
@@ -158,42 +160,42 @@ export const Input = styled.div`
 `;
 
 export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 11px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-
+  @media (min-width: 374px) {
+    width: 262px;
+  }
+  margin: 0 auto;
+  height: 48px;
+  padding: 14px;
   font-family: Inter;
   font-weight: 600;
   font-size: 14px;
-  line-height: 1.28px;
-  letter-spacing: -0.02em;
-
+  line-height: calc((18 / 16) * 100%);
+  text-align: center;
+  text-transform: none;
   border: none;
   border-radius: 16px;
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
-
-  color: ${variables.colors.white};
-  background-color: ${variables.colors.primary};
+  color: #ffffff;
+  background-color: #3e85f3;
   cursor: pointer;
-  transition: ${variables.transitions.standart};
 
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-    line-height: 1.33;
-    padding-top: 16px;
-    padding-bottom: 16px;
+  transition: 250ms ease-in-out;
+
+  :disabled {
+    background-color: ${props => props.theme.disabled_btn};
+    color: ${props => props.theme.text_3};
+
+    &:hover,
+    &:focus {
+      box-shadow: none;
+      transition: none;
+      transform: none;
+      cursor: none;
+    }
   }
-
   &:hover,
   &:focus {
-    background-color: ${variables.colors.secondary};
-    transition: ${variables.transitions.standart};
-  }
-  :disabled {
-    background-color: ${variables.colors.bgBlue};
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.shadow};
   }
 `;
 
@@ -206,11 +208,21 @@ export const ErrorMessage = styled(FormikErrorMessage)`
 `;
 
 export const HidePassword = styled.span`
-  color: ${variables.colors.black};
   position: absolute;
-  right: 12px;
-  top: 18px;
+  right: 15px;
+  top: 16px;
+  color: ${props => props.theme.text_3};
   cursor: pointer;
+  transition: color ${variables.transitions.standart};
+
+  @media (min-width: 768px) {
+    top: 20px;
+  }
+
+  &:hover,
+  &:focus {
+    color: ${variables.colors.primary};
+  }
 `;
 
 export const ButtonCloseWrap = styled.button`
