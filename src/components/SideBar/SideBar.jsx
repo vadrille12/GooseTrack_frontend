@@ -5,6 +5,8 @@ import { FiLogOut } from 'react-icons/fi';
 
 import { logout } from 'redux/auth/operations.js';
 
+import { useAdaptiveImage } from 'hooks/useAdaptiveImage.js';
+
 import Box from 'components/Box/Box';
 
 import { ReactComponent as Profile } from 'images/sideBar/user-check.svg';
@@ -25,6 +27,7 @@ import {
 } from './SideBar.styled.jsx';
 
 const AsideBar = ({ onSidebarShow }) => {
+  const { isDesktop } = useAdaptiveImage();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -47,7 +50,10 @@ const AsideBar = ({ onSidebarShow }) => {
     }
   };
 
-  const handleLogout = () => dispatch(logout());
+  const handleLogout = () => {
+    dispatch(logout());
+    !isDesktop && onSidebarShow();
+  };
 
   return (
     <Overlay onClick={handleOverlayClick}>
@@ -93,13 +99,7 @@ const AsideBar = ({ onSidebarShow }) => {
           </nav>
         </div>
 
-        <Button
-          type="button"
-          onClick={() => {
-            handleLogout();
-            onSidebarShow();
-          }}
-        >
+        <Button type="button" onClick={handleLogout}>
           <ButtonText>Log out</ButtonText>
           <FiLogOut style={{ width: '18px', height: '18px' }} />
         </Button>
