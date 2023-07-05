@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BsBarChart } from 'react-icons/bs';
 import { FiLogOut } from 'react-icons/fi';
@@ -20,15 +21,36 @@ import {
   ButtonText,
   ButtonClose,
   IconClose,
+  Overlay,
 } from './SideBar.styled.jsx';
 
 const AsideBar = ({ onSidebarShow }) => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const closeMenuByEsc = e => {
+      if (e.code === 'Escape') {
+        onSidebarShow();
+      }
+    };
+
+    document.addEventListener('keydown', closeMenuByEsc);
+
+    return () => {
+      document.removeEventListener('keydown', closeMenuByEsc);
+    };
+  }, [onSidebarShow]);
+
+  const handleOverlayClick = e => {
+    if (e.target === e.currentTarget) {
+      onSidebarShow();
+    }
+  };
+
   const handleLogout = () => dispatch(logout());
 
   return (
-    <>
+    <Overlay onClick={handleOverlayClick}>
       <Aside>
         <div>
           <Box
@@ -72,13 +94,19 @@ const AsideBar = ({ onSidebarShow }) => {
         </div>
 
         <div>
-          <Button type="button" onClick={handleLogout}>
+          <Button
+            type="button"
+            onClick={() => {
+              handleLogout();
+              onSidebarShow();
+            }}
+          >
             <ButtonText>Log out</ButtonText>
             <FiLogOut style={{ width: '18px', height: '18px' }} />
           </Button>
         </div>
       </Aside>
-    </>
+    </Overlay>
   );
 };
 

@@ -11,7 +11,6 @@ import {
 export const Form = styled(FormikForm)`
   position: relative;
   width: 303px;
-  /* height: 336px; */
   max-height: 420px;
   padding: 48px 18px 40px;
   background-color: ${props => props.theme.task_modal_bg};
@@ -22,7 +21,6 @@ export const Form = styled(FormikForm)`
 
   @media (min-width: 768px) {
     width: 396px;
-    /* height: 360px; */
     padding: 40px 28px;
   }
 `;
@@ -170,21 +168,6 @@ export const RadioSpan = styled.span`
     outline: 1.2px solid #ea3d65;
     outline-offset: 1px;
   }
-
-  /* ${RadioLabel}:nth-child(1) &:hover,&:focus {
-    outline: 1.2px solid #72c2f8;
-    outline-offset: 1px;
-  }
-
-  ${RadioLabel}:nth-child(2) &:hover,&:focus {
-    outline: 1.2px solid #f3b249;
-    outline-offset: 1px;
-  }
-
-  ${RadioLabel}:nth-child(3) &:hover,&:focus {
-    outline: 1.2px solid #ea3d65;
-    outline-offset: 1px;
-  } */
 `;
 
 export const ButtonWrapper = styled.div`

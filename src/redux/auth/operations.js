@@ -109,3 +109,20 @@ export const toggleTheme = createAsyncThunk(
     }
   }
 );
+
+export const changePassword = createAsyncThunk(
+  'auth/password',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch('api/auth/password', credentials);
+      Notify.success(`Your password has been changed`);
+      return data;
+    } catch (error) {
+      if (error.response.status !== 401) {
+        Notify.failure(`Password missmach. Try again`);
+        return;
+      }
+      return rejectWithValue(error.message);
+    }
+  }
+);

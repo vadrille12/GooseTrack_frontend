@@ -45,6 +45,8 @@ export const theme = {
     feedback_light_btn: '#21222C',
     statistics_bg: 'rgba(33, 34, 44, 1)',
     nfp_message: '#FFF',
+    disabled_btn: 'rgba(23, 24, 32, 1)',
+ 
   },
   light: {
     text_1: 'rgba(52, 52, 52, 0.5)',
@@ -80,6 +82,7 @@ export const theme = {
     feedback_light_btn: '#E5EDFA',
     statistics_bg: '#FFFFFF',
     nfp_message: 'rgba(17, 17, 17, 0.7)',
+    disabled_btn: '#E5EDFA',
   },
 };
 export const variables = {
