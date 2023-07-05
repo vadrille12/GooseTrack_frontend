@@ -55,7 +55,6 @@ export const authSlice = createSlice({
 
       .addCase(loginGoogle.fulfilled, (state, { payload }) => {
         state.token = payload.token;
-        state.user = payload.user;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
