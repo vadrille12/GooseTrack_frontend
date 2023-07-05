@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { refresh } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { selectToken } from 'redux/auth/selectors';
 
 import { PublicRoute } from 'components/PublicRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
@@ -25,9 +26,10 @@ const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
 export function App() {
   const dispatch = useDispatch();
+  const token = selectToken();
   useEffect(() => {
     dispatch(refresh());
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   return (
     <Container>
