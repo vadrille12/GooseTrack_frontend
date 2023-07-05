@@ -49,7 +49,7 @@ export const loginGoogle = createAsyncThunk(
     try {
       const data = credentials;
       setToken(data.token);
-      return response.data;
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
