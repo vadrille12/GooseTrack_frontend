@@ -52,7 +52,6 @@ export const UserForm = () => {
   const token = useSelector(selectToken);
   const dispatch = useDispatch();
 
-  
   useEffect(() => {
     dispatch(refresh());
   }, [dispatch, token]);
@@ -287,7 +286,6 @@ export const UserForm = () => {
                   <FormBtnWrap>
                     <FormBtn type="submit" disabled={!dirty && !isFormChanged}>
                       {isSubmitting ? 'Updating account...' : 'Save changes'}
-                      {isLoading && <Spinner />}
                     </FormBtn>
                   </FormBtnWrap>
                 </Form>
