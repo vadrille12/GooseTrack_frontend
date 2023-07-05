@@ -24,6 +24,14 @@ export const UserInfo = () => {
     }
   }
 
+  function getFirstName(name) {
+    if (name) {
+      return name.split(' ')[0];
+    } else {
+      return name;
+    }
+  }
+
   const { name, avatarURL } = useSelector(selectUser);
 
   const displayName = avatarURL ? (
@@ -35,7 +43,7 @@ export const UserInfo = () => {
   );
   return (
     <Wrapper>
-      <UserName>{name}</UserName>
+      <UserName>{getFirstName(name)}</UserName>
       <UserPicture>{displayName}</UserPicture>
     </Wrapper>
   );
