@@ -49,10 +49,10 @@ export const UserForm = () => {
 
   const currentDate = moment().format('DD/MM/YYYY');
   const user = useSelector(selectUser);
-
+  const token = useSelector(selectToken);
   const dispatch = useDispatch();
 
-  const token = selectToken;
+  
   useEffect(() => {
     dispatch(refresh());
   }, [dispatch, token]);
