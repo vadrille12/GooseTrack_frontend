@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { refresh } from 'redux/auth/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { selectToken } from 'redux/auth/selectors';
 
