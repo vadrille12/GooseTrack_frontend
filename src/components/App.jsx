@@ -26,7 +26,7 @@ const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 
 export function App() {
   const dispatch = useDispatch();
-  const token = selectToken;
+  const token = useSelector(selectToken);
   useEffect(() => {
     dispatch(refresh());
   }, [dispatch, token]);
